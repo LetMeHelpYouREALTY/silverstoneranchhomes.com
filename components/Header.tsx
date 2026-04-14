@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, startTransition } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { Menu, X, Phone, MessageCircle, ChevronDown, Home, Calculator, Info, Building2, Image, FileText, DollarSign, Sparkles, MapPin, Video, User, Calendar, Shield, AlertTriangle, UserCheck, TrendingUp, ClipboardCheck, LucideIcon } from 'lucide-react'
@@ -71,8 +71,10 @@ export default function Header() {
   const pathname = usePathname()
 
   useEffect(() => {
-    setMobileMenuOpen(false)
-    setActiveDropdown(null)
+    startTransition(() => {
+      setMobileMenuOpen(false)
+      setActiveDropdown(null)
+    })
   }, [pathname])
 
   const isActive = (href: string) => pathname === href

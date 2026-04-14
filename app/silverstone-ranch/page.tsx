@@ -17,7 +17,7 @@ const deepDiveLinks = [
     title: 'Lifestyle & Amenities',
     description:
       'Pool complexes, tennis and pickleball courts, clubhouse programming, and nearby Centennial Hills attractions.',
-    href: '/silverstone-ranch/amenities',
+    href: '/amenities',
   },
   {
     title: 'Golf Course History & Status',
@@ -29,7 +29,7 @@ const deepDiveLinks = [
     title: 'Schools & Education',
     description:
       'Zoning for O’Roarke Elementary, Cadwallader Middle, and Arbor View High plus nearby private options.',
-    href: '/silverstone-ranch/schools',
+    href: '/schools',
   },
   {
     title: 'Market Insights & Pricing',
@@ -52,10 +52,26 @@ const deepDiveLinks = [
 ]
 
 const neighborhoodLinks = [
-  { name: 'The Palms', description: 'Guard-gated single-family homes with larger lots and custom landscaping.', href: '/neighborhoods/the-palms' },
-  { name: 'Tuscany & The Cottages', description: 'Gated streets with front-yard maintenance, club access, and flexible floor plans.', href: '/neighborhoods/tuscany' },
-  { name: 'Pinehurst Townhomes', description: 'Lock-and-leave residences bordering the former golf corridors.', href: '/neighborhoods/pinehurst' },
-  { name: 'Silverlake & Eastpoint', description: 'Non-gated collections prized for efficient layouts and proximity to schools.', href: '/neighborhoods/silverlake' },
+  {
+    name: 'The Palms',
+    description: 'Guard-gated single-family homes with larger lots and custom landscaping.',
+    href: '/area-info',
+  },
+  {
+    name: 'Tuscany & The Cottages',
+    description: 'Gated streets with front-yard maintenance, club access, and flexible floor plans.',
+    href: '/area-info',
+  },
+  {
+    name: 'Pinehurst Townhomes',
+    description: 'Lock-and-leave residences bordering the former golf corridors.',
+    href: '/area-info',
+  },
+  {
+    name: 'Silverlake & Eastpoint',
+    description: 'Non-gated collections prized for efficient layouts and proximity to schools.',
+    href: '/area-info',
+  },
 ]
 
 export const metadata: Metadata = {
@@ -331,7 +347,7 @@ export default function SilverstoneRanchPage() {
                 <li>Dr. Jan Duffy curates school tour itineraries and introduces relocation clients to parent networks.</li>
               </ul>
               <Link
-                href="/silverstone-ranch/schools"
+                href="/schools"
                 className="mt-4 inline-flex items-center text-sm font-semibold text-blue-600 hover:text-blue-700"
               >
                 Explore the full school guide →

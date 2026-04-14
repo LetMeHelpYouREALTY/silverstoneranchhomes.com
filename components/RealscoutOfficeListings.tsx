@@ -14,7 +14,6 @@ export function RealscoutOfficeListings() {
       document.head.appendChild(style)
     }
   }, [])
-  const [shouldLoad, setShouldLoad] = useState(false)
   const [scriptLoaded, setScriptLoaded] = useState(false)
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -22,15 +21,9 @@ export function RealscoutOfficeListings() {
     rootMargin: '200px', // Start loading 200px before component is visible
   })
 
-  useEffect(() => {
-    if (inView && !shouldLoad) {
-      setShouldLoad(true)
-    }
-  }, [inView, shouldLoad])
-
   return (
     <section ref={ref} className="bg-slate-900 py-16 px-4 sm:px-6 lg:px-8">
-      {shouldLoad && (
+      {inView && (
         <Script
           src="https://em.realscout.com/widgets/realscout-web-components.umd.js"
           type="module"

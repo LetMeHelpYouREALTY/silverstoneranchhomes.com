@@ -328,7 +328,7 @@ export default function AreaInfoPage() {
           <p className="text-gray-700 leading-relaxed text-lg">
             Enrollment timelines vary, so start registration early. Dr. Jan Duffy coordinates school tours, introduction to
             parent communities, and scheduling support for families relocating mid-semester.
-            <Link href="/silverstone-ranch/schools" className="ml-2 font-semibold text-blue-600 hover:text-blue-700">
+            <Link href="/schools" className="ml-2 font-semibold text-blue-600 hover:text-blue-700">
               Read the detailed school guide →
             </Link>
           </p>

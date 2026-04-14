@@ -1,8 +1,5 @@
 // Tailwind CSS v3 - no native bindings required
 
-const CANONICAL_HOST = 'www.silverstoneranchhomes.com'
-const CANONICAL_BASE = `https://${CANONICAL_HOST}`
-
 const nextConfig = {
   outputFileTracingRoot: process.cwd(),
   // Optimize production builds - remove console logs in production
@@ -11,7 +8,7 @@ const nextConfig = {
       exclude: ['error', 'warn'],
     } : false,
   },
-  webpack: (config, { isServer }) => {
+  webpack: (config) => {
     // Exclude node_modules CSS from PostCSS processing to avoid Tailwind native binding issues
     config.module.rules.forEach((rule) => {
       if (rule.oneOf) {
@@ -39,6 +36,40 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Legacy URLs (GSC 404 cleanup): old neighborhood index routes → area guide
+      {
+        source: '/neighborhoods/:path*',
+        destination: '/area-info',
+        permanent: true,
+      },
+      // Old resources index and parent HOA path → current HOA guide
+      {
+        source: '/resources',
+        destination: '/resources/las-vegas-hoa/silverstone-ranch',
+        permanent: true,
+      },
+      {
+        source: '/resources/las-vegas-hoa',
+        destination: '/resources/las-vegas-hoa/silverstone-ranch',
+        permanent: true,
+      },
+      // Nested schools URL → canonical /schools route
+      {
+        source: '/silverstone-ranch/schools',
+        destination: '/schools',
+        permanent: true,
+      },
+      {
+        source: '/silverstone-ranch/amenities',
+        destination: '/amenities',
+        permanent: true,
+      },
+      // Legacy short URL (buyer-focused; matches /ap, /lc pattern)
+      {
+        source: '/ub',
+        destination: '/buy-with-agent',
+        permanent: true,
+      },
       // Redirect old short URLs to new canonical paths
       // Note: Host-based redirects (www/non-www, HTTP/HTTPS) are handled by middleware.ts
       {

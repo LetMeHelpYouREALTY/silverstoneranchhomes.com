@@ -2,7 +2,7 @@
 
 import Link from 'next/link'
 import { XCircle } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { startTransition, useEffect, useState } from 'react'
 
 export default function GolfCourseAlert() {
   const [isVisible, setIsVisible] = useState(true)
@@ -11,7 +11,7 @@ export default function GolfCourseAlert() {
     if (typeof window === 'undefined') return
     const dismissed = window.localStorage.getItem('golfCourseAlertDismissed')
     if (dismissed === 'true') {
-      setIsVisible(false)
+      startTransition(() => setIsVisible(false))
     }
   }, [])
 

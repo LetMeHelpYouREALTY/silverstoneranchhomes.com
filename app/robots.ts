@@ -10,7 +10,8 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/api/', '/scripts/', '/reports/', '/_next/', '/assets/', '/static/'],
+        // Do not disallow /_next/ — crawlers need /_next/static (CSS, JS, fonts) to render pages.
+        disallow: ['/api/', '/scripts/', '/reports/', '/assets/', '/static/'],
       },
       {
         userAgent: 'GPTBot',
