@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
@@ -189,14 +190,14 @@ const expandedFaqs = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Amenities & Lifestyle | Parks, Trails, Clubhouse',
+  title: 'Amenities & Lifestyle | Parks, Trails, Clubhouse',
   description:
     'Explore Silverstone Ranch amenities: parks, trails, sports courts, clubhouse programming, HOA services, and nearby wellness resources curated for November 2025.',
   alternates: {
     canonical: '/amenities',
   },
   openGraph: {
-    title: 'Silverstone Ranch Amenities & Lifestyle',
+    title: buildPageTitle('Amenities & Lifestyle | Parks, Trails, Clubhouse'),
     description:
       'Discover Silverstone Ranch parks, recreation, and HOA programming designed for luxury living in Centennial Hills.',
     url: `${CONTACT_INFO.website.base}/amenities`,

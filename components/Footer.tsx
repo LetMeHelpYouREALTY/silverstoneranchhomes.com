@@ -23,7 +23,8 @@ export default function Footer() {
               </div>
             </Link>
             <p className="text-sm text-gray-400 mb-6 leading-relaxed">
-              Premier real estate services in Las Vegas, NV. Specializing in Silverstone Ranch luxury homes.
+              {CONTACT_INFO.businessName}. Premier real estate services in Northwest Las Vegas—Silverstone Ranch, Centennial
+              Hills, Tule Springs, and surrounding communities.
             </p>
             <div className="space-y-3">
               <a
@@ -298,13 +299,19 @@ export default function Footer() {
                 Silverstone Ranch Specialists | Dr. Jan Duffy REALTOR® | Berkshire Hathaway HomeServices | License: S.0197614.LLC
               </p>
               <p className="text-xs text-gray-500 mt-1">
-                © {currentYear} Silverstone Ranch Homes. All rights reserved.
+                © {currentYear} {CONTACT_INFO.businessName}. All rights reserved.
+              </p>
+              <p className="text-xs text-gray-500 mt-2">
+                Office hours: {CONTACT_INFO.businessHours.display} daily · Languages:{' '}
+                {CONTACT_INFO.languagesOffered.join(', ')}
               </p>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm">
               <div className="flex items-center gap-2 text-gray-400">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                <span>Available 24/7</span>
+                <span>
+                  {CONTACT_INFO.businessHours.display} daily · Call or message
+                </span>
               </div>
               <Link
                 href="/request-info"

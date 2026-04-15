@@ -1,18 +1,19 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Price & Features Guide',
+  title: 'Price & Features Guide',
   description:
     'Explore Silverstone Ranch pricing bands, upgrade packages, and lifestyle amenities with insights from Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/price-features',
   },
   openGraph: {
-    title: 'Silverstone Ranch Price & Features Guide',
+    title: buildPageTitle('Price & Features Guide'),
     description:
       'Compare pricing tiers, upgrade ROI, and community amenities across Silverstone Ranch enclaves with curated guidance from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/price-features`,

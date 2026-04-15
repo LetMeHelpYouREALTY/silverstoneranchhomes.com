@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildLocalBusinessSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import ContactPageClient from './ContactPageClient'
 
 export const metadata: Metadata = {
-  title: 'Contact Silverstone Ranch Homes | Dr. Jan Duffy REALTOR®',
+  title: 'Contact',
   description:
-    'Contact Dr. Jan Duffy and the Silverstone Ranch Homes team for tours, valuations, or community questions. Call, email, or chat anytime.',
+    `Contact ${CONTACT_INFO.agentName} and ${CONTACT_INFO.businessName} for tours, valuations, or community questions. Call, email, or chat.`,
   alternates: {
     canonical: '/contact',
   },
   openGraph: {
-    title: 'Contact Silverstone Ranch Homes',
+    title: buildPageTitle('Contact'),
     description:
-      'Reach the Silverstone Ranch Homes concierge team for property tours, valuations, and HOA guidance. Connect by phone, email, or chat.',
+      `Reach ${CONTACT_INFO.businessName} for property tours, valuations, and HOA guidance. Connect by phone, email, or chat.`,
     url: `${CONTACT_INFO.website.base}/contact`,
     type: 'website',
   },
@@ -24,9 +25,9 @@ export default function ContactPage() {
   const path = '/contact'
   const pageSchema = buildWebPageSchema({
     path,
-    name: 'Contact Silverstone Ranch Homes',
+    name: `Contact ${CONTACT_INFO.businessName}`,
     description:
-      'Connect with the Silverstone Ranch Homes concierge team by phone, email, or chat for Las Vegas real estate support.',
+      `Connect with ${CONTACT_INFO.businessName} by phone, email, or chat for Las Vegas real estate support.`,
     breadcrumb: [
       { name: 'Home', path: '/' },
       { name: 'Contact', path },
@@ -43,7 +44,7 @@ export default function ContactPage() {
     actions: [
       buildAction({
         type: 'ContactAction',
-        name: 'Call Silverstone Ranch Homes',
+        name: `Call ${CONTACT_INFO.businessName}`,
         target: `tel:${CONTACT_INFO.phone.tel}`,
       }),
       buildAction({
@@ -63,7 +64,7 @@ export default function ContactPage() {
     {
       question: 'Can I schedule a private tour outside of business hours?',
       answer:
-        'Yes. The Silverstone Ranch Homes team arranges private tours and virtual walk-throughs around your schedule, including evenings and weekends.',
+        `Yes. The ${CONTACT_INFO.businessName} team arranges private tours and virtual walk-throughs around your schedule, including evenings and weekends.`,
     },
     {
       question: 'Do you offer relocation assistance?',

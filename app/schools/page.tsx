@@ -3,16 +3,17 @@ import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema, buildFaqSchema } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Schools | Top-Rated Education in Northwest Las Vegas',
+  title: 'Schools | Education in Northwest Las Vegas',
   description:
     'Explore top-rated schools serving Silverstone Ranch in Northwest Las Vegas. Get school district information, ratings, and enrollment details for families relocating to the area.',
   alternates: {
     canonical: '/schools',
   },
   openGraph: {
-    title: 'Silverstone Ranch Schools | Education Guide for Northwest Las Vegas',
+    title: buildPageTitle('Schools | Education in Northwest Las Vegas'),
     description:
       'Comprehensive guide to schools serving Silverstone Ranch, including elementary, middle, and high school options in the Clark County School District.',
     url: `${CONTACT_INFO.website.base}/schools`,

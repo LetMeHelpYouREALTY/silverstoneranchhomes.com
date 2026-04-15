@@ -88,7 +88,9 @@ export default function ContactPageClient() {
                 <a href={`tel:${CONTACT_INFO.phone.tel}`} className="text-lg text-blue-600 hover:text-blue-700 font-medium">
                   {CONTACT_INFO.phone.display}
                 </a>
-                <p className="text-sm text-gray-600 mt-1">Available 24/7</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Calls returned during business hours; urgent inquiries prioritized.
+                </p>
               </div>
             </div>
 
@@ -158,16 +160,49 @@ export default function ContactPageClient() {
                 >
                   {CONTACT_INFO.address.display}
                 </a>
-                <p className="text-sm text-gray-600 mt-1">Serving {CONTACT_INFO.serviceAreas.join(', ')}</p>
+                <p className="text-sm text-gray-600 mt-1">
+                  Serving Northwest Las Vegas—including {CONTACT_INFO.serviceAreas.slice(0, 5).join(', ')}, and{' '}
+                  <Link href="/area-info" className="text-blue-600 hover:text-blue-700 font-medium">
+                    additional communities we cover
+                  </Link>
+                  .
+                </p>
               </div>
             </div>
 
-            <div className="pt-6 border-t border-gray-200">
-              <h3 className="font-semibold text-gray-900 mb-3">Office Hours</h3>
-              <div className="space-y-1 text-gray-700">
-                <p>Monday - Friday: 9:00 AM - 6:00 PM</p>
-                <p>Saturday: 10:00 AM - 4:00 PM</p>
-                <p>Sunday: By Appointment</p>
+            <div className="pt-6 border-t border-gray-200 space-y-4">
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-2">Office hours (Google Business Profile)</h3>
+                <p className="text-gray-700">
+                  Monday–Sunday: {CONTACT_INFO.businessHours.display} (Pacific / local time)
+                </p>
+                <ul className="mt-2 text-sm text-gray-600 space-y-1">
+                  {CONTACT_INFO.specialClosures.map((row) => (
+                    <li key={row.date}>
+                      <span className="font-medium text-gray-800">{row.date}:</span> {row.label}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">Languages</h3>
+                <p className="text-gray-700">{CONTACT_INFO.languagesOffered.join(', ')}</p>
+              </div>
+              <div>
+                <h3 className="font-semibold text-gray-900 mb-1">Service options</h3>
+                <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
+                  {CONTACT_INFO.gbpAttributes.offersOnlineAppointments && (
+                    <li>Online appointments available</li>
+                  )}
+                  {CONTACT_INFO.gbpAttributes.wheelchairAccessibleParking && (
+                    <li>Wheelchair-accessible parking</li>
+                  )}
+                  {CONTACT_INFO.gbpAttributes.wheelchairAccessibleEntrance && (
+                    <li>Wheelchair-accessible entrance</li>
+                  )}
+                  {CONTACT_INFO.gbpAttributes.womenOwned && <li>Women-owned business</li>}
+                  {CONTACT_INFO.gbpAttributes.veteranOwned && <li>Veteran-owned business</li>}
+                </ul>
               </div>
             </div>
           </div>

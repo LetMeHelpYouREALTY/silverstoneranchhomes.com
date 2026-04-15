@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
 const mapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Interactive Map | Neighborhood Orientation',
+  title: 'Interactive Map | Neighborhood Orientation',
   description:
     'Explore Silverstone Ranch through an interactive map highlighting guard gates, amenities, schools, and surrounding conveniences.',
   alternates: {
     canonical: '/map',
   },
   openGraph: {
-    title: 'Silverstone Ranch Interactive Map',
+    title: buildPageTitle('Interactive Map | Neighborhood Orientation'),
     description:
       'Visualize Silverstone Ranch guard gates, parks, schools, and nearby services via an interactive map curated by Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/map`,

@@ -1,18 +1,19 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Area Information | Neighborhood Highlights',
+  title: 'Area Information | Neighborhood Highlights',
   description:
-    'Navigate Silverstone Ranch commute times, nearby amenities, schools, and recreation with insights curated by Dr. Jan Duffy REALTOR®.',
+    'Navigate Silverstone Ranch, Tule Springs, and Centennial Hills—commute times, amenities, schools, and recreation with insights from Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/area-info',
   },
   openGraph: {
-    title: 'Silverstone Ranch Area Information',
+    title: buildPageTitle('Area Information | Neighborhood Highlights'),
     description:
       'Explore commute options, dining, recreation, and educational resources surrounding Silverstone Ranch in Centennial Hills.',
     url: `${CONTACT_INFO.website.base}/area-info`,

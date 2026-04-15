@@ -1,20 +1,21 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy | Silverstone Ranch Homes',
+  title: 'Privacy Policy',
   description:
-    'Review the Silverstone Ranch Homes privacy policy outlining data handling, cookies, and contact details for Dr. Jan Duffy REALTOR®.',
+    `Review the ${CONTACT_INFO.businessName} privacy policy outlining data handling, cookies, and contact details for Dr. Jan Duffy REALTOR®.`,
   alternates: {
     canonical: '/privacy',
   },
   openGraph: {
-    title: 'Privacy Policy | Silverstone Ranch Homes',
+    title: buildPageTitle('Privacy Policy'),
     description:
-      'Understand how Silverstone Ranch Homes manages personal information, website data, and communication preferences.',
+      `Understand how ${CONTACT_INFO.businessName} manages personal information, website data, and communication preferences.`,
     url: `${CONTACT_INFO.website.base}/privacy`,
     type: 'article',
   },
@@ -24,9 +25,9 @@ export default function PrivacyPage() {
   const path = '/privacy'
   const pageSchema = buildWebPageSchema({
     path,
-    name: 'Silverstone Ranch Homes Privacy Policy',
+    name: `${CONTACT_INFO.businessName} Privacy Policy`,
     description:
-      'Silverstone Ranch Homes privacy policy covering personal data usage, third-party services, and contact information for inquiries.',
+      `${CONTACT_INFO.businessName} privacy policy covering personal data usage, third-party services, and contact information for inquiries.`,
     breadcrumb: [
       { name: 'Home', path: '/' },
       { name: 'Privacy Policy', path },
@@ -51,7 +52,7 @@ export default function PrivacyPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Introduction</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Silverstone Ranch Homes (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. 
+                {CONTACT_INFO.businessName} (&quot;we,&quot; &quot;our,&quot; or &quot;us&quot;) is committed to protecting your privacy. 
                 This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit 
                 our website silverstoneranchhomes.com (the &quot;Site&quot;).
               </p>

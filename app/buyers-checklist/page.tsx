@@ -1,11 +1,12 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Buyer Checklist | Due Diligence & Closing Timeline',
+  title: 'Buyer Checklist | Due Diligence & Closing Timeline',
   description:
     'Follow the step-by-step Silverstone Ranch buyer checklist created by Dr. Jan Duffy to cover financing, HOA disclosures, inspections, and closing coordination.',
   keywords: [
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     canonical: '/buyers-checklist',
   },
   openGraph: {
-    title: 'Silverstone Ranch Buyer Checklist | Due Diligence & Closing Timeline',
+    title: buildPageTitle('Buyer Checklist | Due Diligence & Closing Timeline'),
     description:
       'Stay on schedule with the Silverstone Ranch buyer checklist—financing prep, HOA documents, inspections, and closing tasks curated by Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/buyers-checklist`,

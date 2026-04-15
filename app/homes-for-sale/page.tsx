@@ -2,18 +2,19 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Homes for Sale | Curated Listings & Buyer Guide',
+  title: 'Homes for Sale | Curated Listings & Buyer Guide',
   description:
     'Browse curated Silverstone Ranch listings, market stats, and buying resources with concierge guidance from Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/homes-for-sale',
   },
   openGraph: {
-    title: 'Silverstone Ranch Homes for Sale',
+    title: buildPageTitle('Homes for Sale | Curated Listings & Buyer Guide'),
     description:
       'Explore guard-gated Silverstone Ranch listings, buyer resources, and concierge support for relocation and luxury purchases.',
     url: `${CONTACT_INFO.website.base}/homes-for-sale`,
@@ -48,7 +49,7 @@ export default function HomesForSalePage() {
   const path = '/homes-for-sale'
   const pageSchema = buildWebPageSchema({
     path,
-    name: 'Silverstone Ranch Homes for Sale',
+    name: 'Homes for Sale | Silverstone Ranch',
     description:
       'Curated Silverstone Ranch listings with market stats, community insights, and concierge buyer support from Dr. Jan Duffy.',
     breadcrumb: [

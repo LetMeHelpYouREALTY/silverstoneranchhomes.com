@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import RequestInfoPageClient from './RequestInfoPageClient'
 
 export const metadata: Metadata = {
-  title: 'Request Information | Silverstone Ranch Real Estate Concierge',
+  title: 'Request Information | Real Estate Concierge',
   description:
     'Request detailed Silverstone Ranch market intelligence, relocation guides, and listing alerts from Dr. Jan Duffy and the concierge team.',
   alternates: {
     canonical: '/request-info',
   },
   openGraph: {
-    title: 'Request Silverstone Ranch Real Estate Information',
+    title: buildPageTitle('Request Information | Real Estate Concierge'),
     description:
       'Receive Silverstone Ranch relocation kits, listing previews, and strategy sessions curated by Dr. Jan Duffy REALTOR®.',
     url: `${CONTACT_INFO.website.base}/request-info`,

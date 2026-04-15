@@ -7,6 +7,7 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { RealscoutOfficeListingsWrapper } from '@/components/RealscoutOfficeListingsWrapper'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import {
   buildLocalBusinessSchema,
@@ -19,9 +20,12 @@ import './globals.css'
 
 export const metadata: Metadata = {
   metadataBase: new URL(CONTACT_INFO.website.base),
-  title: 'Silverstone Ranch Homes | Luxury Community in Northwest Las Vegas',
+  title: {
+    default: CONTACT_INFO.businessName,
+    template: `%s | ${CONTACT_INFO.businessName}`,
+  },
   description:
-    'Explore Silverstone Ranch in Northwest Las Vegas—guard-gated enclaves, former golf course view corridors, resort amenities, and expert guidance from Dr. Jan Duffy for buying, selling, or investing in the community.',
+    'Explore Silverstone Ranch, Tule Springs, and Centennial Hills in Northwest Las Vegas—guard-gated enclaves, resort amenities, and expert real estate guidance from Dr. Jan Duffy for buying, selling, or investing.',
   authors: [{ name: CONTACT_INFO.agentName }],
   keywords: [
     'Silverstone Ranch',
@@ -37,7 +41,7 @@ export const metadata: Metadata = {
     canonical: '/',
   },
   openGraph: {
-    title: 'Silverstone Ranch Homes | Luxury Community in Northwest Las Vegas',
+    title: buildPageTitle('Luxury Community in Northwest Las Vegas'),
     description:
       'Discover Silverstone Ranch—guard-gated living, former golf fairway corridors, and personalized guidance from Dr. Jan Duffy throughout North Las Vegas.',
     type: 'website',
@@ -55,7 +59,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silverstone Ranch Homes | Luxury Community Overview',
+    title: buildPageTitle('Luxury Community Overview'),
     description:
       'Tour Silverstone Ranch in North Las Vegas—honest updates on the closed golf course, gated enclaves, and expert representation from Dr. Jan Duffy.',
     images: [`${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`],

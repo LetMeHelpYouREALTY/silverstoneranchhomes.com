@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
@@ -8,7 +9,7 @@ const path = '/market-insights'
 const canonicalUrl = `${CONTACT_INFO.website.base}${path}`
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Market Insights | November 2025 Housing Trends',
+  title: 'Market Insights | November 2025 Housing Trends',
   description:
     'Review Silverstone Ranch housing trends for November 2025 including median prices, price per square foot, days on market, and buyer vs. seller conditions.',
   keywords: [
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     canonical: path,
   },
   openGraph: {
-    title: 'Silverstone Ranch Market Insights | November 2025 Housing Trends',
+    title: buildPageTitle('Market Insights | November 2025 Housing Trends'),
     description:
       'November 2025 Silverstone Ranch real estate report: pricing shifts, buyer demand, inventory trends, and guidance from Dr. Jan Duffy REALTOR®.',
     url: canonicalUrl,

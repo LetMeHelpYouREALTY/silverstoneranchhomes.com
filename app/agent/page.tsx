@@ -3,18 +3,19 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Meet Dr. Jan Duffy | Silverstone Ranch REALTOR®',
+  title: 'Meet Dr. Jan Duffy | REALTOR®',
   description:
     'Learn about Dr. Jan Duffy’s concierge approach, credentials, and community leadership serving Silverstone Ranch buyers and sellers.',
   alternates: {
     canonical: '/agent',
   },
   openGraph: {
-    title: 'Meet Dr. Jan Duffy | Silverstone Ranch REALTOR®',
+    title: buildPageTitle('Meet Dr. Jan Duffy | REALTOR®'),
     description:
       'Discover the concierge representation, accolades, and Silverstone Ranch expertise provided by Dr. Jan Duffy REALTOR®.',
     url: `${CONTACT_INFO.website.base}/agent`,

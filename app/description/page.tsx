@@ -1,18 +1,19 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Community Description | Lifestyle Overview',
+  title: 'Community Description | Lifestyle Overview',
   description:
     'Dive into Silverstone Ranch community highlights—architecture, amenities, schools, and lifestyle perks curated by Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/description',
   },
   openGraph: {
-    title: 'Silverstone Ranch Community Description',
+    title: buildPageTitle('Community Description | Lifestyle Overview'),
     description:
       'Learn about Silverstone Ranch architecture, amenities, schools, and lifestyle experiences with guidance from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/description`,

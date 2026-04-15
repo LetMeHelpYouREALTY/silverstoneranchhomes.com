@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -8,7 +9,7 @@ const path = '/buy-with-agent'
 const canonicalUrl = `${CONTACT_INFO.website.base}${path}`
 
 export const metadata: Metadata = {
-  title: 'Why You Need a Buyer Agent for Silverstone Ranch Homes',
+  title: 'Why You Need a Buyer Agent',
   description:
     'Discover why partnering with Dr. Jan Duffy as your buyer agent in Silverstone Ranch gives you negotiation leverage, inside access to listings, and a seamless closing.',
   keywords: [
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     canonical: path,
   },
   openGraph: {
-    title: 'Why You Need a Buyer Agent for Silverstone Ranch Homes',
+    title: buildPageTitle('Why You Need a Buyer Agent'),
     description:
       'Partner with Dr. Jan Duffy REALTOR® to unlock pre-market opportunities, negotiate confidently, and streamline your Silverstone Ranch home purchase.',
     url: canonicalUrl,
@@ -426,7 +427,7 @@ export default function BuyWithAgentPage() {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Why You Need a Buyer Agent for Silverstone Ranch Homes',
+    headline: `Why You Need a Buyer Agent | ${CONTACT_INFO.businessName}`,
     description:
       'Expert guidance from Dr. Jan Duffy helps Silverstone Ranch buyers uncover inventory, negotiate pricing, and navigate HOA due diligence in Northwest Las Vegas.',
     author: {
@@ -468,7 +469,7 @@ export default function BuyWithAgentPage() {
             Buyer Representation
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
-            Why You Need a Buyer Agent for Silverstone Ranch Homes
+            Why You Need a Buyer Agent for Silverstone Ranch
           </h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Partner with Dr. Jan Duffy to unlock off-market inventory, negotiate confidently, and complete due diligence in the

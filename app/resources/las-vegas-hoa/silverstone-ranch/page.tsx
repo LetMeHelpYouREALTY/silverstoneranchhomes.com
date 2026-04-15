@@ -15,6 +15,7 @@ import {
   Users,
 } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -23,7 +24,7 @@ const canonicalUrl = `${CONTACT_INFO.website.base}${canonicalPath}`
 const heroImageUrl = `${CONTACT_INFO.website.url}images/property/exterior-front-elevation.jpg`
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch HOA in Las Vegas | Fees, Amenities & Contacts',
+  title: 'HOA in Las Vegas | Fees, Amenities & Contacts',
   description:
     'Explore Silverstone Ranch HOA in Northwest Las Vegas. Review annual fees, gated amenities, community management contacts, and neighborhood highlights tailored for homeowners and buyers.',
   keywords: [
@@ -37,7 +38,7 @@ export const metadata: Metadata = {
     canonical: canonicalUrl,
   },
   openGraph: {
-    title: 'Silverstone Ranch HOA | Las Vegas Fees, Amenities & Community Guide',
+    title: buildPageTitle('HOA | Las Vegas Fees, Amenities & Community Guide'),
     description:
       'Detailed Silverstone Ranch HOA overview including dues, amenities, architectural guidelines, and management contacts for Northwest Las Vegas homeowners.',
     url: canonicalUrl,
@@ -53,7 +54,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Silverstone Ranch HOA | Las Vegas Fees & Amenities',
+    title: buildPageTitle('HOA | Las Vegas Fees & Amenities'),
     description:
       'Homeowners guide to the Silverstone Ranch HOA with up-to-date fees, amenities, community docs, and local insights from Dr. Jan Duffy.',
     images: [heroImageUrl],

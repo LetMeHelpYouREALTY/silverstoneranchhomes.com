@@ -1,18 +1,19 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Video Tour Library',
+  title: 'Video Tour Library',
   description:
     'Watch Silverstone Ranch property tours, community highlights, and lifestyle reels curated by Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/video',
   },
   openGraph: {
-    title: 'Silverstone Ranch Video Tour Library',
+    title: buildPageTitle('Video Tour Library'),
     description:
       'Stream Silverstone Ranch property walkthroughs, amenity spotlights, and relocation videos produced by Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/video`,

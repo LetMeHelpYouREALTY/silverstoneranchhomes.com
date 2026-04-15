@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import BookTourPageClient from './BookTourPageClient'
 
 export const metadata: Metadata = {
-  title: 'Book a Silverstone Ranch Tour | Schedule with Dr. Jan Duffy',
+  title: 'Book a Community Tour | Dr. Jan Duffy',
   description:
     'Schedule a private Silverstone Ranch property tour or community preview with Dr. Jan Duffy REALTOR®. Choose in-person or virtual options.',
   alternates: {
     canonical: '/book-tour',
   },
   openGraph: {
-    title: 'Book a Silverstone Ranch Tour',
+    title: buildPageTitle('Book a Community Tour | Dr. Jan Duffy'),
     description:
       'Arrange in-person or virtual Silverstone Ranch tours, guard gate access, and custom itineraries with Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/book-tour`,

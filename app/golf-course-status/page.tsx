@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Golf Course Status & Redevelopment Updates',
+  title: 'Golf Course Status & Redevelopment Updates',
   description:
     'Stay informed on Silverstone Ranch golf course ownership, redevelopment plans, and community landscaping strategies with updates from Dr. Jan Duffy.',
   alternates: {
     canonical: '/golf-course-status',
   },
   openGraph: {
-    title: 'Silverstone Ranch Golf Course Status',
+    title: buildPageTitle('Golf Course Status & Redevelopment Updates'),
     description:
       'Review the latest on Silverstone Ranch golf course auctions, city filings, and landscaping guidance for homeowners.',
     url: `${CONTACT_INFO.website.base}/golf-course-status`,

@@ -4,6 +4,7 @@ import PhotoGallery from '@/components/PhotoGallery'
 import AgentSummaryCard from '@/components/AgentSummaryCard'
 import ScrollToTop from '@/components/ScrollToTop'
 import { VirtualOpenHouseButton } from '@/components/VirtualOpenHouseButton'
+import { ServicesLocationConversion } from '@/components/ServicesLocationConversion'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import {
   buildAggregateRatingSchema,
@@ -13,16 +14,17 @@ import {
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Homes | Community Overview & Luxury Insights',
+  title: 'Community Overview & Luxury Insights',
   description:
-    'Plan your move to Silverstone Ranch in Northwest Las Vegas. Explore guard-gated enclaves, amenities, pricing data, and concierge real estate guidance from Dr. Jan Duffy.',
+    'Plan your move to Silverstone Ranch, Tule Springs, or Centennial Hills in Northwest Las Vegas. Explore guard-gated enclaves, amenities, pricing data, and concierge real estate guidance from Dr. Jan Duffy.',
   alternates: {
     canonical: '/',
   },
   openGraph: {
-    title: 'Silverstone Ranch Homes | Community Overview & Luxury Insights',
+    title: buildPageTitle('Community Overview & Luxury Insights'),
     description:
       'Discover Silverstone Ranch in Northwest Las Vegas—gated neighborhoods, curated amenities, and expert representation from Dr. Jan Duffy REALTOR®.',
     url: CONTACT_INFO.website.url,
@@ -57,9 +59,8 @@ const homepageTestimonials = [
 export default function HomePage() {
   const pageSchema = buildWebPageSchema({
     path: '/',
-    name: 'Silverstone Ranch Homes',
-    description:
-      'Silverstone Ranch Homes curates pricing trends, lifestyle amenities, and concierge-level real estate guidance for buyers and sellers in Northwest Las Vegas.',
+    name: CONTACT_INFO.businessName,
+    description: CONTACT_INFO.gbpDescription,
   })
 
   const services = [
@@ -142,9 +143,10 @@ export default function HomePage() {
               Live Exceptionally in Silverstone Ranch, the Guard-Gated Enclave of Northwest Las Vegas
             </h1>
             <p className="text-lg text-slate-700 mb-6">
-              From desert-modern architecture to resort-inspired amenities, Silverstone Ranch blends privacy, proximity,
-              and investment confidence for homeowners relocating to or upgrading within Las Vegas. Explore market-ready
-              insights and partner with Dr. Jan Duffy to make your next move effortless.
+              Serving buyers and sellers in <strong className="font-semibold text-slate-900">Silverstone Ranch</strong> and{' '}
+              <strong className="font-semibold text-slate-900">Centennial Hills (89131)</strong>—from desert-modern homes to
+              resort-style amenities. Get local pricing context, HOA-aware guidance, and concierge representation from{' '}
+              {CONTACT_INFO.agentName} when you buy, sell, or relocate here.
             </p>
             <div className="grid sm:grid-cols-3 gap-4">
               {communityStats.map((item) => (
@@ -199,6 +201,8 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+
+      <ServicesLocationConversion />
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-10">

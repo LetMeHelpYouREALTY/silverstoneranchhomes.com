@@ -1,20 +1,21 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Terms of Service | Silverstone Ranch Homes',
+  title: 'Terms of Service',
   description:
-    'Read the Silverstone Ranch Homes terms of service covering website usage, intellectual property, disclaimers, and contact information.',
+    `Read the ${CONTACT_INFO.businessName} terms of service covering website usage, intellectual property, disclaimers, and contact information.`,
   alternates: {
     canonical: '/terms',
   },
   openGraph: {
-    title: 'Terms of Service | Silverstone Ranch Homes',
+    title: buildPageTitle('Terms of Service'),
     description:
-      'Understand the terms governing the Silverstone Ranch Homes website, services, and contact procedures.',
+      `Understand the terms governing the ${CONTACT_INFO.businessName} website, services, and contact procedures.`,
     url: `${CONTACT_INFO.website.base}/terms`,
     type: 'article',
   },
@@ -24,9 +25,9 @@ export default function TermsPage() {
   const path = '/terms'
   const pageSchema = buildWebPageSchema({
     path,
-    name: 'Silverstone Ranch Homes Terms of Service',
+    name: `${CONTACT_INFO.businessName} Terms of Service`,
     description:
-      'Silverstone Ranch Homes terms of service documenting obligations, disclaimers, and communication guidelines.',
+      `${CONTACT_INFO.businessName} terms of service documenting obligations, disclaimers, and communication guidelines.`,
     breadcrumb: [
       { name: 'Home', path: '/' },
       { name: 'Terms of Service', path },
@@ -51,7 +52,7 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Agreement to Terms</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                By accessing or using the Silverstone Ranch Homes website (the &quot;Site&quot;), you agree to be bound by 
+                By accessing or using the {CONTACT_INFO.businessName} website (the &quot;Site&quot;), you agree to be bound by 
                 these Terms of Service (&quot;Terms&quot;). If you disagree with any part of these terms, then you may not 
                 access the Site.
               </p>
@@ -60,7 +61,7 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Use License</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Permission is granted to temporarily access the materials on Silverstone Ranch Homes&apos; website for 
+                Permission is granted to temporarily access the materials on {CONTACT_INFO.businessName}&apos;s website for 
                 personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, 
                 and under this license you may not:
               </p>
@@ -108,7 +109,7 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">5. Intellectual Property</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                The Site and its original content, features, and functionality are owned by Silverstone Ranch Homes and 
+                The Site and its original content, features, and functionality are owned by {CONTACT_INFO.businessName} and 
                 are protected by international copyright, trademark, patent, trade secret, and other intellectual property 
                 laws.
               </p>
@@ -122,8 +123,8 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">6. Disclaimer</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                The materials on Silverstone Ranch Homes&apos; website are provided on an &apos;as is&apos; basis. 
-                Silverstone Ranch Homes makes no warranties, expressed or implied, and hereby disclaims and negates all 
+                The materials on {CONTACT_INFO.businessName}&apos;s website are provided on an &apos;as is&apos; basis.{' '}
+                {CONTACT_INFO.businessName} makes no warranties, expressed or implied, and hereby disclaims and negates all 
                 other warranties including, without limitation, implied warranties or conditions of merchantability, 
                 fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.
               </p>
@@ -132,10 +133,10 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Limitations</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                In no event shall Silverstone Ranch Homes or its suppliers be liable for any damages (including, without 
+                In no event shall {CONTACT_INFO.businessName} or its suppliers be liable for any damages (including, without 
                 limitation, damages for loss of data or profit, or due to business interruption) arising out of the use 
-                or inability to use the materials on Silverstone Ranch Homes&apos; website, even if Silverstone Ranch Homes 
-                or a Silverstone Ranch Homes authorized representative has been notified orally or in writing of the 
+                or inability to use the materials on {CONTACT_INFO.businessName}&apos;s website, even if {CONTACT_INFO.businessName}{' '}
+                or a {CONTACT_INFO.businessName} authorized representative has been notified orally or in writing of the 
                 possibility of such damage.
               </p>
             </section>
@@ -143,9 +144,9 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">8. Accuracy of Materials</h2>
               <p className="text-gray-700 leading-relaxed">
-                The materials appearing on Silverstone Ranch Homes&apos; website could include technical, typographical, 
-                or photographic errors. Silverstone Ranch Homes does not warrant that any of the materials on its website 
-                are accurate, complete, or current. Silverstone Ranch Homes may make changes to the materials contained on 
+                The materials appearing on {CONTACT_INFO.businessName}&apos;s website could include technical, typographical, 
+                or photographic errors. {CONTACT_INFO.businessName} does not warrant that any of the materials on its website 
+                are accurate, complete, or current. {CONTACT_INFO.businessName} may make changes to the materials contained on 
                 its website at any time without notice.
               </p>
             </section>
@@ -153,16 +154,16 @@ export default function TermsPage() {
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">9. Links to Third-Party Sites</h2>
               <p className="text-gray-700 leading-relaxed mb-4">
-                Silverstone Ranch Homes has not reviewed all of the sites linked to our website and is not responsible 
-                for the contents of any such linked site. The inclusion of any link does not imply endorsement by 
-                Silverstone Ranch Homes of the site. Use of any such linked website is at the user&apos;s own risk.
+                {CONTACT_INFO.businessName} has not reviewed all of the sites linked to our website and is not responsible 
+                for the contents of any such linked site. The inclusion of any link does not imply endorsement by{' '}
+                {CONTACT_INFO.businessName} of the site. Use of any such linked website is at the user&apos;s own risk.
               </p>
             </section>
 
             <section className="mb-8">
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Modifications</h2>
               <p className="text-gray-700 leading-relaxed">
-                Silverstone Ranch Homes may revise these Terms of Service at any time without notice. By using this 
+                {CONTACT_INFO.businessName} may revise these Terms of Service at any time without notice. By using this 
                 website you are agreeing to be bound by the then current version of these Terms of Service.
               </p>
             </section>

@@ -115,6 +115,19 @@ export function buildHowToSchema({
 }
 
 /**
+ * Opening hours for JSON-LD (aligned with GBP default weekly hours).
+ */
+export function buildOpeningHoursSpecification() {
+  const { opens, closes, dayOfWeek } = CONTACT_INFO.businessHours
+  return {
+    '@type': 'OpeningHoursSpecification',
+    dayOfWeek,
+    opens,
+    closes,
+  }
+}
+
+/**
  * Base organization schema used across the site.
  */
 export function buildOrganizationSchema() {
@@ -123,6 +136,7 @@ export function buildOrganizationSchema() {
     '@type': 'Organization',
     name: CONTACT_INFO.businessName,
     url: CONTACT_INFO.website.url,
+    foundingDate: CONTACT_INFO.foundingDate,
     logo: buildCanonical('/images/property/exterior-front-elevation.jpg'),
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
     contactPoint: [
@@ -131,7 +145,7 @@ export function buildOrganizationSchema() {
         telephone: CONTACT_INFO.phone.international,
         contactType: 'customer service',
         areaServed: CONTACT_INFO.serviceAreas,
-        availableLanguage: ['English'],
+        availableLanguage: CONTACT_INFO.languagesOffered,
       },
     ],
   }
@@ -139,12 +153,13 @@ export function buildOrganizationSchema() {
 
 /**
  * LocalBusiness schema optimized for Google Business Profiles.
+ * Business `name` matches GBP exactly (no duplicate agent prefix).
  */
 export function buildLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
-    name: `${CONTACT_INFO.agentName} | ${CONTACT_INFO.businessName}`,
+    name: CONTACT_INFO.businessName,
     image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
     url: CONTACT_INFO.website.url,
     telephone: CONTACT_INFO.phone.display,
@@ -164,6 +179,7 @@ export function buildLocalBusinessSchema() {
     },
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
     areaServed: CONTACT_INFO.serviceAreas,
+    openingHoursSpecification: buildOpeningHoursSpecification(),
   }
 }
 

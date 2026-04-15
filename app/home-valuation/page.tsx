@@ -1,18 +1,19 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import HomeValuationPageClient from './HomeValuationPageClient'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Home Valuation | Instant Market Analysis',
+  title: 'Home Valuation | Instant Market Analysis',
   description:
     'Request a Silverstone Ranch home valuation and receive a data-driven pricing roadmap from Dr. Jan Duffy REALTOR®. Insights tailored to your property.',
   alternates: {
     canonical: '/home-valuation',
   },
   openGraph: {
-    title: 'Silverstone Ranch Home Valuation',
+    title: buildPageTitle('Home Valuation | Instant Market Analysis'),
     description:
       'Unlock your Silverstone Ranch home value with a custom market analysis, pricing strategy, and selling roadmap from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/home-valuation`,

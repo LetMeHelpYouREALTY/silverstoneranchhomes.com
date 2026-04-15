@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -75,14 +76,14 @@ const neighborhoodLinks = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Community Guide | Neighborhood Overview',
+  title: 'Community Guide | Neighborhood Overview',
   description:
     'Comprehensive guide to Silverstone Ranch neighborhoods, amenities, HOA structure, and market positioning curated by Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/silverstone-ranch',
   },
   openGraph: {
-    title: 'Silverstone Ranch Community Guide',
+    title: buildPageTitle('Community Guide | Neighborhood Overview'),
     description:
       'Explore Silverstone Ranch neighborhoods, HOA structure, amenity highlights, and lifestyle insights in Northwest Las Vegas.',
     url: `${CONTACT_INFO.website.base}/silverstone-ranch`,

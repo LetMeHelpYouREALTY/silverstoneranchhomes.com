@@ -1,18 +1,19 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Area Insight | Market & Lifestyle Intel',
+  title: 'Area Insight | Market & Lifestyle Intel',
   description:
     'Gain deeper insight into Silverstone Ranch market positioning, buyer demographics, and lifestyle differentiators with guidance from Dr. Jan Duffy REALTOR®.',
   alternates: {
     canonical: '/area-insight',
   },
   openGraph: {
-    title: 'Silverstone Ranch Area Insight',
+    title: buildPageTitle('Area Insight | Market & Lifestyle Intel'),
     description:
       'Understand Silverstone Ranch buyer demand, community differentiators, and relocation draw compared to nearby neighborhoods.',
     url: `${CONTACT_INFO.website.base}/area-insight`,

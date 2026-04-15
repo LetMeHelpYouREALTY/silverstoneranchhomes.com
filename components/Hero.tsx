@@ -40,7 +40,7 @@ export default function Hero() {
               </div>
               <div>
                 <p className="font-semibold text-gray-900">Dr. Jan Duffy REALTOR</p>
-                <p className="text-sm text-gray-600">Silverstone Ranch Homes</p>
+                <p className="text-sm text-gray-600 leading-snug max-w-md">{CONTACT_INFO.businessName}</p>
                 <a
                   href={`tel:${CONTACT_INFO.phone.tel}`}
                   className="text-blue-600 hover:text-blue-700 font-medium text-sm flex items-center gap-1 mt-1"
