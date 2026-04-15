@@ -29,8 +29,8 @@ const deepDiveLinks = [
   {
     title: 'Schools & Education',
     description:
-      'Zoning for O’Roarke Elementary, Cadwallader Middle, and Arbor View High plus nearby private options.',
-    href: '/schools',
+      'CCSD orientation for Silverstone Ranch families—quick reference plus a link to the full area schools guide.',
+    href: '/silverstone-ranch/schools',
   },
   {
     title: 'Market Insights & Pricing',
@@ -56,17 +56,17 @@ const neighborhoodLinks = [
   {
     name: 'The Palms',
     description: 'Guard-gated single-family homes with larger lots and custom landscaping.',
-    href: '/area-info',
+    href: '/neighborhoods/the-palms',
   },
   {
     name: 'Tuscany & The Cottages',
     description: 'Gated streets with front-yard maintenance, club access, and flexible floor plans.',
-    href: '/area-info',
+    href: '/neighborhoods/tuscany',
   },
   {
     name: 'Pinehurst Townhomes',
     description: 'Lock-and-leave residences bordering the former golf corridors.',
-    href: '/area-info',
+    href: '/neighborhoods/pinehurst',
   },
   {
     name: 'Silverlake & Eastpoint',
