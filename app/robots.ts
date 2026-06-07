@@ -12,13 +12,42 @@ export default function robots(): MetadataRoute.Robots {
         allow: '/',
         disallow: ['/api/', '/scripts/', '/reports/', '/_next/', '/assets/', '/static/'],
       },
+      // AEO 2026: Allow AI search engines (ChatGPT, Perplexity, Claude, Gemini)
+      // to index content for Answer Engine Optimization
       {
         userAgent: 'GPTBot',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
+      },
+      {
+        userAgent: 'ChatGPT-User',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
       },
       {
         userAgent: 'CCBot',
-        disallow: '/',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
+      },
+      {
+        userAgent: 'anthropic-ai',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
+      },
+      {
+        userAgent: 'PerplexityBot',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
+      },
+      {
+        userAgent: 'Claude-Web',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
+      },
+      {
+        userAgent: 'Google-Extended',
+        allow: '/',
+        disallow: ['/api/', '/scripts/', '/reports/'],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,

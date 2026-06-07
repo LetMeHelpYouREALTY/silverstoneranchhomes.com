@@ -5,8 +5,14 @@ import AgentSummaryCard from '@/components/AgentSummaryCard'
 import ScrollToTop from '@/components/ScrollToTop'
 import { VirtualOpenHouseButton } from '@/components/VirtualOpenHouseButton'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import {
+  buildWebPageSchema,
+  buildEnhancedLocalBusinessSchema,
+  buildAeoFaqSchema,
+  buildWebSiteSchema,
+} from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { SILVERSTONE_RANCH_FAQS } from '@/lib/aeo-faqs'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Homes | Community Overview & Luxury Insights',
@@ -38,9 +44,16 @@ export default function HomePage() {
       'Silverstone Ranch Homes curates pricing trends, lifestyle amenities, and concierge-level real estate guidance for buyers and sellers in Northwest Las Vegas.',
   })
 
+  // Enhanced schemas for SEO, GEO, and AEO optimization (2026)
+  const websiteSchema = buildWebSiteSchema()
+  const localBusinessSchema = buildEnhancedLocalBusinessSchema()
+  const faqSchema = buildAeoFaqSchema('/', SILVERSTONE_RANCH_FAQS.slice(0, 5))
+
+  const schemas = [pageSchema, websiteSchema, localBusinessSchema, faqSchema]
+
   return (
     <main className="bg-white">
-      <SeoJsonLd id="home-schema" data={pageSchema} />
+      <SeoJsonLd id="home-schema" data={schemas} />
       <section className="bg-gradient-to-br from-blue-50 via-white to-slate-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
           <div>
