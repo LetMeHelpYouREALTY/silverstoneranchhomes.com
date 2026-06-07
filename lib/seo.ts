@@ -63,6 +63,7 @@ export function buildWebPageSchema({
 
 /**
  * Builds FAQPage schema from input QA pairs.
+ * Note: FAQ rich results deprecated May 2026, but schema still valuable for AI/AEO.
  */
 export function buildFaqSchema(path: string, faqs: Array<{ question: string; answer: string }>) {
   if (!faqs.length) return null
@@ -78,6 +79,54 @@ export function buildFaqSchema(path: string, faqs: Array<{ question: string; ans
       },
     })),
     url: buildCanonical(path),
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h2', 'h3'],
+    },
+  }
+}
+
+/**
+ * Builds QAPage schema for Answer Engine Optimization (AEO).
+ * Optimized for AI Overviews and voice search in 2026.
+ */
+export function buildQAPageSchema({
+  path,
+  question,
+  answer,
+  author,
+}: {
+  path: string
+  question: string
+  answer: string
+  author?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'QAPage',
+    mainEntity: {
+      '@type': 'Question',
+      name: question,
+      text: question,
+      answerCount: 1,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: answer,
+        ...(author
+          ? {
+              author: {
+                '@type': 'Person',
+                name: author,
+              },
+            }
+          : {}),
+      },
+    },
+    url: buildCanonical(path),
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'h2', '.answer'],
+    },
   }
 }
 
@@ -138,7 +187,8 @@ export function buildOrganizationSchema() {
 }
 
 /**
- * LocalBusiness schema optimized for Google Business Profiles.
+ * LocalBusiness schema optimized for Google Business Profiles and geographic SEO.
+ * Enhanced with 2026 best practices for local search visibility.
  */
 export function buildLocalBusinessSchema() {
   return {
@@ -163,10 +213,60 @@ export function buildLocalBusinessSchema() {
       longitude: -115.3001,
     },
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
-    areaServed: CONTACT_INFO.serviceAreas,
+    areaServed: CONTACT_INFO.serviceAreas.map((area) => ({
+      '@type': 'City',
+      name: area,
+    })),
+    priceRange: '$$-$$$',
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday', 'Sunday'],
+        opens: '10:00',
+        closes: '17:00',
+      },
+    ],
+    potentialAction: [
+      {
+        '@type': 'ReserveAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: buildCanonical('/book-tour'),
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+        result: {
+          '@type': 'Reservation',
+          name: 'Property Tour Reservation',
+        },
+      },
+      {
+        '@type': 'CommunicateAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: buildCanonical('/contact'),
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+      },
+    ],
   }
 }
 
+/**
+ * RealEstateAgent schema with AEO optimization and expertise signals.
+ * Enhanced for 2026 AI search and voice assistant compatibility.
+ */
 export function buildRealEstateAgentSchema() {
   return {
     '@context': 'https://schema.org',
@@ -191,18 +291,50 @@ export function buildRealEstateAgentSchema() {
       addressCountry: CONTACT_INFO.address.country,
     },
     areaServed: CONTACT_INFO.serviceAreas,
+    knowsAbout: [
+      'Luxury Real Estate',
+      'Guard-Gated Communities',
+      'Silverstone Ranch',
+      'Las Vegas Real Estate Market',
+      'Buyer Representation',
+      'Seller Representation',
+      'Relocation Services',
+      'Investment Properties',
+      'Home Valuation',
+    ],
+    knowsLanguage: {
+      '@type': 'Language',
+      name: 'English',
+    },
   }
 }
 
+/**
+ * WebSite schema with search action for voice search optimization.
+ * Enhanced for 2026 AEO and site search discovery.
+ */
 export function buildWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: CONTACT_INFO.businessName,
     url: CONTACT_INFO.website.url,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${CONTACT_INFO.website.base}/search?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+    inLanguage: 'en-US',
   }
 }
 
+/**
+ * Place schema with enhanced geographic data for geo-SEO.
+ * Optimized for local discovery and map-based search results.
+ */
 export function buildPlaceSchema() {
   return {
     '@context': 'https://schema.org',
@@ -219,6 +351,28 @@ export function buildPlaceSchema() {
       postalCode: CONTACT_INFO.address.postalCode,
       addressCountry: CONTACT_INFO.address.country,
     },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 36.2981,
+      longitude: -115.3001,
+    },
+    containedInPlace: {
+      '@type': 'City',
+      name: 'Las Vegas',
+      '@id': 'https://www.wikidata.org/wiki/Q23768',
+    },
+    additionalProperty: [
+      {
+        '@type': 'PropertyValue',
+        name: 'Neighborhood',
+        value: 'Centennial Hills',
+      },
+      {
+        '@type': 'PropertyValue',
+        name: 'Community Type',
+        value: 'Guard-Gated Master-Planned Community',
+      },
+    ],
     telephone: CONTACT_INFO.phone.display,
     image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
   }
@@ -343,7 +497,36 @@ export function buildAggregateRatingSchema({
 }
 
 /**
+ * Builds ItemList schema for AEO optimization of "best" queries.
+ * Useful for service listings, amenity lists, and ranked content.
+ */
+export function buildItemListSchema({
+  name,
+  description,
+  items,
+}: {
+  name: string
+  description?: string
+  items: Array<{ name: string; description?: string; url?: string; position?: number }>
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    ...(description ? { description } : {}),
+    itemListElement: items.map((item, index) => ({
+      '@type': 'ListItem',
+      position: item.position || index + 1,
+      name: item.name,
+      ...(item.description ? { description: item.description } : {}),
+      ...(item.url ? { url: item.url } : {}),
+    })),
+  }
+}
+
+/**
  * Enhanced organization schema with award and service offerings.
+ * Optimized for 2026 AI search and geographic discovery.
  */
 export function buildEnhancedOrganizationSchema() {
   const services = buildRealEstateServices()
@@ -369,6 +552,14 @@ export function buildEnhancedOrganizationSchema() {
       name: 'Real Estate Services',
       itemListElement: services,
     },
+    slogan: 'Your Silverstone Ranch Real Estate Expert',
+    foundingDate: '2020',
+    knowsAbout: [
+      'Luxury Real Estate',
+      'Silverstone Ranch Community',
+      'Las Vegas Market Analysis',
+      'Guard-Gated Properties',
+    ],
   }
 }
 
