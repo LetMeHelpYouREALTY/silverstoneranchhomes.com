@@ -1,3 +1,7 @@
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true',
+})
+
 if (!process.env.TAILWIND_DISABLE_NATIVE) {
   process.env.TAILWIND_DISABLE_NATIVE = 'true'
 }
@@ -11,7 +15,13 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
 
-  // Image optimization
+  // Experimental features for 2026 best practices
+  experimental: {
+    // Enable optimizePackageImports for commonly used packages
+    optimizePackageImports: ['lucide-react', 'framer-motion', '@radix-ui/react-dialog'],
+  },
+
+  // Image optimization with 2026 best practices
   images: {
     formats: ['image/avif', 'image/webp'],
     deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
@@ -22,7 +32,7 @@ const nextConfig = {
     contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
   },
 
-  // Security headers
+  // Security and performance headers (2026 standards)
   async headers() {
     return [
       {
@@ -50,12 +60,26 @@ const nextConfig = {
           },
           {
             key: 'Referrer-Policy',
-            value: 'origin-when-cross-origin',
+            value: 'strict-origin-when-cross-origin',
+          },
+          {
+            key: 'Permissions-Policy',
+            value: 'camera=(), microphone=(), geolocation=()',
           },
         ],
       },
       {
         source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+        ],
+      },
+      {
+        // Static assets caching
+        source: '/_next/static/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -98,4 +122,4 @@ const nextConfig = {
   },
 }
 
-export default nextConfig
+module.exports = withBundleAnalyzer(nextConfig)

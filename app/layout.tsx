@@ -86,6 +86,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Resource hints for performance - 2026 best practices */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+
+        {/* Preload critical hero image for LCP optimization */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/property/exterior-front-elevation.jpg"
+          imageSrcSet="/images/property/exterior-front-elevation.jpg"
+          imageSizes="100vw"
+        />
+
         <SeoJsonLd
           id="global-schema"
           data={[
