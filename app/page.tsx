@@ -11,22 +11,27 @@ import {
   buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
+  buildHomepageSchemaGraph,
+  buildItemListSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Homes | Community Overview & Luxury Insights',
+  title: 'Silverstone Ranch Homes | Las Vegas Luxury Real Estate | Guard-Gated Community',
   description:
-    'Plan your move to Silverstone Ranch in Northwest Las Vegas. Explore guard-gated enclaves, amenities, pricing data, and concierge real estate guidance from Dr. Jan Duffy.',
+    'Discover Silverstone Ranch luxury homes in Northwest Las Vegas. Guard-gated security, $685K median price, 13 days average market time. Expert guidance from Dr. Jan Duffy, top 1% REALTOR®. Browse homes, get valuations, schedule tours.',
   alternates: {
     canonical: '/',
   },
+  keywords:
+    'Silverstone Ranch homes, Las Vegas luxury real estate, guard-gated community Las Vegas, Centennial Hills homes, Northwest Las Vegas real estate, Silverstone Ranch HOA, Dr. Jan Duffy realtor',
   openGraph: {
-    title: 'Silverstone Ranch Homes | Community Overview & Luxury Insights',
+    title: 'Silverstone Ranch Homes | Las Vegas Luxury Real Estate',
     description:
-      'Discover Silverstone Ranch in Northwest Las Vegas—gated neighborhoods, curated amenities, and expert representation from Dr. Jan Duffy REALTOR®.',
+      'Explore Silverstone Ranch guard-gated luxury homes in Northwest Las Vegas. $685K median price, top-rated schools, resort amenities. Expert representation by Dr. Jan Duffy.',
     url: CONTACT_INFO.website.url,
     type: 'website',
+    siteName: 'Silverstone Ranch Homes',
   },
 }
 
@@ -55,12 +60,8 @@ const homepageTestimonials = [
 ]
 
 export default function HomePage() {
-  const pageSchema = buildWebPageSchema({
-    path: '/',
-    name: 'Silverstone Ranch Homes',
-    description:
-      'Silverstone Ranch Homes curates pricing trends, lifestyle amenities, and concierge-level real estate guidance for buyers and sellers in Northwest Las Vegas.',
-  })
+  // Use comprehensive schema graph for 2026 SEO/GEO/AEO optimization
+  const homepageSchema = buildHomepageSchemaGraph()
 
   const services = [
     buildServiceSchema({
@@ -127,7 +128,21 @@ export default function HomePage() {
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
   }
 
-  const schemaData = [pageSchema, agentSchema, ...services]
+  // Create ItemList for key pages (helps AI understand site structure)
+  const siteNavigation = buildItemListSchema({
+    name: 'Silverstone Ranch Homes - Main Navigation',
+    description: 'Primary navigation pages for Silverstone Ranch real estate services',
+    items: [
+      { name: 'Homes For Sale', url: '/homes-for-sale' },
+      { name: 'Market Insights 2025', url: '/market-insights' },
+      { name: 'Home Valuation', url: '/home-valuation' },
+      { name: 'Book a Tour', url: '/book-tour' },
+      { name: 'Meet the Agent', url: '/agent' },
+      { name: 'Contact', url: '/contact' },
+    ],
+  })
+
+  const schemaData = [homepageSchema, agentSchema, siteNavigation, ...services]
 
   return (
     <main className="bg-white">
