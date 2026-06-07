@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { buildWebPageSchema, buildEnhancedFaqSchema } from '@/lib/seo'
 
 const coreAmenities = [
   {
@@ -217,9 +217,12 @@ export default function AmenitiesPage() {
     ],
   })
 
+  const faqSchema = buildEnhancedFaqSchema(path, expandedFaqs, 'Silverstone Ranch Amenities')
+
   return (
     <main className="bg-white">
       <SeoJsonLd id="amenities" data={pageSchema} />
+      <SeoJsonLd id="amenities-faq" data={faqSchema} />
       <section className="bg-gradient-to-br from-blue-50 via-white to-slate-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
           <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">Lifestyle Guide · Updated November 2025</p>

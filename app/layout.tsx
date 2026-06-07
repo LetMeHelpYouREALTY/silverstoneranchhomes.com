@@ -11,6 +11,7 @@ import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import {
   buildLocalBusinessSchema,
   buildOrganizationSchema,
+  buildPersonSchema,
   buildPlaceSchema,
   buildRealEstateAgentSchema,
   buildWebSiteSchema,
@@ -37,6 +38,11 @@ export const metadata: Metadata = {
     'Dr. Jan Duffy',
     'Las Vegas REALTOR',
     'luxury homes Las Vegas',
+    'guard-gated community Las Vegas',
+    '89131 homes for sale',
+    'Centennial Hills luxury homes',
+    'Northwest Las Vegas gated community',
+    'Las Vegas master-planned community',
   ],
   alternates: {
     canonical: '/',
@@ -89,6 +95,7 @@ export default function RootLayout({
           data={[
             buildOrganizationSchema(),
             buildWebSiteSchema(),
+            buildPersonSchema(),
             buildRealEstateAgentSchema(),
             buildLocalBusinessSchema(),
             buildPlaceSchema(),
