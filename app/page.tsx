@@ -8,11 +8,13 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import {
   buildAggregateRatingSchema,
   buildAction,
+  buildFaqSchema,
   buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { SILVERSTONE_RANCH_FAQS } from '@/lib/faqs'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Homes | Community Overview & Luxury Insights',
@@ -127,7 +129,10 @@ export default function HomePage() {
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
   }
 
-  const schemaData = [pageSchema, agentSchema, ...services]
+  // FAQ schema optimized for AEO/voice search (2026)
+  const faqSchema = buildFaqSchema('/', SILVERSTONE_RANCH_FAQS)
+
+  const schemaData = [pageSchema, agentSchema, faqSchema, ...services].filter(Boolean)
 
   return (
     <main className="bg-white">

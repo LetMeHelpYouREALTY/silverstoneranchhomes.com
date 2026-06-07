@@ -31,7 +31,8 @@ export function buildBreadcrumbList(items: BreadcrumbItem[]) {
 }
 
 /**
- * Generates a generic WebPage JSON-LD object.
+ * Generates a generic WebPage JSON-LD object with AEO enhancements (2026).
+ * Includes speakable content selectors for voice assistants.
  */
 export function buildWebPageSchema({
   path,
@@ -52,10 +53,28 @@ export function buildWebPageSchema({
   return {
     '@context': 'https://schema.org',
     '@type': type,
+    '@id': `${canonical}#webpage`,
     name,
     description,
     url: canonical,
-    mainEntityOfPage: canonical,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonical,
+    },
+    inLanguage: 'en-US',
+    isPartOf: {
+      '@id': `${CONTACT_INFO.website.url}#website`,
+    },
+    about: {
+      '@id': `${CONTACT_INFO.website.url}#organization`,
+    },
+    publisher: {
+      '@id': `${CONTACT_INFO.website.url}#organization`,
+    },
+    speakable: {
+      '@type': 'SpeakableSpecification',
+      cssSelector: ['h1', 'h2', '.summary', 'main p'],
+    },
     ...(breadcrumb ? { breadcrumb: buildBreadcrumbList(breadcrumb) } : {}),
     ...additional,
   }
@@ -116,14 +135,28 @@ export function buildHowToSchema({
 
 /**
  * Base organization schema used across the site.
+ * Enhanced for 2026 SEO/GEO/AEO best practices with complete properties.
  */
 export function buildOrganizationSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Organization',
+    '@id': `${CONTACT_INFO.website.url}#organization`,
     name: CONTACT_INFO.businessName,
+    alternateName: 'Silverstone Ranch Real Estate',
+    description: 'Expert real estate guidance for Silverstone Ranch, a luxury master-planned community in Northwest Las Vegas featuring guard-gated enclaves and resort-style amenities.',
     url: CONTACT_INFO.website.url,
-    logo: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    logo: {
+      '@type': 'ImageObject',
+      url: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+      width: 1200,
+      height: 630,
+    },
+    image: [
+      buildCanonical('/images/property/exterior-front-elevation.jpg'),
+      buildCanonical('/images/amenities/pool.jpg'),
+      buildCanonical('/images/amenities/clubhouse.jpg'),
+    ],
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
     contactPoint: [
       {
@@ -131,24 +164,46 @@ export function buildOrganizationSchema() {
         telephone: CONTACT_INFO.phone.international,
         contactType: 'customer service',
         areaServed: CONTACT_INFO.serviceAreas,
-        availableLanguage: ['English'],
+        availableLanguage: ['English', 'en-US'],
+        contactOption: 'TollFree',
       },
     ],
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: CONTACT_INFO.address.street,
+      addressLocality: CONTACT_INFO.address.city,
+      addressRegion: CONTACT_INFO.address.state,
+      postalCode: CONTACT_INFO.address.postalCode,
+      addressCountry: CONTACT_INFO.address.country,
+    },
+    founder: {
+      '@type': 'Person',
+      name: CONTACT_INFO.agentName,
+    },
   }
 }
 
 /**
- * LocalBusiness schema optimized for Google Business Profiles.
+ * LocalBusiness schema optimized for Google Business Profiles and GEO (2026).
+ * Includes geo-coordinates, service area, hours, and actions for voice/AI assistants.
  */
 export function buildLocalBusinessSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
+    '@id': `${CONTACT_INFO.website.url}#localbusiness`,
     name: `${CONTACT_INFO.agentName} | ${CONTACT_INFO.businessName}`,
-    image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    description: 'Dr. Jan Duffy provides expert real estate services specializing in Silverstone Ranch luxury homes, from buying and selling to market analysis and investment guidance in Northwest Las Vegas.',
+    image: {
+      '@type': 'ImageObject',
+      url: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+      width: 1200,
+      height: 630,
+    },
     url: CONTACT_INFO.website.url,
     telephone: CONTACT_INFO.phone.display,
     email: CONTACT_INFO.email,
+    priceRange: '$$-$$$',
     address: {
       '@type': 'PostalAddress',
       streetAddress: CONTACT_INFO.address.street,
@@ -162,21 +217,112 @@ export function buildLocalBusinessSchema() {
       latitude: 36.2981,
       longitude: -115.3001,
     },
+    areaServed: [
+      {
+        '@type': 'GeoCircle',
+        geoMidpoint: {
+          '@type': 'GeoCoordinates',
+          latitude: 36.2981,
+          longitude: -115.3001,
+        },
+        geoRadius: '25000',
+      },
+      {
+        '@type': 'City',
+        name: 'Las Vegas',
+        containedIn: {
+          '@type': 'State',
+          name: 'Nevada',
+        },
+      },
+    ],
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '09:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday', 'Sunday'],
+        opens: '10:00',
+        closes: '16:00',
+      },
+    ],
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
-    areaServed: CONTACT_INFO.serviceAreas,
+    potentialAction: [
+      {
+        '@type': 'CommunicateAction',
+        name: 'Contact Dr. Jan Duffy',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${CONTACT_INFO.website.url}/request-info`,
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+      },
+      {
+        '@type': 'ReserveAction',
+        name: 'Book a Tour',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: `${CONTACT_INFO.website.url}/book-tour`,
+          actionPlatform: [
+            'http://schema.org/DesktopWebPlatform',
+            'http://schema.org/MobileWebPlatform',
+          ],
+        },
+      },
+    ],
   }
 }
 
+/**
+ * RealEstateAgent schema with enhanced properties for AEO/GEO (2026).
+ * Includes expertise signals, knowledge areas, and actionable information.
+ */
 export function buildRealEstateAgentSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
+    '@id': `${CONTACT_INFO.website.url}#agent`,
     name: CONTACT_INFO.agentName,
+    honorificPrefix: 'Dr.',
     jobTitle: 'REALTOR®',
+    description: 'Licensed real estate professional specializing in Silverstone Ranch luxury properties, with expertise in Northwest Las Vegas communities, market analysis, and personalized buyer and seller representation.',
     url: CONTACT_INFO.website.url,
     email: CONTACT_INFO.email,
     telephone: CONTACT_INFO.phone.display,
+    knowsAbout: [
+      'Real Estate',
+      'Luxury Homes',
+      'Silverstone Ranch',
+      'Las Vegas Real Estate',
+      'Property Investment',
+      'Market Analysis',
+      'Buyer Representation',
+      'Seller Representation',
+      'Gated Communities',
+      'Northwest Las Vegas',
+    ],
+    knowsLanguage: ['English', 'en-US'],
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Professional License',
+      recognizedBy: {
+        '@type': 'Organization',
+        name: 'Nevada Real Estate Division',
+      },
+    },
     worksFor: {
+      '@type': 'Organization',
+      name: CONTACT_INFO.brokerage,
+      url: 'https://www.bhhsnv.com',
+    },
+    affiliation: {
       '@type': 'Organization',
       name: CONTACT_INFO.businessName,
       url: CONTACT_INFO.website.url,
@@ -190,37 +336,114 @@ export function buildRealEstateAgentSchema() {
       postalCode: CONTACT_INFO.address.postalCode,
       addressCountry: CONTACT_INFO.address.country,
     },
-    areaServed: CONTACT_INFO.serviceAreas,
+    areaServed: CONTACT_INFO.serviceAreas.map((area) => ({
+      '@type': 'Place',
+      name: area,
+    })),
   }
 }
 
+/**
+ * WebSite schema with search action for voice assistants and AEO (2026).
+ */
 export function buildWebSiteSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
+    '@id': `${CONTACT_INFO.website.url}#website`,
     name: CONTACT_INFO.businessName,
+    alternateName: 'Silverstone Ranch Homes Las Vegas',
+    description: 'Your guide to Silverstone Ranch real estate in Northwest Las Vegas - luxury homes, community information, market insights, and expert representation by Dr. Jan Duffy.',
     url: CONTACT_INFO.website.url,
+    publisher: {
+      '@id': `${CONTACT_INFO.website.url}#organization`,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${CONTACT_INFO.website.url}/search?q={search_term_string}`,
+      },
+      'query-input': {
+        '@type': 'PropertyValueSpecification',
+        valueRequired: true,
+        valueName: 'search_term_string',
+      },
+    },
+    inLanguage: 'en-US',
   }
 }
 
+/**
+ * Place schema for the Silverstone Ranch community (GEO optimized for 2026).
+ * Enhanced with geo-coordinates, contained areas, and amenity features.
+ */
 export function buildPlaceSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'Place',
+    '@id': `${CONTACT_INFO.website.url}#place`,
     name: 'Silverstone Ranch Community',
+    alternateName: 'Silverstone Ranch',
     description:
       'Master-planned luxury community in Northwest Las Vegas featuring guard-gated enclaves, resort-style amenities, and residences along the former Silverstone golf fairways.',
+    disambiguatingDescription: 'Silverstone Ranch is a master-planned community in the Centennial Hills area of Northwest Las Vegas, known for its guard-gated neighborhoods and former golf course views.',
     url: CONTACT_INFO.website.url,
     address: {
       '@type': 'PostalAddress',
-      streetAddress: CONTACT_INFO.address.street,
-      addressLocality: CONTACT_INFO.address.city,
-      addressRegion: CONTACT_INFO.address.state,
-      postalCode: CONTACT_INFO.address.postalCode,
-      addressCountry: CONTACT_INFO.address.country,
+      addressLocality: 'Las Vegas',
+      addressRegion: 'NV',
+      postalCode: '89143',
+      addressCountry: 'US',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 36.2981,
+      longitude: -115.3001,
+    },
+    containedInPlace: {
+      '@type': 'City',
+      name: 'Las Vegas',
+      containedIn: {
+        '@type': 'AdministrativeArea',
+        name: 'Centennial Hills',
+      },
     },
     telephone: CONTACT_INFO.phone.display,
-    image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    image: [
+      {
+        '@type': 'ImageObject',
+        url: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+        caption: 'Silverstone Ranch luxury home exterior',
+      },
+      {
+        '@type': 'ImageObject',
+        url: buildCanonical('/images/amenities/pool.jpg'),
+        caption: 'Silverstone Ranch resort-style pool',
+      },
+    ],
+    amenityFeature: [
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Guard-Gated Security',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Resort-Style Pool',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Fitness Center',
+        value: true,
+      },
+      {
+        '@type': 'LocationFeatureSpecification',
+        name: 'Clubhouse',
+        value: true,
+      },
+    ],
   }
 }
 

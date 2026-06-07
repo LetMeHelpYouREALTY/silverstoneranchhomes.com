@@ -23,6 +23,10 @@ const inter = Inter({
   variable: '--font-inter',
 })
 
+/**
+ * Root metadata optimized for SEO, GEO, and AEO best practices (2026).
+ * Enhanced with voice search keywords, geographic signals, and AI-friendly descriptions.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL(CONTACT_INFO.website.base),
   title: 'Silverstone Ranch Homes | Luxury Community in Northwest Las Vegas',
@@ -35,9 +39,18 @@ export const metadata: Metadata = {
     'Northwest Las Vegas community',
     'Centennial Hills real estate',
     'Las Vegas gated neighborhoods',
-    'Dr. Jan Duffy',
-    'Las Vegas REALTOR',
+    'guard gated communities Las Vegas',
     'luxury homes Las Vegas',
+    'Silverstone Ranch homes for sale',
+    'Las Vegas real estate agent',
+    'Dr. Jan Duffy REALTOR',
+    'buy home Silverstone Ranch',
+    'sell home Silverstone Ranch',
+    'Silverstone golf course',
+    'gated community Northwest Las Vegas',
+    'Centennial Hills homes',
+    'Las Vegas luxury real estate',
+    'Berkshire Hathaway Las Vegas',
   ],
   alternates: {
     canonical: '/',
@@ -70,11 +83,22 @@ export const metadata: Metadata = {
   robots: {
     index: true,
     follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  verification: {
+    google: 'verification-token-placeholder',
   },
   icons: {
     icon: '/favicon.ico',
     apple: '/favicon.ico',
   },
+  category: 'Real Estate',
 }
 
 export default function RootLayout({
