@@ -1,0 +1,32 @@
+# robots.txt for Silverstone Ranch Homes
+# Optimized for 2026 SEO best practices
+
+# Allow all search engines
+User-agent: *
+Allow: /
+
+# Allow AI crawlers for AEO optimization
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Prioritize key pages for crawling
+# FAQ page is critical for AEO
+Sitemap: https://www.silverstoneranchhomes.com/sitemap.xml
+
+# Crawl-delay for courtesy (not required but good practice)
+Crawl-delay: 1
