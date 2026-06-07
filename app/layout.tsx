@@ -116,11 +116,6 @@ export default function RootLayout({
           type="module"
           strategy="afterInteractive"
         />
-        <style
-          dangerouslySetInnerHTML={{
-            __html: `realscout-office-listings { --rs-listing-divider-color: #0e64c8; width: 100%; }`,
-          }}
-        />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <Suspense fallback={null}>
