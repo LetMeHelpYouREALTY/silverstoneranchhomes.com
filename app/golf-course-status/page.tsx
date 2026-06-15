@@ -53,7 +53,7 @@ const timeline = [
       'Property sold for approximately $2.8M. Sale closes despite more than $12M in outstanding liens. Buyer identity becomes public upon deed recording (within 30 days).',
   },
   {
-    date: 'November 2025',
+    date: 'June 2026',
     title: 'Current Status',
     summary:
       'Course remains closed and unmaintained. No redevelopment application has been filed with the City of Las Vegas or the Silverstone Ranch HOA.',
@@ -97,7 +97,7 @@ const faqs = [
   {
     question: 'Is there an HOA assessment planned to maintain the land?',
     answer:
-      'No special assessments have been announced as of November 2025. Always request the latest reserve study and HOA financials during due diligence.',
+      'No special assessments have been announced as of June 2026. Always request the latest reserve study and HOA financials during due diligence.',
   },
   {
     question: 'How will I know if development is proposed?',
@@ -163,7 +163,7 @@ export default function GolfCourseStatusPage() {
         <div className="mx-auto flex max-w-5xl flex-col gap-16">
           <header className="space-y-6 text-center md:text-left">
             <div className="inline-flex items-center rounded-full border border-amber-200 bg-white/70 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-amber-700">
-              Updated November 2025
+              Updated June 2026
             </div>
             <h1 className="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
               Silverstone Ranch Golf Course Status & Buyer Guidance
@@ -292,7 +292,7 @@ export default function GolfCourseStatusPage() {
           <section className="space-y-6" id="scenarios">
             <h2 className="text-3xl font-bold text-slate-900">Potential Future Scenarios</h2>
             <p className="text-sm text-slate-600">
-              No plan has been filed as of November 2025. The scenarios below are distilled from HOA counsel, planning
+              No plan has been filed as of June 2026. The scenarios below are distilled from HOA counsel, planning
               experts, and conversations with community stakeholders.
             </p>
             <div className="grid gap-4 md:grid-cols-2">

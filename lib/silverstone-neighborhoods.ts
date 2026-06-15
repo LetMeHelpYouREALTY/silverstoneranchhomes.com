@@ -1,8 +1,15 @@
 /** Silverstone Ranch sub-association pages — copy aligned with site-wide community descriptions. */
 
-export type NeighborhoodSlug = 'pinehurst' | 'the-palms' | 'tuscany'
+export type NeighborhoodSlug = 'pinehurst' | 'the-palms' | 'tuscany' | 'silverlake' | 'eastpoint' | 'amberly'
 
-export const NEIGHBORHOOD_SLUGS: NeighborhoodSlug[] = ['pinehurst', 'the-palms', 'tuscany']
+export const NEIGHBORHOOD_SLUGS: NeighborhoodSlug[] = [
+  'pinehurst',
+  'the-palms',
+  'tuscany',
+  'silverlake',
+  'eastpoint',
+  'amberly',
+]
 
 export type NeighborhoodPageContent = {
   slug: NeighborhoodSlug
@@ -158,6 +165,150 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
         question: 'Can I tour Tuscany on the same day as other Silverstone neighborhoods?',
         answer:
           'Yes. Dr. Jan Duffy routinely schedules multi-village tours so you can experience Silverstone’s guard gates, trails, and amenities in one visit.',
+      },
+    ],
+  },
+  silverlake: {
+    slug: 'silverlake',
+    titleSegment: 'Silverlake | Guard-Gated Homes',
+    metaDescription:
+      'Silverlake at Silverstone Ranch: guard-gated single-family homes in Northwest Las Vegas (89131). Estate lots, privacy, and local buyer/seller guidance from Dr. Jan Duffy.',
+    h1: 'Silverlake | Guard-Gated Silverstone Ranch Homes',
+    intro:
+      'Silverlake is one of Silverstone Ranch’s guard-gated enclaves, offering larger single-family homes with privacy-oriented landscaping and direct access to community trails and parks in Centennial Hills.',
+    sections: [
+      {
+        heading: 'Homes & lifestyle',
+        body:
+          'Silverlake features Mediterranean and desert-modern floor plans from the Pulte era (roughly 1,600–3,800 sq ft). Buyers value deep setbacks, three-car garages, and cul-de-sac locations that minimize through traffic while staying inside the master plan.',
+      },
+      {
+        heading: 'HOA & sub-association context',
+        body:
+          'Silverlake carries master Silverstone HOA dues plus a sub-association layer for enhanced gate security and shared landscape standards. Review architectural guidelines, rental caps, and reserve studies with your agent before you offer.',
+      },
+      {
+        heading: 'Compare Silverlake with nearby enclaves',
+        body:
+          'Tour The Palms for similar guard-gated estate living, Eastpoint for non-gated alternatives, or Pinehurst if you prefer lock-and-leave townhomes—all within the same Silverstone master plan.',
+      },
+    ],
+    bullets: [
+      'Guard-gated Silverlake enclave in ZIP 89131',
+      'Single-family homes with estate-scale lots',
+      'Hyperlocal pricing and HOA guidance from Dr. Jan Duffy',
+    ],
+    faqs: [
+      {
+        question: 'Is Silverlake guard-gated?',
+        answer:
+          'Yes. Silverlake is a guard-gated neighborhood within Silverstone Ranch. Visitors need agent coordination and valid ID at the gate for private showings.',
+      },
+      {
+        question: 'What is the typical price range in Silverlake?',
+        answer:
+          'As of June 2026, Silverlake homes typically range from the mid-$600s to $1M+ depending on renovation level, lot size, and golf-course proximity. Request a current CMA for your target criteria.',
+      },
+      {
+        question: 'Does Dr. Jan Duffy represent Silverlake buyers and sellers?',
+        answer:
+          'Yes. Dr. Jan Duffy provides buyer tours, listing strategy, disclosure preparation, and negotiation tailored to Silverlake and other Silverstone enclaves.',
+      },
+    ],
+  },
+  eastpoint: {
+    slug: 'eastpoint',
+    titleSegment: 'Eastpoint | Silverstone Ranch Village',
+    metaDescription:
+      'Eastpoint at Silverstone Ranch: non-gated Northwest Las Vegas homes in 89131. Family-friendly streets, master-plan amenities, and REALTOR® guidance from Dr. Jan Duffy.',
+    h1: 'Eastpoint | Silverstone Ranch Village Homes',
+    intro:
+      'Eastpoint offers non-gated single-family living inside the Silverstone Ranch master plan—ideal for buyers who want community amenities and CCSD school access without guard-gate logistics.',
+    sections: [
+      {
+        heading: 'Homes & lifestyle',
+        body:
+          'Eastpoint includes a mix of one- and two-story Pulte floor plans with desert landscaping and proximity to the six-acre community park. Families appreciate walkable connections to trails and quick drives to Centennial Hills retail.',
+      },
+      {
+        heading: 'HOA & value proposition',
+        body:
+          'Eastpoint homeowners pay master Silverstone HOA dues without a guard-gate sub-association premium. Compare total monthly carrying costs against The Palms or Silverlake when budgeting.',
+      },
+      {
+        heading: 'Who should consider Eastpoint?',
+        body:
+          'Buyers prioritizing value, straightforward guest access, and family-oriented streets often shortlist Eastpoint. Compare with Amberly and Greenfield for similar non-gated footprints.',
+      },
+    ],
+    bullets: [
+      'Non-gated village within Silverstone Ranch 89131',
+      'Access to parks, trails, and master-plan amenities',
+      'Side-by-side tours with gated and non-gated enclaves',
+    ],
+    faqs: [
+      {
+        question: 'How is Eastpoint different from guard-gated Silverstone neighborhoods?',
+        answer:
+          'Eastpoint has no guard gate, which simplifies guest access and may reduce sub-association fees. You still benefit from master HOA amenities, trails, and Silverstone branding.',
+      },
+      {
+        question: 'What schools serve Eastpoint homes?',
+        answer:
+          'Most Eastpoint addresses zone to O’Roarke Elementary, Cadwallader Middle, and Arbor View High. Verify current CCSD boundaries before you offer.',
+      },
+      {
+        question: 'Can I tour Eastpoint and gated enclaves the same day?',
+        answer:
+          'Yes. Dr. Jan Duffy schedules multi-village Silverstone tours so you can compare Eastpoint with The Palms, Silverlake, or Pinehurst in one visit.',
+      },
+    ],
+  },
+  amberly: {
+    slug: 'amberly',
+    titleSegment: 'Amberly | Gated Silverstone Enclave',
+    metaDescription:
+      'Amberly at Silverstone Ranch: gated Northwest Las Vegas homes in 89131. Privacy, community amenities, and expert buyer/seller representation from Dr. Jan Duffy.',
+    h1: 'Amberly | Gated Silverstone Ranch Enclave',
+    intro:
+      'Amberly is a gated village within Silverstone Ranch, popular with buyers seeking controlled access, cohesive streetscapes, and proximity to Centennial Hills services without leaving the master plan.',
+    sections: [
+      {
+        heading: 'Homes & lifestyle',
+        body:
+          'Amberly offers single-family homes with desert-modern and traditional elevations. Lot sizes and floor plans vary by phase—confirm square footage, bed/bath counts, and garage configuration on each listing.',
+      },
+      {
+        heading: 'HOA considerations',
+        body:
+          'Amberly includes sub-association rules alongside the master Silverstone HOA. Review rental restrictions, architectural approval timelines, and landscape maintenance responsibilities during due diligence.',
+      },
+      {
+        heading: 'Amberly vs. other gated options',
+        body:
+          'Compare Amberly with The Palms and Silverlake for guard-gated living, or tour Eastpoint and Tuscany if you want lower carrying costs or different maintenance models.',
+      },
+    ],
+    bullets: [
+      'Gated Amberly enclave in Silverstone Ranch 89131',
+      'Single-family homes near Centennial Hills amenities',
+      'Local REALTOR® tours with HOA and disclosure context',
+    ],
+    faqs: [
+      {
+        question: 'Is Amberly guard-gated?',
+        answer:
+          'Yes. Amberly is a gated enclave within Silverstone Ranch. Your agent coordinates gate access for showings and open-house events.',
+      },
+      {
+        question: 'What are typical HOA fees in Amberly?',
+        answer:
+          'Total monthly HOA costs include master Silverstone dues plus Amberly sub-association fees—typically $200–$286 combined depending on phase. Request the current budget in your resale package.',
+      },
+      {
+        question: 'Does Dr. Jan Duffy help with Amberly listings and purchases?',
+        answer:
+          'Yes. Dr. Jan Duffy provides pricing strategy, staging guidance, buyer representation, and plain-language HOA document review for Amberly and all Silverstone villages.',
       },
     ],
   },

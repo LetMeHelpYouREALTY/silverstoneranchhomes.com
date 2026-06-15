@@ -3,29 +3,31 @@ import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { MARKET_INSIGHTS_FAQS } from '@/lib/hyperlocal-faqs'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 const path = '/market-insights'
 const canonicalUrl = `${CONTACT_INFO.website.base}${path}`
 
 export const metadata: Metadata = {
-  title: 'Market Insights | November 2025 Housing Trends',
+  title: 'Silverstone Ranch Market Report | June 2026 · 89131',
   description:
-    'Review Silverstone Ranch housing trends for November 2025 including median prices, price per square foot, days on market, and buyer vs. seller conditions.',
+    `Silverstone Ranch (89131) housing report for ${MARKET_SNAPSHOT.reportMonth}: ${MARKET_SNAPSHOT.medianPrice} median, ${MARKET_SNAPSHOT.daysOnMarket} DOM, and buyer/seller guidance from ${CONTACT_INFO.agentName}.`,
   keywords: [
     'Silverstone Ranch market report',
-    'Silverstone Ranch real estate trends 2025',
-    'Centennial Hills housing data',
-    'Las Vegas real estate statistics November 2025',
+    'Silverstone Ranch real estate trends 2026',
+    'Centennial Hills housing data 89131',
+    'Las Vegas real estate statistics June 2026',
     'Silverstone Ranch days on market',
   ],
   alternates: {
     canonical: path,
   },
   openGraph: {
-    title: buildPageTitle('Market Insights | November 2025 Housing Trends'),
+    title: buildPageTitle('Market Insights | June 2026 Housing Trends'),
     description:
-      'November 2025 Silverstone Ranch real estate report: pricing shifts, buyer demand, inventory trends, and guidance from Dr. Jan Duffy REALTOR®.',
+      'June 2026 Silverstone Ranch real estate report: pricing shifts, buyer demand, inventory trends, and guidance from Dr. Jan Duffy REALTOR®.',
     url: canonicalUrl,
     type: 'article',
   },
@@ -34,31 +36,31 @@ export const metadata: Metadata = {
 const primaryMetrics = [
   {
     label: 'Median Sale Price',
-    value: '$685,000',
-    change: '+5.2% YoY',
+    value: MARKET_SNAPSHOT.medianPrice,
+    change: MARKET_SNAPSHOT.medianPriceYoY + ' YoY',
     description:
-      'Driven by renovated guard-gated homes and relocation buyers prioritizing security and proximity to the 215 beltway.',
+      'Driven by renovated guard-gated homes and relocation buyers prioritizing security and proximity to the 215 beltway in 89131.',
   },
   {
     label: 'Price Per Sq. Ft.',
-    value: '$284',
-    change: '+3.8% YoY',
+    value: MARKET_SNAPSHOT.pricePerSqFt,
+    change: MARKET_SNAPSHOT.pricePerSqFtYoY + ' YoY',
     description:
-      'Tight inventory for single-story floor plans continues to push price per square foot higher across all enclaves.',
+      'Tight inventory for single-story floor plans continues to push price per square foot higher across all Silverstone enclaves.',
   },
   {
     label: 'Average Days on Market',
-    value: '13 Days',
-    change: '-4 Days MoM',
+    value: MARKET_SNAPSHOT.daysOnMarket,
+    change: MARKET_SNAPSHOT.daysOnMarketChange,
     description:
-      'Well-prepped listings secure offers within two weeks; homes requiring updates average 24 days.',
+      'Well-prepped listings secure offers within two weeks; homes requiring updates average 22 days in Centennial Hills.',
   },
   {
     label: 'Active Listings',
-    value: '18 Homes',
-    change: '-12% MoM',
+    value: MARKET_SNAPSHOT.activeListings,
+    change: MARKET_SNAPSHOT.activeListingsChange,
     description:
-      'Seasonal slowdown plus limited resale inventory creates urgency for buyers with relocation timelines.',
+      'Summer inventory ticked up slightly while guard-gated homes remain in high demand from relocation buyers.',
   },
 ]
 
@@ -66,7 +68,7 @@ const buyerSellerSignals = [
   {
     title: 'Seller Advantage',
     insight:
-      'Negotiable items include closing timeline and appliance packages, but price reductions are rare when homes are staged and priced to November 2025 comps.',
+      'Negotiable items include closing timeline and appliance packages, but price reductions are rare when homes are staged and priced to June 2026 comps.',
   },
   {
     title: 'Buyer Leverage',
@@ -194,18 +196,22 @@ export default function MarketInsightsPage() {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Silverstone Ranch Real Estate Market Insights - November 2025',
+    headline: 'Silverstone Ranch Real Estate Market Insights - June 2026',
     description:
-      'Explore the latest Silverstone Ranch real estate performance metrics, including pricing trends, days on market, buyer demand, and future outlook as of November 2025.',
+      'Explore the latest Silverstone Ranch real estate performance metrics, including pricing trends, days on market, buyer demand, and future outlook as of June 2026.',
     author: { '@type': 'Person', name: CONTACT_INFO.agentName },
     publisher: { '@type': 'Organization', name: CONTACT_INFO.businessName, url: CONTACT_INFO.website.base },
     mainEntityOfPage: pageSchema.url,
-    datePublished: '2025-11-07',
-    dateModified: '2025-11-07',
+    datePublished: MARKET_SNAPSHOT.datePublished,
+    dateModified: MARKET_SNAPSHOT.dateModified,
     url: pageSchema.url,
   }
 
-  const schemaData = [pageSchema, articleSchema]
+  const faqSchema = buildFaqSchema(path, MARKET_INSIGHTS_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+
+  const schemaData = [pageSchema, articleSchema, faqSchema].filter(
+    (s): s is NonNullable<typeof s> => s != null,
+  ) as Record<string, unknown>[]
 
   return (
     <main className="bg-gradient-to-br from-blue-50 to-white min-h-screen py-20 px-4 sm:px-6 lg:px-8">
@@ -213,7 +219,7 @@ export default function MarketInsightsPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section className="text-center md:text-left space-y-6">
           <div className="inline-flex items-center rounded-full border border-blue-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
-            Market Insights · November 2025
+            Market Insights · June 2026
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
             Silverstone Ranch Real Estate Market Trends

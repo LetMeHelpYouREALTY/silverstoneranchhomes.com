@@ -209,7 +209,7 @@ export default function EnvironmentalRiskPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section className="text-center md:text-left space-y-6">
           <div className="inline-flex items-center rounded-full border border-emerald-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-emerald-700">
-            Environmental Readiness · Updated November 2025
+            Environmental Readiness · Updated June 2026
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">Silverstone Ranch Environmental Risk Assessment</h1>
           <p className="text-lg text-gray-700 leading-relaxed">
@@ -218,7 +218,7 @@ export default function EnvironmentalRiskPage() {
             considerations, and practical upgrades curated by Dr. Jan Duffy for buyers and residents.
           </p>
           <p className="text-lg text-gray-700 leading-relaxed">
-            The insights below synthesize climate models, insurance data, and HOA guidelines in effect as of November 2025.
+            The insights below synthesize climate models, insurance data, and HOA guidelines in effect as of June 2026.
             Use them to prioritize upgrades, coordinate vendor support, and negotiate intelligently when purchasing or
             selling in Silverstone Ranch.
           </p>

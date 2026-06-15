@@ -9,17 +9,20 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import {
   buildAggregateRatingSchema,
   buildAction,
+  buildFaqSchema,
   buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
+import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 export const metadata: Metadata = {
-  title: 'Community Overview & Luxury Insights',
+  title: 'Silverstone Ranch REALTOR® | Homes for Sale 89131',
   description:
-    'Plan your move to Silverstone Ranch, Tule Springs, or Centennial Hills in Northwest Las Vegas. Explore guard-gated enclaves, amenities, pricing data, and concierge real estate guidance from Dr. Jan Duffy.',
+    `Buy or sell in Silverstone Ranch (89131), Centennial Hills. Guard-gated enclaves, HOA guidance, ${MARKET_SNAPSHOT.reportMonth} market data, and concierge real estate services from ${CONTACT_INFO.agentName}.`,
   alternates: {
     canonical: '/',
   },
@@ -33,9 +36,9 @@ export const metadata: Metadata = {
 }
 
 const communityStats = [
-  { label: 'Median Price (Nov 2025)', value: '$685K', detail: 'Up 5.2% year-over-year with strong demand for renovated homes.' },
-  { label: 'Average Days on Market', value: '13 Days', detail: 'Listings move quickly when staged and priced to market.' },
-  { label: 'Active Listings', value: '18 Homes', detail: 'Limited guard-gated inventory fuels relocation interest.' },
+  { label: `Median Price (${MARKET_SNAPSHOT.reportMonthShort})`, value: MARKET_SNAPSHOT.medianPriceShort, detail: `${MARKET_SNAPSHOT.medianPriceYoY} year-over-year with strong demand for renovated homes in 89131.` },
+  { label: 'Average Days on Market', value: MARKET_SNAPSHOT.daysOnMarket, detail: 'Listings move quickly when staged and priced to Silverstone Ranch comps.' },
+  { label: 'Active Listings', value: MARKET_SNAPSHOT.activeListings, detail: 'Limited guard-gated inventory fuels relocation interest in Centennial Hills.' },
 ]
 
 const homepageTestimonials = [
@@ -128,7 +131,11 @@ export default function HomePage() {
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
   }
 
-  const schemaData = [pageSchema, agentSchema, ...services]
+  const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+
+  const schemaData = [pageSchema, agentSchema, faqSchema, ...services].filter(
+    (s): s is NonNullable<typeof s> => s != null,
+  ) as Record<string, unknown>[]
 
   return (
     <main className="bg-white">
@@ -137,7 +144,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">
-              Silverstone Ranch, Centennial Hills · November 2025
+              Silverstone Ranch, Centennial Hills · June 2026
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               Live Exceptionally in Silverstone Ranch, the Guard-Gated Enclave of Northwest Las Vegas
@@ -190,7 +197,7 @@ export default function HomePage() {
                 covenants, golf course history, and off-market inventory.
               </li>
               <li>
-                <span className="font-semibold text-blue-600">Data-Driven Strategy:</span> November 2025 pricing models and
+                <span className="font-semibold text-blue-600">Data-Driven Strategy:</span> June 2026 pricing models and
                 negotiation tactics that keep deals on track from appraisal to closing.
               </li>
               <li>
@@ -462,7 +469,7 @@ export default function HomePage() {
             <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
               <summary className="cursor-pointer text-base font-semibold text-slate-900">How competitive is Silverstone compared to other guard-gated communities?</summary>
               <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                November 2025 absorption rates show Silverstone homes closing in 13 days versus 18–21 days in comparable north
+                June 2026 absorption rates show Silverstone homes closing in 13 days versus 18–21 days in comparable north
                 valley enclaves. Limited inventory and relocation demand keep negotiations brisk—prepare decisive offers and
                 transparent disclosures.
               </p>
@@ -491,7 +498,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl space-y-8">
           <h2 className="text-3xl font-bold text-slate-900">Market Data Deep Dive</h2>
           <p className="text-slate-700 leading-relaxed">
-            November 2025 trends reveal Silverstone’s resilience: median sale price $685K (+5.2% YoY), average price per
+            June 2026 trends reveal Silverstone’s resilience: median sale price $685K (+5.2% YoY), average price per
             square foot $284, and list-to-sale ratio 101.8%. Cash and jumbo-financed buyers account for nearly half of
             transactions, underscoring the importance of appraisal-ready pricing and curated staging. Inventory remains below
             20 active homes, with the strongest absorption in renovated one-story floor plans backing interior streets.
@@ -536,7 +543,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-slate-900">Silverstone Snapshot & Next Steps</h2>
           <p className="text-slate-700 leading-relaxed">
             Use this site as your command center. Explore deep dives on HOA fees, environmental risk, buyer checklists, and golf
-            course disclosures, then connect with Dr. Duffy to align your goals with the November 2025 market. Whether you&apos;re
+            course disclosures, then connect with Dr. Duffy to align your goals with the June 2026 market. Whether you&apos;re
             comparing sub-associations, pricing an upcoming sale, or designing a relocation roadmap, the Silverstone team is ready
             to support every milestone.
           </p>

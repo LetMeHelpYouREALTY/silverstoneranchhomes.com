@@ -9,7 +9,7 @@ const quickFacts = [
   { label: 'Location', value: 'Centennial Hills, Northwest Las Vegas (ZIP 89131)' },
   { label: 'Community Type', value: 'Guard-gated master-planned enclave with sub-associations' },
   { label: 'Homes Built', value: '2003 – 2008 by Pulte and Toll Brothers' },
-  { label: 'Price Range (Nov 2025)', value: '$550K – $1.1M+' },
+  { label: 'Price Range (Jun 2026)', value: '$550K – $1.1M+' },
   { label: 'HOA Dues', value: '$200 – $286 per month depending on sub-association' },
 ]
 
@@ -69,16 +69,26 @@ const neighborhoodLinks = [
     href: '/neighborhoods/pinehurst',
   },
   {
-    name: 'Silverlake & Eastpoint',
-    description: 'Non-gated collections prized for efficient layouts and proximity to schools.',
-    href: '/area-info',
+    name: 'Silverlake',
+    description: 'Guard-gated single-family homes with estate lots and privacy-oriented landscaping.',
+    href: '/neighborhoods/silverlake',
+  },
+  {
+    name: 'Eastpoint',
+    description: 'Non-gated village homes prized for family-friendly streets and master-plan amenities.',
+    href: '/neighborhoods/eastpoint',
+  },
+  {
+    name: 'Amberly',
+    description: 'Gated enclave with controlled access and cohesive streetscapes in Centennial Hills.',
+    href: '/neighborhoods/amberly',
   },
 ]
 
 export const metadata: Metadata = {
-  title: 'Community Guide | Neighborhood Overview',
+  title: 'Silverstone Ranch Community Guide | Las Vegas 89131',
   description:
-    'Comprehensive guide to Silverstone Ranch neighborhoods, amenities, HOA structure, and market positioning curated by Dr. Jan Duffy REALTOR®.',
+    'Complete Silverstone Ranch (89131) guide: guard-gated enclaves, HOA fees, schools, amenities, golf course status, and REALTOR® services from Dr. Jan Duffy.',
   alternates: {
     canonical: '/silverstone-ranch',
   },
@@ -105,7 +115,7 @@ const overviewFaqs = [
   {
     question: 'Are there current assessments related to the former golf course?',
     answer:
-      'No assessments are active as of November 2025, but redevelopment updates are tracked quarterly by Dr. Jan Duffy who briefs clients on any city filings.',
+      'No assessments are active as of June 2026, but redevelopment updates are tracked quarterly by Dr. Jan Duffy who briefs clients on any city filings.',
   },
 ]
 
@@ -136,7 +146,7 @@ export default function SilverstoneRanchPage() {
         <section className="bg-gradient-to-br from-blue-50 via-white to-slate-50 py-16 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
             <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">
-              Comprehensive Community Guide · Updated November 2025
+              Comprehensive Community Guide · Updated June 2026
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               Silverstone Ranch Community Hub
@@ -280,12 +290,12 @@ export default function SilverstoneRanchPage() {
           <div className="mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Market Insights & Pricing Dynamics</h2>
             <p className="text-slate-700 mb-6">
-              As of November 2025, Silverstone Ranch remains a competitive micro-market. Inventory tightened 12% from the
+              As of June 2026, Silverstone Ranch remains a competitive micro-market. Inventory tightened 12% from the
               previous quarter, while buyer demand outpaced active listings thanks to interstate relocations, medical
               professionals stationed at nearby facilities, and Las Vegas locals seeking guard-gated security. Properties
               that present turnkey finishes and well-managed outdoor spaces often attract multiple offers within a week.
             </p>
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Metrics (November 2025)</h3>
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Metrics (June 2026)</h3>
             <ul className="grid sm:grid-cols-2 gap-4 text-sm text-slate-700 mb-6">
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Median Sale Price</span>
@@ -411,7 +421,7 @@ export default function SilverstoneRanchPage() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Deep Dive Resources & Next Steps</h2>
               <p className="text-slate-700 mb-6">
-                Continue exploring Silverstone Ranch with handpicked guides curated for November 2025. Each resource provides
+                Continue exploring Silverstone Ranch with handpicked guides curated for June 2026. Each resource provides
                 keyword-rich, reader-friendly insights tailored for relocation clients, investors, and current residents
                 evaluating their next move.
               </p>

@@ -4,12 +4,15 @@ import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { buildFaqSchema, buildRealEstateListingItemList, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
+import { HOMES_FOR_SALE_FAQS } from '@/lib/hyperlocal-faqs'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 export const metadata: Metadata = {
-  title: 'Homes for Sale | Curated Listings & Buyer Guide',
+  title: 'Silverstone Ranch Homes for Sale | 89131 Listings',
   description:
-    'Browse curated Silverstone Ranch listings, market stats, and buying resources with concierge guidance from Dr. Jan Duffy REALTOR®.',
+    `Browse Silverstone Ranch homes for sale in Las Vegas 89131. ${MARKET_SNAPSHOT.reportMonth} market stats, guard-gated enclaves, and buyer concierge from ${CONTACT_INFO.agentName} REALTOR®.`,
   alternates: {
     canonical: '/homes-for-sale',
   },
@@ -25,23 +28,42 @@ export const metadata: Metadata = {
 const marketSnapshot = [
   {
     label: 'Median Sale Price',
-    value: '$685,000',
-    caption: '+5.2% year-over-year',
+    value: MARKET_SNAPSHOT.medianPrice,
+    caption: MARKET_SNAPSHOT.medianPriceYoY + ' year-over-year',
   },
   {
     label: 'Price Per Sq. Ft.',
-    value: '$284',
-    caption: 'Single-story homes command premium',
+    value: MARKET_SNAPSHOT.pricePerSqFt,
+    caption: 'Single-story homes command premium in 89131',
   },
   {
     label: 'Avg. Days on Market',
-    value: '13 Days',
-    caption: 'Down from 17 last quarter',
+    value: MARKET_SNAPSHOT.daysOnMarket,
+    caption: MARKET_SNAPSHOT.daysOnMarketChange,
   },
   {
     label: 'Active Listings',
-    value: '18 Homes',
-    caption: '-12% month-over-month',
+    value: MARKET_SNAPSHOT.activeListings,
+    caption: MARKET_SNAPSHOT.activeListingsChange,
+  },
+]
+
+/** Representative Silverstone Ranch listing placeholders for ItemList schema until live MLS feed. */
+const listingSchemaEntries = [
+  {
+    name: 'Silverstone Ranch Homes for Sale — The Palms',
+    url: `${CONTACT_INFO.website.base}/neighborhoods/the-palms`,
+    description: 'Guard-gated estate homes in The Palms enclave, Silverstone Ranch 89131.',
+  },
+  {
+    name: 'Silverstone Ranch Homes for Sale — Pinehurst',
+    url: `${CONTACT_INFO.website.base}/neighborhoods/pinehurst`,
+    description: 'Gated townhome villas in Pinehurst, Silverstone Ranch 89131.',
+  },
+  {
+    name: 'Silverstone Ranch Homes for Sale — Silverlake',
+    url: `${CONTACT_INFO.website.base}/neighborhoods/silverlake`,
+    description: 'Guard-gated single-family homes in Silverlake, Silverstone Ranch 89131.',
   },
 ]
 
@@ -58,10 +80,42 @@ export default function HomesForSalePage() {
     ],
   })
 
+  const faqSchema = buildFaqSchema(path, HOMES_FOR_SALE_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+
+  const buyerServiceSchema = buildServiceSchema({
+    name: 'Silverstone Ranch Buyer Representation',
+    description:
+      'Concierge buyer representation for guard-gated and non-gated Silverstone Ranch homes in ZIP 89131—including tours, offer strategy, and HOA disclosure review.',
+    serviceType: ['BuyerRepresentation'],
+    actions: [
+      buildAction({
+        type: 'ScheduleAction',
+        name: 'Book a Silverstone Ranch Tour',
+        target: `${CONTACT_INFO.website.base}/book-tour`,
+      }),
+    ],
+  })
+
+  const listingItemList = buildRealEstateListingItemList({
+    path,
+    name: 'Silverstone Ranch Homes for Sale',
+    listings: listingSchemaEntries,
+  })
+
+  const schemaData = [pageSchema, buyerServiceSchema, faqSchema, listingItemList].filter(
+    (s): s is NonNullable<typeof s> => s != null,
+  ) as Record<string, unknown>[]
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
-      <SeoJsonLd id="homes-for-sale" data={pageSchema} />
+      <SeoJsonLd id="homes-for-sale" data={schemaData} />
       <div className="mx-auto max-w-7xl">
+        <Breadcrumbs
+          items={[
+            { name: 'Home', path: '/' },
+            { name: 'Homes for Sale' },
+          ]}
+        />
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
             Homes For Sale in Silverstone Ranch
@@ -75,7 +129,7 @@ export default function HomesForSalePage() {
         {/* Market Snapshot & Search Filters */}
         <div className="mb-16 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-8 border border-blue-100">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">November 2025 Market Snapshot</h2>
+            <h2 className="text-2xl font-semibold text-gray-900 mb-6">June 2026 Market Snapshot</h2>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {marketSnapshot.map((item) => (
                 <div key={item.label} className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
@@ -599,7 +653,7 @@ export default function HomesForSalePage() {
           <h2 className="text-3xl font-semibold text-gray-900 mb-6">Seller Advisory Corner</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
             Considering selling in the next 12 months? Use these insights to plan renovations, budget for carrying costs, and
-            understand what buyers expect in November 2025.
+            understand what buyers expect in June 2026.
           </p>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-amber-200 bg-amber-50/80 p-5 shadow-sm">

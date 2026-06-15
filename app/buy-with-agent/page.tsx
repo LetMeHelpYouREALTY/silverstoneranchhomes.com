@@ -40,7 +40,7 @@ const benefitHighlights = [
   {
     title: 'Negotiate with Market Precision',
     description:
-      'Use current November 2025 pricing models, HOA assessments, and golf course disclosures to secure fair value without overpaying for view corridors.',
+      'Use current June 2026 pricing models, HOA assessments, and golf course disclosures to secure fair value without overpaying for view corridors.',
   },
   {
     title: 'Navigate HOA & Golf Course Disclosures',
