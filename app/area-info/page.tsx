@@ -164,7 +164,7 @@ export default function AreaInfoPage() {
       <SeoJsonLd id="area-info" data={schemaData as Record<string, unknown>[]} />
       <div className="mx-auto max-w-5xl">
         <div className="text-center mb-12">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">Centennial Hills Orientation · Updated November 2025</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">Centennial Hills Orientation · Updated June 2026</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Silverstone Ranch Area Information</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
             Understand the broader Centennial Hills ecosystem that surrounds Silverstone Ranch. From transit access and
@@ -338,7 +338,7 @@ export default function AreaInfoPage() {
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="market-link">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Market Highlights & Investment Outlook</h2>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
-            November 2025 market research shows Silverstone Ranch median prices at $685K, price per square foot at $284,
+            June 2026 market research shows Silverstone Ranch median prices at $685K, price per square foot at $284,
             and a brisk 13-day average for days on market. List-to-sale ratios hover around 101.8%, a testament to the
             neighborhood’s desirability and limited inventory. Relocation demand from healthcare, hospitality, and
             technology sectors continues to support stable appreciation.

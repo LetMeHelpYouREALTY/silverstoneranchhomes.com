@@ -6,7 +6,7 @@ export default function HomesForSale() {
     {
       label: 'Median Price',
       value: '$685K',
-      caption: 'Nov 2025 closings',
+      caption: 'Jun 2026 closings',
     },
     {
       label: 'Price / Sq Ft',
@@ -42,7 +42,7 @@ export default function HomesForSale() {
           ))}
         </div>
         <p className="mb-8 text-xs text-gray-500">
-          School assignments referenced on this page reflect November 2025 CCSD zoning for O&apos;Roarke ES, Cadwallader MS, and Arbor View HS.
+          School assignments referenced on this page reflect June 2026 CCSD zoning for O&apos;Roarke ES, Cadwallader MS, and Arbor View HS.
           Verify boundaries at
           <a
             href="https://ccsd.net/schools/zoning/"

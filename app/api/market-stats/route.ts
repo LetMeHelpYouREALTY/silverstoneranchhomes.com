@@ -1,22 +1,24 @@
 import { NextResponse } from 'next/server'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 const MARKET_STATS = {
-  updatedAt: '2025-11-07',
-  medianPrice: 685000,
-  pricePerSqFt: 284,
-  averageDaysOnMarket: 13,
-  activeListings: 18,
-  listToSaleRatio: 1.018,
-  buyerDemandIndex: 46,
+  updatedAt: MARKET_SNAPSHOT.lastUpdated,
+  reportMonth: MARKET_SNAPSHOT.reportMonth,
+  medianPrice: 500000,
+  pricePerSqFt: 224,
+  averageDaysOnMarket: 140,
+  activeListings: 15,
+  listToSaleRatio: 0.99,
+  buyerDemandIndex: 33,
+  zipCode: MARKET_SNAPSHOT.zipCode,
   notes: {
     summary:
-      'Inventory remains constrained across Silverstone Ranch, with renovated guard-gated properties averaging 13 days on market and closing at 101.8% of list price.',
+      'Silverstone Ranch (89131) Q1 2026: $500K median (+11.1% YoY), 140 days on market, rebalancing toward buyer leverage.',
     outlook:
-      'Expect steady appreciation through spring 2026 fueled by relocation buyers and limited resale supply. Stage and price to comps for optimal results.',
+      'Well-priced guard-gated and renovated homes still attract offers; overpriced listings face longer DOM. Verify 2026 HOA dues increases during due diligence.',
   },
 }
 
 export async function GET() {
   return NextResponse.json(MARKET_STATS)
 }
-

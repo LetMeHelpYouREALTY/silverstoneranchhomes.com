@@ -35,7 +35,7 @@ const sellerAdvantages = [
   {
     title: 'Strategic Pricing & Positioning',
     description:
-      'Leverage the latest November 2025 comps, buyer demand in Centennial Hills, and golf course disclosures to price for multiple offers without leaving money on the table.',
+      'Leverage the latest June 2026 comps, buyer demand in Centennial Hills, and golf course disclosures to price for multiple offers without leaving money on the table.',
   },
   {
     title: 'High-Impact Marketing',

@@ -222,7 +222,7 @@ export default function DescriptionPage() {
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
           <h2 className="text-3xl font-bold text-gray-900 mb-6">Market Momentum & Data</h2>
           <p className="text-gray-700 leading-relaxed mb-6">
-            November 2025 market performance underscores Silverstone’s desirability. Median sale price sits at $685,000—up 5.2%
+            June 2026 market performance underscores Silverstone’s desirability. Median sale price sits at $685,000—up 5.2%
             year-over-year—while price per square foot averages $284. Renovated single-story homes command an 8% premium over
             two-story counterparts due to limited supply. Inventory remains tight with 18 active listings, and well-presented
             homes secure offers in under two weeks. Buyers appreciate the guard-gated lifestyle, established landscaping, and

@@ -66,7 +66,7 @@ export default function BookTourPageClient() {
   return (
     <div className="mx-auto max-w-2xl">
       <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-900 mb-4">Book Your Tour</h1>
+        <h1 className="text-4xl font-bold text-gray-900 mb-4">Book a Silverstone Ranch Home Tour (89131)</h1>
         <p className="text-lg text-gray-600">Schedule a private tour of Silverstone Ranch homes and community amenities</p>
       </div>
 

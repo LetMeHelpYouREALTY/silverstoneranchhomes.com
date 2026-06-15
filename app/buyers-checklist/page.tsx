@@ -208,7 +208,7 @@ export default function BuyersChecklistPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section className="text-center md:text-left space-y-6">
           <div className="inline-flex items-center rounded-full border border-slate-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-slate-700">
-            Buyer Toolkit · November 2025
+            Buyer Toolkit · June 2026
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">Silverstone Ranch Buyer Checklist</h1>
           <p className="text-lg text-gray-700 leading-relaxed">

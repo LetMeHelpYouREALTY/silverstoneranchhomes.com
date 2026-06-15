@@ -5,21 +5,32 @@ import AgentSummaryCard from '@/components/AgentSummaryCard'
 import ScrollToTop from '@/components/ScrollToTop'
 import { VirtualOpenHouseButton } from '@/components/VirtualOpenHouseButton'
 import { ServicesLocationConversion } from '@/components/ServicesLocationConversion'
+import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import {
   buildAggregateRatingSchema,
   buildAction,
+  buildFaqSchema,
+  buildRealEstateListingItemList,
   buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
+import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
+import {
+  fetchHyperlocalListingCount,
+  fetchSilverstoneListings,
+  formatActiveListingStat,
+  listingsToSchemaEntries,
+} from '@/lib/realscout/fetch-listings'
 
 export const metadata: Metadata = {
-  title: 'Community Overview & Luxury Insights',
+  title: 'Silverstone Ranch REALTOR® | Homes for Sale 89131',
   description:
-    'Plan your move to Silverstone Ranch, Tule Springs, or Centennial Hills in Northwest Las Vegas. Explore guard-gated enclaves, amenities, pricing data, and concierge real estate guidance from Dr. Jan Duffy.',
+    `Buy or sell in Silverstone Ranch (89131), Centennial Hills. Guard-gated enclaves, HOA guidance, ${MARKET_SNAPSHOT.reportMonth} market data, and concierge real estate services from ${CONTACT_INFO.agentName}.`,
   alternates: {
     canonical: '/',
   },
@@ -31,12 +42,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
-
-const communityStats = [
-  { label: 'Median Price (Nov 2025)', value: '$685K', detail: 'Up 5.2% year-over-year with strong demand for renovated homes.' },
-  { label: 'Average Days on Market', value: '13 Days', detail: 'Listings move quickly when staged and priced to market.' },
-  { label: 'Active Listings', value: '18 Homes', detail: 'Limited guard-gated inventory fuels relocation interest.' },
-]
 
 const homepageTestimonials = [
   {
@@ -56,12 +61,46 @@ const homepageTestimonials = [
   },
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [liveListings, liveCount] = await Promise.all([
+    fetchSilverstoneListings({ hyperlocalOnly: true, limit: 6 }),
+    fetchHyperlocalListingCount(),
+  ])
+  const activeListingStat = formatActiveListingStat(liveCount)
+
+  const communityStats = [
+    {
+      label: `Median Price (${MARKET_SNAPSHOT.reportMonthShort})`,
+      value: MARKET_SNAPSHOT.medianPriceShort,
+      detail: `${MARKET_SNAPSHOT.medianPriceYoY} year-over-year across the Silverstone Ranch micro-market (89131).`,
+    },
+    {
+      label: 'Average Days on Market',
+      value: MARKET_SNAPSHOT.daysOnMarket,
+      detail: 'Well-priced homes still attract offers; overpriced listings face longer absorption in 2026.',
+    },
+    {
+      label: 'Active MLS Listings (89131)',
+      value: activeListingStat.value,
+      detail: activeListingStat.detail,
+    },
+  ]
+
+  const path = '/'
   const pageSchema = buildWebPageSchema({
-    path: '/',
+    path,
     name: CONTACT_INFO.businessName,
     description: CONTACT_INFO.gbpDescription,
   })
+
+  const listingItemList =
+    liveListings.length > 0
+      ? buildRealEstateListingItemList({
+          path: '/homes-for-sale',
+          name: 'Silverstone Ranch Homes for Sale',
+          listings: listingsToSchemaEntries(liveListings),
+        })
+      : null
 
   const services = [
     buildServiceSchema({
@@ -128,7 +167,11 @@ export default function HomePage() {
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
   }
 
-  const schemaData = [pageSchema, agentSchema, ...services]
+  const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+
+  const schemaData = [pageSchema, agentSchema, faqSchema, listingItemList, ...services].filter(
+    (s): s is NonNullable<typeof s> => s != null,
+  ) as Record<string, unknown>[]
 
   return (
     <main className="bg-white">
@@ -137,7 +180,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">
-              Silverstone Ranch, Centennial Hills · November 2025
+              Silverstone Ranch, Centennial Hills · June 2026
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               Live Exceptionally in Silverstone Ranch, the Guard-Gated Enclave of Northwest Las Vegas
@@ -165,6 +208,12 @@ export default function HomePage() {
                 Schedule a Private Tour
               </Link>
               <Link
+                href="/homes-for-sale"
+                className="inline-flex items-center justify-center rounded-full border border-blue-600 px-6 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 transition"
+              >
+                {liveCount > 0 ? `View ${liveCount} Live Listing${liveCount === 1 ? '' : 's'}` : 'Browse Homes for Sale'}
+              </Link>
+              <Link
                 href="/home-valuation"
                 className="inline-flex items-center justify-center rounded-full border border-blue-600 px-6 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 transition"
               >
@@ -190,7 +239,7 @@ export default function HomePage() {
                 covenants, golf course history, and off-market inventory.
               </li>
               <li>
-                <span className="font-semibold text-blue-600">Data-Driven Strategy:</span> November 2025 pricing models and
+                <span className="font-semibold text-blue-600">Data-Driven Strategy:</span> June 2026 pricing models and
                 negotiation tactics that keep deals on track from appraisal to closing.
               </li>
               <li>
@@ -203,6 +252,28 @@ export default function HomePage() {
       </section>
 
       <ServicesLocationConversion />
+
+      {liveListings.length > 0 ? (
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900">Live Silverstone Ranch Listings</h2>
+                <p className="mt-2 text-slate-700">
+                  {liveCount} active home{liveCount === 1 ? '' : 's'} in ZIP 89131/89143 from Dr. Jan Duffy&apos;s RealScout MLS feed.
+                </p>
+              </div>
+              <Link
+                href="/homes-for-sale"
+                className="inline-flex shrink-0 items-center justify-center rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+              >
+                View all listings
+              </Link>
+            </div>
+            <SilverstoneListingCards listings={liveListings} />
+          </div>
+        </section>
+      ) : null}
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-10">
@@ -284,27 +355,88 @@ export default function HomePage() {
             </p>
             <div className="grid gap-6 lg:grid-cols-3">
               <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-700 mb-2">The Palms</h3>
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/the-palms" className="hover:underline">
+                    The Palms
+                  </Link>
+                </h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Guard-gated, larger lots, and Mediterranean façades. Residents appreciate mature shade trees, proximity to
-                  the main park, and expanded three-car garages. Ideal for luxury outdoor living and hosting events on the
-                  clubhouse lawn.
+                  The only guard-gated enclave—estate lots, Mediterranean façades, and 24/7 manned entry. Ideal for luxury
+                  outdoor living.
                 </p>
               </div>
               <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-700 mb-2">Tuscany & The Cottages</h3>
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/tuscany" className="hover:underline">
+                    Tuscany &amp; The Cottages
+                  </Link>
+                </h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Front-yard maintenance included, tree-lined streets, and community herb gardens. Popular with professionals
-                  seeking low-maintenance living without sacrificing charm. Quick walk to pickleball courts and the central
-                  playground.
+                  Gated streets with front-yard maintenance, clubhouse access, and flexible floor plans at $252/mo HOA.
                 </p>
               </div>
               <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-700 mb-2">Pinehurst Townhomes</h3>
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/pinehurst" className="hover:underline">
+                    Pinehurst Townhomes
+                  </Link>
+                </h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Lock-and-leave residences bordering the dormant fairway. HOA covers landscaping and exterior paint cycles.
-                  Travel professionals and corporate renters value the ease of access to the 215 and Las Vegas Medical
-                  District.
+                  Lock-and-leave townhomes bordering the dormant fairway—highest HOA tier ($286/mo) with pool coverage.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/silverlake" className="hover:underline">
+                    Silverlake
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Gated single-story homes on quarter-acre lots—compare with{' '}
+                  <Link href="/neighborhoods/windermere" className="text-blue-600 hover:underline">
+                    Windermere
+                  </Link>{' '}
+                  townhomes for lock-and-leave options.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/somerset" className="hover:underline">
+                    Somerset
+                  </Link>
+                  {' · '}
+                  <Link href="/neighborhoods/greenfield" className="hover:underline">
+                    Greenfield
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Non-gated villages at the lowest HOA tier ($200/mo). Also explore{' '}
+                  <Link href="/neighborhoods/clairbrook" className="text-blue-600 hover:underline">
+                    Clairbrook
+                  </Link>
+                  ,{' '}
+                  <Link href="/neighborhoods/eastpoint" className="text-blue-600 hover:underline">
+                    Eastpoint
+                  </Link>
+                  , and{' '}
+                  <Link href="/neighborhoods/parkfield" className="text-blue-600 hover:underline">
+                    Parkfield
+                  </Link>
+                  .
+                </p>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/amberly" className="hover:underline">
+                    Amberly
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Gated enclave with controlled access. Full community hub:{' '}
+                  <Link href="/silverstone-ranch" className="text-blue-600 hover:underline">
+                    Silverstone Ranch guide
+                  </Link>
+                  .
                 </p>
               </div>
             </div>
@@ -459,30 +591,12 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl space-y-6">
           <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
           <div className="space-y-4">
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-slate-900">How competitive is Silverstone compared to other guard-gated communities?</summary>
-              <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                November 2025 absorption rates show Silverstone homes closing in 13 days versus 18–21 days in comparable north
-                valley enclaves. Limited inventory and relocation demand keep negotiations brisk—prepare decisive offers and
-                transparent disclosures.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-slate-900">What should I budget for post-closing enhancements?</summary>
-              <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                Allocate funds for desert landscaping refreshes ($8K–$15K), smart irrigation controllers ($1K–$2K), and HVAC
-                optimization ($500–$1,200). These upgrades improve comfort, strengthen appraisal narratives, and bolster
-                resale value.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-slate-900">How can I stay informed about golf course developments?</summary>
-              <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                Subscribe to Dr. Duffy’s quarterly golf course briefings, monitor City of Las Vegas planning agendas, and
-                attend HOA town halls. Transparent communication ensures buyers and sellers factor the latest intel into
-                pricing decisions.
-              </p>
-            </details>
+            {HOMEPAGE_FAQS.map((faq) => (
+              <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
+                <summary className="cursor-pointer text-base font-semibold text-slate-900">{faq.question}</summary>
+                <p className="mt-3 text-sm text-slate-700 leading-relaxed">{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>
@@ -491,7 +605,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-6xl space-y-8">
           <h2 className="text-3xl font-bold text-slate-900">Market Data Deep Dive</h2>
           <p className="text-slate-700 leading-relaxed">
-            November 2025 trends reveal Silverstone’s resilience: median sale price $685K (+5.2% YoY), average price per
+            June 2026 trends reveal Silverstone’s resilience: median sale price $685K (+5.2% YoY), average price per
             square foot $284, and list-to-sale ratio 101.8%. Cash and jumbo-financed buyers account for nearly half of
             transactions, underscoring the importance of appraisal-ready pricing and curated staging. Inventory remains below
             20 active homes, with the strongest absorption in renovated one-story floor plans backing interior streets.
@@ -536,7 +650,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-slate-900">Silverstone Snapshot & Next Steps</h2>
           <p className="text-slate-700 leading-relaxed">
             Use this site as your command center. Explore deep dives on HOA fees, environmental risk, buyer checklists, and golf
-            course disclosures, then connect with Dr. Duffy to align your goals with the November 2025 market. Whether you&apos;re
+            course disclosures, then connect with Dr. Duffy to align your goals with the June 2026 market. Whether you&apos;re
             comparing sub-associations, pricing an upcoming sale, or designing a relocation roadmap, the Silverstone team is ready
             to support every milestone.
           </p>

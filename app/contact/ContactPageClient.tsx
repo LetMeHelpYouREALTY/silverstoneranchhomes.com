@@ -18,7 +18,16 @@ const contactSchema = z.object({
 
 type ContactFormData = z.infer<typeof contactSchema>
 
-export default function ContactPageClient() {
+type ContactFaq = {
+  question: string
+  answer: string
+}
+
+type ContactPageClientProps = {
+  faqs: ContactFaq[]
+}
+
+export default function ContactPageClient({ faqs }: ContactPageClientProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [isSuccess, setIsSuccess] = useState(false)
 
@@ -67,7 +76,7 @@ export default function ContactPageClient() {
   return (
     <div className="mx-auto max-w-4xl">
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Contact Us</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Contact Dr. Jan Duffy | Silverstone Ranch REALTOR®</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Get in touch with Dr. Jan Duffy for questions about properties, scheduling tours, or any real estate needs in Silverstone Ranch.
         </p>
@@ -308,6 +317,18 @@ export default function ContactPageClient() {
             <div className="text-2xl mb-2">📋</div>
             <div className="font-semibold text-gray-900">Request Information</div>
           </Link>
+        </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-xl p-8 mt-12">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <div className="space-y-4">
+          {faqs.map((faq) => (
+            <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
+              <summary className="cursor-pointer text-base font-semibold text-gray-900">{faq.question}</summary>
+              <p className="mt-3 text-sm text-gray-700 leading-relaxed">{faq.answer}</p>
+            </details>
+          ))}
         </div>
       </div>
     </div>

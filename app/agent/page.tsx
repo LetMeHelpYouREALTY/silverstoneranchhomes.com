@@ -5,12 +5,13 @@ import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildFaqSchema, buildRealEstateAgentSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
+import { AGENT_FAQS } from '@/lib/hyperlocal-faqs'
 
 export const metadata: Metadata = {
-  title: 'Meet Dr. Jan Duffy | REALTOR®',
+  title: 'Silverstone Ranch REALTOR® | Dr. Jan Duffy',
   description:
-    'Learn about Dr. Jan Duffy’s concierge approach, credentials, and community leadership serving Silverstone Ranch buyers and sellers.',
+    `${CONTACT_INFO.agentName} is your Silverstone Ranch (89131) REALTOR®—guard-gated tours, HOA guidance, listing strategy, and concierge buyer/seller representation in Centennial Hills.`,
   alternates: {
     canonical: '/agent',
   },
@@ -443,10 +444,30 @@ export default function AgentPage() {
 
   const faqSchema = buildFaqSchema(
     path,
-    faqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    AGENT_FAQS.map((faq) => ({ question: faq.question, answer: faq.answer })),
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+  const agentSchema = {
+    ...buildRealEstateAgentSchema(),
+    knowsAbout: ['Silverstone Ranch', 'Centennial Hills', 'Guard-gated communities', 'HOA real estate'],
+    award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
+  }
+
+  const serviceSchema = buildServiceSchema({
+    name: 'Silverstone Ranch Real Estate Services',
+    description:
+      'Full-service buyer and seller representation for Silverstone Ranch and Northwest Las Vegas 89131—including tours, valuations, and HOA document review.',
+    serviceType: ['BuyerRepresentation', 'SellerRepresentation'],
+    actions: [
+      buildAction({
+        type: 'ScheduleAction',
+        name: 'Schedule a Consultation',
+        target: `${CONTACT_INFO.website.base}/book-tour`,
+      }),
+    ],
+  })
+
+  const schemaData = [pageSchema, agentSchema, serviceSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
@@ -454,7 +475,7 @@ export default function AgentPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section>
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Meet Dr. Jan Duffy</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Dr. Jan Duffy | Silverstone Ranch REALTOR® (89131)</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Top 1% Las Vegas REALTOR® specializing in Silverstone Ranch luxury homes.
             </p>
