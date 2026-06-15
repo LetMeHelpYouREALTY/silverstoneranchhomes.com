@@ -5,11 +5,13 @@ import AgentSummaryCard from '@/components/AgentSummaryCard'
 import ScrollToTop from '@/components/ScrollToTop'
 import { VirtualOpenHouseButton } from '@/components/VirtualOpenHouseButton'
 import { ServicesLocationConversion } from '@/components/ServicesLocationConversion'
+import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import {
   buildAggregateRatingSchema,
   buildAction,
   buildFaqSchema,
+  buildRealEstateListingItemList,
   buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
@@ -18,6 +20,12 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
+import {
+  fetchHyperlocalListingCount,
+  fetchSilverstoneListings,
+  formatActiveListingStat,
+  listingsToSchemaEntries,
+} from '@/lib/realscout/fetch-listings'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch REALTOR® | Homes for Sale 89131',
@@ -34,12 +42,6 @@ export const metadata: Metadata = {
     type: 'website',
   },
 }
-
-const communityStats = [
-  { label: `Median Price (${MARKET_SNAPSHOT.reportMonthShort})`, value: MARKET_SNAPSHOT.medianPriceShort, detail: `${MARKET_SNAPSHOT.medianPriceYoY} year-over-year with strong demand for renovated homes in 89131.` },
-  { label: 'Average Days on Market', value: MARKET_SNAPSHOT.daysOnMarket, detail: 'Listings move quickly when staged and priced to Silverstone Ranch comps.' },
-  { label: 'Active Listings', value: MARKET_SNAPSHOT.activeListings, detail: 'Limited guard-gated inventory fuels relocation interest in Centennial Hills.' },
-]
 
 const homepageTestimonials = [
   {
@@ -59,12 +61,46 @@ const homepageTestimonials = [
   },
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [liveListings, liveCount] = await Promise.all([
+    fetchSilverstoneListings({ hyperlocalOnly: true, limit: 6 }),
+    fetchHyperlocalListingCount(),
+  ])
+  const activeListingStat = formatActiveListingStat(liveCount)
+
+  const communityStats = [
+    {
+      label: `Median Price (${MARKET_SNAPSHOT.reportMonthShort})`,
+      value: MARKET_SNAPSHOT.medianPriceShort,
+      detail: `${MARKET_SNAPSHOT.medianPriceYoY} year-over-year across the Silverstone Ranch micro-market (89131).`,
+    },
+    {
+      label: 'Average Days on Market',
+      value: MARKET_SNAPSHOT.daysOnMarket,
+      detail: 'Well-priced homes still attract offers; overpriced listings face longer absorption in 2026.',
+    },
+    {
+      label: 'Active MLS Listings (89131)',
+      value: activeListingStat.value,
+      detail: activeListingStat.detail,
+    },
+  ]
+
+  const path = '/'
   const pageSchema = buildWebPageSchema({
-    path: '/',
+    path,
     name: CONTACT_INFO.businessName,
     description: CONTACT_INFO.gbpDescription,
   })
+
+  const listingItemList =
+    liveListings.length > 0
+      ? buildRealEstateListingItemList({
+          path: '/homes-for-sale',
+          name: 'Silverstone Ranch Homes for Sale',
+          listings: listingsToSchemaEntries(liveListings),
+        })
+      : null
 
   const services = [
     buildServiceSchema({
@@ -133,7 +169,7 @@ export default function HomePage() {
 
   const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
 
-  const schemaData = [pageSchema, agentSchema, faqSchema, ...services].filter(
+  const schemaData = [pageSchema, agentSchema, faqSchema, listingItemList, ...services].filter(
     (s): s is NonNullable<typeof s> => s != null,
   ) as Record<string, unknown>[]
 
@@ -170,6 +206,12 @@ export default function HomePage() {
                 className="inline-flex items-center justify-center rounded-full bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow hover:bg-blue-700 transition"
               >
                 Schedule a Private Tour
+              </Link>
+              <Link
+                href="/homes-for-sale"
+                className="inline-flex items-center justify-center rounded-full border border-blue-600 px-6 py-3 text-sm font-semibold text-blue-600 hover:bg-blue-50 transition"
+              >
+                {liveCount > 0 ? `View ${liveCount} Live Listing${liveCount === 1 ? '' : 's'}` : 'Browse Homes for Sale'}
               </Link>
               <Link
                 href="/home-valuation"
@@ -210,6 +252,28 @@ export default function HomePage() {
       </section>
 
       <ServicesLocationConversion />
+
+      {liveListings.length > 0 ? (
+        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
+          <div className="mx-auto max-w-6xl">
+            <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900">Live Silverstone Ranch Listings</h2>
+                <p className="mt-2 text-slate-700">
+                  {liveCount} active home{liveCount === 1 ? '' : 's'} in ZIP 89131/89143 from Dr. Jan Duffy&apos;s RealScout MLS feed.
+                </p>
+              </div>
+              <Link
+                href="/homes-for-sale"
+                className="inline-flex shrink-0 items-center justify-center rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+              >
+                View all listings
+              </Link>
+            </div>
+            <SilverstoneListingCards listings={liveListings} />
+          </div>
+        </section>
+      ) : null}
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-10">
@@ -291,27 +355,88 @@ export default function HomePage() {
             </p>
             <div className="grid gap-6 lg:grid-cols-3">
               <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-700 mb-2">The Palms</h3>
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/the-palms" className="hover:underline">
+                    The Palms
+                  </Link>
+                </h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Guard-gated, larger lots, and Mediterranean façades. Residents appreciate mature shade trees, proximity to
-                  the main park, and expanded three-car garages. Ideal for luxury outdoor living and hosting events on the
-                  clubhouse lawn.
+                  The only guard-gated enclave—estate lots, Mediterranean façades, and 24/7 manned entry. Ideal for luxury
+                  outdoor living.
                 </p>
               </div>
               <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-700 mb-2">Tuscany & The Cottages</h3>
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/tuscany" className="hover:underline">
+                    Tuscany &amp; The Cottages
+                  </Link>
+                </h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Front-yard maintenance included, tree-lined streets, and community herb gardens. Popular with professionals
-                  seeking low-maintenance living without sacrificing charm. Quick walk to pickleball courts and the central
-                  playground.
+                  Gated streets with front-yard maintenance, clubhouse access, and flexible floor plans at $252/mo HOA.
                 </p>
               </div>
               <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-700 mb-2">Pinehurst Townhomes</h3>
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/pinehurst" className="hover:underline">
+                    Pinehurst Townhomes
+                  </Link>
+                </h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Lock-and-leave residences bordering the dormant fairway. HOA covers landscaping and exterior paint cycles.
-                  Travel professionals and corporate renters value the ease of access to the 215 and Las Vegas Medical
-                  District.
+                  Lock-and-leave townhomes bordering the dormant fairway—highest HOA tier ($286/mo) with pool coverage.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/silverlake" className="hover:underline">
+                    Silverlake
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Gated single-story homes on quarter-acre lots—compare with{' '}
+                  <Link href="/neighborhoods/windermere" className="text-blue-600 hover:underline">
+                    Windermere
+                  </Link>{' '}
+                  townhomes for lock-and-leave options.
+                </p>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/somerset" className="hover:underline">
+                    Somerset
+                  </Link>
+                  {' · '}
+                  <Link href="/neighborhoods/greenfield" className="hover:underline">
+                    Greenfield
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Non-gated villages at the lowest HOA tier ($200/mo). Also explore{' '}
+                  <Link href="/neighborhoods/clairbrook" className="text-blue-600 hover:underline">
+                    Clairbrook
+                  </Link>
+                  ,{' '}
+                  <Link href="/neighborhoods/eastpoint" className="text-blue-600 hover:underline">
+                    Eastpoint
+                  </Link>
+                  , and{' '}
+                  <Link href="/neighborhoods/parkfield" className="text-blue-600 hover:underline">
+                    Parkfield
+                  </Link>
+                  .
+                </p>
+              </div>
+              <div className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-700 mb-2">
+                  <Link href="/neighborhoods/amberly" className="hover:underline">
+                    Amberly
+                  </Link>
+                </h3>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Gated enclave with controlled access. Full community hub:{' '}
+                  <Link href="/silverstone-ranch" className="text-blue-600 hover:underline">
+                    Silverstone Ranch guide
+                  </Link>
+                  .
                 </p>
               </div>
             </div>

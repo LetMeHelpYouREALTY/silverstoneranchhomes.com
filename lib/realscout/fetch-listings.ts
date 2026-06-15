@@ -80,7 +80,7 @@ export function getEnclaveListingFallbacks(): RealEstateListingEntry[] {
     {
       name: 'Silverstone Ranch Homes — Silverlake (89131)',
       url: `${base}/neighborhoods/silverlake`,
-      description: 'Guard-gated single-family homes in Silverlake.',
+      description: 'Gated single-family homes in Silverlake.',
     },
   ]
 }
@@ -101,6 +101,25 @@ export async function fetchSilverstoneListings(
   } catch (error) {
     console.error('Failed to fetch RealScout listings:', error)
     return []
+  }
+}
+
+export async function fetchHyperlocalListingCount(): Promise<number> {
+  const listings = await fetchSilverstoneListings({ hyperlocalOnly: true, limit: 50 })
+  return listings.length
+}
+
+export function formatActiveListingStat(count: number): { value: string; detail: string } {
+  if (count > 0) {
+    return {
+      value: `${count} Home${count === 1 ? '' : 's'}`,
+      detail: `Live Silverstone Ranch listings (89131/89143) from Dr. Jan Duffy's RealScout MLS feed, updated hourly.`,
+    }
+  }
+  return {
+    value: 'Pocket Listings',
+    detail:
+      'No public MLS matches in 89131 right now—contact Dr. Jan Duffy for off-market and coming-soon Silverstone inventory.',
   }
 }
 
