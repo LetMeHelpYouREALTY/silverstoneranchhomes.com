@@ -372,7 +372,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
       {
         question: 'Can Dr. Jan Duffy show Windermere listings?',
         answer:
-          'Yes. Dr. Jan Duffy coordinates guard-gate access, provides HOA document review, and compares Windermere with other Silverstone villages during private tours.',
+          'Yes. Dr. Jan Duffy coordinates gate access, provides HOA document review including 2026 dues outlook, and compares Windermere with Pinehurst and other Silverstone villages during private tours.',
       },
     ],
   },
