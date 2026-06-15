@@ -83,6 +83,31 @@ const neighborhoodLinks = [
     description: 'Gated enclave with controlled access and cohesive streetscapes in Centennial Hills.',
     href: '/neighborhoods/amberly',
   },
+  {
+    name: 'Windermere',
+    description: 'Guard-gated townhome enclave with lock-and-leave lifestyle.',
+    href: '/neighborhoods/windermere',
+  },
+  {
+    name: 'Greenfield',
+    description: 'Non-gated village homes with approachable price points and park access.',
+    href: '/neighborhoods/greenfield',
+  },
+  {
+    name: 'Parkfield',
+    description: 'Non-gated family-oriented streets near the central community park.',
+    href: '/neighborhoods/parkfield',
+  },
+  {
+    name: 'Somerset',
+    description: 'Non-gated village with lowest HOA tier ($200/mo) and value-focused living.',
+    href: '/neighborhoods/somerset',
+  },
+  {
+    name: 'Clairbrook',
+    description: 'Non-gated enclave with master-plan park access and flexible floor plans.',
+    href: '/neighborhoods/clairbrook',
+  },
 ]
 
 export const metadata: Metadata = {

@@ -7,6 +7,8 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { buildFaqSchema, buildRealEstateListingItemList, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
 import { HOMES_FOR_SALE_FAQS } from '@/lib/hyperlocal-faqs'
+import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
+import { fetchSilverstoneListings, listingsToSchemaEntries } from '@/lib/realscout/fetch-listings'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 export const metadata: Metadata = {
@@ -48,26 +50,9 @@ const marketSnapshot = [
   },
 ]
 
-/** Representative Silverstone Ranch listing placeholders for ItemList schema until live MLS feed. */
-const listingSchemaEntries = [
-  {
-    name: 'Silverstone Ranch Homes for Sale — The Palms',
-    url: `${CONTACT_INFO.website.base}/neighborhoods/the-palms`,
-    description: 'Guard-gated estate homes in The Palms enclave, Silverstone Ranch 89131.',
-  },
-  {
-    name: 'Silverstone Ranch Homes for Sale — Pinehurst',
-    url: `${CONTACT_INFO.website.base}/neighborhoods/pinehurst`,
-    description: 'Gated townhome villas in Pinehurst, Silverstone Ranch 89131.',
-  },
-  {
-    name: 'Silverstone Ranch Homes for Sale — Silverlake',
-    url: `${CONTACT_INFO.website.base}/neighborhoods/silverlake`,
-    description: 'Guard-gated single-family homes in Silverlake, Silverstone Ranch 89131.',
-  },
-]
-
-export default function HomesForSalePage() {
+export default async function HomesForSalePage() {
+  const liveListings = await fetchSilverstoneListings({ hyperlocalOnly: true, limit: 12 })
+  const listingSchemaEntries = listingsToSchemaEntries(liveListings)
   const path = '/homes-for-sale'
   const pageSchema = buildWebPageSchema({
     path,
@@ -121,10 +106,32 @@ export default function HomesForSalePage() {
             Homes For Sale in Silverstone Ranch
           </h1>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover luxury homes in one of Las Vegas&apos; premier communities. 
-            Experience the perfect blend of elegance, comfort, and modern living.
+            Browse live MLS listings in Silverstone Ranch and Centennial Hills (ZIP {MARKET_SNAPSHOT.zipCode}).
+            {liveListings.length > 0
+              ? ` ${liveListings.length} active listing${liveListings.length === 1 ? '' : 's'} from Dr. Jan Duffy's RealScout feed.`
+              : ' Contact Dr. Jan Duffy for pocket listings and coming-soon inventory.'}
           </p>
         </div>
+
+        <section className="mb-16" aria-labelledby="live-listings-heading">
+          <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <h2 id="live-listings-heading" className="text-2xl font-semibold text-gray-900">
+                Live Silverstone Ranch Listings
+              </h2>
+              <p className="text-sm text-gray-600 mt-1">
+                Updated hourly from Berkshire Hathaway / RealScout MLS feed · ZIP 89131 &amp; 89143
+              </p>
+            </div>
+            <Link
+              href="/book-tour"
+              className="inline-flex shrink-0 items-center justify-center rounded-full bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white hover:bg-blue-700"
+            >
+              Book a private tour
+            </Link>
+          </div>
+          <SilverstoneListingCards listings={liveListings} />
+        </section>
 
         {/* Market Snapshot & Search Filters */}
         <div className="mb-16 grid gap-8 lg:grid-cols-3">

@@ -3,6 +3,7 @@
 import { createElement, useEffect, useState } from 'react'
 import { useInView } from 'react-intersection-observer'
 import Script from 'next/script'
+import { REALSCOUT_CONFIG } from '@/lib/realscout/config'
 
 export function RealscoutOfficeListings() {
   // Inject styles when component mounts
@@ -44,12 +45,12 @@ export function RealscoutOfficeListings() {
           {/* RealScout Web Component - only render when script is loaded */}
           {scriptLoaded ? (
             createElement('realscout-office-listings', {
-              'agent-encoded-id': 'QWdlbnQtMjI1MDUw',
-              'sort-order': 'NEWEST',
-              'listing-status': 'For Sale',
-              'property-types': ',SFR',
-              'price-min': '500000',
-              'price-max': '600000',
+              'agent-encoded-id': REALSCOUT_CONFIG.agentEncodedId,
+              'sort-order': REALSCOUT_CONFIG.defaultFilters.sortOrder,
+              'listing-status': REALSCOUT_CONFIG.defaultFilters.listingStatus,
+              'property-types': REALSCOUT_CONFIG.defaultFilters.propertyTypes,
+              'price-min': REALSCOUT_CONFIG.defaultFilters.priceMin,
+              'price-max': REALSCOUT_CONFIG.defaultFilters.priceMax,
             })
           ) : (
             <div className="flex min-h-[400px] items-center justify-center">

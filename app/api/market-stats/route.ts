@@ -4,18 +4,18 @@ import { MARKET_SNAPSHOT } from '@/lib/market-data'
 const MARKET_STATS = {
   updatedAt: MARKET_SNAPSHOT.lastUpdated,
   reportMonth: MARKET_SNAPSHOT.reportMonth,
-  medianPrice: 695000,
-  pricePerSqFt: 289,
-  averageDaysOnMarket: 15,
-  activeListings: 22,
-  listToSaleRatio: 1.004,
-  buyerDemandIndex: 44,
+  medianPrice: 500000,
+  pricePerSqFt: 224,
+  averageDaysOnMarket: 140,
+  activeListings: 15,
+  listToSaleRatio: 0.99,
+  buyerDemandIndex: 33,
   zipCode: MARKET_SNAPSHOT.zipCode,
   notes: {
     summary:
-      'Silverstone Ranch (89131) inventory remains constrained, with renovated guard-gated properties averaging 15 days on market and closing near list price.',
+      'Silverstone Ranch (89131) Q1 2026: $500K median (+11.1% YoY), 140 days on market, rebalancing toward buyer leverage.',
     outlook:
-      'Expect steady summer demand from relocation buyers. Stage and price to June 2026 comps for optimal results in Centennial Hills.',
+      'Well-priced guard-gated and renovated homes still attract offers; overpriced listings face longer DOM. Verify 2026 HOA dues increases during due diligence.',
   },
 }
 
