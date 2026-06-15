@@ -3,7 +3,8 @@ import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { AMENITIES_FAQS } from '@/lib/hyperlocal-faqs'
 
 const coreAmenities = [
   {
@@ -190,9 +191,9 @@ const expandedFaqs = [
 ]
 
 export const metadata: Metadata = {
-  title: 'Amenities & Lifestyle | Parks, Trails, Clubhouse',
+  title: 'Silverstone Ranch Amenities | Parks & Trails 89131',
   description:
-    'Explore Silverstone Ranch amenities: parks, trails, sports courts, clubhouse programming, HOA services, and nearby wellness resources curated for November 2025.',
+    'Silverstone Ranch amenities in Las Vegas 89131: six-acre park, tennis, pickleball, trails, HOA programming, and lifestyle resources for buyers from Dr. Jan Duffy.',
   alternates: {
     canonical: '/amenities',
   },
@@ -218,12 +219,15 @@ export default function AmenitiesPage() {
     ],
   })
 
+  const faqSchema = buildFaqSchema(path, AMENITIES_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+
   return (
     <main className="bg-white">
-      <SeoJsonLd id="amenities" data={pageSchema} />
+      <SeoJsonLd id="amenities" data={schemaData as Record<string, unknown>[]} />
       <section className="bg-gradient-to-br from-blue-50 via-white to-slate-50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-5xl">
-          <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">Lifestyle Guide · Updated November 2025</p>
+          <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">Lifestyle Guide · Updated June 2026</p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-6 leading-tight">
             Silverstone Ranch Amenities & Lifestyle
           </h1>

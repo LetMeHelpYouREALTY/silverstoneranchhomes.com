@@ -3,14 +3,22 @@ import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { Breadcrumbs } from '@/components/Breadcrumbs'
+import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { HOA_FEES, MARKET_SNAPSHOT } from '@/lib/market-data'
+import {
+  fetchHyperlocalListingCount,
+  fetchSilverstoneListings,
+  formatActiveListingStat,
+} from '@/lib/realscout/fetch-listings'
 
 const quickFacts = [
-  { label: 'Location', value: 'Centennial Hills, Northwest Las Vegas (ZIP 89131)' },
-  { label: 'Community Type', value: 'Guard-gated master-planned enclave with sub-associations' },
-  { label: 'Homes Built', value: '2003 – 2008 by Pulte and Toll Brothers' },
-  { label: 'Price Range (Nov 2025)', value: '$550K – $1.1M+' },
-  { label: 'HOA Dues', value: '$200 – $286 per month depending on sub-association' },
+  { label: 'Location', value: `Centennial Hills, Northwest Las Vegas (ZIP ${MARKET_SNAPSHOT.zipCode})` },
+  { label: 'Community Type', value: 'Master-planned enclave — The Palms is the only guard-gated village; 10 other enclaves gated or non-gated' },
+  { label: 'Homes Built', value: '2003 – 2008 by Pulte Homes (~1,500+ homes)' },
+  { label: `Price Range (${MARKET_SNAPSHOT.reportMonthShort})`, value: MARKET_SNAPSHOT.priceRange },
+  { label: 'HOA Dues', value: `${HOA_FEES.displayRange} ($${HOA_FEES.masterMonthly} master + sub-association)` },
 ]
 
 const deepDiveLinks = [
@@ -69,16 +77,51 @@ const neighborhoodLinks = [
     href: '/neighborhoods/pinehurst',
   },
   {
-    name: 'Silverlake & Eastpoint',
-    description: 'Non-gated collections prized for efficient layouts and proximity to schools.',
-    href: '/area-info',
+    name: 'Silverlake',
+    description: 'Gated single-family homes with estate lots and privacy-oriented landscaping.',
+    href: '/neighborhoods/silverlake',
+  },
+  {
+    name: 'Eastpoint',
+    description: 'Non-gated village homes prized for family-friendly streets and master-plan amenities.',
+    href: '/neighborhoods/eastpoint',
+  },
+  {
+    name: 'Amberly',
+    description: 'Gated enclave with controlled access and cohesive streetscapes in Centennial Hills.',
+    href: '/neighborhoods/amberly',
+  },
+  {
+    name: 'Windermere',
+    description: 'Gated townhome enclave with lock-and-leave lifestyle (verify 2026 HOA dues).',
+    href: '/neighborhoods/windermere',
+  },
+  {
+    name: 'Greenfield',
+    description: 'Non-gated village homes with approachable price points and park access.',
+    href: '/neighborhoods/greenfield',
+  },
+  {
+    name: 'Parkfield',
+    description: 'Non-gated family-oriented streets near the central community park.',
+    href: '/neighborhoods/parkfield',
+  },
+  {
+    name: 'Somerset',
+    description: 'Non-gated village with lowest HOA tier ($200/mo) and value-focused living.',
+    href: '/neighborhoods/somerset',
+  },
+  {
+    name: 'Clairbrook',
+    description: 'Non-gated enclave with master-plan park access and flexible floor plans.',
+    href: '/neighborhoods/clairbrook',
   },
 ]
 
 export const metadata: Metadata = {
-  title: 'Community Guide | Neighborhood Overview',
+  title: 'Silverstone Ranch Community Guide | Las Vegas 89131',
   description:
-    'Comprehensive guide to Silverstone Ranch neighborhoods, amenities, HOA structure, and market positioning curated by Dr. Jan Duffy REALTOR®.',
+    'Complete Silverstone Ranch (89131) guide: guard-gated enclaves, HOA fees, schools, amenities, golf course status, and REALTOR® services from Dr. Jan Duffy.',
   alternates: {
     canonical: '/silverstone-ranch',
   },
@@ -93,23 +136,27 @@ export const metadata: Metadata = {
 
 const overviewFaqs = [
   {
-    question: 'How many guard-gated enclaves comprise Silverstone Ranch?',
+    question: 'How many enclaves comprise Silverstone Ranch?',
     answer:
-      'Silverstone Ranch features nine guard-gated and gated enclaves, each with unique floor plans, HOA dues, and landscaping standards.',
+      'Silverstone Ranch has eleven enclaves: The Palms (only guard-gated), Silverlake, Pinehurst, Tuscany, Windermere, and Amberly (gated); plus Eastpoint, Greenfield, Parkfield, Somerset, and Clairbrook (non-gated). Each has unique HOA dues and floor plans.',
   },
   {
     question: 'What is the HOA fee range for Silverstone Ranch?',
-    answer:
-      'Master association dues average $135 per month with sub-association fees ranging from $65–$220 depending on neighborhood and maintenance coverage.',
+    answer: `Master HOA is $${HOA_FEES.masterMonthly}/mo with sub-associations from $42–$128/mo, totaling $${HOA_FEES.nonGatedTotal}–$${HOA_FEES.pinehurstTotal}/mo. ${HOA_FEES.duesIncreaseNote}`,
   },
   {
     question: 'Are there current assessments related to the former golf course?',
     answer:
-      'No assessments are active as of November 2025, but redevelopment updates are tracked quarterly by Dr. Jan Duffy who briefs clients on any city filings.',
+      'No active assessments as of June 2026. The course sold at auction May 2025 (~$2.8M). Fairway-adjacent lots may carry a 6–10% valuation discount—Dr. Jan Duffy tracks city filings quarterly.',
   },
 ]
 
-export default function SilverstoneRanchPage() {
+export default async function SilverstoneRanchPage() {
+  const [liveListings, liveCount] = await Promise.all([
+    fetchSilverstoneListings({ hyperlocalOnly: true, limit: 6 }),
+    fetchHyperlocalListingCount(),
+  ])
+  const activeListingStat = formatActiveListingStat(liveCount)
   const path = '/silverstone-ranch'
   const pageSchema = buildWebPageSchema({
     path,
@@ -135,17 +182,69 @@ export default function SilverstoneRanchPage() {
       <main className="bg-white">
         <section className="bg-gradient-to-br from-blue-50 via-white to-slate-50 py-16 px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-5xl">
+            <Breadcrumbs
+              items={[
+                { name: 'Home', path: '/' },
+                { name: 'Silverstone Ranch' },
+              ]}
+            />
             <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">
-              Comprehensive Community Guide · Updated November 2025
+              Comprehensive Community Guide · Updated {MARKET_SNAPSHOT.reportMonth}
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               Silverstone Ranch Community Hub
             </h1>
             <p className="text-lg text-slate-700 mb-6">
-              Welcome to the definitive overview of Silverstone Ranch—Centennial Hills’ signature guard-gated enclave. This
-              hub consolidates every detail buyers and residents need: HOA insights, golf course status, market analytics,
-              environmental planning, school assignments, and concierge services from Dr. Jan Duffy, Berkshire Hathaway
-              HomeServices.
+              Welcome to the definitive overview of Silverstone Ranch—Centennial Hills&apos; signature master-planned
+              community in ZIP {MARKET_SNAPSHOT.zipCode}. This hub consolidates HOA insights, golf course status, market
+              analytics, school assignments, and concierge REALTOR® services from {CONTACT_INFO.agentName}.
+            </p>
+            <p className="text-lg text-slate-700 mb-6">
+              Eleven enclaves span guard-gated luxury at{' '}
+              <Link href="/neighborhoods/the-palms" className="font-semibold text-blue-700 hover:underline">
+                The Palms
+              </Link>{' '}
+              to value-focused non-gated living in{' '}
+              <Link href="/neighborhoods/somerset" className="font-semibold text-blue-700 hover:underline">
+                Somerset
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/clairbrook" className="font-semibold text-blue-700 hover:underline">
+                Clairbrook
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/greenfield" className="font-semibold text-blue-700 hover:underline">
+                Greenfield
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/eastpoint" className="font-semibold text-blue-700 hover:underline">
+                Eastpoint
+              </Link>
+              , and{' '}
+              <Link href="/neighborhoods/parkfield" className="font-semibold text-blue-700 hover:underline">
+                Parkfield
+              </Link>
+              . Gated alternatives include{' '}
+              <Link href="/neighborhoods/silverlake" className="font-semibold text-blue-700 hover:underline">
+                Silverlake
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/pinehurst" className="font-semibold text-blue-700 hover:underline">
+                Pinehurst
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/tuscany" className="font-semibold text-blue-700 hover:underline">
+                Tuscany
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/windermere" className="font-semibold text-blue-700 hover:underline">
+                Windermere
+              </Link>
+              , and{' '}
+              <Link href="/neighborhoods/amberly" className="font-semibold text-blue-700 hover:underline">
+                Amberly
+              </Link>
+              .
             </p>
             <p className="text-lg text-slate-700 mb-6">
               Use the table of contents to jump to the sections that matter most or follow the narrative for a step-by-step
@@ -178,6 +277,11 @@ export default function SilverstoneRanchPage() {
                 <li>
                   <a href="#environment" className="hover:underline">
                     Environmental Planning & Risk Readiness
+                  </a>
+                </li>
+                <li>
+                  <a href="#live-listings" className="hover:underline">
+                    Live MLS Listings (89131)
                   </a>
                 </li>
                 <li>
@@ -280,28 +384,31 @@ export default function SilverstoneRanchPage() {
           <div className="mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Market Insights & Pricing Dynamics</h2>
             <p className="text-slate-700 mb-6">
-              As of November 2025, Silverstone Ranch remains a competitive micro-market. Inventory tightened 12% from the
-              previous quarter, while buyer demand outpaced active listings thanks to interstate relocations, medical
-              professionals stationed at nearby facilities, and Las Vegas locals seeking guard-gated security. Properties
-              that present turnkey finishes and well-managed outdoor spaces often attract multiple offers within a week.
+              As of {MARKET_SNAPSHOT.reportMonth}, Silverstone Ranch&apos;s median sale price sits at{' '}
+              {MARKET_SNAPSHOT.medianPrice} ({MARKET_SNAPSHOT.medianPriceYoY} YoY) with{' '}
+              {MARKET_SNAPSHOT.daysOnMarket} average days on market—a rebalancing market where well-priced homes still
+              attract offers. {activeListingStat.detail}
             </p>
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Metrics (November 2025)</h3>
+            <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Metrics ({MARKET_SNAPSHOT.reportMonth})</h3>
             <ul className="grid sm:grid-cols-2 gap-4 text-sm text-slate-700 mb-6">
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Median Sale Price</span>
-                $685,000 · Renovated 4-bedroom homes lead market activity.
+                {MARKET_SNAPSHOT.medianPrice} · {MARKET_SNAPSHOT.medianPriceYoY} year-over-year.
               </li>
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Average Days on Market</span>
-                13 days · Sellers who stage and price to comps outpace the metro average by 9 days.
+                {MARKET_SNAPSHOT.daysOnMarket} · {MARKET_SNAPSHOT.daysOnMarketChange}.
               </li>
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">List-to-Sale Ratio</span>
-                101.8% · Buyers often include appraisal gap coverage or credit flexibility to remain competitive.
+                {MARKET_SNAPSHOT.listToSaleRatio} · Buyer leverage growing in Centennial Hills.
               </li>
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
-                <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Active Listings</span>
-                18 homes · Balanced mix of single-story and two-story residences across sub-associations.
+                <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Active MLS Listings</span>
+                {activeListingStat.value} ·{' '}
+                <Link href="/homes-for-sale" className="text-blue-600 font-semibold hover:underline">
+                  View live Silverstone listings →
+                </Link>
               </li>
             </ul>
             <p className="text-slate-700 mb-6">
@@ -323,6 +430,28 @@ export default function SilverstoneRanchPage() {
                 Request Custom Valuation
               </Link>
             </div>
+          </div>
+        </section>
+
+        <section id="live-listings" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
+          <div className="mx-auto max-w-5xl">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Live MLS Listings in Silverstone Ranch</h2>
+            <p className="text-slate-700 mb-8">
+              {activeListingStat.detail} Browse{' '}
+              <Link href="/homes-for-sale" className="font-semibold text-blue-700 hover:underline">
+                all Silverstone Ranch homes for sale
+              </Link>{' '}
+              or tour enclaves like{' '}
+              <Link href="/neighborhoods/somerset" className="text-blue-600 hover:underline">
+                Somerset
+              </Link>{' '}
+              and{' '}
+              <Link href="/neighborhoods/clairbrook" className="text-blue-600 hover:underline">
+                Clairbrook
+              </Link>{' '}
+              with Dr. Jan Duffy.
+            </p>
+            <SilverstoneListingCards listings={liveListings} />
           </div>
         </section>
 
@@ -384,9 +513,37 @@ export default function SilverstoneRanchPage() {
           <div className="mx-auto max-w-5xl">
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Explore Silverstone Neighborhoods</h2>
             <p className="text-slate-700 mb-8">
-              Silverstone Ranch is composed of distinct enclaves, each offering a unique blend of floor plans, HOA services,
-              and landscape treatments. Use the neighborhood spotlights below to evaluate pricing, lot sizes, and lifestyle
-              features before scheduling private showings.
+              Silverstone Ranch is composed of eleven distinct enclaves across two tiers.{' '}
+              <strong className="text-slate-900">Non-gated villages</strong> (
+              <Link href="/neighborhoods/somerset" className="text-blue-600 hover:underline">
+                Somerset
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/clairbrook" className="text-blue-600 hover:underline">
+                Clairbrook
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/greenfield" className="text-blue-600 hover:underline">
+                Greenfield
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/eastpoint" className="text-blue-600 hover:underline">
+                Eastpoint
+              </Link>
+              ,{' '}
+              <Link href="/neighborhoods/parkfield" className="text-blue-600 hover:underline">
+                Parkfield
+              </Link>
+              ) share the lowest HOA at ${HOA_FEES.nonGatedTotal}/mo.{' '}
+              <strong className="text-slate-900">Gated enclaves</strong> range from{' '}
+              <Link href="/neighborhoods/the-palms" className="text-blue-600 hover:underline">
+                The Palms
+              </Link>{' '}
+              (only guard-gated, ${HOA_FEES.thePalmsTotal}/mo) through{' '}
+              <Link href="/neighborhoods/pinehurst" className="text-blue-600 hover:underline">
+                Pinehurst
+              </Link>{' '}
+              (${HOA_FEES.pinehurstTotal}/mo townhomes). Tour multiple villages in one trip with Dr. Jan Duffy.
             </p>
             <div className="grid gap-6 lg:grid-cols-2">
               {neighborhoodLinks.map((neighborhood) => (
@@ -411,7 +568,7 @@ export default function SilverstoneRanchPage() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900 mb-6">Deep Dive Resources & Next Steps</h2>
               <p className="text-slate-700 mb-6">
-                Continue exploring Silverstone Ranch with handpicked guides curated for November 2025. Each resource provides
+                Continue exploring Silverstone Ranch with handpicked guides curated for June 2026. Each resource provides
                 keyword-rich, reader-friendly insights tailored for relocation clients, investors, and current residents
                 evaluating their next move.
               </p>

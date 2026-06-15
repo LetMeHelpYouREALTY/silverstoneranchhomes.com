@@ -37,11 +37,7 @@ const nextConfig = {
   async redirects() {
     return [
       // Legacy URLs (GSC 404 cleanup): old neighborhood index routes → area guide
-      {
-        source: '/neighborhoods/:path*',
-        destination: '/area-info',
-        permanent: true,
-      },
+      // NOTE: /neighborhoods/[slug] pages are live — do NOT redirect them.
       // Old resources index and parent HOA path → current HOA guide
       {
         source: '/resources',

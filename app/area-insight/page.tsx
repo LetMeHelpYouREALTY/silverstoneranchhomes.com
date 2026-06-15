@@ -183,7 +183,7 @@ export default function AreaInsightPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section className="text-center md:text-left space-y-4">
           <p className="text-sm font-semibold uppercase tracking-widest text-blue-700">Market Bulletin · Updated November 7, 2025</p>
-          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">Silverstone Ranch: November 2025 Market Insights</h1>
+          <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">Silverstone Ranch: June 2026 Market Insights</h1>
           <p className="text-lg text-gray-700 leading-relaxed">
             Demand for guard-gated living in Centennial Hills remains resilient. Inventory is pinned near multi-year lows,
             buyer pipelines rival pre-2020 levels, and pricing continues an upward trajectory fueled by relocation capital.

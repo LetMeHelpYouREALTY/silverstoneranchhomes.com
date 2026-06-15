@@ -147,7 +147,7 @@ export default function HomeValuationPageClient() {
       <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 mb-12">
         <h2 className="text-3xl font-bold text-gray-900 mb-6">Market Factors Influencing 2025 Pricing</h2>
         <p className="text-gray-700 leading-relaxed mb-6">
-          November 2025 market conditions favor well-presented Silverstone homes, yet strategic preparation remains essential. These data points guide pricing, staging, and negotiation planning.
+          June 2026 market conditions favor well-presented Silverstone homes, yet strategic preparation remains essential. These data points guide pricing, staging, and negotiation planning.
         </p>
         <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
           {marketFactors.map((factor) => (

@@ -373,4 +373,57 @@ export function buildAggregateRatingSchema(entry: AggregateRatingEntry) {
   }
 }
 
+export type RealEstateListingEntry = {
+  name: string
+  url: string
+  description?: string
+  price?: string
+  address?: string
+}
+
+/**
+ * ItemList of RealEstateListing entries for homes-for-sale and IDX pages.
+ */
+export function buildRealEstateListingItemList({
+  path,
+  name,
+  listings,
+}: {
+  path: string
+  name: string
+  listings: RealEstateListingEntry[]
+}) {
+  if (!listings.length) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    url: buildCanonical(path),
+    numberOfItems: listings.length,
+    itemListElement: listings.map((listing, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'RealEstateListing',
+        name: listing.name,
+        url: listing.url,
+        ...(listing.description ? { description: listing.description } : {}),
+        ...(listing.price ? { offers: { '@type': 'Offer', price: listing.price, priceCurrency: 'USD' } } : {}),
+        ...(listing.address
+          ? {
+              address: {
+                '@type': 'PostalAddress',
+                streetAddress: listing.address,
+                addressLocality: 'Las Vegas',
+                addressRegion: 'NV',
+                postalCode: '89131',
+                addressCountry: 'US',
+              },
+            }
+          : {}),
+      },
+    })),
+  }
+}
+
 

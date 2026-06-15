@@ -118,6 +118,9 @@ export default function RootLayout({
             buildPlaceSchema(),
           ]}
         />
+        {process.env.NEXT_PUBLIC_GSC_VERIFICATION ? (
+          <meta name="google-site-verification" content={process.env.NEXT_PUBLIC_GSC_VERIFICATION} />
+        ) : null}
         {/* Defer Google Tag Manager to after page becomes interactive */}
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}

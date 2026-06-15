@@ -5,7 +5,7 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { getNeighborhoodContent, NEIGHBORHOOD_SLUGS } from '@/lib/silverstone-neighborhoods'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildFaqSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -71,7 +71,20 @@ export default async function NeighborhoodPage({ params }: PageProps) {
     content.faqs.map((f) => ({ question: f.question, answer: f.answer })),
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(
+  const serviceSchema = buildServiceSchema({
+    name: `${displayName} Real Estate Services`,
+    description: `Buyer and seller representation for ${displayName} in Silverstone Ranch (89131)—tours, pricing, HOA review, and negotiation by ${CONTACT_INFO.agentName}.`,
+    serviceType: ['BuyerRepresentation', 'SellerRepresentation'],
+    actions: [
+      buildAction({
+        type: 'ScheduleAction',
+        name: `Tour ${displayName}`,
+        target: `${CONTACT_INFO.website.base}/book-tour`,
+      }),
+    ],
+  })
+
+  const schemaData = [pageSchema, serviceSchema, faqSchema].filter(
     (s): s is NonNullable<typeof s> => s != null,
   ) as Record<string, unknown>[]
 

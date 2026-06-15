@@ -228,7 +228,7 @@ export default function SilverstoneRanchHoaPage() {
               </p>
             </div>
             <div className="hidden rounded-full border border-blue-100 bg-blue-50 px-6 py-2 text-sm font-medium text-blue-700 md:block">
-              Updated November 2025
+              Updated June 2026
             </div>
           </div>
 
@@ -458,7 +458,7 @@ export default function SilverstoneRanchHoaPage() {
             <div>
               <h2 className="text-3xl font-bold text-slate-900">Buyer & Seller Insights</h2>
               <p className="mt-3 max-w-3xl text-slate-700">
-                Silverstone Ranch inventory remains tight, with November 2025 closings averaging 13 days on market and
+                Silverstone Ranch inventory remains tight, with June 2026 closings averaging 13 days on market and
                 list-to-sale ratios of 101.8%. Renovated kitchens, energy-efficient upgrades, and outdoor living zones
                 continue to command premiums.
               </p>
@@ -474,7 +474,7 @@ export default function SilverstoneRanchHoaPage() {
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-100 bg-slate-50/80 p-6">
-              <h3 className="text-lg font-semibold text-slate-900">Median Price (Nov 2025)</h3>
+              <h3 className="text-lg font-semibold text-slate-900">Median Price (Jun 2026)</h3>
               <p className="mt-2 text-3xl font-bold text-blue-700">$685,000</p>
               <p className="mt-3 text-sm text-slate-700">Up 5.2% year-over-year with strongest demand for renovated 4-bedroom plans.</p>
             </div>
@@ -511,7 +511,7 @@ export default function SilverstoneRanchHoaPage() {
               <h2 className="text-3xl font-bold text-slate-900">School Assignments &amp; Ratings</h2>
               <p className="mt-3 max-w-3xl text-slate-700">
                 Silverstone Ranch is currently zoned to highly-rated Clark County School District campuses focused on STEM
-                and college-ready pathways. Ratings reflect November 2025 GreatSchools.org data; always verify attendance
+                and college-ready pathways. Ratings reflect June 2026 GreatSchools.org data; always verify attendance
                 boundaries directly with CCSD prior to enrollment or purchase.
               </p>
             </div>
