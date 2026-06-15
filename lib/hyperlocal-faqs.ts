@@ -35,6 +35,42 @@ export const HOMES_FOR_SALE_FAQS = [
     question: 'What is the median home price in Silverstone Ranch (89131)?',
     answer: `As of ${MARKET_SNAPSHOT.reportMonth}, the median sale price is ${MARKET_SNAPSHOT.medianPrice} (${MARKET_SNAPSHOT.medianPriceYoY} year-over-year) with ${MARKET_SNAPSHOT.activeListings} active listings.`,
   },
+  {
+    question: 'How fast do homes move under $700K in Silverstone Ranch?',
+    answer:
+      'Homes priced between $630K and $700K often attract multiple offers within the first week in Centennial Hills. Dr. Duffy recommends touring immediately when Silverstone Ranch listing alerts hit your inbox.',
+  },
+  {
+    question: 'Can I negotiate if the home backs dormant golf course land?',
+    answer:
+      'Yes. Buyers often secure landscaping credits, fencing allowances, or price adjustments. Documented golf course status and HOA resale packages are part of due diligence for every 89131 offer.',
+  },
+  {
+    question: 'Are there rental restrictions in Silverstone Ranch?',
+    answer:
+      'Silverstone Ranch typically requires a minimum six-month lease, HOA approval, and guard-gate registration. Investors should review master and sub-association bylaws before writing offers.',
+  },
+  {
+    question: 'What about insurance considerations for Silverstone Ranch homes?',
+    answer:
+      'Insurance premiums vary based on heat and wind mitigation. Work with carriers that recognize Silverstone’s lower wildfire and flood risk compared to western valley communities in Northwest Las Vegas.',
+  },
+] as const
+
+export const CONTACT_FAQS = [
+  {
+    question: 'Can I schedule a private Silverstone Ranch tour outside of business hours?',
+    answer: `Yes. The ${CONTACT_INFO.businessName} team arranges private tours and virtual walk-throughs around your schedule, including evenings and weekends in ZIP 89131.`,
+  },
+  {
+    question: 'Do you offer relocation assistance for Silverstone Ranch buyers?',
+    answer: `${CONTACT_INFO.agentName} provides concierge relocation support—lender introductions, guard gate registration, school resources, and vendor coordination for Centennial Hills moves.`,
+  },
+  {
+    question: 'How quickly will I receive a response from Dr. Jan Duffy?',
+    answer:
+      'Expect a personal reply within the same business day. Urgent Silverstone Ranch listing or valuation inquiries are typically answered within two hours.',
+  },
 ] as const
 
 export const AGENT_FAQS = [
@@ -83,5 +119,45 @@ export const MARKET_INSIGHTS_FAQS = [
     question: 'How does the closed golf course affect Silverstone Ranch home values?',
     answer:
       'Buyers factor golf course deed restrictions and landscaping into offers. Transparent disclosure and strategic pricing help sellers minimize discounts; buyers may negotiate landscaping credits.',
+  },
+  {
+    question: 'Will the dormant golf course impact my Silverstone Ranch property value?',
+    answer:
+      'Buyers still pay premiums for guard-gated access, school zoning, and remodeled interiors. Pricing models separate golf frontage value until redevelopment plans or landscaping enhancements are confirmed.',
+  },
+  {
+    question: 'Are price reductions expected in Silverstone Ranch heading into 2026?',
+    answer:
+      'Inventory remains constrained and migration from California and Nevada job hubs continues. Expect moderate appreciation with stronger competition for move-in-ready properties in Centennial Hills.',
+  },
+  {
+    question: 'How can I position my offer to win in Silverstone Ranch?',
+    answer:
+      'Pair strong financing or cash reserves with appraisal gap coverage, flexible closing dates, and clear HOA compliance assurances. Dr. Jan Duffy crafts competitive yet protected offers for every 89131 scenario.',
+  },
+] as const
+
+export const SCHOOLS_FAQS = [
+  {
+    question: 'What school district serves Silverstone Ranch?',
+    answer: `Silverstone Ranch (89131) is served by the Clark County School District (CCSD). Most addresses zone to ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}. ${ASSIGNED_SCHOOLS.note}`,
+  },
+  {
+    question: 'Are there private school options near Silverstone Ranch?',
+    answer:
+      'Northwest Las Vegas offers private options including Faith Lutheran Middle & High School, The Meadows School, and Alexander Dawson School. Many Centennial Hills families also consider charter lottery schools.',
+  },
+  {
+    question: 'How do I enroll my child in a Silverstone Ranch area school?',
+    answer:
+      'Enrollment typically requires proof of residency, birth certificate, immunization records, and previous transcripts. Dr. Jan Duffy provides relocation families with CCSD enrollment assistance and boundary verification.',
+  },
+  {
+    question: 'What are the school ratings for Silverstone Ranch area schools?',
+    answer: `${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high} generally rate 7–8/10 on GreatSchools.org. Verify current ratings and boundaries before you remove contingencies.`,
+  },
+  {
+    question: 'Are there charter school options in Northwest Las Vegas?',
+    answer: `${ASSIGNED_SCHOOLS.charterOption} is a popular lottery option. Dr. Jan Duffy helps relocation families compare charter, private, and CCSD zoned schools for their Silverstone Ranch address.`,
   },
 ] as const

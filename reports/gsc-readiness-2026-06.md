@@ -1,7 +1,7 @@
 # GSC Readiness Report — June 2026
 
 **Site:** https://www.silverstoneranchhomes.com  
-**Prepared:** 2026-06-01  
+**Prepared:** 2026-06-15  
 **Agent:** Dr. Jan Duffy · License S.0197614.LLC · Berkshire Hathaway HomeServices
 
 ## Summary
@@ -22,7 +22,16 @@ This release prepares the site for Google Search Console verification and hyperl
 
 ### Sitemap URL count
 
-36 indexable routes (was 33).
+37 indexable routes (dynamic from `NEIGHBORHOOD_SLUGS`; redirect-only URLs removed).
+
+### June 15 follow-up
+
+- Sitemap now imports `NEIGHBORHOOD_SLUGS` and excludes 301 sources (`/resources`, `/resources/las-vegas-hoa`, `/silverstone-ranch/schools`)
+- Added canonical `/schools` to sitemap
+- FAQ schema aligned with visible content on homepage, homes-for-sale, amenities, market-insights, contact
+- Schools page CCSD names corrected to O'Roarke, Cadwallader, Arbor View
+- Hyperlocal H1 updates on agent, contact, book-tour, request-info, home-valuation
+- Fixed HOA guide Open Graph image URL
 
 ### NAP consistency
 

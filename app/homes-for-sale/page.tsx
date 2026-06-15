@@ -607,30 +607,12 @@ export default async function HomesForSalePage() {
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
           <h2 className="text-3xl font-semibold text-gray-900 mb-6">Frequently Asked Buying Questions</h2>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-gray-900">How fast do homes move under $700K?</summary>
-              <p className="mt-3">
-                Homes priced between $630K and $700K average nine days on market. Expect multiple offers within the first week; Dr. Duffy recommends touring immediately when alerts hit your inbox.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-gray-900">Can I negotiate if the home backs dormant golf course land?</summary>
-              <p className="mt-3">
-                Yes. Buyers often secure landscaping credits, fencing allowances, or price adjustments to offset limited views. Documented golf course status is part of your due diligence package.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-gray-900">Are there rental restrictions?</summary>
-              <p className="mt-3">
-                Silverstone Ranch requires a minimum six-month lease, HOA approval, and compliance with guard-gate registration. Investors should review HOA bylaws before writing offers.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-gray-900">What about insurance considerations?</summary>
-              <p className="mt-3">
-                Insurance premiums vary based on heat and wind mitigation. Work with carriers that recognize Silverstone’s lower wildfire and flood risk compared to western valley communities.
-              </p>
-            </details>
+            {HOMES_FOR_SALE_FAQS.map((faq) => (
+              <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
+                <summary className="cursor-pointer text-base font-semibold text-gray-900">{faq.question}</summary>
+                <p className="mt-3">{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </section>
 

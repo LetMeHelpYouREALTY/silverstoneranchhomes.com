@@ -475,7 +475,7 @@ export default function AgentPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section>
           <div className="text-center mb-12">
-            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Meet Dr. Jan Duffy</h1>
+            <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Dr. Jan Duffy | Silverstone Ranch REALTOR® (89131)</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Top 1% Las Vegas REALTOR® specializing in Silverstone Ranch luxury homes.
             </p>

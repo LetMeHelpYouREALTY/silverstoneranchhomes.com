@@ -1,244 +1,54 @@
 import { MetadataRoute } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { NEIGHBORHOOD_SLUGS } from '@/lib/silverstone-neighborhoods'
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = CONTACT_INFO.website.base
+const baseUrl = CONTACT_INFO.website.base
 
-  return [
-    {
-      url: baseUrl,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 1,
-    },
-    {
-      url: `${baseUrl}/home-valuation`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/request-info`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/homes-for-sale`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/photos`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/description`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/price-features`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/amenities`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/map`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/video`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/area-info`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/area-insight`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/buy-with-agent`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/sell-with-agent`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/market-insights`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/buyers-checklist`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/environmental-risk`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/golf-course-status`,
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/resources`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: `${baseUrl}/resources/las-vegas-hoa`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.65,
-    },
-    {
-      url: `${baseUrl}/resources/las-vegas-hoa/silverstone-ranch`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/agent`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/silverstone-ranch`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/silverstone-ranch/schools`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/pinehurst`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/the-palms`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/tuscany`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/silverlake`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/eastpoint`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/amberly`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/windermere`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/greenfield`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/parkfield`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/somerset`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/neighborhoods/clairbrook`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.75,
-    },
-    {
-      url: `${baseUrl}/book-tour`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.9,
-    },
-    {
-      url: `${baseUrl}/contact`,
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.7,
-    },
-    {
-      url: `${baseUrl}/privacy`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-    {
-      url: `${baseUrl}/terms`,
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.3,
-    },
-  ]
+function staticRoute(
+  path: string,
+  priority: number,
+  changeFrequency: MetadataRoute.Sitemap[number]['changeFrequency'] = 'monthly'
+): MetadataRoute.Sitemap[number] {
+  return {
+    url: path === '/' ? baseUrl : `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency,
+    priority,
+  }
 }
 
+export default function sitemap(): MetadataRoute.Sitemap {
+  const neighborhoodRoutes = NEIGHBORHOOD_SLUGS.map((slug) =>
+    staticRoute(`/neighborhoods/${slug}`, 0.75)
+  )
+
+  return [
+    staticRoute('/', 1, 'weekly'),
+    staticRoute('/home-valuation', 0.9),
+    staticRoute('/request-info', 0.9),
+    staticRoute('/homes-for-sale', 0.9, 'weekly'),
+    staticRoute('/photos', 0.8),
+    staticRoute('/description', 0.8),
+    staticRoute('/price-features', 0.8),
+    staticRoute('/amenities', 0.8),
+    staticRoute('/map', 0.7),
+    staticRoute('/video', 0.7),
+    staticRoute('/area-info', 0.7),
+    staticRoute('/area-insight', 0.8, 'weekly'),
+    staticRoute('/buy-with-agent', 0.85),
+    staticRoute('/sell-with-agent', 0.85),
+    staticRoute('/market-insights', 0.85),
+    staticRoute('/buyers-checklist', 0.8),
+    staticRoute('/environmental-risk', 0.8),
+    staticRoute('/golf-course-status', 0.9, 'weekly'),
+    staticRoute('/resources/las-vegas-hoa/silverstone-ranch', 0.8),
+    staticRoute('/agent', 0.8),
+    staticRoute('/silverstone-ranch', 0.85),
+    staticRoute('/schools', 0.7),
+    ...neighborhoodRoutes,
+    staticRoute('/book-tour', 0.9),
+    staticRoute('/contact', 0.7),
+    staticRoute('/privacy', 0.3, 'yearly'),
+    staticRoute('/terms', 0.3, 'yearly'),
+  ]
+}

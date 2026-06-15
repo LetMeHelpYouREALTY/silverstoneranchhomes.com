@@ -123,7 +123,7 @@ export default function HomeValuationPageClient() {
         <div className="inline-block px-4 py-2 bg-green-100 text-green-800 rounded-full text-sm font-semibold mb-6">
           Free Home Valuation
         </div>
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Get Your Home&apos;s Value in 60 Seconds</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Silverstone Ranch Home Valuation | 89131</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Discover what your Silverstone Ranch home is worth in today&apos;s market. Get a comprehensive market analysis and find out how to sell for 15% above market average.
         </p>

@@ -168,6 +168,7 @@ const sellerTips = [
 ]
 
 const expandedFaqs = [
+  ...AMENITIES_FAQS.map((f) => ({ question: f.question, answer: f.answer })),
   {
     question: 'What are the HOA dues, and what do they cover?',
     answer:
@@ -219,7 +220,7 @@ export default function AmenitiesPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(path, AMENITIES_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+  const faqSchema = buildFaqSchema(path, expandedFaqs)
   const schemaData = [pageSchema, faqSchema].filter(Boolean)
 
   return (

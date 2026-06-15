@@ -3,6 +3,7 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildLocalBusinessSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
+import { CONTACT_FAQS } from '@/lib/hyperlocal-faqs'
 import ContactPageClient from './ContactPageClient'
 
 export const metadata: Metadata = {
@@ -60,30 +61,14 @@ export default function ContactPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(path, [
-    {
-      question: 'Can I schedule a private tour outside of business hours?',
-      answer:
-        `Yes. The ${CONTACT_INFO.businessName} team arranges private tours and virtual walk-throughs around your schedule, including evenings and weekends.`,
-    },
-    {
-      question: 'Do you offer relocation assistance?',
-      answer:
-        'Dr. Jan Duffy provides concierge relocation support—lender introductions, guard gate registration, school resources, and vendor coordination.',
-    },
-    {
-      question: 'How quickly will I receive a response?',
-      answer:
-        'Expect a personal reply within the same day. Urgent inquiries are typically answered within two hours.',
-    },
-  ])
+  const faqSchema = buildFaqSchema(path, CONTACT_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
 
   const schemaData = [pageSchema, localBusinessSchema, conciergeServiceSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
       <SeoJsonLd id="contact-page" data={schemaData as Record<string, unknown>[]} />
-      <ContactPageClient />
+      <ContactPageClient faqs={CONTACT_FAQS.map((f) => ({ question: f.question, answer: f.answer }))} />
     </div>
   )
 }

@@ -21,7 +21,7 @@ import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } f
 
 const canonicalPath = '/resources/las-vegas-hoa/silverstone-ranch'
 const canonicalUrl = `${CONTACT_INFO.website.base}${canonicalPath}`
-const heroImageUrl = `${CONTACT_INFO.website.url}images/property/exterior-front-elevation.jpg`
+const heroImageUrl = `${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`
 
 export const metadata: Metadata = {
   title: 'HOA in Las Vegas | Fees, Amenities & Contacts',

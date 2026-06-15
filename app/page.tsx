@@ -591,30 +591,12 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl space-y-6">
           <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
           <div className="space-y-4">
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-slate-900">How competitive is Silverstone compared to other guard-gated communities?</summary>
-              <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                June 2026 absorption rates show Silverstone homes closing in 13 days versus 18–21 days in comparable north
-                valley enclaves. Limited inventory and relocation demand keep negotiations brisk—prepare decisive offers and
-                transparent disclosures.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-slate-900">What should I budget for post-closing enhancements?</summary>
-              <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                Allocate funds for desert landscaping refreshes ($8K–$15K), smart irrigation controllers ($1K–$2K), and HVAC
-                optimization ($500–$1,200). These upgrades improve comfort, strengthen appraisal narratives, and bolster
-                resale value.
-              </p>
-            </details>
-            <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
-              <summary className="cursor-pointer text-base font-semibold text-slate-900">How can I stay informed about golf course developments?</summary>
-              <p className="mt-3 text-sm text-slate-700 leading-relaxed">
-                Subscribe to Dr. Duffy’s quarterly golf course briefings, monitor City of Las Vegas planning agendas, and
-                attend HOA town halls. Transparent communication ensures buyers and sellers factor the latest intel into
-                pricing decisions.
-              </p>
-            </details>
+            {HOMEPAGE_FAQS.map((faq) => (
+              <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
+                <summary className="cursor-pointer text-base font-semibold text-slate-900">{faq.question}</summary>
+                <p className="mt-3 text-sm text-slate-700 leading-relaxed">{faq.answer}</p>
+              </details>
+            ))}
           </div>
         </div>
       </section>

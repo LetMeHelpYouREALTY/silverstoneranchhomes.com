@@ -67,7 +67,7 @@ export default function RequestInfoPageClient() {
   return (
     <div className="mx-auto max-w-4xl">
       <div className="text-center mb-12">
-        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Request Information</h1>
+        <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Request Silverstone Ranch Market Info</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Request detailed insights about Silverstone Ranch homes, HOA details, and current market opportunities. We&apos;ll share tailored property recommendations, neighborhood intel, and pricing strategies.
         </p>

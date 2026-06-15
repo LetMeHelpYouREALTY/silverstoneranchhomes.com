@@ -5,50 +5,26 @@ import { buildWebPageSchema, buildFaqSchema } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { SCHOOLS_NEAR_SILVERSTONE } from '@/lib/schools-near-silverstone'
+import { SCHOOLS_FAQS } from '@/lib/hyperlocal-faqs'
+import { ASSIGNED_SCHOOLS } from '@/lib/market-data'
 
 export const metadata: Metadata = {
-  title: 'Schools | Education in Northwest Las Vegas',
+  title: 'Silverstone Ranch Schools | O\'Roarke, Cadwallader, Arbor View 89131',
   description:
-    'Explore top-rated schools serving Silverstone Ranch in Northwest Las Vegas. Get school district information, ratings, and enrollment details for families relocating to the area.',
+    `Schools serving Silverstone Ranch (89131): ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}. CCSD zoning guide and enrollment help from ${CONTACT_INFO.agentName}.`,
   alternates: {
     canonical: '/schools',
   },
   openGraph: {
-    title: buildPageTitle('Schools | Education in Northwest Las Vegas'),
+    title: buildPageTitle('Silverstone Ranch Schools | 89131 CCSD Guide'),
     description:
-      'Comprehensive guide to schools serving Silverstone Ranch, including elementary, middle, and high school options in the Clark County School District.',
+      `CCSD schools for Silverstone Ranch: ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}. Ratings, enrollment, and relocation support.`,
     url: `${CONTACT_INFO.website.base}/schools`,
     type: 'website',
   },
 }
 
-const faqs = [
-  {
-    question: 'What school district serves Silverstone Ranch?',
-    answer:
-      'Silverstone Ranch is served by the Clark County School District (CCSD), the fifth-largest school district in the United States. The community is zoned for several highly-rated schools including Vassiliadis Elementary, Sig Rogich Middle School, and Centennial High School.',
-  },
-  {
-    question: 'Are there private school options near Silverstone Ranch?',
-    answer:
-      'Yes, Northwest Las Vegas offers several private school options including Faith Lutheran Middle & High School, The Adelson School, and Alexander Dawson School. Many families in Silverstone Ranch choose these options for specialized programs and smaller class sizes.',
-  },
-  {
-    question: 'How do I enroll my child in a Silverstone Ranch area school?',
-    answer:
-      'Enrollment typically requires proof of residency (utility bill or lease), birth certificate, immunization records, and previous school transcripts. Contact the specific school or CCSD enrollment office for current requirements. Dr. Jan Duffy can provide relocation families with school enrollment assistance and district contact information.',
-  },
-  {
-    question: 'What are the school ratings for Silverstone Ranch area schools?',
-    answer:
-      'Schools serving Silverstone Ranch generally rate 7-8/10 on GreatSchools.org. Vassiliadis Elementary and Sig Rogich Middle School are particularly well-regarded. Centennial High School offers strong AP programs and college preparation resources.',
-  },
-  {
-    question: 'Are there charter school options in Northwest Las Vegas?',
-    answer:
-      'Yes, Northwest Las Vegas has several charter school options including Doral Academy, Mater Academy, and Somerset Academy. These schools often have specialized curricula and may require lottery enrollment. Dr. Jan Duffy can help families navigate charter school options during relocation.',
-  },
-]
+const faqs = SCHOOLS_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
 export default function SchoolsPage() {
   const path = '/schools'

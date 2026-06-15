@@ -163,23 +163,7 @@ const sellerMistakes = [
   'Underestimating the impact of disclosure transparency—buyers walk when golf course status is omitted.',
 ]
 
-const faqs = [
-  {
-    question: 'Will the dormant golf course impact my property value?',
-    answer:
-      'Buyers still pay premiums for guard-gated access, school zoning, and remodeled interiors. However, pricing models separate golf frontage value until redevelopment plans or landscaping enhancements are confirmed. Request Dr. Duffy’s valuation models to price confidently.',
-  },
-  {
-    question: 'Are price reductions expected heading into 2026?',
-    answer:
-      'Inventory remains constrained and migration from California/Nevada job hubs continues. Expect moderate appreciation with stronger competition for move-in-ready properties and custom lots.',
-  },
-  {
-    question: 'How can I position my offer to win in Silverstone Ranch?',
-    answer:
-      'Pair strong financing or cash reserves with appraisal gap coverage, flexible closing dates, and clear HOA compliance assurances. Dr. Duffy crafts competitive yet protected offers for every client scenario.',
-  },
-]
+const faqs = MARKET_INSIGHTS_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
 export default function MarketInsightsPage() {
   const pageSchema = buildWebPageSchema({
