@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema, buildFaqSchema } from '@/lib/seo'
+import { buildFaqSchema, buildEducationalOrganizationSchema, buildWebPageSchema } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SCHOOLS_NEAR_SILVERSTONE } from '@/lib/schools-near-silverstone'
 import { SCHOOLS_FAQS } from '@/lib/hyperlocal-faqs'
 import { ASSIGNED_SCHOOLS } from '@/lib/market-data'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Schools | O\'Roarke, Cadwallader, Arbor View 89131',
+  title: buildHyperlocalTitle('Silverstone Ranch Schools Guide'),
   description:
     `Schools serving Silverstone Ranch (89131): ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}. CCSD zoning guide and enrollment help from ${CONTACT_INFO.agentName}.`,
   alternates: {
@@ -39,9 +39,26 @@ export default function SchoolsPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(path, faqs)
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
 
-  const schemaData = [pageSchema, faqSchema].filter((schema): schema is NonNullable<typeof schema> => schema !== null)
+  const schoolSchemas = [
+    buildEducationalOrganizationSchema({
+      name: ASSIGNED_SCHOOLS.elementary,
+      description: `Public elementary school commonly zoned for Silverstone Ranch (89131) addresses in CCSD.`,
+    }),
+    buildEducationalOrganizationSchema({
+      name: ASSIGNED_SCHOOLS.middle,
+      description: `Public middle school commonly zoned for Silverstone Ranch buyers in Northwest Las Vegas.`,
+    }),
+    buildEducationalOrganizationSchema({
+      name: ASSIGNED_SCHOOLS.high,
+      description: `Public high school commonly zoned for Silverstone Ranch and Centennial Hills families.`,
+    }),
+  ]
+
+  const schemaData = [pageSchema, faqSchema, ...schoolSchemas].filter(
+    (schema): schema is NonNullable<typeof schema> => schema !== null,
+  )
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">

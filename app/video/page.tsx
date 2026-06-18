@@ -1,14 +1,20 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { VIDEO_FAQS } from '@/lib/hyperlocal-faqs'
+import { buildFaqSchema, buildVideoObjectSchema, buildWebPageSchema } from '@/lib/seo'
+
+const path = '/video'
+const faqs = VIDEO_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
+const thumbnailUrl = `${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`
 
 export const metadata: Metadata = {
-  title: 'Video Tour Library',
+  title: buildHyperlocalTitle('Silverstone Ranch Video Tours'),
   description:
-    'Watch Silverstone Ranch property tours, community highlights, and lifestyle reels curated by Dr. Jan Duffy REALTOR®.',
+    `Watch Silverstone Ranch (89131) property tours, community highlights, and virtual walk-throughs curated by ${CONTACT_INFO.agentName} for Centennial Hills buyers.`,
   alternates: {
     canonical: '/video',
   },
@@ -22,7 +28,6 @@ export const metadata: Metadata = {
 }
 
 export default function VideoPage() {
-  const path = '/video'
   const pageSchema = buildWebPageSchema({
     path,
     name: 'Silverstone Ranch Video Library',
@@ -34,9 +39,22 @@ export default function VideoPage() {
     ],
   })
 
+  const videoSchema = buildVideoObjectSchema({
+    path,
+    name: 'Silverstone Ranch Virtual Community Tour',
+    description:
+      'Virtual tour preview of Silverstone Ranch homes, amenities, and Centennial Hills lifestyle—schedule a live session with Dr. Jan Duffy.',
+    thumbnailUrl,
+    uploadDate: '2026-06-01',
+  })
+
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+
+  const schemaData = [pageSchema, videoSchema, faqSchema].filter(Boolean)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
-      <SeoJsonLd id="video" data={pageSchema} />
+      <SeoJsonLd id="video" data={schemaData as Record<string, unknown>[]} />
       <div className="mx-auto max-w-4xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -148,6 +166,8 @@ export default function VideoPage() {
             </Link>
           </div>
         </div>
+
+        <FaqSection faqs={faqs} heading="Silverstone Ranch Virtual Tour FAQs" className="max-w-4xl mx-auto" />
       </div>
     </div>
   )

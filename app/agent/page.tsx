@@ -3,13 +3,13 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildRealEstateAgentSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
 import { AGENT_FAQS } from '@/lib/hyperlocal-faqs'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch REALTOR® | Dr. Jan Duffy',
+  title: buildHyperlocalTitle('Silverstone Ranch REALTOR® Profile'),
   description:
     `${CONTACT_INFO.agentName} is your Silverstone Ranch (89131) REALTOR®—guard-gated tours, HOA guidance, listing strategy, and concierge buyer/seller representation in Centennial Hills.`,
   alternates: {
@@ -62,23 +62,7 @@ const communityInvolvement = [
   'Volunteer mentor for UNLV real estate students and Women’s Council of REALTORS® leadership programs',
 ]
 
-const faqs = [
-  {
-    question: 'How does Dr. Duffy uncover off-market opportunities?',
-    answer:
-      'Through long-standing relationships with Silverstone homeowners, HOA stakeholders, and relocation partners, Dr. Duffy is notified of upcoming listings weeks in advance. Clients receive private preview windows before homes hit the MLS.',
-  },
-  {
-    question: 'What does the concierge team handle during escrow?',
-    answer:
-      'Inspection scheduling, appraisal coordination, repair negotiation, HOA document review, contractor bids, lender communication, and weekly milestone reporting so buyers and sellers stay confident.',
-  },
-  {
-    question: 'Can Dr. Duffy help with new construction near Silverstone?',
-    answer:
-      'Yes. She negotiates builder incentives, monitors construction milestones, and aligns move-in timelines with the sale or purchase of Silverstone properties to minimize double moves and carrying costs.',
-  },
-]
+const faqs = AGENT_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
 const careerTimeline = [
   {
@@ -442,10 +426,7 @@ export default function AgentPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(
-    path,
-    AGENT_FAQS.map((faq) => ({ question: faq.question, answer: faq.answer })),
-  )
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
 
   const agentSchema = {
     ...buildRealEstateAgentSchema(),
@@ -689,7 +670,7 @@ export default function AgentPage() {
             {faqs.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
                 <summary className="cursor-pointer text-base font-semibold text-gray-900">{faq.question}</summary>
-                <p className="mt-3 text-sm text-gray-700 leading-relaxed">{faq.answer}</p>
+                <p className="speakable-answer mt-3 text-sm text-gray-700 leading-relaxed">{faq.answer}</p>
               </details>
             ))}
           </div>

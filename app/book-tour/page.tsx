@@ -1,22 +1,27 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildAction, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { BOOK_TOUR_FAQS } from '@/lib/hyperlocal-faqs'
+import { buildAction, buildFaqSchema, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import BookTourPageClient from './BookTourPageClient'
 
+const path = '/book-tour'
+const faqs = BOOK_TOUR_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
+
 export const metadata: Metadata = {
-  title: 'Book a Community Tour | Dr. Jan Duffy',
+  title: buildHyperlocalTitle('Book a Silverstone Ranch Home Tour'),
   description:
-    'Schedule a private Silverstone Ranch property tour or community preview with Dr. Jan Duffy REALTOR®. Choose in-person or virtual options.',
+    `Schedule a private or virtual Silverstone Ranch (89131) property tour with ${CONTACT_INFO.agentName}. Guard-gate access, curated listings, and concierge coordination in Centennial Hills.`,
   alternates: {
-    canonical: '/book-tour',
+    canonical: path,
   },
   openGraph: {
-    title: buildPageTitle('Book a Community Tour | Dr. Jan Duffy'),
+    title: buildPageTitle('Book a Silverstone Ranch Tour | 89131'),
     description:
       'Arrange in-person or virtual Silverstone Ranch tours, guard gate access, and custom itineraries with Dr. Jan Duffy.',
-    url: `${CONTACT_INFO.website.base}/book-tour`,
+    url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
 }
@@ -37,7 +42,6 @@ const tourSteps = [
 ]
 
 export default function BookTourPage() {
-  const path = '/book-tour'
   const pageSchema = buildWebPageSchema({
     path,
     name: 'Book a Silverstone Ranch Tour',
@@ -65,18 +69,22 @@ export default function BookTourPage() {
       buildAction({
         type: 'ScheduleAction',
         name: 'Book a Tour',
-        target: `${CONTACT_INFO.website.base}/book-tour`,
+        target: `${CONTACT_INFO.website.base}${path}`,
       }),
     ],
   })
 
-  const schemaData = [pageSchema, tourServiceSchema, howToSchema].filter(Boolean)
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+
+  const schemaData = [pageSchema, tourServiceSchema, howToSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
       <SeoJsonLd id="book-tour" data={schemaData as Record<string, unknown>[]} />
       <BookTourPageClient />
+      <div className="mx-auto max-w-3xl px-4">
+        <FaqSection faqs={faqs} heading="Silverstone Ranch Tour FAQs" />
+      </div>
     </div>
   )
 }
-

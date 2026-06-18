@@ -2,13 +2,13 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { buildWebPageSchema } from '@/lib/seo'
 
 const path = '/resources/las-vegas-hoa'
 
 export const metadata: Metadata = {
-  title: 'Las Vegas HOA Guides',
+  title: buildHyperlocalTitle('Las Vegas HOA Guides | Silverstone Ranch'),
   description:
     'How Las Vegas HOAs work—master associations, sub-associations, and what to read before you buy. Jump to the Silverstone Ranch HOA guide for ZIP 89131 detail.',
   alternates: {

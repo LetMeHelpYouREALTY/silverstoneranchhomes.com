@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, seoAbsoluteTitle } from '@/lib/metadata'
 import { getNeighborhoodContent, NEIGHBORHOOD_SLUGS } from '@/lib/silverstone-neighborhoods'
 import { buildFaqSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
 
@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   }
   const path = `/neighborhoods/${content.slug}`
   return {
-    title: content.titleSegment,
+    title: seoAbsoluteTitle(`${content.titleSegment} | Silverstone Ranch 89131`),
     description: content.metaDescription,
     alternates: {
       canonical: path,
@@ -69,6 +69,7 @@ export default async function NeighborhoodPage({ params }: PageProps) {
   const faqSchema = buildFaqSchema(
     path,
     content.faqs.map((f) => ({ question: f.question, answer: f.answer })),
+    ['.speakable-answer'],
   )
 
   const serviceSchema = buildServiceSchema({
