@@ -86,6 +86,157 @@ export const AGENT_FAQS = [
     question: 'Can Dr. Jan Duffy help with HOA documents in Silverstone Ranch?',
     answer: 'Yes. Buyer and seller clients receive plain-language review of master and sub-association budgets, CC&Rs, reserve studies, and golf course assessment history before offers and listing launch.',
   },
+  {
+    question: 'How does Dr. Duffy uncover off-market opportunities?',
+    answer:
+      'Through long-standing relationships with Silverstone homeowners, HOA stakeholders, and relocation partners, Dr. Duffy is notified of upcoming listings weeks in advance. Clients receive private preview windows before homes hit the MLS.',
+  },
+  {
+    question: 'What does the concierge team handle during escrow?',
+    answer:
+      'Inspection scheduling, appraisal coordination, repair negotiation, HOA document review, contractor bids, lender communication, and weekly milestone reporting so buyers and sellers stay confident.',
+  },
+  {
+    question: 'Can Dr. Duffy help with new construction near Silverstone?',
+    answer:
+      'Yes. She negotiates builder incentives, monitors construction milestones, and aligns move-in timelines with the sale or purchase of Silverstone properties to minimize double moves and carrying costs.',
+  },
+] as const
+
+export const BOOK_TOUR_FAQS = [
+  {
+    question: 'What do I need to tour guard-gated homes in Silverstone Ranch?',
+    answer: `Bring a valid government-issued photo ID. ${CONTACT_INFO.agentName} pre-registers your visit with HOA security for The Palms, Silverlake, and other gated enclaves in ZIP 89131.`,
+  },
+  {
+    question: 'Can I tour Silverstone Ranch virtually before visiting Las Vegas?',
+    answer: `Yes. ${CONTACT_INFO.agentName} offers live video walk-throughs, Matterport-style previews, and neighborhood drive-bys so out-of-state buyers can shortlist 89131 homes before flying in.`,
+  },
+  {
+    question: 'How far in advance should I book a Silverstone Ranch tour?',
+    answer:
+      'Book at least 48 hours ahead for guard-gate coordination. Peak weekends in Centennial Hills fill quickly—same-week tours are often available on weekdays.',
+  },
+] as const
+
+export const HOME_VALUATION_FAQS = [
+  {
+    question: 'How accurate is a Silverstone Ranch home valuation?',
+    answer: `${CONTACT_INFO.agentName} blends MLS sold data, enclave-specific comps (The Palms, Pinehurst, Amberly), and current buyer demand for 89131 to produce a pricing range—not a generic Zestimate.`,
+  },
+  {
+    question: 'What affects home value in Silverstone Ranch?',
+    answer:
+      'Guard-gated vs non-gated enclave, golf course frontage, remodel quality, HOA tier, lot orientation, and days-on-market trends in Centennial Hills all influence list price and net proceeds.',
+  },
+  {
+    question: 'Is the Silverstone Ranch valuation free?',
+    answer: `Yes. Sellers and curious homeowners receive a complimentary market analysis from ${CONTACT_INFO.agentName} with recommended list price, staging notes, and a launch timeline.`,
+  },
+] as const
+
+export const REQUEST_INFO_FAQS = [
+  {
+    question: 'What information can I request about Silverstone Ranch?',
+    answer: `Relocation kits, HOA fee breakdowns, school boundary notes, golf course status updates, listing alerts, and buyer or seller strategy sessions tailored to 89131.`,
+  },
+  {
+    question: 'How fast will I receive Silverstone Ranch market intel?',
+    answer: `Most concierge requests receive a personalized reply the same business day. Urgent listing or valuation questions are typically answered within two hours.`,
+  },
+  {
+    question: 'Can I request info if I am not ready to buy yet?',
+    answer:
+      'Absolutely. Many Centennial Hills buyers start 6–12 months ahead. Early intel on inventory, HOA reserves, and enclave fit helps you act quickly when the right Silverstone home appears.',
+  },
+] as const
+
+export const MAP_FAQS = [
+  {
+    question: 'Where is Silverstone Ranch located in Las Vegas?',
+    answer:
+      'Silverstone Ranch sits in Northwest Las Vegas (ZIP 89131) in Centennial Hills, bordered by the 215 Beltway, Floyd Lamb Park, and Spring Mountain views—about 25 minutes from the Las Vegas Strip.',
+  },
+  {
+    question: 'How do I get to Silverstone Ranch from the airport?',
+    answer:
+      'From Harry Reid International Airport, take I-215 west to Centennial Hills—typically 25–35 minutes depending on traffic. Dr. Jan Duffy provides relocation drive-time maps for commuting buyers.',
+  },
+  {
+    question: 'What is near Silverstone Ranch?',
+    answer:
+      'Centennial Center shopping, Centennial Hills Hospital, CCSD schools, Floyd Lamb Park, Tule Springs Fossil Beds, and quick 215 Beltway access to Summerlin and the Strip.',
+  },
+] as const
+
+export const PHOTOS_FAQS = [
+  {
+    question: 'What architectural styles are common in Silverstone Ranch?',
+    answer:
+      'Mediterranean and desert contemporary designs dominate—stucco exteriors, tile roofs, courtyard entries, and indoor-outdoor living suited to the 89131 climate.',
+  },
+  {
+    question: 'Can I see interior photos before touring Silverstone Ranch homes?',
+    answer: `${CONTACT_INFO.agentName} shares MLS photography, virtual tours, and private preview galleries for active Silverstone listings before scheduling guard-gate access.`,
+  },
+] as const
+
+export const VIDEO_FAQS = [
+  {
+    question: 'Are virtual tours available for Silverstone Ranch homes?',
+    answer: `Yes. ${CONTACT_INFO.agentName} coordinates video walk-throughs, drone neighborhood overviews, and live FaceTime tours for buyers relocating to Centennial Hills.`,
+  },
+  {
+    question: 'Can I tour Silverstone Ranch amenities on video?',
+    answer:
+      'Community park, trail, and enclave drive-through videos help out-of-state buyers compare guard-gated vs non-gated villages before visiting 89131 in person.',
+  },
+] as const
+
+export const PRICE_FEATURES_FAQS = [
+  {
+    question: 'What price range are Silverstone Ranch homes in 2026?',
+    answer: `As of ${MARKET_SNAPSHOT.reportMonth}, Silverstone Ranch homes span roughly ${MARKET_SNAPSHOT.priceRange} with a ${MARKET_SNAPSHOT.medianPrice} median in ZIP 89131.`,
+  },
+  {
+    question: 'What features do Silverstone Ranch buyers want most?',
+    answer:
+      'Pool-ready yards, single-story layouts, upgraded kitchens, smart-home wiring, golf course or mountain views, and guard-gated privacy in The Palms or Silverlake enclaves.',
+  },
+  {
+    question: 'How do HOA fees vary by Silverstone Ranch enclave?',
+    answer: `Non-gated villages start near $200/mo total; guard-gated enclaves like The Palms run higher. ${CONTACT_INFO.agentName} breaks down master and sub-association dues before you write an offer.`,
+  },
+] as const
+
+export const RESOURCES_FAQS = [
+  {
+    question: 'What real estate resources are available for Silverstone Ranch buyers?',
+    answer:
+      'HOA fee guides, school boundary references, market reports, buyer checklists, environmental risk briefs, and golf course status updates—all curated for Northwest Las Vegas (89131).',
+  },
+  {
+    question: 'Where can I find Silverstone Ranch HOA fee information?',
+    answer:
+      'See the dedicated Silverstone Ranch HOA guide for master and sub-association dues, amenity access, CAMCO contacts, and resale package requirements.',
+  },
+] as const
+
+export const HOA_GUIDE_FAQS = [
+  {
+    question: 'How much are HOA fees in Silverstone Ranch?',
+    answer: `Master HOA plus sub-association dues typically range ${MARKET_SNAPSHOT.hoaRange} depending on enclave—non-gated villages near $200/mo; guard-gated enclaves higher.`,
+  },
+  {
+    question: 'Who manages Silverstone Ranch HOA?',
+    answer:
+      'CAMCO Management administers master and many sub-associations. Buyers should review resale packages, reserve studies, and golf course assessment history during due diligence.',
+  },
+  {
+    question: 'Are Silverstone Ranch amenities included in HOA fees?',
+    answer:
+      'Master HOA covers community park, trails, and shared infrastructure. Guard gates, pools, and courts may require additional sub-association dues—confirm in your resale package.',
+  },
 ] as const
 
 export const AMENITIES_FAQS = [

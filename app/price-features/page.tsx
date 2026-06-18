@@ -1,14 +1,20 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { PRICE_FEATURES_FAQS } from '@/lib/hyperlocal-faqs'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
+import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+
+const path = '/price-features'
+const faqs = PRICE_FEATURES_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
 export const metadata: Metadata = {
-  title: 'Price & Features Guide',
+  title: buildHyperlocalTitle('Silverstone Ranch Prices & Features'),
   description:
-    'Explore Silverstone Ranch pricing bands, upgrade packages, and lifestyle amenities with insights from Dr. Jan Duffy REALTOR®.',
+    `Silverstone Ranch (89131) price guide: ${MARKET_SNAPSHOT.priceRange} median ${MARKET_SNAPSHOT.medianPrice}. Upgrade ROI, HOA tiers, and lifestyle features in Centennial Hills from ${CONTACT_INFO.agentName}.`,
   alternates: {
     canonical: '/price-features',
   },
@@ -145,9 +151,12 @@ export default function PriceFeaturesPage() {
     ],
   })
 
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
-      <SeoJsonLd id="price-features" data={pageSchema} />
+      <SeoJsonLd id="price-features" data={schemaData as Record<string, unknown>[]} />
       <div className="mx-auto max-w-6xl space-y-16">
         <section className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -455,6 +464,8 @@ export default function PriceFeaturesPage() {
             </Link>
           </div>
         </section>
+
+        <FaqSection faqs={faqs} heading="Silverstone Ranch Pricing FAQs" />
       </div>
     </div>
   )

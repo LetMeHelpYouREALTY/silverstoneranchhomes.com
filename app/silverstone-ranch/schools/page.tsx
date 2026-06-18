@@ -2,18 +2,22 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SCHOOLS_NEAR_SILVERSTONE } from '@/lib/schools-near-silverstone'
 import { buildWebPageSchema } from '@/lib/seo'
 
 const path = '/silverstone-ranch/schools'
 
 export const metadata: Metadata = {
-  title: 'Schools Near Silverstone Ranch',
+  title: buildHyperlocalTitle('Schools Near Silverstone Ranch'),
   description:
-    'Public schools and CCSD context for families buying near Silverstone Ranch (89131)—elementary through high school highlights, plus the full schools guide on this site.',
+    'Public schools and CCSD context for families buying near Silverstone Ranch (89131)—quick reference with link to the full schools guide.',
   alternates: {
-    canonical: path,
+    canonical: '/schools',
+  },
+  robots: {
+    index: false,
+    follow: true,
   },
   openGraph: {
     title: buildPageTitle('Schools Near Silverstone Ranch'),

@@ -64,7 +64,11 @@ export function buildWebPageSchema({
 /**
  * Builds FAQPage schema from input QA pairs.
  */
-export function buildFaqSchema(path: string, faqs: Array<{ question: string; answer: string }>) {
+export function buildFaqSchema(
+  path: string,
+  faqs: Array<{ question: string; answer: string }>,
+  speakableSelectors?: string[],
+) {
   if (!faqs.length) return null
   return {
     '@context': 'https://schema.org',
@@ -78,6 +82,9 @@ export function buildFaqSchema(path: string, faqs: Array<{ question: string; ans
       },
     })),
     url: buildCanonical(path),
+    ...(speakableSelectors?.length
+      ? { speakable: buildSpeakableSpecification(speakableSelectors) }
+      : {}),
   }
 }
 
@@ -172,14 +179,18 @@ export function buildLocalBusinessSchema() {
       postalCode: CONTACT_INFO.address.postalCode,
       addressCountry: CONTACT_INFO.address.country,
     },
-    geo: {
-      '@type': 'GeoCoordinates',
-      latitude: 36.2981,
-      longitude: -115.3001,
-    },
+    geo: buildGeoCoordinates(),
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
     areaServed: CONTACT_INFO.serviceAreas,
     openingHoursSpecification: buildOpeningHoursSpecification(),
+    ...(CONTACT_INFO.gbpAttributes.womenOwned ? { additionalType: 'https://schema.org/WomenOwnedBusiness' } : {}),
+    knowsAbout: [
+      'Silverstone Ranch real estate',
+      'Guard-gated communities',
+      'Centennial Hills homes',
+      'Northwest Las Vegas relocation',
+      'HOA resale packages',
+    ],
   }
 }
 
@@ -192,6 +203,17 @@ export function buildRealEstateAgentSchema() {
     url: CONTACT_INFO.website.url,
     email: CONTACT_INFO.email,
     telephone: CONTACT_INFO.phone.display,
+    hasCredential: {
+      '@type': 'EducationalOccupationalCredential',
+      credentialCategory: 'Real Estate License',
+      name: `Nevada Real Estate License ${CONTACT_INFO.license}`,
+    },
+    knowsAbout: [
+      'Silverstone Ranch buyer representation',
+      'Silverstone Ranch seller representation',
+      'Guard-gated HOA navigation',
+      'Centennial Hills market analytics',
+    ],
     worksFor: {
       '@type': 'Organization',
       name: CONTACT_INFO.businessName,
@@ -216,6 +238,34 @@ export function buildWebSiteSchema() {
     '@type': 'WebSite',
     name: CONTACT_INFO.businessName,
     url: CONTACT_INFO.website.url,
+    inLanguage: 'en-US',
+    publisher: {
+      '@type': 'Organization',
+      name: CONTACT_INFO.businessName,
+      url: CONTACT_INFO.website.url,
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: {
+        '@type': 'EntryPoint',
+        urlTemplate: `${CONTACT_INFO.website.base}/homes-for-sale?q={search_term_string}`,
+      },
+      'query-input': 'required name=search_term_string',
+    },
+  }
+}
+
+/** Silverstone Ranch community center coordinates (Centennial Hills, 89131). */
+export const SILVERSTONE_GEO = {
+  latitude: 36.2981,
+  longitude: -115.3001,
+} as const
+
+export function buildGeoCoordinates() {
+  return {
+    '@type': 'GeoCoordinates',
+    latitude: SILVERSTONE_GEO.latitude,
+    longitude: SILVERSTONE_GEO.longitude,
   }
 }
 
@@ -227,6 +277,15 @@ export function buildPlaceSchema() {
     description:
       'Master-planned luxury community in Northwest Las Vegas featuring guard-gated enclaves, resort-style amenities, and residences along the former Silverstone golf fairways.',
     url: CONTACT_INFO.website.url,
+    geo: buildGeoCoordinates(),
+    containedInPlace: {
+      '@type': 'City',
+      name: 'Las Vegas',
+      containedInPlace: {
+        '@type': 'State',
+        name: 'Nevada',
+      },
+    },
     address: {
       '@type': 'PostalAddress',
       streetAddress: CONTACT_INFO.address.street,
@@ -237,6 +296,161 @@ export function buildPlaceSchema() {
     },
     telephone: CONTACT_INFO.phone.display,
     image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+  }
+}
+
+export function buildSpeakableSpecification(cssSelectors: string[]) {
+  if (!cssSelectors.length) return undefined
+  return {
+    '@type': 'SpeakableSpecification',
+    cssSelector: cssSelectors,
+  }
+}
+
+export function buildArticleSchema({
+  path,
+  headline,
+  description,
+  datePublished,
+  dateModified,
+  speakableSelectors,
+}: {
+  path: string
+  headline: string
+  description: string
+  datePublished: string
+  dateModified: string
+  speakableSelectors?: string[]
+}) {
+  const canonical = buildCanonical(path)
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline,
+    description,
+    url: canonical,
+    mainEntityOfPage: canonical,
+    datePublished,
+    dateModified,
+    author: {
+      '@type': 'Person',
+      name: CONTACT_INFO.agentName,
+      url: buildCanonical('/agent'),
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: CONTACT_INFO.businessName,
+      url: CONTACT_INFO.website.url,
+    },
+    ...(speakableSelectors?.length
+      ? { speakable: buildSpeakableSpecification(speakableSelectors) }
+      : {}),
+  }
+}
+
+export function buildVideoObjectSchema({
+  path,
+  name,
+  description,
+  thumbnailUrl,
+  uploadDate,
+  contentUrl,
+}: {
+  path: string
+  name: string
+  description: string
+  thumbnailUrl: string
+  uploadDate: string
+  contentUrl?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'VideoObject',
+    name,
+    description,
+    thumbnailUrl,
+    uploadDate,
+    url: buildCanonical(path),
+    ...(contentUrl ? { contentUrl } : {}),
+    publisher: {
+      '@type': 'Organization',
+      name: CONTACT_INFO.businessName,
+    },
+  }
+}
+
+export function buildImageGallerySchema({
+  path,
+  name,
+  images,
+}: {
+  path: string
+  name: string
+  images: Array<{ url: string; caption: string }>
+}) {
+  if (!images.length) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ImageGallery',
+    name,
+    url: buildCanonical(path),
+    image: images.map((img) => ({
+      '@type': 'ImageObject',
+      contentUrl: img.url,
+      caption: img.caption,
+    })),
+  }
+}
+
+export function buildEducationalOrganizationSchema({
+  name,
+  description,
+  url,
+}: {
+  name: string
+  description: string
+  url?: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'EducationalOrganization',
+    name,
+    description,
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Las Vegas',
+      addressRegion: 'NV',
+      postalCode: CONTACT_INFO.address.postalCode,
+      addressCountry: 'US',
+    },
+    ...(url ? { url } : {}),
+  }
+}
+
+export function buildMapPlaceSchema({
+  path,
+  name,
+  description,
+}: {
+  path: string
+  name: string
+  description: string
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Place',
+    name,
+    description,
+    url: buildCanonical(path),
+    geo: buildGeoCoordinates(),
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: CONTACT_INFO.address.city,
+      addressRegion: CONTACT_INFO.address.state,
+      postalCode: CONTACT_INFO.address.postalCode,
+      addressCountry: CONTACT_INFO.address.country,
+    },
+    hasMap: `https://www.google.com/maps/place/Silverstone+Ranch,+Las+Vegas,+NV+89131`,
   }
 }
 

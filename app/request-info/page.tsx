@@ -1,28 +1,32 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildAction, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { REQUEST_INFO_FAQS } from '@/lib/hyperlocal-faqs'
+import { buildAction, buildFaqSchema, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import RequestInfoPageClient from './RequestInfoPageClient'
 
+const path = '/request-info'
+const faqs = REQUEST_INFO_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
+
 export const metadata: Metadata = {
-  title: 'Request Information | Real Estate Concierge',
+  title: buildHyperlocalTitle('Request Silverstone Ranch Market Info'),
   description:
-    'Request detailed Silverstone Ranch market intelligence, relocation guides, and listing alerts from Dr. Jan Duffy and the concierge team.',
+    `Request Silverstone Ranch (89131) relocation kits, HOA breakdowns, listing alerts, and market intel from ${CONTACT_INFO.agentName} in Centennial Hills.`,
   alternates: {
-    canonical: '/request-info',
+    canonical: path,
   },
   openGraph: {
-    title: buildPageTitle('Request Information | Real Estate Concierge'),
+    title: buildPageTitle('Request Silverstone Ranch Info | 89131'),
     description:
       'Receive Silverstone Ranch relocation kits, listing previews, and strategy sessions curated by Dr. Jan Duffy REALTOR®.',
-    url: `${CONTACT_INFO.website.base}/request-info`,
+    url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
 }
 
 export default function RequestInfoPage() {
-  const path = '/request-info'
   const pageSchema = buildWebPageSchema({
     path,
     name: 'Request Silverstone Ranch Information',
@@ -66,18 +70,22 @@ export default function RequestInfoPage() {
       buildAction({
         type: 'ContactAction',
         name: 'Submit Concierge Request',
-        target: `${CONTACT_INFO.website.base}/request-info`,
+        target: `${CONTACT_INFO.website.base}${path}`,
       }),
     ],
   })
 
-  const schemaData = [pageSchema, conciergeInformationService, howToSchema].filter(Boolean)
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+
+  const schemaData = [pageSchema, conciergeInformationService, howToSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
       <SeoJsonLd id="request-info" data={schemaData as Record<string, unknown>[]} />
       <RequestInfoPageClient />
+      <div className="mx-auto max-w-3xl px-4">
+        <FaqSection faqs={faqs} heading="Silverstone Ranch Info Request FAQs" />
+      </div>
     </div>
   )
 }
-

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -9,7 +9,7 @@ const path = '/sell-with-agent'
 const canonicalUrl = `${CONTACT_INFO.website.base}${path}`
 
 export const metadata: Metadata = {
-  title: 'Why You Need an Agent to Sell Your Home',
+  title: buildHyperlocalTitle('Sell Your Silverstone Ranch Home'),
   description:
     'Maximize your Silverstone Ranch sale price with Dr. Jan Duffy. Learn how expert marketing, disclosure management, and negotiation protect your equity.',
   keywords: [

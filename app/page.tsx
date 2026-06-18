@@ -17,7 +17,7 @@ import {
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import {
@@ -28,7 +28,7 @@ import {
 } from '@/lib/realscout/fetch-listings'
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch REALTOR® | Homes for Sale 89131',
+  title: buildHyperlocalTitle('Silverstone Ranch REALTOR® | Homes for Sale'),
   description:
     `Buy or sell in Silverstone Ranch (89131), Centennial Hills. Guard-gated enclaves, HOA guidance, ${MARKET_SNAPSHOT.reportMonth} market data, and concierge real estate services from ${CONTACT_INFO.agentName}.`,
   alternates: {
@@ -167,7 +167,9 @@ export default async function HomePage() {
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
   }
 
-  const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+  const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })), [
+    '.speakable-answer',
+  ])
 
   const schemaData = [pageSchema, agentSchema, faqSchema, listingItemList, ...services].filter(
     (s): s is NonNullable<typeof s> => s != null,
@@ -594,7 +596,7 @@ export default async function HomePage() {
             {HOMEPAGE_FAQS.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
                 <summary className="cursor-pointer text-base font-semibold text-slate-900">{faq.question}</summary>
-                <p className="mt-3 text-sm text-slate-700 leading-relaxed">{faq.answer}</p>
+                <p className="speakable-answer mt-3 text-sm text-slate-700 leading-relaxed">{faq.answer}</p>
               </details>
             ))}
           </div>

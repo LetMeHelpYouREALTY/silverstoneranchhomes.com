@@ -1,28 +1,40 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { PHOTOS_FAQS } from '@/lib/hyperlocal-faqs'
+import { buildFaqSchema, buildImageGallerySchema, buildWebPageSchema } from '@/lib/seo'
+import { propertyPhotos } from '@/lib/property-photos'
 import PhotosPageClient from './PhotosPageClient'
 
+const path = '/photos'
+const faqs = PHOTOS_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
+const base = CONTACT_INFO.website.base
+
+const galleryImages = propertyPhotos.slice(0, 6).map((photo) => ({
+  url: `${base}${photo.original}`,
+  caption: photo.alt,
+}))
+
 export const metadata: Metadata = {
-  title: 'Photo Gallery',
+  title: buildHyperlocalTitle('Silverstone Ranch Photo Gallery'),
   description:
-    'Tour Silverstone Ranch through curated photography highlighting architecture, interiors, and outdoor living curated by Dr. Jan Duffy REALTOR®.',
+    `Tour Silverstone Ranch (89131) architecture, interiors, and outdoor living through curated photography. Mediterranean and desert contemporary homes in Centennial Hills by ${CONTACT_INFO.agentName}.`,
   alternates: {
-    canonical: '/photos',
+    canonical: path,
   },
   openGraph: {
-    title: buildPageTitle('Photo Gallery'),
+    title: buildPageTitle('Silverstone Ranch Photo Gallery | 89131'),
     description:
       'Experience Silverstone Ranch architecture, interiors, and amenity spaces via curated photography and buyer resources.',
-    url: `${CONTACT_INFO.website.base}/photos`,
+    url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
+    images: galleryImages.map((img) => ({ url: img.url, alt: img.caption })),
   },
 }
 
 export default function PhotosPage() {
-  const path = '/photos'
   const pageSchema = buildWebPageSchema({
     path,
     name: 'Silverstone Ranch Photo Gallery',
@@ -34,11 +46,23 @@ export default function PhotosPage() {
     ],
   })
 
+  const gallerySchema = buildImageGallerySchema({
+    path,
+    name: 'Silverstone Ranch Lifestyle Gallery',
+    images: galleryImages,
+  })
+
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+
+  const schemaData = [pageSchema, gallerySchema, faqSchema].filter(Boolean)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
-      <SeoJsonLd id="photos" data={pageSchema} />
+      <SeoJsonLd id="photos" data={schemaData as Record<string, unknown>[]} />
       <PhotosPageClient />
+      <div className="mx-auto max-w-3xl px-4">
+        <FaqSection faqs={faqs} heading="Silverstone Ranch Photo FAQs" />
+      </div>
     </div>
   )
 }
-

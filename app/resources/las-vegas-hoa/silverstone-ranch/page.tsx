@@ -15,7 +15,7 @@ import {
   Users,
 } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -24,9 +24,9 @@ const canonicalUrl = `${CONTACT_INFO.website.base}${canonicalPath}`
 const heroImageUrl = `${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`
 
 export const metadata: Metadata = {
-  title: 'HOA in Las Vegas | Fees, Amenities & Contacts',
+  title: buildHyperlocalTitle('Silverstone Ranch HOA Fees & Contacts'),
   description:
-    'Explore Silverstone Ranch HOA in Northwest Las Vegas. Review annual fees, gated amenities, community management contacts, and neighborhood highlights tailored for homeowners and buyers.',
+    'Silverstone Ranch HOA in Northwest Las Vegas (89131): annual fees, gated amenities, CAMCO contacts, and sub-association context for buyers and homeowners.',
   keywords: [
     'Silverstone Ranch HOA',
     'Silverstone Ranch Las Vegas',

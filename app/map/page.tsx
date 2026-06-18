@@ -1,16 +1,20 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { MAP_FAQS } from '@/lib/hyperlocal-faqs'
+import { buildFaqSchema, buildMapPlaceSchema, buildWebPageSchema } from '@/lib/seo'
 
 const mapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+const path = '/map'
+const faqs = MAP_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
 export const metadata: Metadata = {
-  title: 'Interactive Map | Neighborhood Orientation',
+  title: buildHyperlocalTitle('Silverstone Ranch Map & Location'),
   description:
-    'Explore Silverstone Ranch through an interactive map highlighting guard gates, amenities, schools, and surrounding conveniences.',
+    `Interactive map of Silverstone Ranch (89131) in Centennial Hills—guard gates, schools, parks, and Northwest Las Vegas conveniences. Directions from ${CONTACT_INFO.agentName}.`,
   alternates: {
     canonical: '/map',
   },
@@ -24,7 +28,6 @@ export const metadata: Metadata = {
 }
 
 export default function MapPage() {
-  const path = '/map'
   const pageSchema = buildWebPageSchema({
     path,
     name: 'Silverstone Ranch Map',
@@ -36,9 +39,20 @@ export default function MapPage() {
     ],
   })
 
+  const mapPlaceSchema = buildMapPlaceSchema({
+    path,
+    name: 'Silverstone Ranch, Las Vegas NV 89131',
+    description:
+      'Guard-gated master-planned community in Centennial Hills, Northwest Las Vegas, with geo coordinates for relocation planning.',
+  })
+
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+
+  const schemaData = [pageSchema, mapPlaceSchema, faqSchema].filter(Boolean)
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
-      <SeoJsonLd id="map" data={pageSchema} />
+      <SeoJsonLd id="map" data={schemaData as Record<string, unknown>[]} />
       <div className="mx-auto max-w-7xl">
         <div className="text-center mb-12">
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
@@ -168,6 +182,10 @@ export default function MapPage() {
               Request Information
             </Link>
           </div>
+        </div>
+
+        <div className="mx-auto max-w-3xl">
+          <FaqSection faqs={faqs} heading="Silverstone Ranch Location FAQs" />
         </div>
       </div>
     </div>

@@ -1,28 +1,32 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildAction, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
+import { FaqSection } from '@/components/FaqSection'
+import { HOME_VALUATION_FAQS } from '@/lib/hyperlocal-faqs'
+import { buildAction, buildFaqSchema, buildHowToSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import HomeValuationPageClient from './HomeValuationPageClient'
 
+const path = '/home-valuation'
+const faqs = HOME_VALUATION_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
+
 export const metadata: Metadata = {
-  title: 'Home Valuation | Instant Market Analysis',
+  title: buildHyperlocalTitle('Silverstone Ranch Home Valuation'),
   description:
-    'Request a Silverstone Ranch home valuation and receive a data-driven pricing roadmap from Dr. Jan Duffy REALTOR®. Insights tailored to your property.',
+    `Request a free Silverstone Ranch (89131) home valuation from ${CONTACT_INFO.agentName}. Data-driven pricing, enclave comps, and seller roadmap for Centennial Hills.`,
   alternates: {
-    canonical: '/home-valuation',
+    canonical: path,
   },
   openGraph: {
-    title: buildPageTitle('Home Valuation | Instant Market Analysis'),
+    title: buildPageTitle('Silverstone Ranch Home Valuation | 89131'),
     description:
       'Unlock your Silverstone Ranch home value with a custom market analysis, pricing strategy, and selling roadmap from Dr. Jan Duffy.',
-    url: `${CONTACT_INFO.website.base}/home-valuation`,
+    url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
 }
 
 export default function HomeValuationPage() {
-  const path = '/home-valuation'
   const pageSchema = buildWebPageSchema({
     path,
     name: 'Silverstone Ranch Home Valuation',
@@ -67,18 +71,22 @@ export default function HomeValuationPage() {
       buildAction({
         type: 'ReserveAction',
         name: 'Request Valuation',
-        target: `${CONTACT_INFO.website.base}/home-valuation`,
+        target: `${CONTACT_INFO.website.base}${path}`,
       }),
     ],
   })
 
-  const schemaData = [pageSchema, valuationServiceSchema, howToSchema].filter(Boolean)
+  const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
+
+  const schemaData = [pageSchema, valuationServiceSchema, howToSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
       <SeoJsonLd id="home-valuation" data={schemaData as Record<string, unknown>[]} />
       <HomeValuationPageClient />
+      <div className="mx-auto max-w-3xl px-4">
+        <FaqSection faqs={faqs} heading="Silverstone Ranch Valuation FAQs" />
+      </div>
     </div>
   )
 }
-

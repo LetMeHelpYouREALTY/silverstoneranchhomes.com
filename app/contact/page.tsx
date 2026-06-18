@@ -1,15 +1,15 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildLocalBusinessSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import { CONTACT_FAQS } from '@/lib/hyperlocal-faqs'
 import ContactPageClient from './ContactPageClient'
 
 export const metadata: Metadata = {
-  title: 'Contact',
+  title: buildHyperlocalTitle('Contact Silverstone Ranch REALTOR®'),
   description:
-    `Contact ${CONTACT_INFO.agentName} and ${CONTACT_INFO.businessName} for tours, valuations, or community questions. Call, email, or chat.`,
+    `Contact ${CONTACT_INFO.agentName} for Silverstone Ranch (89131) tours, valuations, and HOA guidance. Call ${CONTACT_INFO.phone.display}, email, or chat with ${CONTACT_INFO.businessName}.`,
   alternates: {
     canonical: '/contact',
   },
@@ -61,7 +61,11 @@ export default function ContactPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(path, CONTACT_FAQS.map((f) => ({ question: f.question, answer: f.answer })))
+  const faqSchema = buildFaqSchema(
+    path,
+    CONTACT_FAQS.map((f) => ({ question: f.question, answer: f.answer })),
+    ['.speakable-answer'],
+  )
 
   const schemaData = [pageSchema, localBusinessSchema, conciergeServiceSchema, faqSchema].filter(Boolean)
 
