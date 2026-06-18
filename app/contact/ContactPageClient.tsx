@@ -1,22 +1,10 @@
 'use client'
 
-import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
-import * as z from 'zod'
 import { Phone, Mail, MessageCircle, MapPin, Globe } from 'lucide-react'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { trackEvent } from '@/lib/analytics'
-
-const contactSchema = z.object({
-  name: z.string().min(2, 'Name is required'),
-  email: z.string().email('Valid email is required'),
-  phone: z.string().optional(),
-  message: z.string().min(10, 'Message must be at least 10 characters'),
-})
-
-type ContactFormData = z.infer<typeof contactSchema>
+import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
+import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
 
 type ContactFaq = {
   question: string
@@ -28,57 +16,12 @@ type ContactPageClientProps = {
 }
 
 export default function ContactPageClient({ faqs }: ContactPageClientProps) {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSuccess, setIsSuccess] = useState(false)
-
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    reset,
-  } = useForm<ContactFormData>({
-    resolver: zodResolver(contactSchema),
-  })
-
-  const onSubmit = async (data: ContactFormData) => {
-    setIsSubmitting(true)
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(data),
-      })
-
-      if (response.ok) {
-        trackEvent('form_submission', {
-          form_id: 'contact',
-          form_name: 'Contact Page Form',
-          status: 'success',
-        })
-        setIsSuccess(true)
-        reset()
-      } else {
-        throw new Error('Failed to submit')
-      }
-    } catch (error) {
-      console.error('Error:', error)
-      trackEvent('form_submission', {
-        form_id: 'contact',
-        form_name: 'Contact Page Form',
-        status: 'error',
-      })
-      alert('Failed to submit. Please try again.')
-    } finally {
-      setIsSubmitting(false)
-    }
-  }
-
   return (
     <div className="mx-auto max-w-4xl">
       <div className="text-center mb-12">
         <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Contact Dr. Jan Duffy | Silverstone Ranch REALTOR®</h1>
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Get in touch with Dr. Jan Duffy for questions about properties, scheduling tours, or any real estate needs in Silverstone Ranch.
+          Schedule a private conversation about properties, tours, valuations, or any real estate needs in Silverstone Ranch.
         </p>
       </div>
 
@@ -126,10 +69,10 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
               </div>
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">{CONTACT_INFO.chat.label}</h3>
-                <Link href={CONTACT_INFO.chat.url} className="text-lg text-blue-600 hover:text-blue-700 font-medium">
-                  Start a Conversation
-                </Link>
-                <p className="text-sm text-gray-600 mt-1">Chat with the Silverstone team any time</p>
+                <CalendlyPopupLink className="text-lg text-blue-600 hover:text-blue-700 font-medium">
+                  Schedule time with me
+                </CalendlyPopupLink>
+                <p className="text-sm text-gray-600 mt-1">Book a private 15-minute conversation online</p>
               </div>
             </div>
 
@@ -200,15 +143,9 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
               <div>
                 <h3 className="font-semibold text-gray-900 mb-1">Service options</h3>
                 <ul className="text-sm text-gray-700 list-disc pl-5 space-y-1">
-                  {CONTACT_INFO.gbpAttributes.offersOnlineAppointments && (
-                    <li>Online appointments available</li>
-                  )}
-                  {CONTACT_INFO.gbpAttributes.wheelchairAccessibleParking && (
-                    <li>Wheelchair-accessible parking</li>
-                  )}
-                  {CONTACT_INFO.gbpAttributes.wheelchairAccessibleEntrance && (
-                    <li>Wheelchair-accessible entrance</li>
-                  )}
+                  {CONTACT_INFO.gbpAttributes.offersOnlineAppointments && <li>Online appointments available</li>}
+                  {CONTACT_INFO.gbpAttributes.wheelchairAccessibleParking && <li>Wheelchair-accessible parking</li>}
+                  {CONTACT_INFO.gbpAttributes.wheelchairAccessibleEntrance && <li>Wheelchair-accessible entrance</li>}
                   {CONTACT_INFO.gbpAttributes.womenOwned && <li>Women-owned business</li>}
                   {CONTACT_INFO.gbpAttributes.veteranOwned && <li>Veteran-owned business</li>}
                 </ul>
@@ -218,106 +155,53 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
         </div>
 
         <div className="bg-white rounded-lg shadow-xl p-8">
-          {isSuccess ? (
-            <div className="text-center py-8">
-              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-green-100 mb-4">
-                <svg className="h-8 w-8 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">Thank You!</h2>
-              <p className="text-gray-600 mb-6">We&apos;ve received your message and will get back to you soon.</p>
-              <button
-                onClick={() => setIsSuccess(false)}
-                className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all"
-              >
-                Send Another Message
-              </button>
-            </div>
-          ) : (
-            <>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send a Message</h2>
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
-                    Full Name *
-                  </label>
-                  <input
-                    {...register('name')}
-                    type="text"
-                    id="name"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  {errors.name && <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>}
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                    Email *
-                  </label>
-                  <input
-                    {...register('email')}
-                    type="email"
-                    id="email"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  {errors.email && <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>}
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                    Phone
-                  </label>
-                  <input
-                    {...register('phone')}
-                    type="tel"
-                    id="phone"
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
-                    Message *
-                  </label>
-                  <textarea
-                    {...register('message')}
-                    id="message"
-                    rows={5}
-                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  />
-                  {errors.message && <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>}
-                </div>
-
-                <button
-                  type="submit"
-                  disabled={isSubmitting}
-                  className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed font-semibold transition-all shadow-lg hover:shadow-xl"
-                >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
-            </>
-          )}
+          <CalendlySchedulingBlock
+            title="Schedule Time With Dr. Duffy"
+            description="Use the calendar below or open the scheduling popup to book your private 15-minute conversation."
+          />
         </div>
       </div>
 
       <div className="bg-white rounded-lg shadow-xl p-8">
         <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">Quick Actions</h2>
         <div className="grid md:grid-cols-3 gap-4">
-          <Link href="/home-valuation" className="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors">
+          <CalendlyPopupLink
+            variant="button"
+            className="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors"
+          >
             <div className="text-2xl mb-2">💰</div>
-            <div className="font-semibold text-gray-900">Get Home Valuation</div>
-          </Link>
-          <Link href="/book-tour" className="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors">
+            <div className="font-semibold text-gray-900">Discuss Home Valuation</div>
+          </CalendlyPopupLink>
+          <CalendlyPopupLink
+            variant="button"
+            className="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors"
+          >
             <div className="text-2xl mb-2">🏠</div>
             <div className="font-semibold text-gray-900">Schedule a Tour</div>
-          </Link>
-          <Link href="/request-info" className="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors">
+          </CalendlyPopupLink>
+          <CalendlyPopupLink
+            variant="button"
+            className="p-4 bg-blue-50 rounded-lg text-center hover:bg-blue-100 transition-colors"
+          >
             <div className="text-2xl mb-2">📋</div>
             <div className="font-semibold text-gray-900">Request Information</div>
-          </Link>
+          </CalendlyPopupLink>
         </div>
+        <p className="mt-6 text-center text-sm text-gray-600">
+          You can also visit dedicated pages:{' '}
+          <Link href="/home-valuation" className="text-blue-600 hover:underline">
+            home valuation
+          </Link>
+          ,{' '}
+          <Link href="/book-tour" className="text-blue-600 hover:underline">
+            book a tour
+          </Link>
+          , or{' '}
+          <Link href="/request-info" className="text-blue-600 hover:underline">
+            request info
+          </Link>
+          .
+        </p>
       </div>
 
       <div className="bg-white rounded-lg shadow-xl p-8 mt-12">

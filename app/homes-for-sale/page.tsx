@@ -10,6 +10,7 @@ import { HOMES_FOR_SALE_FAQS } from '@/lib/hyperlocal-faqs'
 import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { fetchSilverstoneListings, listingsToSchemaEntries } from '@/lib/realscout/fetch-listings'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
+import { HomesForSaleScheduling } from '@/components/HomesForSaleScheduling'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Homes for Sale | 89131 Listings',
@@ -150,116 +151,7 @@ export default async function HomesForSalePage() {
             </div>
           </div>
 
-          <div className="bg-white rounded-lg shadow-lg p-8 border border-blue-100">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">Search Filters</h2>
-            <p className="text-sm text-gray-600 mb-6">
-              Narrow the current Silverstone Ranch inventory by price, size, or days on market. Ask Dr. Duffy for private and coming-soon listings not shown online.
-            </p>
-            <form className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="minPrice" className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-1">
-                    Min Price
-                  </label>
-                  <input
-                    id="minPrice"
-                    type="text"
-                    placeholder="$550,000"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="maxPrice" className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-1">
-                    Max Price
-                  </label>
-                  <input
-                    id="maxPrice"
-                    type="text"
-                    placeholder="$900,000"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                  />
-                </div>
-              </div>
-
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <label htmlFor="beds" className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-1">
-                    Bedrooms
-                  </label>
-                  <select
-                    id="beds"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                  >
-                    <option value="3+">3+</option>
-                    <option value="4+">4+</option>
-                    <option value="5+">5+</option>
-                  </select>
-                </div>
-                <div>
-                  <label htmlFor="baths" className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-1">
-                    Bathrooms
-                  </label>
-                  <select
-                    id="baths"
-                    className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200"
-                  >
-                    <option value="2+">2+</option>
-                    <option value="2.5+">2.5+</option>
-                    <option value="3+">3+</option>
-                  </select>
-                </div>
-              </div>
-
-              <div>
-                <label htmlFor="dom" className="text-xs font-semibold text-gray-600 uppercase tracking-wide block mb-1">
-                  Max Days on Market
-                </label>
-                <input
-                  id="dom"
-                  type="range"
-                  min="0"
-                  max="60"
-                  defaultValue="21"
-                  className="w-full"
-                />
-                <div className="flex justify-between text-xs text-gray-500">
-                  <span>0</span>
-                  <span>21</span>
-                  <span>60</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-2">
-                <input
-                  id="excludeGolf"
-                  type="checkbox"
-                  className="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500"
-                />
-                <label htmlFor="excludeGolf" className="text-sm text-gray-700">
-                  Exclude homes overlooking dormant golf course land
-                </label>
-              </div>
-
-              <button
-                type="button"
-                className="w-full rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-all"
-              >
-                Request Matching Listings
-              </button>
-            </form>
-            <p className="mt-4 text-xs text-gray-500">
-              Silverstone Ranch inventory updates hourly. Submit the form and Dr. Duffy will send curated options plus coming-soon homes you won&apos;t find on public portals. School attendance boundaries are set by CCSD—confirm zoning at
-              <a
-                href="https://ccsd.net/schools/zoning/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="ml-1 font-semibold text-blue-600 hover:underline"
-              >
-                ccsd.net/schools/zoning
-              </a>
-              {' '}before you write an offer.
-            </p>
-          </div>
+          <HomesForSaleScheduling />
         </div>
 
         {/* Featured Property */}
