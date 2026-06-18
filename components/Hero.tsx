@@ -2,6 +2,7 @@
 
 import { Phone } from 'lucide-react'
 import ContactFormModal from './ContactFormModal'
+import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
 import { useState } from 'react'
 import { CONTACT_INFO } from '@/lib/contact-info'
 
@@ -59,11 +60,19 @@ export default function Hero() {
                 Unlock Your Silverstone Ranch Home&apos;s Value in 60 Seconds
               </a>
               
-              <button
-                onClick={() => setShowContactModal(true)}
+              <CalendlyPopupLink
+                variant="button"
                 className="w-full lg:w-auto px-8 py-4 bg-white text-blue-600 text-lg font-semibold rounded-lg border-2 border-blue-600 hover:bg-blue-50 hover:border-blue-700 transition-all"
               >
                 Plan a Community Positioning Strategy
+              </CalendlyPopupLink>
+
+              <button
+                type="button"
+                onClick={() => setShowContactModal(true)}
+                className="w-full lg:w-auto px-8 py-3 text-blue-700 text-sm font-semibold hover:underline"
+              >
+                Or open full scheduling calendar
               </button>
             </div>
           </div>

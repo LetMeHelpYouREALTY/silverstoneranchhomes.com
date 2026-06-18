@@ -6,6 +6,8 @@ import Footer from '@/components/Footer'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { RealscoutOfficeListingsWrapper } from '@/components/RealscoutOfficeListingsWrapper'
+import { CalendlyBadge } from '@/components/calendly/CalendlyBadge'
+import { CalendlySchedulingSection } from '@/components/calendly/CalendlySchedulingSection'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
 import { GA_MEASUREMENT_ID } from '@/lib/analytics'
@@ -86,6 +88,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://em.realscout.com" />
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://assets.calendly.com" />
+        <link rel="dns-prefetch" href="https://assets.calendly.com" />
+        <link rel="preconnect" href="https://calendly.com" />
+        <link rel="dns-prefetch" href="https://calendly.com" />
+        <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         {/* Load Inter font asynchronously to avoid 750ms render blocking */}
         <script
           dangerouslySetInnerHTML={{
@@ -139,6 +146,10 @@ export default function RootLayout({
           }}
         />
         {/* Realscout script and styles are now loaded dynamically by the component when in view */}
+        <Script
+          src="https://assets.calendly.com/assets/external/widget.js"
+          strategy="lazyOnload"
+        />
       </head>
       <body className="font-sans antialiased">
         <Suspense fallback={null}>
@@ -147,6 +158,8 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <RealscoutOfficeListingsWrapper />
+        <CalendlySchedulingSection />
+        <CalendlyBadge />
         <Footer />
       </body>
     </html>
