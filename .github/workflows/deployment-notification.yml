@@ -1,0 +1,37 @@
+name: Deployment Notifications
+
+on:
+  deployment_status:
+
+jobs:
+  notify:
+    name: Send deployment notification
+    runs-on: ubuntu-latest
+    if: github.event.deployment_status.state == 'success' || github.event.deployment_status.state == 'failure'
+
+    steps:
+      - name: Deployment success
+        if: github.event.deployment_status.state == 'success'
+        run: |
+          echo "✅ Deployment successful!"
+          echo "Environment: ${{ github.event.deployment.environment }}"
+          echo "URL: ${{ github.event.deployment_status.target_url }}"
+
+          # Log deployment details
+          echo "::notice title=Deployment Success::Deployed to ${{ github.event.deployment.environment }} at $(date)"
+
+      - name: Deployment failure
+        if: github.event.deployment_status.state == 'failure'
+        run: |
+          echo "❌ Deployment failed!"
+          echo "Environment: ${{ github.event.deployment.environment }}"
+
+          # Create issue for failed deployment
+          echo "::error title=Deployment Failed::Deployment to ${{ github.event.deployment.environment }} failed at $(date)"
+
+      - name: Post to deployment log
+        run: |
+          echo "Deployment Status: ${{ github.event.deployment_status.state }}"
+          echo "Commit: ${{ github.event.deployment.sha }}"
+          echo "Environment: ${{ github.event.deployment.environment }}"
+          echo "Time: $(date)"
