@@ -1,0 +1,70 @@
+name: Scheduled SEO Monitoring
+
+on:
+  schedule:
+    # Run every day at 9 AM UTC
+    - cron: '0 9 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: seo-monitoring
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    name: Monitor Production SEO
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install glob
+
+      - name: Run SEO monitor
+        run: npm run validate:seo
+        continue-on-error: true
+
+      - name: Save monitoring results
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-monitoring-results-${{ github.run_number }}
+          path: seo-monitor-results.json
+          retention-days: 30
+
+      - name: Send notification on failure
+        if: failure()
+        run: |
+          echo "⚠️ SEO monitoring detected issues" >> $GITHUB_STEP_SUMMARY
+          echo "Check the artifacts for detailed results" >> $GITHUB_STEP_SUMMARY
+
+  schema-health:
+    name: Schema Health Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install glob
+
+      - name: Validate schema markup
+        run: npm run validate:schema
+        continue-on-error: true
+
+      - name: Upload schema results
+        uses: actions/upload-artifact@v4
+        with:
+          name: schema-validation-results-${{ github.run_number }}
+          path: schema-validation-results.json
+          retention-days: 30

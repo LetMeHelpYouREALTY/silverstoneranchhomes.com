@@ -1,0 +1,44 @@
+{
+  "ci": {
+    "collect": {
+      "numberOfRuns": 3,
+      "startServerCommand": "npm run start",
+      "startServerReadyPattern": "ready",
+      "url": [
+        "http://localhost:3000",
+        "http://localhost:3000/homes-for-sale",
+        "http://localhost:3000/agent",
+        "http://localhost:3000/amenities",
+        "http://localhost:3000/silverstone-ranch"
+      ],
+      "settings": {
+        "onlyCategories": ["performance", "accessibility", "best-practices", "seo"]
+      }
+    },
+    "assert": {
+      "preset": "lighthouse:recommended",
+      "assertions": {
+        "categories:performance": ["warn", { "minScore": 0.8 }],
+        "categories:accessibility": ["error", { "minScore": 0.9 }],
+        "categories:best-practices": ["warn", { "minScore": 0.9 }],
+        "categories:seo": ["error", { "minScore": 0.95 }],
+        "viewport": "error",
+        "document-title": "error",
+        "meta-description": "error",
+        "http-status-code": "error",
+        "crawlable-anchors": "error",
+        "link-text": "warn",
+        "hreflang": "off",
+        "canonical": "error",
+        "robots-txt": "error",
+        "structured-data": "error",
+        "meta-refresh": "error",
+        "font-size": "warn",
+        "tap-targets": "warn"
+      }
+    },
+    "upload": {
+      "target": "temporary-public-storage"
+    }
+  }
+}

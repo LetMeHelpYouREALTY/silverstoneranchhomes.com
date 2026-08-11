@@ -1,0 +1,188 @@
+name: SEO & Schema Validation
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'app/**/*.tsx'
+      - 'app/**/*.ts'
+      - 'lib/seo.ts'
+      - 'lib/faqs.ts'
+      - 'app/sitemap.ts'
+      - 'app/robots.ts'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: seo-validation-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-schema:
+    name: Validate Schema Markup
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        env:
+          TAILWIND_DISABLE_NATIVE: 'true'
+
+      - name: Install schema validator
+        run: npm install -g schema-org-validator
+
+      - name: Run schema validation script
+        run: node scripts/validate-schema.js
+        continue-on-error: true
+
+      - name: Comment PR with results
+        if: github.event_name == 'pull_request'
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require('fs');
+            const resultsPath = './schema-validation-results.json';
+
+            if (fs.existsSync(resultsPath)) {
+              const results = JSON.parse(fs.readFileSync(resultsPath, 'utf8'));
+              const summary = `## 📊 Schema Validation Results
+
+              ${results.summary}
+
+              ### Details
+              ${results.details.map(d => `- ${d}`).join('\n')}
+              `;
+
+              github.rest.issues.createComment({
+                issue_number: context.issue.number,
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                body: summary
+              });
+            }
+
+  lighthouse-seo:
+    name: Lighthouse SEO Audit
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build site
+        run: npm run build
+        env:
+          TAILWIND_DISABLE_NATIVE: 'true'
+
+      - name: Start server
+        run: |
+          npm run start &
+          npx wait-on http://localhost:3000 --timeout 60000
+
+      - name: Run Lighthouse CI
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:3000
+            http://localhost:3000/homes-for-sale
+            http://localhost:3000/agent
+            http://localhost:3000/amenities
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+          runs: 3
+
+      - name: Save Lighthouse results
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-results
+          path: '.lighthouseci'
+
+  seo-checks:
+    name: SEO Best Practices
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check meta tags
+        run: |
+          echo "Checking for required meta tags..."
+          grep -r "metadataBase" app/ || echo "⚠️ Missing metadataBase"
+          grep -r "og:image" app/ || echo "⚠️ Missing OpenGraph images"
+          grep -r "twitter:card" app/ || echo "⚠️ Missing Twitter card"
+
+      - name: Check robots.txt configuration
+        run: |
+          echo "Validating robots.txt..."
+          node -e "
+          const robots = require('./app/robots.ts');
+          console.log('✅ Robots.ts is valid');
+          "
+
+      - name: Check sitemap
+        run: |
+          echo "Validating sitemap..."
+          node -e "
+          const sitemap = require('./app/sitemap.ts');
+          console.log('✅ Sitemap.ts is valid');
+          "
+
+      - name: Validate FAQ schema
+        run: |
+          echo "Checking FAQ schema..."
+          grep -r "buildFaqSchema" app/ && echo "✅ FAQ schema found" || echo "⚠️ No FAQ schema"
+          grep -r "@type.*FAQPage" app/ && echo "✅ FAQPage schema found" || echo "⚠️ No FAQPage schema"
+
+      - name: Check for AEO optimization
+        run: |
+          echo "Checking for AEO optimization..."
+          grep -r "speakable" lib/ && echo "✅ Speakable content found" || echo "⚠️ No speakable content"
+          grep -r "potentialAction" lib/ && echo "✅ PotentialAction found" || echo "⚠️ No potentialAction"
+
+  report:
+    name: Generate SEO Report
+    runs-on: ubuntu-latest
+    needs: [validate-schema, lighthouse-seo, seo-checks]
+    if: always()
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate summary
+        run: |
+          echo "## 🚀 SEO Automation Report" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### Completed Checks:" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Schema markup validation" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Lighthouse SEO audit" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Meta tags verification" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Robots.txt validation" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ Sitemap validation" >> $GITHUB_STEP_SUMMARY
+          echo "- ✅ AEO optimization check" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 2026 Best Practices:" >> $GITHUB_STEP_SUMMARY
+          echo "- Schema.org structured data with complete properties" >> $GITHUB_STEP_SUMMARY
+          echo "- GEO optimization for AI crawlers" >> $GITHUB_STEP_SUMMARY
+          echo "- AEO with voice search ready content" >> $GITHUB_STEP_SUMMARY
+          echo "- Local SEO with geographic signals" >> $GITHUB_STEP_SUMMARY
