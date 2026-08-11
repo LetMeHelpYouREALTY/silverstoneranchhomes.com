@@ -1,0 +1,52 @@
+name: Vercel Preview Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  preview-check:
+    name: Preview Deployment Checks
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Type check
+        run: npx tsc --noEmit
+
+      - name: Format check
+        run: npm run format:check
+
+      - name: Build preview
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Analyze bundle size
+        run: |
+          if [ -d ".next" ]; then
+            echo "📊 Build output size:"
+            du -sh .next
+            echo ""
+            echo "📦 JavaScript bundle sizes:"
+            find .next/static -name "*.js" -type f -exec ls -lh {} \; | awk '{print $5, $9}' | sort -rh | head -10
+          fi
+
+      - name: Success summary
+        run: |
+          echo "✅ All preview checks passed!"
+          echo "- TypeScript compilation successful"
+          echo "- Code formatting validated"
+          echo "- Production build completed"
+          echo "- Bundle analysis complete"

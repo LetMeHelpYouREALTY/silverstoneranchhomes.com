@@ -1,6 +1,7 @@
-# Silverstone Ranch Homes - Real Estate Listing Site
+# Silverstone Ranch Homes
 
-A comprehensive Silverstone Ranch community website highlighting luxury homes, amenities, and market insights in Northwest Las Vegas. Built with Next.js 15 and deployed on Vercel.
+Official website for Silverstone Ranch luxury homes in Northwest Las Vegas.  
+Built with Next.js 15, Tailwind CSS v4, and deployed on Vercel with comprehensive CI/CD automation.
 
 ## Features
 
@@ -13,47 +14,84 @@ A comprehensive Silverstone Ranch community website highlighting luxury homes, a
 - **Responsive Design**: Mobile-first, fully responsive layout
 - **SEO Optimized**: Complete metadata, structured data, and Open Graph tags
 
-## Tech Stack
+## 🏗️ Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Language**: TypeScript
-- **Styling**: Tailwind CSS 4
+- **Framework**: Next.js 15.5.3 (App Router)
+- **Language**: TypeScript (strict mode)
+- **Styling**: Tailwind CSS v4 with PostCSS
+- **UI Components**: Radix UI primitives
+- **Animations**: Framer Motion
 - **Forms**: React Hook Form with Zod validation
 - **Image Gallery**: react-image-gallery
-- **Maps**: Google Maps Embed API
+- **Maps**: @react-google-maps/api
 - **Deployment**: Vercel
+
+## 🤖 Automation & CI/CD
+
+This project includes comprehensive automation for code quality, security, and performance:
+
+### Automated Workflows
+- ✅ **Build Validation** - Lint, typecheck, and build on every PR
+- 🔍 **Preview Checks** - Format validation and bundle analysis
+- 📊 **Performance Monitoring** - Weekly Lighthouse audits
+- 🔒 **Security Audits** - Daily vulnerability scanning
+- 📦 **Dependency Updates** - Automated Dependabot PRs
+
+### Local Development Automation
+```bash
+# Setup git hooks for pre-commit validation
+./scripts/setup-hooks.sh
+
+# Run all validations manually
+npm run validate
+```
+
+See [.github/AUTOMATION.md](.github/AUTOMATION.md) for detailed documentation.
 
 ## Getting Started
 
 ### Prerequisites
 
-- Node.js 18+ 
-- npm or pnpm
+- Node.js 20+
+- npm 9+
+- Git
 
 ### Installation
 
-1. Clone the repository
-2. Install dependencies:
-   ```bash
-   npm install
-   # or
-   pnpm install
-   ```
+```bash
+# Clone the repository
+git clone https://github.com/DrJanDuffy/silverstoneranchhomes.com.git
+cd silverstoneranchhomes.com
 
-3. Set up environment variables (create `.env.local`):
-   ```env
-   NEXT_PUBLIC_GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-   EMAIL_SERVICE_API_KEY=your_email_service_key (optional)
-   ```
+# Install dependencies
+npm install
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   # or
-   pnpm dev
-   ```
+# Setup local git hooks (recommended)
+./scripts/setup-hooks.sh
 
-5. Open [http://localhost:3000](http://localhost:3000) in your browser
+# Set up environment variables
+cp .env.example .env.local
+# Edit .env.local with your API keys
+
+# Start development server
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000)
+
+### Available Scripts
+
+**Development**
+- `npm run dev` - Start development server with Turbopack
+- `npm run build` - Create production build
+- `npm start` - Start production server
+
+**Code Quality**
+- `npm run validate` - Run all checks (recommended before commit)
+- `npm run typecheck` - TypeScript type checking
+- `npm run lint` - ESLint
+- `npm run format` - Format code with Prettier
+- `npm run format:check` - Check code formatting
 
 ## Project Structure
 
@@ -106,14 +144,37 @@ To enable email functionality, update the API routes in `app/api/` to integrate 
 
 Place property photos in `public/images/property/` and agent photos in `public/images/agent/`. The gallery component will automatically handle missing images with fallbacks.
 
-## Deployment
+## 🚢 Deployment
 
-The site is configured for Vercel deployment:
+**Automatic Deployment via Vercel:**
+- Push to `main` → Production deployment
+- Open PR → Preview deployment with unique URL
+- All deployments validated by CI/CD pipeline
 
-1. Push to your GitHub repository
-2. Import the project in Vercel
-3. Set environment variables in Vercel dashboard
-4. Deploy!
+**Manual Deployment:**
+```bash
+npm run build
+npm start
+```
+
+## 📊 Performance Targets
+
+- First Contentful Paint: < 1.5s
+- Largest Contentful Paint: < 2.5s
+- Total Blocking Time: < 200ms
+- Cumulative Layout Shift: < 0.1
+
+Monitored via automated Lighthouse audits.
+
+## 🔒 Security
+
+- Daily automated vulnerability scanning
+- Dependabot security updates
+- npm audit in CI pipeline
+
+## 📚 Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines and best practices.
 
 ## Contact Information
 

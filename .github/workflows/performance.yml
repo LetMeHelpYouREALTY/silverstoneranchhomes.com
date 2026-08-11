@@ -1,0 +1,53 @@
+name: Performance Monitoring
+
+on:
+  pull_request:
+    branches: [main]
+  schedule:
+    # Run weekly on Monday at 9 AM
+    - cron: '0 9 * * 1'
+
+jobs:
+  lighthouse:
+    name: Lighthouse Performance Audit
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build application
+        run: npm run build
+        env:
+          NODE_ENV: production
+
+      - name: Start server
+        run: npm start &
+        env:
+          PORT: 3000
+
+      - name: Wait for server
+        run: |
+          timeout 60 bash -c 'until curl -s http://localhost:3000 > /dev/null; do sleep 2; done'
+
+      - name: Run Lighthouse
+        uses: treosh/lighthouse-ci-action@v11
+        with:
+          urls: |
+            http://localhost:3000
+            http://localhost:3000/about
+            http://localhost:3000/amenities
+          uploadArtifacts: true
+          temporaryPublicStorage: true
+
+      - name: Performance summary
+        run: echo "📊 Lighthouse audit complete - check artifacts for detailed results"
