@@ -26,27 +26,43 @@ Built with Next.js 15, Tailwind CSS v4, and deployed on Vercel with comprehensiv
 - **Maps**: @react-google-maps/api
 - **Deployment**: Vercel
 
-## 🤖 Automation & CI/CD
+## 🤖 Automation
 
-This project includes comprehensive automation for code quality, security, and performance:
+This project includes comprehensive automation for **development workflows** and **business operations**:
 
-### Automated Workflows
+### Development Automation
 - ✅ **Build Validation** - Lint, typecheck, and build on every PR
 - 🔍 **Preview Checks** - Format validation and bundle analysis
 - 📊 **Performance Monitoring** - Weekly Lighthouse audits
 - 🔒 **Security Audits** - Daily vulnerability scanning
 - 📦 **Dependency Updates** - Automated Dependabot PRs
 
-### Local Development Automation
-```bash
-# Setup git hooks for pre-commit validation
-./scripts/setup-hooks.sh
+See [.github/AUTOMATION.md](.github/AUTOMATION.md) for development automation docs.
 
-# Run all validations manually
-npm run validate
+### CRM & Lead Automation
+- 🎯 **Auto-Lead Capture** - All forms → Follow Up Boss CRM
+- 📧 **Email Notifications** - Instant alerts for new leads
+- 🔗 **Zapier Integration** - Connect to 5,000+ apps
+- 🏷️ **Smart Tagging** - Auto-categorize by lead source
+- ⚡ **Parallel Processing** - All integrations run simultaneously
+
+**Form Types:**
+- Contact Form → Standard lead
+- Tour Request → URGENT priority
+- Home Valuation → HOT seller lead
+- Info Request → Nurture sequence
+
+See [.github/CRM-AUTOMATION.md](.github/CRM-AUTOMATION.md) for complete CRM setup guide.
+
+### Setup Local Git Hooks
+```bash
+./scripts/setup-hooks.sh
 ```
 
-See [.github/AUTOMATION.md](.github/AUTOMATION.md) for detailed documentation.
+### Test CRM Integrations
+```bash
+npx tsx scripts/test-crm-integration.ts
+```
 
 ## Getting Started
 
