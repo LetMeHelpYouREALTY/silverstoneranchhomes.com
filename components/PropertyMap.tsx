@@ -68,8 +68,8 @@ export default function PropertyMap() {
           </p>
           <p className="text-gray-700 leading-relaxed mb-4">
             This exclusive, guard-gated enclave isn&apos;t just a place to live; it&apos;s a lifestyle upgrade. 
-            Located just 10 minutes from designer shopping at Centennial Center, top-rated CCSD schools, and 
-            the sprawling 680-acre Floyd Lamb Park, every detail has been designed to enhance your daily life. 
+            Located just 10 minutes from shopping at Centennial Center, CCSD campuses, and 
+            the sprawling 680-acre Floyd Lamb Park, every detail has been designed to enhance daily routines. 
             The nearby 215 Beltway puts the Strip just 30 minutes away, while world-class healthcare at 
             Centennial Hills Hospital ensures peace of mind right in your neighborhood.
           </p>

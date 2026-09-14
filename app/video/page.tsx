@@ -6,10 +6,11 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { VIDEO_FAQS } from '@/lib/hyperlocal-faqs'
 import { buildFaqSchema, buildVideoObjectSchema, buildWebPageSchema } from '@/lib/seo'
+import { absoluteMediaUrl } from '@/lib/media'
 
 const path = '/video'
 const faqs = VIDEO_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
-const thumbnailUrl = `${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`
+const thumbnailUrl = absoluteMediaUrl('hero-guard-gated')
 
 export const metadata: Metadata = {
   title: buildHyperlocalTitle('Silverstone Ranch Video Tours'),

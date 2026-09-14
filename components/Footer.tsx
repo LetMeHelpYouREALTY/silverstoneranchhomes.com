@@ -240,7 +240,7 @@ export default function Footer() {
               <li>
                 <Link href="/market-insights" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
                   <TrendingUp className="h-4 w-4 group-hover:text-blue-400 transition-colors" />
-                  <span>Market Insights 2025</span>
+                  <span>Market Insights</span>
                 </Link>
               </li>
               <li>
@@ -305,6 +305,27 @@ export default function Footer() {
                 Office hours: {CONTACT_INFO.businessHours.display} daily · Languages:{' '}
                 {CONTACT_INFO.languagesOffered.join(', ')}
               </p>
+              <div className="mt-3 flex flex-wrap gap-3 text-xs font-semibold">
+                <a href={`tel:${CONTACT_INFO.phone.tel}`} className="text-blue-300 hover:text-white">
+                  Call {CONTACT_INFO.phone.display}
+                </a>
+                <a
+                  href={CONTACT_INFO.gbp.directionsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-300 hover:text-white"
+                >
+                  Directions
+                </a>
+                <a
+                  href={CONTACT_INFO.gbp.reviewsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-300 hover:text-white"
+                >
+                  Google Reviews
+                </a>
+              </div>
             </div>
             <div className="flex flex-col sm:flex-row items-center gap-4 text-sm">
               <div className="flex items-center gap-2 text-gray-400">

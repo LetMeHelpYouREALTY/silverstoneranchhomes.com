@@ -1,4 +1,5 @@
 import { CONTACT_INFO } from './contact-info'
+import { absoluteMediaUrl } from './media'
 
 type BreadcrumbItem = {
   name: string
@@ -144,7 +145,7 @@ export function buildOrganizationSchema() {
     name: CONTACT_INFO.businessName,
     url: CONTACT_INFO.website.url,
     foundingDate: CONTACT_INFO.foundingDate,
-    logo: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    logo: absoluteMediaUrl('hero-guard-gated'),
     sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
     contactPoint: [
       {
@@ -167,10 +168,11 @@ export function buildLocalBusinessSchema() {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
     name: CONTACT_INFO.businessName,
-    image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    image: absoluteMediaUrl('hero-guard-gated'),
     url: CONTACT_INFO.website.url,
     telephone: CONTACT_INFO.phone.display,
     email: CONTACT_INFO.email,
+    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
     address: {
       '@type': 'PostalAddress',
       streetAddress: CONTACT_INFO.address.street,
@@ -203,6 +205,8 @@ export function buildRealEstateAgentSchema() {
     url: CONTACT_INFO.website.url,
     email: CONTACT_INFO.email,
     telephone: CONTACT_INFO.phone.display,
+    image: absoluteMediaUrl('hero-guard-gated'),
+    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'Real Estate License',
@@ -295,7 +299,8 @@ export function buildPlaceSchema() {
       addressCountry: CONTACT_INFO.address.country,
     },
     telephone: CONTACT_INFO.phone.display,
-    image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    image: absoluteMediaUrl('hero-guard-gated'),
+    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
   }
 }
 
@@ -450,7 +455,7 @@ export function buildMapPlaceSchema({
       postalCode: CONTACT_INFO.address.postalCode,
       addressCountry: CONTACT_INFO.address.country,
     },
-    hasMap: `https://www.google.com/maps/place/Silverstone+Ranch,+Las+Vegas,+NV+89131`,
+    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
   }
 }
 

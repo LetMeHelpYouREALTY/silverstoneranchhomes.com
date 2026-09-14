@@ -7,6 +7,8 @@ import { VirtualOpenHouseButton } from '@/components/VirtualOpenHouseButton'
 import { ServicesLocationConversion } from '@/components/ServicesLocationConversion'
 import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { HeadingVisual } from '@/components/HeadingVisual'
+import { GbpCtaRow } from '@/components/GbpCtaRow'
 import {
   buildAggregateRatingSchema,
   buildAction,
@@ -18,6 +20,7 @@ import {
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { absoluteMediaUrl } from '@/lib/media'
 import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import {
@@ -40,6 +43,14 @@ export const metadata: Metadata = {
       'Discover Silverstone Ranch in Northwest Las Vegas—gated neighborhoods, curated amenities, and expert representation from Dr. Jan Duffy REALTOR®.',
     url: CONTACT_INFO.website.url,
     type: 'website',
+    images: [
+      {
+        url: absoluteMediaUrl('hero-guard-gated'),
+        width: 1920,
+        height: 1080,
+        alt: 'Guard-gated Silverstone Ranch home in Northwest Las Vegas',
+      },
+    ],
   },
 }
 
@@ -228,8 +239,15 @@ export default async function HomePage() {
                 Request Community Info
               </Link>
             </div>
+            <GbpCtaRow className="mt-6" />
           </div>
-          <div className="rounded-2xl border border-blue-100 bg-white p-6 shadow-lg">
+          <div className="space-y-6">
+            <HeadingVisual
+              mediaId="hero-guard-gated"
+              heading="Live Exceptionally in Silverstone Ranch, the Guard-Gated Enclave of Northwest Las Vegas"
+              priority
+            />
+            <div className="rounded-2xl border border-blue-100 bg-white p-6 shadow-lg">
             <h2 className="text-2xl font-semibold text-slate-900 mb-4">Why Buyers Trust Dr. Jan Duffy</h2>
             <ul className="space-y-3 text-sm text-slate-700">
               <li>
@@ -249,6 +267,7 @@ export default async function HomePage() {
                 lenders, movers, inspectors, and staging partners.
               </li>
             </ul>
+            </div>
           </div>
         </div>
       </section>
@@ -281,6 +300,11 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl space-y-10">
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Silverstone Service Suite</h2>
+            <HeadingVisual
+              mediaId="section-buyer-tour"
+              heading="Silverstone Service Suite"
+              className="mb-6"
+            />
             <p className="text-slate-700 leading-relaxed mb-6">
               Buying or selling inside a guard-gated community demands precision. Dr. Duffy’s in-house service suite gives clients
               one point of contact for every milestone—research, pricing, presentation, negotiation, and post-closing support. The
@@ -314,6 +338,11 @@ export default async function HomePage() {
 
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Lifestyle Pillars that Define Silverstone Ranch</h2>
+            <HeadingVisual
+              mediaId="hero-amenities-pool"
+              heading="Lifestyle Pillars that Define Silverstone Ranch"
+              className="mb-6"
+            />
             <p className="text-slate-700 leading-relaxed mb-6">
               Silverstone balances resort-style amenities with the everyday essentials busy households expect. From education
               pathways to outdoor escapes and dining corridors, each pillar has been curated to support long-term residency
@@ -323,14 +352,20 @@ export default async function HomePage() {
               <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Education & Enrichment</h3>
                 <p className="text-sm text-slate-700 leading-relaxed">
-                  Zoned for O’Roarke Elementary, Cadwallader Middle, and Arbor View High, families enjoy 7–8/10 GreatSchools
-                  ratings. Charter and private options—Somerset Academy, Doral Red Rock, Faith Lutheran—sit within 20 minutes.
-                  Weekend enrichment includes STEM labs, youth sports at Centennial Hills YMCA, and arts programming at the
-                  Centennial library complex.
+                  Homes in Silverstone Ranch are typically zoned to {`O'Roarke Elementary`}, Cadwallader Middle, and Arbor
+                  View High—verify the current assignment at ccsd.net/zoning before you offer. Nearby options include
+                  Somerset Academy, Doral Red Rock, and Faith Lutheran within about 20 minutes. Weekend programming
+                  includes STEM labs, sports at Centennial Hills YMCA, and arts at the Centennial library complex.
                 </p>
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Outdoor & Wellness</h3>
+                <HeadingVisual
+                  mediaId="section-outdoor-trails"
+                  heading="Outdoor & Wellness"
+                  className="mb-3"
+                  showCaption={false}
+                />
                 <p className="text-sm text-slate-700 leading-relaxed">
                   Walking loops, pickleball courts, splash pads, and picnic lawns create resort energy inside the gates. A
                   five-minute drive unlocks Floyd Lamb Park fishing lagoons, Mount Charleston trails, and mountain biking in
@@ -340,6 +375,12 @@ export default async function HomePage() {
               </div>
               <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Dining & Conveniences</h3>
+                <HeadingVisual
+                  mediaId="section-dining-plaza"
+                  heading="Dining & Conveniences"
+                  className="mb-3"
+                  showCaption={false}
+                />
                 <p className="text-sm text-slate-700 leading-relaxed">
                   Grocery runs are effortless with Whole Foods, Smith’s Marketplace, and Costco nearby. Local eateries such as
                   The Stove, Firefly Tapas, and Tenaya Creek Brewery join boutique coffee shops and pastry bars. Downtown
@@ -351,6 +392,11 @@ export default async function HomePage() {
 
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Neighborhood Spotlights</h2>
+            <HeadingVisual
+              mediaId="section-neighborhood-street"
+              heading="Neighborhood Spotlights"
+              className="mb-6"
+            />
             <p className="text-slate-700 leading-relaxed mb-6">
               Silverstone is composed of distinct sub-associations, each offering unique architecture, HOA benefits, and lot
               orientation. Understanding these nuances helps match lifestyle priorities with the right street.
@@ -446,6 +492,11 @@ export default async function HomePage() {
 
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Relocation Intelligence</h2>
+            <HeadingVisual
+              mediaId="hero-aerial-community"
+              heading="Relocation Intelligence"
+              className="mb-6"
+            />
             <p className="text-slate-700 leading-relaxed mb-4">
               Most relocation buyers arrive from California, Arizona, and Mountain West metros. Arrival allowances often fund
               appraisal gaps or temporary housing, so expect competitive offers in turnkey price bands. Dr. Duffy’s relocation
@@ -510,6 +561,11 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-2">
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Buyer Strategy Playbook</h2>
+            <HeadingVisual
+              mediaId="section-buyer-tour"
+              heading="Buyer Strategy Playbook"
+              className="mb-6"
+            />
             <p className="text-slate-700 leading-relaxed mb-6">
               Silverstone inventory moves quickly when homes are staged and priced correctly. Prepare dual financing options—
               conventional and jumbo—so you can pivot by sub-association. Pair offers with appraisal gap coverage, flexible
@@ -523,6 +579,11 @@ export default async function HomePage() {
           </div>
           <div>
             <h2 className="text-3xl font-bold text-slate-900 mb-6">Seller Success Framework</h2>
+            <HeadingVisual
+              mediaId="section-seller-staging"
+              heading="Seller Success Framework"
+              className="mb-6"
+            />
             <p className="text-slate-700 leading-relaxed mb-6">
               Sellers achieve premium results when they pair transparency with presentation. Provide disclosure packets
               summarizing auction history, landscaping plans, and HOA statements. Stage outdoor living areas with cafe lighting
@@ -592,6 +653,9 @@ export default async function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-6">
           <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+          <p className="text-sm text-slate-600 mb-2">
+            Typical Google Business Profile questions for {CONTACT_INFO.businessName} at {CONTACT_INFO.address.display}.
+          </p>
           <div className="space-y-4">
             {HOMEPAGE_FAQS.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">

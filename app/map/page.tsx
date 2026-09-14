@@ -6,8 +6,10 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { MAP_FAQS } from '@/lib/hyperlocal-faqs'
 import { buildFaqSchema, buildMapPlaceSchema, buildWebPageSchema } from '@/lib/seo'
+import { GoogleMapEmbed } from '@/components/GoogleMapEmbed'
+import { GbpCtaRow } from '@/components/GbpCtaRow'
+import { ASSIGNED_SCHOOLS } from '@/lib/market-data'
 
-const mapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
 const path = '/map'
 const faqs = MAP_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
@@ -62,33 +64,31 @@ export default function MapPage() {
             Discover the prime Centennial Hills location of Silverstone Ranch and the lifestyle conveniences just
             minutes away.
           </p>
+          <GbpCtaRow className="mt-6 flex justify-center" />
         </div>
 
         {/* Map Section */}
         <div className="bg-white rounded-lg shadow-xl p-4 md:p-8 mb-12">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">Interactive Map</h2>
-          <div className="bg-gray-100 rounded-lg overflow-hidden h-96 mb-6">
-            <iframe
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              loading="lazy"
-              allowFullScreen
-              referrerPolicy="no-referrer-when-downgrade"
-              src={mapsApiKey 
-                ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=Silverstone+Ranch,+Las+Vegas,+NV+89131`
-                : 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3218.070049335604!2d-115.294!3d36.286!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c8d3f8b77f1b0d%3A0x3af5d52cb7b4dc65!2sSilverstone%20Ranch!5e0!3m2!1sen!2sus!4v1700000000000'
-              }
-            />
-          </div>
+          <GoogleMapEmbed
+            query="Silverstone Ranch, Las Vegas, NV 89131"
+            title="Silverstone Ranch community map"
+            className="mb-8"
+          />
+          <h3 className="text-xl font-semibold text-gray-900 mb-4">Office pin</h3>
+          <GoogleMapEmbed
+            query={CONTACT_INFO.address.display}
+            title={`${CONTACT_INFO.businessName} office location`}
+            className="mb-6"
+          />
           <div className="text-center">
             <a
-              href="https://www.google.com/maps/place/Silverstone+Ranch,+Las+Vegas,+NV+89131"
+              href={CONTACT_INFO.gbp.directionsUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-block px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 font-semibold"
             >
-              Open in Google Maps
+              Open directions in Google Maps
             </a>
           </div>
         </div>
@@ -108,9 +108,9 @@ export default function MapPage() {
 
             <p className="text-gray-700 leading-relaxed mb-6 text-lg">
               This guard-gated enclave isn&apos;t just a place to live; it&apos;s a lifestyle upgrade. Located minutes from
-              designer shopping at Centennial Center, top-rated CCSD schools, and the sprawling 680-acre Floyd Lamb
+              shopping at Centennial Center, CCSD campuses including {ASSIGNED_SCHOOLS.elementary}, and the sprawling 680-acre Floyd Lamb
               Park, every detail is designed to elevate daily living. The nearby 215 Beltway places the Strip within
-              a 30-minute drive, while Centennial Hills Hospital delivers world-class healthcare right in the
+              a 30-minute drive, while Centennial Hills Hospital delivers healthcare right in the
               neighborhood.
             </p>
 
@@ -118,8 +118,8 @@ export default function MapPage() {
               Beyond its prime location, this luxury Las Vegas community boasts immaculately manicured landscapes, 
               resort-style amenities, and Mediterranean-inspired architecture that radiates elegance. Whether 
               you&apos;re lounging poolside, exploring nearby nature trails, or enjoying the upscale charm of the 
-              neighborhood, you&apos;ll quickly see why Centennial Hills ranks among Las Vegas&apos; fastest-growing 
-              luxury communities, with property values appreciating 15% annually.
+              neighborhood,               you&apos;ll quickly see why Centennial Hills remains one of Las Vegas&apos; actively growing
+              luxury communities. Confirm current pricing with {CONTACT_INFO.agentName} before you offer.
             </p>
           </div>
         </div>
@@ -135,8 +135,10 @@ export default function MapPage() {
             </div>
             <div className="p-6 bg-gray-50 rounded-lg">
               <div className="text-3xl mb-3">🏫</div>
-              <h3 className="font-semibold text-gray-900 mb-2">Top-Rated Schools</h3>
-              <p className="text-sm text-gray-600">CCSD schools nearby</p>
+              <h3 className="font-semibold text-gray-900 mb-2">{ASSIGNED_SCHOOLS.elementary}</h3>
+              <p className="text-sm text-gray-600">
+                Also nearby: {ASSIGNED_SCHOOLS.middle} and {ASSIGNED_SCHOOLS.high}. Verify zoning at ccsd.net/zoning.
+              </p>
             </div>
             <div className="p-6 bg-gray-50 rounded-lg">
               <div className="text-3xl mb-3">🌳</div>

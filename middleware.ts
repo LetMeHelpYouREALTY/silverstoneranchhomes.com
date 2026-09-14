@@ -17,8 +17,9 @@ export function middleware(request: NextRequest) {
     return NextResponse.next()
   }
 
-  // Redirect non-www to www (HTTPS is handled automatically by Vercel)
-  if (hostname !== CANONICAL_HOST) {
+  // Redirect apex only. Do not send localhost or Vercel preview hosts to production.
+  const host = hostname.split(':')[0]
+  if (host === 'silverstoneranchhomes.com') {
     url.protocol = 'https:'
     url.host = CANONICAL_HOST
     return NextResponse.redirect(url, 301)

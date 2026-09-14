@@ -162,6 +162,14 @@ export default async function NeighborhoodPage({ params }: PageProps) {
               {CONTACT_INFO.email}
             </a>
           </p>
+          <div className="flex flex-wrap gap-3 text-sm font-semibold">
+            <a href={CONTACT_INFO.gbp.directionsUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Directions
+            </a>
+            <a href={CONTACT_INFO.gbp.reviewsUrl} target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline">
+              Google Reviews
+            </a>
+          </div>
           <p className="text-xs text-gray-500">
             {CONTACT_INFO.brokerage} · License {CONTACT_INFO.license}
           </p>

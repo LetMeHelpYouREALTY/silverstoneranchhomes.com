@@ -234,8 +234,8 @@ export default function AmenitiesPage() {
           </h1>
           <p className="text-lg text-gray-700 mb-6">
             Silverstone Ranch delivers a guarded, resort-inspired experience in Centennial Hills. From a 6-acre central park
-            to miles of walking loops, the community is designed for families, active adults, and professionals balancing
-            luxury with everyday convenience. This guide breaks down the amenity pillars that set Silverstone apart and
+            to miles of walking loops, the community is designed for resort-style recreation and everyday
+            convenience. This guide breaks down the amenity pillars that set Silverstone apart and
             shows how Dr. Jan Duffy helps buyers experience each feature firsthand.
           </p>
           <p className="text-lg text-gray-700">

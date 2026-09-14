@@ -1,27 +1,29 @@
 import Image from 'next/image'
 import Link from 'next/link'
+import { getMediaUrl } from '@/lib/media'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 export default function HomesForSale() {
   const snapshot = [
     {
       label: 'Median Price',
-      value: '$685K',
-      caption: 'Jun 2026 closings',
+      value: MARKET_SNAPSHOT.medianPriceShort,
+      caption: `${MARKET_SNAPSHOT.reportMonthShort} closings`,
     },
     {
       label: 'Price / Sq Ft',
-      value: '$284',
-      caption: 'Up 3.8% YoY',
+      value: MARKET_SNAPSHOT.pricePerSqFt,
+      caption: MARKET_SNAPSHOT.pricePerSqFtYoY + ' YoY',
     },
     {
       label: 'Avg. DOM',
-      value: '13 Days',
-      caption: 'Faster by 4 days',
+      value: MARKET_SNAPSHOT.daysOnMarket,
+      caption: MARKET_SNAPSHOT.daysOnMarketChange,
     },
     {
       label: 'Active Listings',
-      value: '18',
-      caption: 'Guard-gated & gated',
+      value: MARKET_SNAPSHOT.activeListings,
+      caption: MARKET_SNAPSHOT.activeListingsChange,
     },
   ]
 
@@ -60,8 +62,8 @@ export default function HomesForSale() {
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
             <div className="relative h-64 bg-gray-200">
               <Image
-                src="/images/property/exterior-front-elevation.jpg"
-                alt="Silverstone Ranch luxury home exterior"
+                src={getMediaUrl('hero-listings-kitchen')}
+                alt="Silverstone Ranch homes for sale — luxury kitchen interior in Las Vegas 89131"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"

@@ -104,7 +104,16 @@ To enable email functionality, update the API routes in `app/api/` to integrate 
 
 ## Images
 
-Place property photos in `public/images/property/` and agent photos in `public/images/agent/`. The gallery component will automatically handle missing images with fallbacks.
+Heading-matched community photos live in `public/images/sections/` (git backup) and are served through Cloudflare Images when `NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH` is set (`lib/media.ts`).
+
+1. Generate or replace files in `public/images/sections/`
+2. Commit them (git is the backup)
+3. Upload to Cloudflare: `npm run images:cloudflare` (needs `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_IMAGES_API_TOKEN`)
+4. Set `NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH` in Vercel Production
+
+Property gallery originals remain in `public/images/property/`. Agent headshots remain in `public/images/agent/`.
+
+Do **not** orange-cloud the Vercel apex — keep Cloudflare DNS-only for the site hostname and use `imagedelivery.net` for Images.
 
 ## Deployment
 

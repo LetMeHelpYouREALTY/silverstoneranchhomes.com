@@ -18,10 +18,11 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
+import { absoluteMediaUrl, getMediaUrl } from '@/lib/media'
 
 const canonicalPath = '/resources/las-vegas-hoa/silverstone-ranch'
 const canonicalUrl = `${CONTACT_INFO.website.base}${canonicalPath}`
-const heroImageUrl = `${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`
+const heroImageUrl = absoluteMediaUrl('section-hoa-clubhouse')
 
 export const metadata: Metadata = {
   title: buildHyperlocalTitle('Silverstone Ranch HOA Fees & Contacts'),
@@ -160,10 +161,10 @@ export default function SilverstoneRanchHoaPage() {
           <div className="grid gap-10 overflow-hidden rounded-3xl lg:grid-cols-5">
             <div className="relative h-full lg:col-span-2">
               <picture>
-                <source srcSet="/images/property/exterior-front-elevation.jpg" type="image/jpeg" />
+                <source srcSet={getMediaUrl('section-hoa-clubhouse')} type="image/jpeg" />
                 <img
-                  src="/images/property/exterior-front-elevation.jpg"
-                  alt="Silverstone Ranch Las Vegas exterior with desert landscaping and gated entrance"
+                  src={getMediaUrl('section-hoa-clubhouse')}
+                  alt="Silverstone Ranch HOA clubhouse interior in Northwest Las Vegas"
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />

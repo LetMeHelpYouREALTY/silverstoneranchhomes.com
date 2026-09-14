@@ -5,6 +5,8 @@ import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
 import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
+import { GbpCtaRow } from '@/components/GbpCtaRow'
+import { GoogleMapEmbed } from '@/components/GoogleMapEmbed'
 
 type ContactFaq = {
   question: string
@@ -23,6 +25,7 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
           Schedule a private conversation about properties, tours, valuations, or any real estate needs in Silverstone Ranch.
         </p>
+        <GbpCtaRow className="mt-6 flex justify-center" />
       </div>
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
@@ -160,6 +163,17 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
             description="Use the calendar below or open the scheduling popup to book your private 15-minute conversation."
           />
         </div>
+      </div>
+
+      <div className="bg-white rounded-lg shadow-xl p-8 mb-12">
+        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Office map &amp; directions</h2>
+        <p className="text-sm text-gray-600 mb-4">
+          {CONTACT_INFO.businessName} · {CONTACT_INFO.address.display} · {CONTACT_INFO.businessHours.display} daily
+        </p>
+        <GoogleMapEmbed
+          query={CONTACT_INFO.address.display}
+          title={`${CONTACT_INFO.businessName} office map pin`}
+        />
       </div>
 
       <div className="bg-white rounded-lg shadow-xl p-8">

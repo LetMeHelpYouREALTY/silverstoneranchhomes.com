@@ -35,11 +35,11 @@ export const propertyPhotos: PropertyPhoto[] = [
       'Guest bathroom with quartz vanity, framed mirror, and tiled shower surround accented by modern lighting.',
   },
   {
-    original: '/images/property/exterior-front-elevation.jpg',
-    thumbnail: '/images/property/exterior-front-elevation.jpg',
-    alt: 'Front exterior of Las Vegas home with desert landscaping and mature tree',
+    original: '/images/property/community-front-elevation.jpg',
+    thumbnail: '/images/property/community-front-elevation.jpg',
+    alt: 'Guard-gated Silverstone Ranch home with desert landscaping in Northwest Las Vegas',
     description:
-      'Front exterior of the home featuring desert landscaping, mature tree, and charming stucco elevation.',
+      'Community streetscape showing Mediterranean-style elevations and xeriscape typical of Silverstone Ranch in ZIP 89131.',
   },
   {
     original: '/images/property/guest-bedroom-1.jpg',

@@ -30,7 +30,7 @@ const navItems: NavItem[] = [
     icon: Building2,
     submenu: [
       { label: 'Homes For Sale', href: '/homes-for-sale', icon: Building2 },
-      { label: 'Market Insights 2025', href: '/market-insights', icon: TrendingUp },
+      { label: 'Market Insights', href: '/market-insights', icon: TrendingUp },
       { label: 'Buyer Checklist', href: '/buyers-checklist', icon: ClipboardCheck },
       { label: 'Area Guide', href: '/area-info', icon: MapPin },
       { label: 'Why Work with a Buyer Agent', href: '/buy-with-agent', icon: UserCheck },
@@ -96,7 +96,7 @@ export default function Header() {
                 <div className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
                   Silverstone Ranch
                 </div>
-                <div className="text-xs text-gray-500">Homes</div>
+                <div className="text-xs text-gray-500">{CONTACT_INFO.address.display}</div>
               </div>
             </Link>
           </div>

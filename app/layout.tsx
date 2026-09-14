@@ -8,8 +8,11 @@ import { GoogleAnalytics } from '@/components/GoogleAnalytics'
 import { RealscoutOfficeListingsWrapper } from '@/components/RealscoutOfficeListingsWrapper'
 import { CalendlyBadge } from '@/components/calendly/CalendlyBadge'
 import { CalendlySchedulingSection } from '@/components/calendly/CalendlySchedulingSection'
+import { GbpLocalBar } from '@/components/GbpLocalBar'
+import { RouteHeadingBanner } from '@/components/RouteHeadingBanner'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle } from '@/lib/metadata'
+import { absoluteMediaUrl } from '@/lib/media'
 import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import {
   buildLocalBusinessSchema,
@@ -52,10 +55,10 @@ export const metadata: Metadata = {
     url: CONTACT_INFO.website.url,
     images: [
       {
-        url: `${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`,
-        width: 1200,
-        height: 630,
-        alt: 'Silverstone Ranch luxury home with desert landscaping in Las Vegas',
+        url: absoluteMediaUrl('hero-guard-gated'),
+        width: 1920,
+        height: 1080,
+        alt: 'Guard-gated Silverstone Ranch home with desert landscaping in Northwest Las Vegas',
       },
     ],
   },
@@ -64,7 +67,7 @@ export const metadata: Metadata = {
     title: buildPageTitle('Luxury Community Overview'),
     description:
       'Tour Silverstone Ranch in North Las Vegas—honest updates on the closed golf course, gated enclaves, and expert representation from Dr. Jan Duffy.',
-    images: [`${CONTACT_INFO.website.base}/images/property/exterior-front-elevation.jpg`],
+    images: [absoluteMediaUrl('hero-guard-gated')],
     site: CONTACT_INFO.website.url,
   },
   robots: {
@@ -92,6 +95,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://assets.calendly.com" />
         <link rel="preconnect" href="https://calendly.com" />
         <link rel="dns-prefetch" href="https://calendly.com" />
+        <link rel="preconnect" href="https://imagedelivery.net" />
+        <link rel="dns-prefetch" href="https://imagedelivery.net" />
         <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet" />
         {/* Load Inter font asynchronously to avoid 750ms render blocking */}
         <script
@@ -156,6 +161,8 @@ export default function RootLayout({
           <GoogleAnalytics />
         </Suspense>
         <Header />
+        <GbpLocalBar />
+        <RouteHeadingBanner />
         <main className="min-h-screen">{children}</main>
         <RealscoutOfficeListingsWrapper />
         <CalendlySchedulingSection />

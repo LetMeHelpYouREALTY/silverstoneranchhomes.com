@@ -70,8 +70,8 @@ export default function SchoolsPage() {
             Silverstone Ranch Schools | Education in Northwest Las Vegas
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Comprehensive guide to top-rated schools serving Silverstone Ranch families, including
-            elementary, middle, and high school options in the Clark County School District.
+            Comprehensive guide to CCSD campuses zoned near Silverstone Ranch, including
+            elementary, middle, and high school options in Northwest Las Vegas.
           </p>
         </div>
 
@@ -80,15 +80,14 @@ export default function SchoolsPage() {
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-4">
               Silverstone Ranch is served by the <strong>Clark County School District (CCSD)</strong>,
-              the fifth-largest school district in the United States. The community benefits from
-              proximity to several highly-rated schools, modern facilities, and diverse educational
-              programs.
+              the fifth-largest school district in the United States. Nearby campuses include{' '}
+              {`O'Roarke Elementary`}, Cadwallader Middle, and Arbor View High—confirm the current
+              assignment for your street at ccsd.net/zoning.
             </p>
             <p className="text-gray-700">
-              Families relocating to Silverstone Ranch can access quality public education options,
-              as well as private and charter school alternatives throughout Northwest Las Vegas. Dr. Jan
-              Duffy provides school enrollment assistance and district information to help families
-              transition smoothly.
+              Buyers relocating to Silverstone Ranch can review public, private, and charter options
+              throughout Northwest Las Vegas. Dr. Jan Duffy shares enrollment contacts and district
+              links so your move stays on a documented timeline.
             </p>
           </div>
         </div>

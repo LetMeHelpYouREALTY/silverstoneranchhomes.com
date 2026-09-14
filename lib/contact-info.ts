@@ -32,6 +32,18 @@ export const CONTACT_INFO = {
     country: 'US',
     display: '8721 Deering Bay Dr, Las Vegas, NV 89131',
   },
+  /**
+   * Google Business Profile / Maps engagement URLs.
+   * Place ID is UNKNOWN until verified in GBP; search URLs use exact NAP.
+   */
+  gbp: {
+    mapsSearchUrl:
+      'https://www.google.com/maps/search/?api=1&query=Silverstone%20Ranch%20Real%20Estate%20%7C%20Homes%20by%20Dr.%20Jan%20Duffy%2C%208721%20Deering%20Bay%20Dr%2C%20Las%20Vegas%2C%20NV%2089131',
+    directionsUrl:
+      'https://www.google.com/maps/dir/?api=1&destination=8721%20Deering%20Bay%20Dr%2C%20Las%20Vegas%2C%20NV%2089131',
+    reviewsUrl:
+      'https://www.google.com/maps/search/?api=1&query=Silverstone%20Ranch%20Real%20Estate%20%7C%20Homes%20by%20Dr.%20Jan%20Duffy%2C%208721%20Deering%20Bay%20Dr%2C%20Las%20Vegas%2C%20NV%2089131',
+  },
   socialProfiles: [
     {
       label: 'LinkedIn',

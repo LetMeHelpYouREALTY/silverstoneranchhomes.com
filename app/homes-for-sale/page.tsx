@@ -11,6 +11,7 @@ import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { fetchSilverstoneListings, listingsToSchemaEntries } from '@/lib/realscout/fetch-listings'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { HomesForSaleScheduling } from '@/components/HomesForSaleScheduling'
+import { getMediaUrl } from '@/lib/media'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Homes for Sale | 89131 Listings',
@@ -157,14 +158,14 @@ export default async function HomesForSalePage() {
         {/* Featured Property */}
         <div className="mb-16">
           <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            Featured Property
+            Community highlight
           </h2>
           <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div className="md:flex">
               <div className="md:w-1/2 relative h-64 md:h-auto bg-gray-200">
                 <Image
-                  src="/images/property/exterior-front-elevation.jpg"
-                  alt="Silverstone Ranch luxury residence"
+                  src={getMediaUrl('hero-guard-gated')}
+                  alt="Homes for sale in Silverstone Ranch — guard-gated desert elevations in Las Vegas 89131"
                   fill
                   className="object-cover"
                   priority
@@ -173,10 +174,10 @@ export default async function HomesForSalePage() {
               <div className="md:w-1/2 p-8">
                 <div className="mb-4">
                   <span className="inline-block px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-semibold mb-3">
-                    Featured Listing
+                    Community highlight
                   </span>
                   <h3 className="text-3xl font-bold text-gray-900 mb-2">
-                    Signature Silverstone Residence
+                    Guard-gated homes in Silverstone Ranch
                   </h3>
                   <p className="text-lg text-gray-600 mb-4">
                     Silverstone Ranch · Centennial Hills · Las Vegas, NV 89131

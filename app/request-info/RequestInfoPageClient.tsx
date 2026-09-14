@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
+import { getMediaUrl } from '@/lib/media'
 
 export default function RequestInfoPageClient() {
   return (
@@ -75,8 +76,8 @@ export default function RequestInfoPageClient() {
         <div className="grid md:grid-cols-2">
           <div className="relative h-64 md:h-auto min-h-[16rem]">
             <Image
-              src="/images/property/exterior-front-elevation.jpg"
-              alt="Silverstone Ranch home exterior in Las Vegas 89131"
+              src={getMediaUrl('hero-home-valuation')}
+              alt="Request Silverstone Ranch market information — home valuation consult in Las Vegas 89131"
               fill
               className="object-cover"
               sizes="(max-width: 768px) 100vw, 50vw"
