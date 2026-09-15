@@ -3,9 +3,10 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle, seoAbsoluteTitle } from '@/lib/metadata'
+import { buildPageTitle, seoAbsoluteTitle, withShareImage } from '@/lib/metadata'
 import { getNeighborhoodContent, NEIGHBORHOOD_SLUGS } from '@/lib/silverstone-neighborhoods'
 import { buildFaqSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
+import { SectionHeading } from '@/components/SectionHeading'
 
 type PageProps = {
   params: Promise<{ slug: string }>
@@ -28,12 +29,15 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: path,
     },
-    openGraph: {
-      title: buildPageTitle(content.titleSegment),
-      description: content.metaDescription,
-      url: `${CONTACT_INFO.website.base}${path}`,
-      type: 'website',
-    },
+    openGraph: withShareImage(
+      {
+        title: buildPageTitle(content.titleSegment),
+        description: content.metaDescription,
+        url: `${CONTACT_INFO.website.base}${path}`,
+        type: 'website',
+      },
+      content.h1,
+    ),
   }
 }
 
@@ -131,7 +135,7 @@ export default async function NeighborhoodPage({ params }: PageProps) {
         <div className="space-y-10 mb-12">
           {content.sections.map((section) => (
             <section key={section.heading}>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-3">{section.heading}</h2>
+              <SectionHeading as="h2">{section.heading}</SectionHeading>
               <p className="text-gray-700 leading-relaxed">{section.body}</p>
             </section>
           ))}

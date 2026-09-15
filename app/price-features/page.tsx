@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { PRICE_FEATURES_FAQS } from '@/lib/hyperlocal-faqs'
@@ -18,13 +18,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/price-features',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Price & Features Guide'),
     description:
       'Compare pricing tiers, upgrade ROI, and community amenities across Silverstone Ranch enclaves with curated guidance from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/price-features`,
     type: 'website',
   },
+    'Silverstone Ranch price and features',
+  ),
 }
 
 const designPackages = [

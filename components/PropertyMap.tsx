@@ -70,15 +70,15 @@ export default function PropertyMap() {
             This exclusive, guard-gated enclave isn&apos;t just a place to live; it&apos;s a lifestyle upgrade. 
             Located just 10 minutes from shopping at Centennial Center, CCSD campuses, and 
             the sprawling 680-acre Floyd Lamb Park, every detail has been designed to enhance daily routines. 
-            The nearby 215 Beltway puts the Strip just 30 minutes away, while world-class healthcare at 
-            Centennial Hills Hospital ensures peace of mind right in your neighborhood.
+            The nearby 215 Beltway puts the Strip just 30 minutes away, while healthcare at 
+            Centennial Hills Hospital is a short drive from the gates.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Beyond its prime location, this luxury Las Vegas community boasts immaculately manicured landscapes, 
             resort-style amenities, and Mediterranean-inspired architecture that radiates elegance. Whether 
             you&apos;re lounging poolside, exploring nearby nature trails, or enjoying the upscale charm of the 
-            neighborhood, you&apos;ll quickly see why Centennial Hills ranks among Las Vegas&apos; fastest-growing 
-            luxury communities, with property values appreciating 15% annually. For customized driving directions,
+            neighborhood, you&apos;ll see why Centennial Hills remains an actively growing
+            Northwest Las Vegas community. Confirm current pricing with Dr. Jan Duffy before you offer. For customized driving directions,
             <Link href="/contact" className="ml-1 font-semibold text-blue-700 hover:text-blue-800">reach out to Dr. Duffy</Link> and receive a curated relocation guide.
           </p>
         </div>

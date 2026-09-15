@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { REQUEST_INFO_FAQS } from '@/lib/hyperlocal-faqs'
@@ -17,13 +17,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Request Silverstone Ranch Info | 89131'),
     description:
       'Receive Silverstone Ranch relocation kits, listing previews, and strategy sessions curated by Dr. Jan Duffy REALTOR®.',
     url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
+    'Request Silverstone Ranch market information',
+  ),
 }
 
 export default function RequestInfoPage() {

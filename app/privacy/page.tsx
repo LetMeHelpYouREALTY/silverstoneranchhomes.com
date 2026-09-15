@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
@@ -12,13 +12,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/privacy',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Privacy Policy'),
     description:
       `Understand how ${CONTACT_INFO.businessName} manages personal information, website data, and communication preferences.`,
     url: `${CONTACT_INFO.website.base}/privacy`,
     type: 'article',
   },
+    'Silverstone Ranch privacy policy',
+  ),
 }
 
 export default function PrivacyPage() {

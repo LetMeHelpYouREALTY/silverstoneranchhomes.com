@@ -304,8 +304,8 @@ export const SCHOOLS_FAQS = [
       'Enrollment typically requires proof of residency, birth certificate, immunization records, and previous transcripts. Dr. Jan Duffy provides relocation families with CCSD enrollment assistance and boundary verification.',
   },
   {
-    question: 'What are the school ratings for Silverstone Ranch area schools?',
-    answer: `${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high} generally rate 7–8/10 on GreatSchools.org. Verify current ratings and boundaries before you remove contingencies.`,
+    question: 'Which schools are zoned near Silverstone Ranch?',
+    answer: `${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high} are the typical CCSD assignments. Verify current boundaries at ccsd.net/zoning before you remove contingencies.`,
   },
   {
     question: 'Are there charter school options in Northwest Las Vegas?',

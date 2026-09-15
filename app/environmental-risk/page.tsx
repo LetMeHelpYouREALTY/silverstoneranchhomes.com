@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -19,13 +19,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/environmental-risk',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Environmental Risk Assessment | 30-Year Outlook'),
     description:
       'Analyze Silverstone Ranch heat, wildfire, flood, and wind exposure with mitigation plans curated by Dr. Jan Duffy REALTOR®.',
     url: `${CONTACT_INFO.website.base}/environmental-risk`,
     type: 'article',
   },
+    'Silverstone Ranch environmental risk',
+  ),
 }
 
 const riskCategories = [

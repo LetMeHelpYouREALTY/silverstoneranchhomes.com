@@ -1,13 +1,14 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { MAP_FAQS } from '@/lib/hyperlocal-faqs'
 import { buildFaqSchema, buildMapPlaceSchema, buildWebPageSchema } from '@/lib/seo'
 import { GoogleMapEmbed } from '@/components/GoogleMapEmbed'
 import { GbpCtaRow } from '@/components/GbpCtaRow'
+import { SectionHeading } from '@/components/SectionHeading'
 import { ASSIGNED_SCHOOLS } from '@/lib/market-data'
 
 const path = '/map'
@@ -20,13 +21,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/map',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Interactive Map | Neighborhood Orientation'),
     description:
       'Visualize Silverstone Ranch guard gates, parks, schools, and nearby services via an interactive map curated by Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/map`,
     type: 'website',
   },
+    'Silverstone Ranch location and map',
+  ),
 }
 
 export default function MapPage() {
@@ -69,7 +73,7 @@ export default function MapPage() {
 
         {/* Map Section */}
         <div className="bg-white rounded-lg shadow-xl p-4 md:p-8 mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Interactive Map</h2>
+          <SectionHeading>Interactive Map</SectionHeading>
           <GoogleMapEmbed
             query="Silverstone Ranch, Las Vegas, NV 89131"
             title="Silverstone Ranch community map"
@@ -153,7 +157,7 @@ export default function MapPage() {
             <div className="p-6 bg-gray-50 rounded-lg">
               <div className="text-3xl mb-3">🏥</div>
               <h3 className="font-semibold text-gray-900 mb-2">Centennial Hills Hospital</h3>
-              <p className="text-sm text-gray-600">World-class healthcare nearby</p>
+              <p className="text-sm text-gray-600">Healthcare nearby</p>
             </div>
             <div className="p-6 bg-gray-50 rounded-lg">
               <div className="text-3xl mb-3">⛰️</div>

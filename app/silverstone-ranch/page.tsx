@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 import { HOA_FEES, MARKET_SNAPSHOT } from '@/lib/market-data'
 import {
@@ -83,7 +84,7 @@ const neighborhoodLinks = [
   },
   {
     name: 'Eastpoint',
-    description: 'Non-gated village homes prized for family-friendly streets and master-plan amenities.',
+    description: 'Non-gated village homes with master-plan amenities and a short drive to Centennial Hills services.',
     href: '/neighborhoods/eastpoint',
   },
   {
@@ -125,13 +126,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/silverstone-ranch',
   },
-  openGraph: {
-    title: buildPageTitle('Community Guide | Neighborhood Overview'),
-    description:
-      'Explore Silverstone Ranch neighborhoods, HOA structure, amenity highlights, and lifestyle insights in Northwest Las Vegas.',
-    url: `${CONTACT_INFO.website.base}/silverstone-ranch`,
-    type: 'website',
-  },
+  openGraph: withShareImage(
+    {
+      title: buildPageTitle('Community Guide | Neighborhood Overview'),
+      description:
+        'Explore Silverstone Ranch neighborhoods, HOA structure, amenity highlights, and lifestyle insights in Northwest Las Vegas.',
+      url: `${CONTACT_INFO.website.base}/silverstone-ranch`,
+      type: 'website',
+    },
+    'Silverstone Ranch Community Guide',
+  ),
 }
 
 const overviewFaqs = [
@@ -301,7 +305,7 @@ export default async function SilverstoneRanchPage() {
 
         <section id="quick-facts" className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Quick Facts & Location Snapshot</h2>
+            <SectionHeading>Quick Facts & Location Snapshot</SectionHeading>
             <p className="text-slate-700 mb-6">
               Silverstone Ranch sits on the northern edge of Centennial Hills, framed by the Spring Mountains and Sheep
               Range. Residents enjoy fast access to the 215 Beltway, Floyd Lamb Park, and a growing slate of dining and
@@ -334,7 +338,7 @@ export default async function SilverstoneRanchPage() {
         <section id="lifestyle" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
           <div className="mx-auto max-w-5xl grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Lifestyle Pillars & Amenities Overview</h2>
+              <SectionHeading>Lifestyle Pillars & Amenities Overview</SectionHeading>
               <p className="text-slate-700 mb-6">
                 Life in Silverstone Ranch centers on curated amenities: staffed gate houses, resident-only parks, tennis and
                 pickleball courts, and walking trails that wrap the former championship golf course. Seasonal programming
@@ -382,7 +386,7 @@ export default async function SilverstoneRanchPage() {
 
         <section id="market" className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Market Insights & Pricing Dynamics</h2>
+            <SectionHeading>Market Insights & Pricing Dynamics</SectionHeading>
             <p className="text-slate-700 mb-6">
               As of {MARKET_SNAPSHOT.reportMonth}, Silverstone Ranch&apos;s median sale price sits at{' '}
               {MARKET_SNAPSHOT.medianPrice} ({MARKET_SNAPSHOT.medianPriceYoY} YoY) with{' '}
@@ -457,12 +461,12 @@ export default async function SilverstoneRanchPage() {
 
         <section id="schools" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Schools & Education Pathways</h2>
+            <SectionHeading>Schools & Education Pathways</SectionHeading>
             <p className="text-slate-700 mb-6">
-              Families gravitate to Silverstone Ranch for access to highly rated Clark County School District campuses and a
-              growing roster of charter and private schools. O’Roarke Elementary, Cadwallader Middle School, and Arbor View
-              High School anchor the public pathway. GreatSchools ratings range from 7/10 to 8/10, with concentrated STEM,
-              arts, and athletics programs supporting student outcomes.
+              CCSD campuses typically serving Silverstone Ranch streets include O’Roarke Elementary, Cadwallader Middle
+              School, and Arbor View High School. Confirm the current assignment at ccsd.net/zoning—boundaries change.
+              Nearby options include Somerset Academy Sky Pointe, Doral Academy Red Rock, The Meadows School, and Faith
+              Lutheran.
             </p>
             <p className="text-slate-700 mb-6">
               Specialized charter options include Somerset Academy Sky Pointe and Doral Academy Red Rock, each within a
@@ -511,7 +515,7 @@ export default async function SilverstoneRanchPage() {
 
         <section id="neighborhoods" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Explore Silverstone Neighborhoods</h2>
+            <SectionHeading>Explore Silverstone Neighborhoods</SectionHeading>
             <p className="text-slate-700 mb-8">
               Silverstone Ranch is composed of eleven distinct enclaves across two tiers.{' '}
               <strong className="text-slate-900">Non-gated villages</strong> (

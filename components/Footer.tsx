@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { Phone, Mail, ExternalLink, MessageCircle, Linkedin, Facebook, Home, Calculator, Building2, Image as ImageIcon, MapPin, User, Calendar, FileText, Sparkles, DollarSign, Video, Info, Shield, AlertTriangle, UserCheck, TrendingUp, ClipboardCheck } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { GoogleMapEmbed } from '@/components/GoogleMapEmbed'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -289,6 +290,14 @@ export default function Footer() {
               </ul>
             </div>
           </div>
+        </div>
+
+        <div className="mt-12 rounded-2xl border border-gray-800 bg-white p-4">
+          <h2 className="text-slate-900 font-bold text-lg mb-4">Find us on Google Maps</h2>
+          <GoogleMapEmbed
+            query={CONTACT_INFO.address.display}
+            title={`${CONTACT_INFO.businessName} Google Maps pin`}
+          />
         </div>
 
         {/* Bottom Bar */}

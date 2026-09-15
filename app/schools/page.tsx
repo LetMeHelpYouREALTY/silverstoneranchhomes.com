@@ -3,10 +3,12 @@ import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildEducationalOrganizationSchema, buildWebPageSchema } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SCHOOLS_NEAR_SILVERSTONE } from '@/lib/schools-near-silverstone'
 import { SCHOOLS_FAQS } from '@/lib/hyperlocal-faqs'
 import { ASSIGNED_SCHOOLS } from '@/lib/market-data'
+import { SectionHeading } from '@/components/SectionHeading'
+import { HeadingVisual } from '@/components/HeadingVisual'
 
 export const metadata: Metadata = {
   title: buildHyperlocalTitle('Silverstone Ranch Schools Guide'),
@@ -15,13 +17,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/schools',
   },
-  openGraph: {
-    title: buildPageTitle('Silverstone Ranch Schools | 89131 CCSD Guide'),
-    description:
-      `CCSD schools for Silverstone Ranch: ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}. Ratings, enrollment, and relocation support.`,
-    url: `${CONTACT_INFO.website.base}/schools`,
-    type: 'website',
-  },
+  openGraph: withShareImage(
+    {
+      title: buildPageTitle('Silverstone Ranch Schools | 89131 CCSD Guide'),
+      description:
+        `CCSD schools for Silverstone Ranch: ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}. Enrollment contacts and relocation support.`,
+      url: `${CONTACT_INFO.website.base}/schools`,
+      type: 'website',
+    },
+    'Schools near Silverstone Ranch',
+  ),
 }
 
 const faqs = SCHOOLS_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
@@ -32,7 +37,7 @@ export default function SchoolsPage() {
     path,
     name: 'Silverstone Ranch Schools Guide',
     description:
-      'Comprehensive guide to schools serving Silverstone Ranch in Northwest Las Vegas, including ratings, enrollment information, and educational resources for families.',
+      'Guide to CCSD campuses zoned near Silverstone Ranch in Northwest Las Vegas, including enrollment contacts and verification steps at ccsd.net/zoning.',
     breadcrumb: [
       { name: 'Home', path: '/' },
       { name: 'Schools', path },
@@ -52,7 +57,7 @@ export default function SchoolsPage() {
     }),
     buildEducationalOrganizationSchema({
       name: ASSIGNED_SCHOOLS.high,
-      description: `Public high school commonly zoned for Silverstone Ranch and Centennial Hills families.`,
+      description: `Public high school commonly zoned for Silverstone Ranch and Centennial Hills addresses.`,
     }),
   ]
 
@@ -76,7 +81,7 @@ export default function SchoolsPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-xl p-8 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">School District Overview</h2>
+          <SectionHeading>School District Overview</SectionHeading>
           <div className="prose max-w-none">
             <p className="text-gray-700 mb-4">
               Silverstone Ranch is served by the <strong>Clark County School District (CCSD)</strong>,
@@ -98,12 +103,19 @@ export default function SchoolsPage() {
               <div className="flex flex-col md:flex-row md:items-start md:justify-between mb-4">
                 <div>
                   <h3 className="text-2xl font-bold text-gray-900 mb-2">{school.name}</h3>
+                  <HeadingVisual
+                    mediaId="hero-schools-campus"
+                    heading={school.name}
+                    variant="supporting"
+                    showCaption={false}
+                    className="mb-3"
+                  />
                   <p className="text-gray-600 mb-2">{school.level}</p>
                   <p className="text-sm text-gray-500">{school.address}</p>
                 </div>
                 <div className="mt-4 md:mt-0 text-right">
                   <div className="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-semibold mb-2">
-                    Rating: {school.rating}
+                    Zoning: {school.rating}
                   </div>
                   <p className="text-sm text-gray-600">Distance: {school.distance}</p>
                 </div>
@@ -123,7 +135,7 @@ export default function SchoolsPage() {
         </div>
 
         <div className="bg-blue-50 rounded-lg p-8 mb-12">
-          <h2 className="text-2xl font-bold text-gray-900 mb-4">School Enrollment Assistance</h2>
+          <SectionHeading>School Enrollment Assistance</SectionHeading>
           <p className="text-gray-700 mb-6">
             Relocating to Silverstone Ranch? Dr. Jan Duffy provides comprehensive school enrollment
             assistance including:
@@ -132,7 +144,7 @@ export default function SchoolsPage() {
             <li>School district boundary maps and zoning information</li>
             <li>Enrollment documentation requirements and timelines</li>
             <li>Private and charter school options and application processes</li>
-            <li>School ratings and program comparisons</li>
+            <li>District program lists and enrollment contacts</li>
             <li>Introduction to school administrators and PTA contacts</li>
           </ul>
           <Link

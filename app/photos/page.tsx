@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { PHOTOS_FAQS } from '@/lib/hyperlocal-faqs'
@@ -24,7 +24,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Silverstone Ranch Photo Gallery | 89131'),
     description:
       'Experience Silverstone Ranch architecture, interiors, and amenity spaces via curated photography and buyer resources.',
@@ -32,6 +33,8 @@ export const metadata: Metadata = {
     type: 'website',
     images: galleryImages.map((img) => ({ url: img.url, alt: img.caption })),
   },
+    'Silverstone Ranch lifestyle gallery',
+  ),
 }
 
 export default function PhotosPage() {

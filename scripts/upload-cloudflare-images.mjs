@@ -37,6 +37,15 @@ const MEDIA_IDS = [
   'section-seller-staging',
   'section-buyer-tour',
   'section-dining-plaza',
+  'section-finance',
+  'section-hospital',
+  'section-shopping',
+  'section-research',
+  'section-recreation',
+  'section-evening-outdoor',
+  'section-commute',
+  'section-events',
+  'section-desert-horizon',
   'og-square-home',
 ]
 

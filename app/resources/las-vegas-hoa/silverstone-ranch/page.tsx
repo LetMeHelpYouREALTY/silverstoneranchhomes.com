@@ -15,8 +15,9 @@ import {
   Users,
 } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import { absoluteMediaUrl, getMediaUrl } from '@/lib/media'
 
@@ -38,7 +39,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: canonicalUrl,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('HOA | Las Vegas Fees, Amenities & Community Guide'),
     description:
       'Detailed Silverstone Ranch HOA overview including dues, amenities, architectural guidelines, and management contacts for Northwest Las Vegas homeowners.',
@@ -53,6 +55,8 @@ export const metadata: Metadata = {
       },
     ],
   },
+    'Silverstone Ranch HOA guide',
+  ),
   twitter: {
     card: 'summary_large_image',
     title: buildPageTitle('HOA | Las Vegas Fees & Amenities'),
@@ -221,7 +225,7 @@ export default function SilverstoneRanchHoaPage() {
         <section id="hoa-fees" className="mb-12 rounded-3xl border border-slate-200 bg-white/80 p-8 shadow-lg">
           <div className="flex items-start justify-between gap-6">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">Silverstone Ranch HOA Fees</h2>
+              <SectionHeading>Silverstone Ranch HOA Fees</SectionHeading>
               <p className="mt-3 max-w-3xl text-slate-700">
                 Fees vary by neighborhood pod and are billed quarterly. Below is the updated breakdown for Q4 2025.
                 Always verify current assessments and special budgets during escrow—Dr. Jan Duffy confirms amounts as
@@ -305,7 +309,7 @@ export default function SilverstoneRanchHoaPage() {
 
         <section id="amenities" className="mb-12 grid gap-8 lg:grid-cols-2">
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-slate-900">Amenity Highlights</h2>
+            <SectionHeading>Amenity Highlights</SectionHeading>
             <p className="mt-3 text-slate-700">
               Residents enjoy guard-gated privacy and resort-inspired spaces. Lifestyle features vary by neighborhood but
               commonly include:
@@ -509,11 +513,10 @@ export default function SilverstoneRanchHoaPage() {
         <section id="schools" className="mb-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">School Assignments &amp; Ratings</h2>
+              <SectionHeading>School assignments near Silverstone Ranch</SectionHeading>
               <p className="mt-3 max-w-3xl text-slate-700">
-                Silverstone Ranch is currently zoned to highly-rated Clark County School District campuses focused on STEM
-                and college-ready pathways. Ratings reflect June 2026 GreatSchools.org data; always verify attendance
-                boundaries directly with CCSD prior to enrollment or purchase.
+                Silverstone Ranch streets are typically zoned to Clark County School District campuses. Confirm the current
+                assignment at ccsd.net/zoning before you offer—boundaries change.
               </p>
             </div>
             <a
@@ -532,7 +535,7 @@ export default function SilverstoneRanchHoaPage() {
               <thead className="bg-slate-50 text-xs font-semibold uppercase tracking-wider text-slate-500">
                 <tr>
                   <th scope="col" className="px-6 py-4">Campus</th>
-                  <th scope="col" className="px-6 py-4">GreatSchools Rating*</th>
+                  <th scope="col" className="px-6 py-4">Confirm assignment</th>
                   <th scope="col" className="px-6 py-4">Distance</th>
                   <th scope="col" className="px-6 py-4">Highlights</th>
                 </tr>
@@ -542,7 +545,7 @@ export default function SilverstoneRanchHoaPage() {
                   <th scope="row" className="px-6 py-5 text-base font-semibold text-slate-900">
                     O&apos;Roarke Elementary School
                   </th>
-                  <td className="px-6 py-5"><span className="rounded-full bg-blue-100 px-3 py-1 font-semibold text-blue-700">7 / 10</span></td>
+                  <td className="px-6 py-5">Verify at ccsd.net/zoning</td>
                   <td className="px-6 py-5">1.4 miles</td>
                   <td className="px-6 py-5">STEM labs, robotics club, after-school tutoring</td>
                 </tr>
@@ -550,7 +553,7 @@ export default function SilverstoneRanchHoaPage() {
                   <th scope="row" className="px-6 py-5 text-base font-semibold text-slate-900">
                     Ralph Cadwallader Middle School
                   </th>
-                  <td className="px-6 py-5"><span className="rounded-full bg-blue-100 px-3 py-1 font-semibold text-blue-700">8 / 10</span></td>
+                  <td className="px-6 py-5">Verify at ccsd.net/zoning</td>
                   <td className="px-6 py-5">2.2 miles</td>
                   <td className="px-6 py-5">Project Lead the Way engineering electives, award-winning band program</td>
                 </tr>
@@ -558,7 +561,7 @@ export default function SilverstoneRanchHoaPage() {
                   <th scope="row" className="px-6 py-5 text-base font-semibold text-slate-900">
                     Arbor View High School
                   </th>
-                  <td className="px-6 py-5"><span className="rounded-full bg-blue-100 px-3 py-1 font-semibold text-blue-700">7 / 10</span></td>
+                  <td className="px-6 py-5">Verify at ccsd.net/zoning</td>
                   <td className="px-6 py-5">3.6 miles</td>
                   <td className="px-6 py-5">Advanced Placement, medical academy CTE tracks, nationally ranked athletics</td>
                 </tr>
@@ -570,7 +573,7 @@ export default function SilverstoneRanchHoaPage() {
             <div className="flex items-start gap-3">
               <GraduationCap className="mt-0.5 h-5 w-5" aria-hidden="true" />
               <p>
-                *Ratings sourced from GreatSchools.org as of November 7, 2025. Attendance zones and program offerings are
+                Attendance zones and program offerings change. Confirm the current assignment at ccsd.net/zoning before you offer.
                 subject to change—confirm directly with the Clark County School District zoning office or call
                 <a href="tel:7027996430" className="ml-1 font-semibold hover:underline">(702) 799-6430</a>.
               </p>

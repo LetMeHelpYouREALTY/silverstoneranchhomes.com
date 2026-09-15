@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
 
 const path = '/buy-with-agent'
@@ -22,13 +23,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Why You Need a Buyer Agent'),
     description:
       'Partner with Dr. Jan Duffy REALTOR® to unlock pre-market opportunities, negotiate confidently, and streamline your Silverstone Ranch home purchase.',
     url: canonicalUrl,
     type: 'article',
   },
+    'Buy a Silverstone Ranch home with a buyer agent',
+  ),
 }
 
 const benefitHighlights = [
@@ -505,7 +509,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Concierge Deliverables that Elevate Every Purchase</h2>
+          <SectionHeading>Concierge Deliverables that Elevate Every Purchase</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Dr. Duffy’s concierge model removes friction at every step. Buyers receive ongoing education, proactive planning, and
             vendor coordination, ensuring no detail is overlooked while pursuing a guard-gated home.
@@ -521,7 +525,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Relocation Concierge & Local Insight</h2>
+          <SectionHeading>Relocation Concierge & Local Insight</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Relocation buyers rely on fast, accurate information. Dr. Duffy’s concierge system covers school introductions, guard
             gate registration, DMV scheduling, utility setup, and vetted contractor referrals. Weekly check-ins keep you informed

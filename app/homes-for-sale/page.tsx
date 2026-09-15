@@ -2,16 +2,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { buildFaqSchema, buildRealEstateListingItemList, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
 import { HOMES_FOR_SALE_FAQS } from '@/lib/hyperlocal-faqs'
 import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { fetchSilverstoneListings, listingsToSchemaEntries } from '@/lib/realscout/fetch-listings'
-import { MARKET_SNAPSHOT } from '@/lib/market-data'
+import { MARKET_SNAPSHOT, ASSIGNED_SCHOOLS } from '@/lib/market-data'
 import { HomesForSaleScheduling } from '@/components/HomesForSaleScheduling'
 import { getMediaUrl } from '@/lib/media'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Homes for Sale | 89131 Listings',
@@ -20,13 +21,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/homes-for-sale',
   },
-  openGraph: {
-    title: buildPageTitle('Homes for Sale | Curated Listings & Buyer Guide'),
-    description:
-      'Explore guard-gated Silverstone Ranch listings, buyer resources, and concierge support for relocation and luxury purchases.',
-    url: `${CONTACT_INFO.website.base}/homes-for-sale`,
-    type: 'website',
-  },
+  openGraph: withShareImage(
+    {
+      title: buildPageTitle('Homes for Sale | Curated Listings & Buyer Guide'),
+      description:
+        'Explore guard-gated Silverstone Ranch listings, buyer resources, and concierge support for relocation and luxury purchases.',
+      url: `${CONTACT_INFO.website.base}/homes-for-sale`,
+      type: 'website',
+    },
+    'Homes for sale in Silverstone Ranch',
+  ),
 }
 
 const marketSnapshot = [
@@ -118,9 +122,7 @@ export default async function HomesForSalePage() {
         <section className="mb-16" aria-labelledby="live-listings-heading">
           <div className="mb-8 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 id="live-listings-heading" className="text-2xl font-semibold text-gray-900">
-                Live Silverstone Ranch Listings
-              </h2>
+              <SectionHeading id="live-listings-heading">Live Silverstone Ranch Listings</SectionHeading>
               <p className="text-sm text-gray-600 mt-1">
                 Updated hourly from Berkshire Hathaway / RealScout MLS feed · ZIP 89131 &amp; 89143
               </p>
@@ -138,7 +140,7 @@ export default async function HomesForSalePage() {
         {/* Market Snapshot & Search Filters */}
         <div className="mb-16 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-8 border border-blue-100">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-6">June 2026 Market Snapshot</h2>
+            <SectionHeading>June 2026 Market Snapshot</SectionHeading>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {marketSnapshot.map((item) => (
                 <div key={item.label} className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
@@ -307,11 +309,11 @@ export default async function HomesForSalePage() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                Top-Rated Schools
+                {ASSIGNED_SCHOOLS.elementary}
               </h3>
               <p className="text-gray-600">
-                Excellent school district with highly-rated public and private schools 
-                serving the community.
+                Also nearby: {ASSIGNED_SCHOOLS.middle} and {ASSIGNED_SCHOOLS.high}. Verify the current
+                assignment at ccsd.net/zoning before you offer.
               </p>
             </div>
             <div className="text-center">
@@ -453,7 +455,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Silverstone Buyer Journey</h2>
+          <SectionHeading>Silverstone Buyer Journey</SectionHeading>
           <div className="grid lg:grid-cols-4 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-5">
               <h3 className="text-lg font-semibold text-blue-900 mb-2">Week 1: Prep & Strategy</h3>

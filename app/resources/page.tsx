@@ -4,7 +4,7 @@ import { FileText, Home, MapPin } from 'lucide-react'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { RESOURCES_FAQS } from '@/lib/hyperlocal-faqs'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -18,13 +18,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Silverstone Ranch Resources | 89131'),
     description:
       'HOA guides, community resources, and local tools for Silverstone Ranch and Centennial Hills from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
+    'Silverstone Ranch resources',
+  ),
 }
 
 const cards = [

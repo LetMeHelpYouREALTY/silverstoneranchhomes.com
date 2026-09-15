@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
 
 const path = '/sell-with-agent'
@@ -22,13 +23,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Why You Need an Agent to Sell Your Home'),
     description:
       'Position your Silverstone Ranch listing for top-dollar results with strategic pricing, luxury marketing, and negotiation led by Dr. Jan Duffy REALTOR®.',
     url: canonicalUrl,
     type: 'article',
   },
+    'Sell a Silverstone Ranch home',
+  ),
 }
 
 const sellerAdvantages = [
@@ -396,7 +400,7 @@ const comparativeMarkets = [
   {
     comparison: 'Silverstone vs. Skye Canyon',
     analysis:
-      'Skye Canyon homes are newer but carry SID/LID fees and smaller yards. Silverstone’s mature landscaping and established community programming keep days-on-market lower for upgraded properties.',
+      'Skye Canyon homes are newer but carry SID/LID fees and smaller yards. Silverstone’s mature landscaping and HOA-programmed events keep days-on-market lower for upgraded properties.',
   },
   {
     comparison: 'Silverstone vs. Providence',
@@ -508,7 +512,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Pre-Listing Analytics & Seller Intelligence</h2>
+          <SectionHeading>Pre-Listing Analytics & Seller Intelligence</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Pricing a guard-gated home requires more than automated estimates. Dr. Duffy’s analytics suite examines micro-market
             shifts, buyer sentiment, and seasonal demand so you launch with confidence. Sellers receive detailed narratives they
@@ -539,7 +543,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Media & Marketing Engine</h2>
+          <SectionHeading>Media & Marketing Engine</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Presentation drives perception. Dr. Duffy curates creative assets that highlight desert-modern architecture, guard-gate
             security, and Silverstone’s signature outdoor lifestyle. Each campaign blends storytelling with data-backed targeting

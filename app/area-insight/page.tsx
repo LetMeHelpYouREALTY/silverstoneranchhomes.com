@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -12,13 +12,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/area-insight',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Area Insight | Market & Lifestyle Intel'),
     description:
       'Understand Silverstone Ranch buyer demand, community differentiators, and relocation draw compared to nearby neighborhoods.',
     url: `${CONTACT_INFO.website.base}/area-insight`,
     type: 'website',
   },
+    'Silverstone Ranch area guide',
+  ),
 }
 
 const recentSales = [

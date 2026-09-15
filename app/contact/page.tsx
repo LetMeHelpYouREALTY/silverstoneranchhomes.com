@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildAction, buildFaqSchema, buildLocalBusinessSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import { CONTACT_FAQS } from '@/lib/hyperlocal-faqs'
@@ -13,13 +13,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/contact',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Contact'),
     description:
       `Reach ${CONTACT_INFO.businessName} for property tours, valuations, and HOA guidance. Connect by phone, email, or chat.`,
     url: `${CONTACT_INFO.website.base}/contact`,
     type: 'website',
   },
+    'Contact Dr. Jan Duffy at Silverstone Ranch',
+  ),
 }
 
 export default function ContactPage() {

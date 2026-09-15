@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
@@ -12,13 +12,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/description',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Community Description | Lifestyle Overview'),
     description:
       'Learn about Silverstone Ranch architecture, amenities, schools, and lifestyle experiences with guidance from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/description`,
     type: 'website',
   },
+    'Silverstone Ranch community overview',
+  ),
 }
 
 const communityFaqs = [

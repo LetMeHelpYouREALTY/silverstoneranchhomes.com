@@ -88,8 +88,8 @@ export default function HomesForSale() {
                 <span>2,000+ sq ft</span>
               </div>
             <p className="text-gray-600 mb-4">
-              Located within Silverstone Ranch&apos;s guard-gated footprint with access to top-rated schools, parks, and
-              Centennial Hills conveniences.
+              Located within Silverstone Ranch&apos;s guard-gated footprint with parks, HOA amenities, and
+              Centennial Hills shopping a short drive away.
             </p>
             <div className="mb-4 rounded-lg border border-amber-200 bg-amber-50 p-3 text-xs text-amber-900">
               ⚠️ Homes that once overlooked manicured fairways now face dormant land. The golf course has remained

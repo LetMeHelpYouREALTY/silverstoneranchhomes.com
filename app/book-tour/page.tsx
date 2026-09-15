@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { BOOK_TOUR_FAQS } from '@/lib/hyperlocal-faqs'
@@ -17,13 +17,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Book a Silverstone Ranch Tour | 89131'),
     description:
       'Arrange in-person or virtual Silverstone Ranch tours, guard gate access, and custom itineraries with Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
+    'Book a Silverstone Ranch home tour',
+  ),
 }
 
 const tourSteps = [

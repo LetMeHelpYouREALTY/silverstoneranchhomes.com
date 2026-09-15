@@ -1,8 +1,11 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
+import { HeadingVisual } from '@/components/HeadingVisual'
+import { headingMediaFromText } from '@/lib/media'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 import { AMENITIES_FAQS } from '@/lib/hyperlocal-faqs'
 
@@ -23,7 +26,7 @@ const coreAmenities = [
     icon: '👨‍👩‍👧‍👦',
     title: 'Playgrounds & Splash Pads',
     description:
-      'Age-specific playgrounds, splash pads, and tot lots provide safe, shaded spaces for families to gather year-round.',
+      'Age-specific playgrounds, splash pads, and tot lots with shade structures and seating sit along the central greenbelts.',
   },
   {
     icon: '🚶',
@@ -102,7 +105,7 @@ const nearbyAttractions = [
     name: 'Red Rock Canyon',
     distance: '25 minutes',
     description:
-      'Scenic loop drive, world-class hiking, and rock climbing vistas ideal for weekend adventures.',
+      'Scenic loop drive, hiking, and rock climbing vistas for weekend use.',
   },
   {
     name: 'Aliante Nature Discovery Park',
@@ -198,13 +201,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/amenities',
   },
-  openGraph: {
-    title: buildPageTitle('Amenities & Lifestyle | Parks, Trails, Clubhouse'),
-    description:
-      'Discover Silverstone Ranch parks, recreation, and HOA programming designed for luxury living in Centennial Hills.',
-    url: `${CONTACT_INFO.website.base}/amenities`,
-    type: 'website',
-  },
+  openGraph: withShareImage(
+    {
+      title: buildPageTitle('Amenities & Lifestyle | Parks, Trails, Clubhouse'),
+      description:
+        'Discover Silverstone Ranch parks, recreation, and HOA programming designed for luxury living in Centennial Hills.',
+      url: `${CONTACT_INFO.website.base}/amenities`,
+      type: 'website',
+    },
+    'Silverstone Ranch Amenities & Lifestyle',
+  ),
 }
 
 export default function AmenitiesPage() {
@@ -248,7 +254,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="core-amenities">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Core Community Amenities</h2>
+          <SectionHeading>Core Community Amenities</SectionHeading>
           <p className="text-gray-700 mb-8 text-lg leading-relaxed">
             The master association invests heavily in common-space upkeep and recreational programming. Landscaped entries,
             rolling greenbelts, and targeted lighting elevate the arrival experience day and night. Residents benefit from
@@ -260,6 +266,13 @@ export default function AmenitiesPage() {
               <div key={amenity.title} className="rounded-2xl border border-slate-200 bg-slate-50/80 p-6 shadow-sm">
                 <div className="text-4xl mb-4">{amenity.icon}</div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-2">{amenity.title}</h3>
+                <HeadingVisual
+                  mediaId={headingMediaFromText(amenity.title)}
+                  heading={amenity.title}
+                  variant="supporting"
+                  showCaption={false}
+                  className="mb-3"
+                />
                 <p className="text-sm text-gray-700 leading-relaxed">{amenity.description}</p>
               </div>
             ))}
@@ -269,7 +282,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="amenity-clusters">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Amenity Clusters & Neighborhood Highlights</h2>
+          <SectionHeading>Amenity Clusters & Neighborhood Highlights</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Amenities are strategically distributed so every neighborhood reaches a park, trail, or gathering space within
             minutes. Use this map-friendly overview to plan walking tours and assess proximity when evaluating listings.
@@ -293,7 +306,7 @@ export default function AmenitiesPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="clubhouse-programming">
         <div className="mx-auto max-w-5xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Clubhouse Programming & Social Calendar</h2>
+            <SectionHeading>Clubhouse Programming & Social Calendar</SectionHeading>
             <p className="text-gray-700 mb-6 text-lg leading-relaxed">
               HOA staff coordinate an evolving calendar of events at the main clubhouse. Seasonal celebrations, movie nights,
               youth camps, and themed tastings foster social connection. Meeting rooms and covered patios are available for
@@ -356,7 +369,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="outdoor-living">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Outdoor Living & Trail Network</h2>
+          <SectionHeading>Outdoor Living & Trail Network</SectionHeading>
           <p className="text-gray-700 mb-6 text-lg leading-relaxed">
             Silverstone Ranch prioritizes outdoor recreation. Trail loops stitch together each sub-association, allowing
             residents to walk, jog, and bike without crossing major roads. Many pathways border the former golf fairways,
@@ -426,10 +439,10 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="family-calendar">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Family & Community Event Calendar</h2>
+          <h2 className="text-3xl font-bold text-gray-900">Community event calendar</h2>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Use this seasonal guide to map family activities, volunteer opportunities, and social events that keep Silverstone
-            vibrant year-round.
+            Use this seasonal guide to map HOA programming, volunteer opportunities, and social events that keep Silverstone
+            active year-round.
           </p>
           <div className="grid md:grid-cols-2 gap-6">
             {familyCalendar.map((window) => (
@@ -448,7 +461,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="wellness-network">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Wellness & Recreation Network Beyond the Gates</h2>
+          <SectionHeading>Wellness & Recreation Network Beyond the Gates</SectionHeading>
           <p className="text-gray-700 mb-6 text-lg leading-relaxed">
             Centennial Hills is a wellness-forward district. Residents couple on-site amenities with a network of nearby
             resources, including boutique fitness studios, medical centers, and outdoor adventures. Whether you prefer

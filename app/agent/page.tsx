@@ -3,10 +3,11 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildRealEstateAgentSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
 import { AGENT_FAQS } from '@/lib/hyperlocal-faqs'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
   title: buildHyperlocalTitle('Silverstone Ranch REALTOR® Profile'),
@@ -15,13 +16,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/agent',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Meet Dr. Jan Duffy | REALTOR®'),
     description:
       'Discover the concierge representation, accolades, and Silverstone Ranch expertise provided by Dr. Jan Duffy REALTOR®.',
     url: `${CONTACT_INFO.website.base}/agent`,
     type: 'profile',
   },
+    'Meet Dr. Jan Duffy, Silverstone Ranch REALTOR',
+  ),
 }
 
 const credentials = [
@@ -506,7 +510,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Career Timeline & Professional Evolution</h2>
+          <SectionHeading>Career Timeline & Professional Evolution</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Every chapter of Dr. Duffy’s career has emphasized education, advocacy, and client-centered results. The timeline below
             highlights key milestones that shaped her concierge methodology and market influence.
@@ -561,7 +565,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Concierge Services at a Glance</h2>
+          <SectionHeading>Concierge Services at a Glance</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             The concierge checklist covers hundreds of micro-tasks. Here are the pillars that Silverstone buyers and sellers rely
             on most when partnering with Dr. Duffy.
@@ -597,7 +601,7 @@ export default function AgentPage() {
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
           <h2 className="text-3xl font-bold text-gray-900">Client Success Stories</h2>
           <p className="text-gray-700 leading-relaxed">
-            Recent transactions demonstrate the breadth of Dr. Duffy’s representation—from relocation families to investors and
+            Recent transactions demonstrate the breadth of Dr. Duffy’s representation—from relocating buyers to investors and
             luxury sellers. Each story highlights a unique strategy designed to achieve measurable results.
           </p>
           <div className="grid md:grid-cols-3 gap-6">

@@ -146,7 +146,10 @@ export function buildOrganizationSchema() {
     url: CONTACT_INFO.website.url,
     foundingDate: CONTACT_INFO.foundingDate,
     logo: absoluteMediaUrl('hero-guard-gated'),
-    sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+    sameAs: [
+      ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+      CONTACT_INFO.gbp.mapsSearchUrl,
+    ],
     contactPoint: [
       {
         '@type': 'ContactPoint',
@@ -182,9 +185,13 @@ export function buildLocalBusinessSchema() {
       addressCountry: CONTACT_INFO.address.country,
     },
     geo: buildGeoCoordinates(),
-    sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+    sameAs: [
+      ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+      CONTACT_INFO.gbp.mapsSearchUrl,
+    ],
     areaServed: CONTACT_INFO.serviceAreas,
     openingHoursSpecification: buildOpeningHoursSpecification(),
+    openingHours: `Mo-Su ${CONTACT_INFO.businessHours.opens}-${CONTACT_INFO.businessHours.closes}`,
     ...(CONTACT_INFO.gbpAttributes.womenOwned ? { additionalType: 'https://schema.org/WomenOwnedBusiness' } : {}),
     knowsAbout: [
       'Silverstone Ranch real estate',
@@ -223,7 +230,10 @@ export function buildRealEstateAgentSchema() {
       name: CONTACT_INFO.businessName,
       url: CONTACT_INFO.website.url,
     },
-    sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+    sameAs: [
+      ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+      CONTACT_INFO.gbp.mapsSearchUrl,
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: CONTACT_INFO.address.street,

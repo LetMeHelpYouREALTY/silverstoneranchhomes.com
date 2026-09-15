@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 import { MARKET_INSIGHTS_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
@@ -24,13 +25,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Market Insights | June 2026 Housing Trends'),
     description:
       'June 2026 Silverstone Ranch real estate report: pricing shifts, buyer demand, inventory trends, and guidance from Dr. Jan Duffy REALTOR®.',
     url: canonicalUrl,
     type: 'article',
   },
+    'Silverstone Ranch market insights',
+  ),
 }
 
 const primaryMetrics = [
@@ -222,7 +226,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="key-metrics" className="space-y-8">
-          <h2 className="text-3xl font-bold text-gray-900">Key Performance Metrics</h2>
+          <SectionHeading>Key Performance Metrics</SectionHeading>
           <p className="text-sm text-gray-600">
             The headline numbers show a resilient guard-gated community with rapid absorption and disciplined pricing.
             Drill into the details beneath each tile for context.
@@ -252,7 +256,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="seasonal-trends" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seasonal Trendline & 2026 Outlook</h2>
+          <SectionHeading>Seasonal Trendline & 2026 Outlook</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Plan your move around the seasonal rhythms of Silverstone Ranch. Sellers who align listing launches to peak
             demand windows and buyers who anticipate competition secure better outcomes.

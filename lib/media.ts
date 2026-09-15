@@ -29,6 +29,15 @@ export const MEDIA_IDS = [
   'section-seller-staging',
   'section-buyer-tour',
   'section-dining-plaza',
+  'section-finance',
+  'section-hospital',
+  'section-shopping',
+  'section-research',
+  'section-recreation',
+  'section-evening-outdoor',
+  'section-commute',
+  'section-events',
+  'section-desert-horizon',
   'og-square-home',
 ] as const
 
@@ -165,6 +174,78 @@ export const MEDIA_ASSETS: Record<MediaId, MediaAsset> = {
     width: 1920,
     height: 1080,
   },
+  'section-finance': {
+    id: 'section-finance',
+    localPath: '/images/sections/section-finance.jpg',
+    alt: 'Home keys and closing documents on a Silverstone Ranch porch in Las Vegas',
+    caption: 'Financing, insurance, and move-in logistics for 89131 purchases.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-hospital': {
+    id: 'section-hospital',
+    localPath: '/images/sections/section-hospital.jpg',
+    alt: 'Centennial Hills hospital campus exterior near Silverstone Ranch, Las Vegas',
+    caption: 'Centennial Hills Hospital is a short drive from Silverstone Ranch.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-shopping': {
+    id: 'section-shopping',
+    localPath: '/images/sections/section-shopping.jpg',
+    alt: 'Centennial Hills shopping plaza near Silverstone Ranch in Northwest Las Vegas',
+    caption: 'Shopping and services along the 215 Beltway near ZIP 89131.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-research': {
+    id: 'section-research',
+    localPath: '/images/sections/section-research.jpg',
+    alt: 'Market research desk for Silverstone Ranch pricing and HOA due diligence',
+    caption: 'Data-backed pricing and disclosure review from Dr. Jan Duffy.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-recreation': {
+    id: 'section-recreation',
+    localPath: '/images/sections/section-recreation.jpg',
+    alt: 'Pickleball courts and ramada recreation in a Las Vegas gated community',
+    caption: 'On-site recreation inside Silverstone Ranch.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-evening-outdoor': {
+    id: 'section-evening-outdoor',
+    localPath: '/images/sections/section-evening-outdoor.jpg',
+    alt: 'Twilight backyard with pergola and mountain views in Silverstone Ranch, Las Vegas',
+    caption: 'Outdoor living that buyers tour after work in Centennial Hills.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-commute': {
+    id: 'section-commute',
+    localPath: '/images/sections/section-commute.jpg',
+    alt: '215 Beltway commute from Centennial Hills near Silverstone Ranch, Las Vegas',
+    caption: 'Silverstone Ranch sits minutes from the 215 Beltway in ZIP 89131.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-events': {
+    id: 'section-events',
+    localPath: '/images/sections/section-events.jpg',
+    alt: 'Twilight HOA gathering on a Silverstone Ranch clubhouse lawn in Las Vegas',
+    caption: 'HOA programming and seasonal events inside Silverstone Ranch.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-desert-horizon': {
+    id: 'section-desert-horizon',
+    localPath: '/images/sections/section-desert-horizon.jpg',
+    alt: 'Floyd Lamb Park lagoon and Spring Mountains north of Silverstone Ranch',
+    caption: 'Tule Springs and Floyd Lamb Park sit minutes north of Silverstone Ranch.',
+    width: 1920,
+    height: 1080,
+  },
   'og-square-home': {
     id: 'og-square-home',
     localPath: '/images/sections/og-square-home.jpg',
@@ -218,7 +299,10 @@ const EXACT_ROUTE_HEROES: Record<string, RouteHero> = {
     mediaId: 'section-hoa-clubhouse',
     heading: 'Silverstone Ranch HOA guide',
   },
-  '/environmental-risk': { mediaId: 'section-outdoor-trails', heading: 'Silverstone Ranch environmental risk' },
+  '/resources': { mediaId: 'section-hoa-clubhouse', heading: 'Silverstone Ranch resources' },
+  '/resources/las-vegas-hoa': { mediaId: 'section-hoa-clubhouse', heading: 'Las Vegas HOA guides' },
+  '/silverstone-ranch/schools': { mediaId: 'hero-schools-campus', heading: 'Schools near Silverstone Ranch' },
+  '/environmental-risk': { mediaId: 'section-desert-horizon', heading: 'Silverstone Ranch environmental risk' },
   '/buyers-checklist': { mediaId: 'section-buyer-tour', heading: 'Silverstone Ranch buyer checklist' },
   '/price-features': { mediaId: 'hero-listings-kitchen', heading: 'Silverstone Ranch price and features' },
   '/description': { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch community overview' },
@@ -237,4 +321,171 @@ export function getRouteHero(pathname: string): RouteHero | null {
 
 export function mediaAltForHeading(id: MediaId, heading: string): string {
   return `${heading} — ${MEDIA_ASSETS[id].alt}`
+}
+
+/** Map an H1/H2/H3 to the closest heading-appropriate photo. */
+export function headingMediaFromText(heading: string): MediaId {
+  const h = heading.toLowerCase()
+  if (/(golf|fairway)/.test(h)) return 'hero-golf-fairway'
+  if (/(school|education|campus|ccsd|enrollment)/.test(h)) return 'hero-schools-campus'
+  if (/(map|location|direction|office pin|where we)/.test(h)) return 'hero-map-location'
+  if (/(commute|beltway|transit|transport|getting around)/.test(h)) return 'section-commute'
+  if (/(hospital|healthcare|insurance)/.test(h)) return 'section-hospital'
+  if (/(shop|dining|grocery|centennial center|convenien)/.test(h)) return 'section-shopping'
+  if (/(event|calendar|programming|social calendar)/.test(h)) return 'section-events'
+  if (/(environment|desert|risk|resilience|floyd lamb|tule)/.test(h)) return 'section-desert-horizon'
+  if (/(hoa|clubhouse|document|cc&r|architectural)/.test(h)) return 'section-hoa-clubhouse'
+  if (/(pool|amenit|recreation|pickleball|trail|outdoor|wellness|park)/.test(h)) {
+    if (/(trail|park|wellness|outdoor)/.test(h)) return 'section-outdoor-trails'
+    if (/(pickle|court|recreation)/.test(h)) return 'section-recreation'
+    return 'hero-amenities-pool'
+  }
+  if (/(sell|staging|listing|seller|presentation)/.test(h)) return 'section-seller-staging'
+  if (/(buy|tour|buyer|checklist|relocation|journey)/.test(h)) return 'section-buyer-tour'
+  if (/(valuat|pric|market|finance|loan|closing|research|forecast)/.test(h)) {
+    if (/(finance|loan|closing|key)/.test(h)) return 'section-finance'
+    if (/(research|forecast|market)/.test(h)) return 'section-research'
+    return 'hero-home-valuation'
+  }
+  if (/(contact|agent|office|hours|jan duffy)/.test(h)) return 'hero-contact-office'
+  if (/(aerial|area|neighborhood|village|street|palms|pinehurst|tuscany)/.test(h)) {
+    return 'section-neighborhood-street'
+  }
+  if (/(kitchen|interior|listing|homes for sale|inventory)/.test(h)) return 'hero-listings-kitchen'
+  if (/(evening|twilight|backyard|fire)/.test(h)) return 'section-evening-outdoor'
+  return 'hero-guard-gated'
+}
+
+export function getRouteSectionVisuals(pathname: string): RouteHero[] {
+  const hero = getRouteHero(pathname)
+  if (!hero) return []
+  const extras: Record<string, RouteHero[]> = {
+    '/homes-for-sale': [
+      { mediaId: 'hero-listings-kitchen', heading: 'Live Silverstone Ranch listings' },
+      { mediaId: 'section-buyer-tour', heading: 'Buyer journey and private tours' },
+      { mediaId: 'section-neighborhood-street', heading: 'Compare Silverstone neighborhoods' },
+    ],
+    '/amenities': [
+      { mediaId: 'hero-amenities-pool', heading: 'Core community amenities' },
+      { mediaId: 'section-recreation', heading: 'Recreation and clubhouse programming' },
+      { mediaId: 'section-outdoor-trails', heading: 'Trails and outdoor living' },
+    ],
+    '/map': [
+      { mediaId: 'hero-map-location', heading: 'Silverstone Ranch location' },
+      { mediaId: 'section-shopping', heading: 'Nearby shopping and dining' },
+      { mediaId: 'section-hospital', heading: 'Centennial Hills Hospital' },
+    ],
+    '/contact': [
+      { mediaId: 'hero-contact-office', heading: 'Office and appointments' },
+      { mediaId: 'section-buyer-tour', heading: 'Book a Silverstone Ranch tour' },
+      { mediaId: 'section-finance', heading: 'Valuation and logistics' },
+    ],
+    '/schools': [
+      { mediaId: 'hero-schools-campus', heading: 'CCSD campuses near Silverstone Ranch' },
+      { mediaId: 'section-recreation', heading: 'After-school recreation nearby' },
+      { mediaId: 'hero-map-location', heading: 'Verify zoning by street' },
+    ],
+    '/sell-with-agent': [
+      { mediaId: 'section-seller-staging', heading: 'Presentation and staging' },
+      { mediaId: 'section-research', heading: 'Pricing strategy' },
+      { mediaId: 'hero-home-valuation', heading: 'Home valuation' },
+    ],
+    '/buy-with-agent': [
+      { mediaId: 'section-buyer-tour', heading: 'Buyer representation' },
+      { mediaId: 'hero-listings-kitchen', heading: 'Homes for sale' },
+      { mediaId: 'section-finance', heading: 'Offer and financing prep' },
+    ],
+    '/market-insights': [
+      { mediaId: 'section-research', heading: 'Market data deep dive' },
+      { mediaId: 'hero-home-valuation', heading: 'Pricing context' },
+      { mediaId: 'section-neighborhood-street', heading: 'Sub-association differences' },
+    ],
+    '/golf-course-status': [
+      { mediaId: 'hero-golf-fairway', heading: 'Golf course status' },
+      { mediaId: 'section-outdoor-trails', heading: 'Fairway-adjacent lots' },
+      { mediaId: 'section-hoa-clubhouse', heading: 'HOA disclosures' },
+    ],
+    '/resources/las-vegas-hoa/silverstone-ranch': [
+      { mediaId: 'section-hoa-clubhouse', heading: 'HOA fees and documents' },
+      { mediaId: 'hero-amenities-pool', heading: 'Amenity highlights' },
+      { mediaId: 'hero-schools-campus', heading: 'School assignments' },
+    ],
+    '/home-valuation': [
+      { mediaId: 'hero-home-valuation', heading: 'Silverstone Ranch home valuation' },
+      { mediaId: 'section-research', heading: 'Comps and pricing research' },
+      { mediaId: 'section-seller-staging', heading: 'Seller presentation' },
+    ],
+    '/agent': [
+      { mediaId: 'hero-contact-office', heading: 'Meet Dr. Jan Duffy' },
+      { mediaId: 'section-buyer-tour', heading: 'Buyer representation' },
+      { mediaId: 'section-seller-staging', heading: 'Listing strategy' },
+    ],
+    '/book-tour': [
+      { mediaId: 'section-buyer-tour', heading: 'Book a private tour' },
+      { mediaId: 'hero-listings-kitchen', heading: 'Homes you can preview' },
+      { mediaId: 'hero-map-location', heading: 'Guard-gated access' },
+    ],
+    '/request-info': [
+      { mediaId: 'hero-home-valuation', heading: 'Request market information' },
+      { mediaId: 'section-research', heading: 'HOA and disclosure packets' },
+      { mediaId: 'section-finance', heading: 'Financing and logistics' },
+    ],
+    '/area-info': [
+      { mediaId: 'hero-aerial-community', heading: 'Where Silverstone Ranch fits' },
+      { mediaId: 'section-commute', heading: 'Commute and the 215 Beltway' },
+      { mediaId: 'section-shopping', heading: 'Dining and daily convenience' },
+    ],
+    '/area-insight': [
+      { mediaId: 'hero-aerial-community', heading: 'Silverstone Ranch area guide' },
+      { mediaId: 'section-commute', heading: 'Northwest Las Vegas access' },
+      { mediaId: 'section-desert-horizon', heading: 'Tule Springs outdoor access' },
+    ],
+    '/photos': [
+      { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch gallery' },
+      { mediaId: 'hero-amenities-pool', heading: 'Amenity photography' },
+      { mediaId: 'section-neighborhood-street', heading: 'Streetscapes' },
+    ],
+    '/environmental-risk': [
+      { mediaId: 'section-desert-horizon', heading: 'Desert environment context' },
+      { mediaId: 'hero-golf-fairway', heading: 'Former fairway corridors' },
+      { mediaId: 'section-outdoor-trails', heading: 'Open space and trails' },
+    ],
+    '/buyers-checklist': [
+      { mediaId: 'section-buyer-tour', heading: 'Buyer checklist' },
+      { mediaId: 'section-finance', heading: 'Offer and financing prep' },
+      { mediaId: 'section-hoa-clubhouse', heading: 'HOA due diligence' },
+    ],
+    '/price-features': [
+      { mediaId: 'hero-listings-kitchen', heading: 'Price and features' },
+      { mediaId: 'section-research', heading: 'Market pricing context' },
+      { mediaId: 'hero-home-valuation', heading: 'Valuation consult' },
+    ],
+    '/description': [
+      { mediaId: 'hero-guard-gated', heading: 'Community overview' },
+      { mediaId: 'section-neighborhood-street', heading: 'Neighborhood character' },
+      { mediaId: 'hero-amenities-pool', heading: 'Lifestyle amenities' },
+    ],
+    '/video': [
+      { mediaId: 'hero-guard-gated', heading: 'Video tour' },
+      { mediaId: 'section-buyer-tour', heading: 'Schedule an in-person tour' },
+      { mediaId: 'hero-listings-kitchen', heading: 'Interior quality' },
+    ],
+    '/silverstone-ranch': [
+      { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch community guide' },
+      { mediaId: 'hero-amenities-pool', heading: 'Lifestyle pillars' },
+      { mediaId: 'section-neighborhood-street', heading: 'Neighborhoods inside the ranch' },
+    ],
+  }
+  if (pathname.startsWith('/neighborhoods/')) {
+    return [
+      { mediaId: 'section-neighborhood-street', heading: 'Neighborhood streetscape' },
+      { mediaId: 'hero-amenities-pool', heading: 'Master-plan amenities' },
+      { mediaId: 'section-hoa-clubhouse', heading: 'HOA and sub-association context' },
+    ]
+  }
+  return extras[pathname] ?? [
+    hero,
+    { mediaId: 'section-buyer-tour', heading: 'Private tours in Silverstone Ranch' },
+    { mediaId: 'hero-map-location', heading: 'Map and directions' },
+  ]
 }

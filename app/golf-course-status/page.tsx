@@ -1,8 +1,9 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -12,13 +13,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/golf-course-status',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Golf Course Status & Redevelopment Updates'),
     description:
       'Review the latest on Silverstone Ranch golf course auctions, city filings, and landscaping guidance for homeowners.',
     url: `${CONTACT_INFO.website.base}/golf-course-status`,
     type: 'article',
   },
+    'Silverstone Ranch golf course status',
+  ),
 }
 
 const timeline = [
@@ -195,7 +199,7 @@ export default function GolfCourseStatusPage() {
           </header>
 
           <section className="space-y-5" id="buyer-insights">
-            <h2 className="text-3xl font-bold text-slate-900">What Buyers Need to Know Right Now</h2>
+            <SectionHeading>What Buyers Need to Know Right Now</SectionHeading>
             <p className="text-sm text-slate-600">
               Integrate these four focal points into your due diligence and appraisal modeling before submitting offers.
             </p>
@@ -244,7 +248,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="timeline">
-            <h2 className="text-3xl font-bold text-slate-900">Timeline: 2003 – 2025</h2>
+            <SectionHeading>Timeline: 2003 – 2025</SectionHeading>
             <p className="text-sm text-slate-600">
               Cross-reference HOA communications and county recorder notices against this high-level timeline when preparing
               disclosures or compiling comps.

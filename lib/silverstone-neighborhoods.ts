@@ -236,7 +236,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
     slug: 'eastpoint',
     titleSegment: 'Eastpoint | Silverstone Ranch Village',
     metaDescription:
-      'Eastpoint at Silverstone Ranch: non-gated Northwest Las Vegas homes in 89131. Family-friendly streets, master-plan amenities, and REALTOR® guidance from Dr. Jan Duffy.',
+      'Eastpoint at Silverstone Ranch: non-gated Northwest Las Vegas homes in 89131. Master-plan amenities and REALTOR® guidance from Dr. Jan Duffy.',
     h1: 'Eastpoint | Silverstone Ranch Village Homes',
     intro:
       'Eastpoint offers non-gated single-family living inside the Silverstone Ranch master plan—ideal for buyers who want community amenities and CCSD school access without guard-gate logistics.',
@@ -380,7 +380,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
     slug: 'greenfield',
     titleSegment: 'Greenfield | Silverstone Village',
     metaDescription:
-      'Greenfield at Silverstone Ranch: non-gated Northwest Las Vegas homes in 89131. Family-friendly streets, master-plan amenities, and REALTOR® services from Dr. Jan Duffy.',
+      'Greenfield at Silverstone Ranch: non-gated Northwest Las Vegas homes in 89131. Master-plan amenities and REALTOR® services from Dr. Jan Duffy.',
     h1: 'Greenfield | Non-Gated Silverstone Ranch Homes',
     intro:
       'Greenfield delivers approachable single-family living inside the Silverstone Ranch master plan without guard-gate fees—ideal for buyers who prioritize value, guest access, and proximity to parks and trails.',
@@ -484,7 +484,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
       {
         heading: 'Homes & value proposition',
         body:
-          'Somerset appeals to budget-conscious buyers who want Silverstone Ranch amenities without guard-gate premiums. Pulte-built homes from 2003–2008 offer desert-modern and traditional elevations across family-friendly streets.',
+          'Somerset appeals to budget-conscious buyers who want Silverstone Ranch amenities without guard-gate premiums. Pulte-built homes from 2003–2008 offer desert-modern and traditional elevations across interior streets.',
       },
       {
         heading: 'HOA at the lowest tier',

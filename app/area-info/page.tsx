@@ -1,8 +1,9 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
@@ -12,13 +13,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/area-info',
   },
-  openGraph: {
-    title: buildPageTitle('Area Information | Neighborhood Highlights'),
-    description:
-      'Explore commute options, dining, recreation, and educational resources surrounding Silverstone Ranch in Centennial Hills.',
-    url: `${CONTACT_INFO.website.base}/area-info`,
-    type: 'website',
-  },
+  openGraph: withShareImage(
+    {
+      title: buildPageTitle('Area Information | Neighborhood Highlights'),
+      description:
+        'Explore commute options, dining, recreation, and educational resources surrounding Silverstone Ranch in Centennial Hills.',
+      url: `${CONTACT_INFO.website.base}/area-info`,
+      type: 'website',
+    },
+    'Where Silverstone Ranch Fits in Las Vegas',
+  ),
 }
 
 const travelTimes = [
@@ -174,7 +178,7 @@ export default function AreaInfoPage() {
         </div>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="location-overview">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Where Silverstone Ranch Fits in Las Vegas</h2>
+          <SectionHeading>Where Silverstone Ranch Fits in Las Vegas</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6 text-lg">
             Silverstone Ranch anchors the northern edge of the Centennial Hills master plan, roughly 20 miles from the
             Las Vegas Strip and 12 miles from downtown Summerlin. Elevated desert terrain provides sweeping views while
@@ -200,7 +204,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="commuter-options">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Transportation & Commuter Options</h2>
+          <SectionHeading>Transportation & Commuter Options</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Silverstone Ranch residents leverage multiple transportation modes to navigate the valley. From drive time to
             transit access, the community’s location supports diverse lifestyles and work schedules.
@@ -240,7 +244,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="dining-guide">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Dining & Entertainment Guide</h2>
+          <SectionHeading>Dining & Entertainment Guide</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Upscale dining, casual favorites, and remote-work-friendly cafés cluster around Silverstone Ranch. Explore these
             curated lists to plan date nights, family dinners, and business meetups.
@@ -260,7 +264,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="healthcare">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Healthcare & Wellness Infrastructure</h2>
+          <SectionHeading>Healthcare & Wellness Infrastructure</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Proximity to major healthcare systems is a top reason professionals relocate to Silverstone Ranch. Residents
             benefit from emergency care, specialty clinics, and wellness programs without leaving the northwest valley.
@@ -276,7 +280,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="recreation">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Outdoor Recreation & Weekend Adventures</h2>
+          <SectionHeading>Outdoor Recreation & Weekend Adventures</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Within a short drive, Silverstone residents transition from desert tranquility to alpine escapes. Use this
             guide to plan weekend outings that take advantage of the valley’s natural assets.
@@ -296,7 +300,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="golf-disclosure">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Golf Course Disclosure & Future Outlook</h2>
+          <SectionHeading>Golf Course Disclosure & Future Outlook</SectionHeading>
           <div className="mb-6 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm text-amber-900">
             <strong className="font-semibold">Golf Course Disclosure:</strong> The Silverstone golf course has been closed
             since 2015 and sold at auction in May 2025. The new owner has not announced a redevelopment plan, so
@@ -318,13 +322,11 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="schools">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Schools & Education Access</h2>
+          <SectionHeading>Schools & Education Access</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
-            Silverstone Ranch families can access high-performing Clark County School District campuses. O’Roarke
-            Elementary, Cadwallader Middle School, and Arbor View High School each hold 7–8/10 GreatSchools ratings with
-            specialized programs in STEM, arts, and career technical education. Charter options such as Somerset Academy
-            Sky Pointe and Doral Academy Red Rock provide additional pathways, while Faith Lutheran and The Meadows School
-            offer rigorous private curricula approximately 20 minutes south in Summerlin.
+            Silverstone Ranch is typically zoned to O’Roarke Elementary, Cadwallader Middle School, and Arbor View High
+            School. Confirm the current assignment at ccsd.net/zoning. Nearby options include Somerset Academy Sky Pointe,
+            Doral Academy Red Rock, Faith Lutheran, and The Meadows School.
           </p>
           <p className="text-gray-700 leading-relaxed text-lg">
             Enrollment timelines vary, so start registration early. Dr. Jan Duffy coordinates school tours, introduction to

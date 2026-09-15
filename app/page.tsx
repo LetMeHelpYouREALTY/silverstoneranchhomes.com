@@ -9,6 +9,7 @@ import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { HeadingVisual } from '@/components/HeadingVisual'
 import { GbpCtaRow } from '@/components/GbpCtaRow'
+import { SectionHeading } from '@/components/SectionHeading'
 import {
   buildAggregateRatingSchema,
   buildAction,
@@ -19,7 +20,7 @@ import {
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { absoluteMediaUrl } from '@/lib/media'
 import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
@@ -37,7 +38,8 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Community Overview & Luxury Insights'),
     description:
       'Discover Silverstone Ranch in Northwest Las Vegas—gated neighborhoods, curated amenities, and expert representation from Dr. Jan Duffy REALTOR®.',
@@ -52,6 +54,8 @@ export const metadata: Metadata = {
       },
     ],
   },
+    'Live in Silverstone Ranch, Northwest Las Vegas',
+  ),
 }
 
 const homepageTestimonials = [
@@ -491,7 +495,7 @@ export default async function HomePage() {
           </div>
 
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Relocation Intelligence</h2>
+            <SectionHeading>Relocation Intelligence</SectionHeading>
             <HeadingVisual
               mediaId="hero-aerial-community"
               heading="Relocation Intelligence"
@@ -560,7 +564,7 @@ export default async function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-2">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Buyer Strategy Playbook</h2>
+            <SectionHeading>Buyer Strategy Playbook</SectionHeading>
             <HeadingVisual
               mediaId="section-buyer-tour"
               heading="Buyer Strategy Playbook"
@@ -578,7 +582,7 @@ export default async function HomePage() {
             </ul>
           </div>
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Seller Success Framework</h2>
+            <SectionHeading>Seller Success Framework</SectionHeading>
             <HeadingVisual
               mediaId="section-seller-staging"
               heading="Seller Success Framework"
@@ -623,7 +627,7 @@ export default async function HomePage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-6">
-          <h2 className="text-3xl font-bold text-slate-900">Home Finance & Logistics Snapshot</h2>
+          <SectionHeading>Home Finance & Logistics Snapshot</SectionHeading>
           <p className="text-slate-700 leading-relaxed">
             Every Silverstone transaction requires a blend of financial readiness and lifestyle planning. Dr. Duffy’s lending
             partners pre-underwrite loans within 48 hours, outline appraisal gap strategies, and model payment scenarios based on
@@ -669,7 +673,7 @@ export default async function HomePage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-8">
-          <h2 className="text-3xl font-bold text-slate-900">Market Data Deep Dive</h2>
+          <SectionHeading>Market Data Deep Dive</SectionHeading>
           <p className="text-slate-700 leading-relaxed">
             June 2026 trends reveal Silverstone’s resilience: median sale price $685K (+5.2% YoY), average price per
             square foot $284, and list-to-sale ratio 101.8%. Cash and jumbo-financed buyers account for nearly half of

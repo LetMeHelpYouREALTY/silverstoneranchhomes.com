@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildPageTitle } from '@/lib/metadata'
+import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildWebPageSchema } from '@/lib/seo'
 
@@ -12,13 +12,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/terms',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Terms of Service'),
     description:
       `Understand the terms governing the ${CONTACT_INFO.businessName} website, services, and contact procedures.`,
     url: `${CONTACT_INFO.website.base}/terms`,
     type: 'article',
   },
+    'Silverstone Ranch terms of service',
+  ),
 }
 
 export default function TermsPage() {

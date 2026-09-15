@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { buildWebPageSchema } from '@/lib/seo'
 
 const path = '/resources/las-vegas-hoa'
@@ -14,13 +14,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Las Vegas HOA Guides'),
     description:
       'HOA fundamentals for Las Vegas buyers and a direct link to the Silverstone Ranch community guide.',
     url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
+    'Las Vegas HOA guides',
+  ),
 }
 
 export default function LasVegasHoaIndexPage() {

@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { VIDEO_FAQS } from '@/lib/hyperlocal-faqs'
@@ -19,13 +19,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: '/video',
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Video Tour Library'),
     description:
       'Stream Silverstone Ranch property walkthroughs, amenity spotlights, and relocation videos produced by Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}/video`,
     type: 'website',
   },
+    'Silverstone Ranch video tour',
+  ),
 }
 
 export default function VideoPage() {

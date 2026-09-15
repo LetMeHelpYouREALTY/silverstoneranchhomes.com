@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { FaqSection } from '@/components/FaqSection'
 import { HOME_VALUATION_FAQS } from '@/lib/hyperlocal-faqs'
@@ -17,13 +17,16 @@ export const metadata: Metadata = {
   alternates: {
     canonical: path,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Silverstone Ranch Home Valuation | 89131'),
     description:
       'Unlock your Silverstone Ranch home value with a custom market analysis, pricing strategy, and selling roadmap from Dr. Jan Duffy.',
     url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
+    'Silverstone Ranch home valuation',
+  ),
 }
 
 export default function HomeValuationPage() {

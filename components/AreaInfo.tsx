@@ -30,9 +30,9 @@ export default function AreaInfo() {
 
           <p className="text-gray-700 leading-relaxed mb-6">
             This exclusive, guard-gated enclave isn&apos;t just a place to live; it&apos;s a lifestyle upgrade. 
-            Located just 10 minutes from designer shopping at Centennial Center, top-rated CCSD schools, and 
-            the sprawling 680-acre Floyd Lamb Park, every detail has been designed to enhance your daily life. 
-            The nearby 215 Beltway puts the Strip just 30 minutes away, while world-class healthcare at 
+            Located just 10 minutes from shopping at Centennial Center, CCSD campuses, and 
+            the sprawling 680-acre Floyd Lamb Park, every detail has been designed to enhance daily routines. 
+            The nearby 215 Beltway puts the Strip just 30 minutes away, while healthcare at 
             Centennial Hills Hospital ensures peace of mind right in your neighborhood.
           </p>
 
@@ -45,7 +45,7 @@ export default function AreaInfo() {
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">🏫</span>
-                <span><strong>Top-rated CCSD schools</strong> in the area</span>
+                <span>CCSD campuses including O&apos;Roarke ES, Cadwallader MS, and Arbor View HS (verify zoning)</span>
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">🌳</span>
@@ -57,7 +57,7 @@ export default function AreaInfo() {
               </li>
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">🏥</span>
-                <span><strong>Centennial Hills Hospital</strong> for world-class healthcare</span>
+                <span><strong>Centennial Hills Hospital</strong> nearby</span>
               </li>
             </ul>
           </div>
@@ -67,18 +67,15 @@ export default function AreaInfo() {
             <div className="grid gap-4 sm:grid-cols-3 text-xs text-gray-700">
               <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
                 <p className="font-semibold text-blue-700 uppercase tracking-wide mb-1">O&apos;Roarke ES</p>
-                <p className="font-semibold text-gray-900">GreatSchools 7/10</p>
-                <p>STEM labs, robotics club, enrichment tutoring.</p>
+                <p>STEM labs, robotics club, enrichment tutoring. Confirm current programs with CCSD.</p>
               </div>
               <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
                 <p className="font-semibold text-blue-700 uppercase tracking-wide mb-1">Cadwallader MS</p>
-                <p className="font-semibold text-gray-900">GreatSchools 8/10</p>
-                <p>Engineering electives, award-winning band.</p>
+                <p>Engineering electives and band programs. Confirm current offerings with CCSD.</p>
               </div>
               <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
                 <p className="font-semibold text-blue-700 uppercase tracking-wide mb-1">Arbor View HS</p>
-                <p className="font-semibold text-gray-900">GreatSchools 7/10</p>
-                <p>AP, medical academy CTE tracks, elite athletics.</p>
+                <p>AP courses and CTE tracks. Confirm current programs with the high school.</p>
               </div>
             </div>
             <p className="mt-3 text-[11px] text-gray-500">
@@ -99,8 +96,8 @@ export default function AreaInfo() {
             Beyond its prime location, this luxury Las Vegas community boasts immaculately manicured 
             landscapes, resort-style amenities, and Mediterranean-inspired architecture that radiates 
             elegance. Whether you&apos;re lounging poolside, exploring nearby nature trails, or enjoying 
-            the upscale charm of the neighborhood, you&apos;ll quickly see why Centennial Hills ranks among 
-            Las Vegas&apos; fastest-growing luxury communities, with property values appreciating 15% annually.
+            landscapes, resort-style amenities, and Mediterranean-inspired architecture.
+            Confirm current pricing and inventory with Dr. Jan Duffy before you offer.
           </p>
 
           <p className="text-gray-700 leading-relaxed">

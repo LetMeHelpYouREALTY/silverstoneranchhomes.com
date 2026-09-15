@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle } from '@/lib/metadata'
+import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SCHOOLS_NEAR_SILVERSTONE } from '@/lib/schools-near-silverstone'
 import { buildWebPageSchema } from '@/lib/seo'
 
@@ -19,13 +19,16 @@ export const metadata: Metadata = {
     index: false,
     follow: true,
   },
-  openGraph: {
+  openGraph: withShareImage(
+    {
     title: buildPageTitle('Schools Near Silverstone Ranch'),
     description:
       'Clark County School District options near Silverstone Ranch in Northwest Las Vegas—quick reference and link to the complete guide.',
     url: `${CONTACT_INFO.website.base}${path}`,
     type: 'website',
   },
+    'Schools near Silverstone Ranch',
+  ),
 }
 
 export default function SilverstoneRanchSchoolsPage() {
@@ -83,7 +86,7 @@ export default function SilverstoneRanchSchoolsPage() {
                   <th className="py-2 pr-4 font-semibold">School</th>
                   <th className="py-2 pr-4 font-semibold">Level</th>
                   <th className="py-2 pr-4 font-semibold">Approx. distance</th>
-                  <th className="py-2 font-semibold">GreatSchools (indicative)</th>
+                  <th className="py-2 font-semibold">How to confirm</th>
                 </tr>
               </thead>
               <tbody>
