@@ -4,6 +4,7 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
   title: 'Area Insight | Market & Lifestyle Intel',
@@ -196,7 +197,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="market-advantage">
-          <h2 className="text-3xl font-bold text-gray-900">Market Advantage: Inventory at Multi-Year Lows</h2>
+          <SectionHeading>Market Advantage: Inventory at Multi-Year Lows</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Silverstone Ranch entered November with only 18 active listings—down 12% month-over-month and well below the
             balanced-market threshold of 35 homes. Buyer registries maintained by Dr. Duffy track 46 pre-approved households
@@ -528,7 +529,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="financing-strategies">
-          <h2 className="text-3xl font-bold text-gray-900">Financing Strategies that Win Offers</h2>
+          <SectionHeading>Financing Strategies that Win Offers</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Lenders report heightened activity in jumbo products and adjustable-rate mortgages designed for relocation
             buyers. Successful contracts in October and November leveraged creative financing to outpace cash competition.

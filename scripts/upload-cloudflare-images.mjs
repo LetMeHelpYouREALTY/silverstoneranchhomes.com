@@ -46,6 +46,10 @@ const MEDIA_IDS = [
   'section-commute',
   'section-events',
   'section-desert-horizon',
+  'section-video-tour',
+  'section-floorplan-interior',
+  'section-smart-home',
+  'section-architecture',
   'og-square-home',
 ]
 

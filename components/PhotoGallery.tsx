@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import ImageGallery from 'react-image-gallery'
 import { propertyPhotos } from '@/lib/property-photos'
+import { SectionHeading } from '@/components/SectionHeading'
 // CSS is imported globally in app/layout.tsx
 
 export default function PhotoGallery() {
@@ -20,9 +21,7 @@ export default function PhotoGallery() {
   return (
     <section id="photos" className="py-20 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-20">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          Silverstone Ranch Lifestyle Gallery
-        </h2>
+        <SectionHeading>Silverstone Ranch Lifestyle Gallery</SectionHeading>
 
         {!showGallery ? (
           <div className="text-center">

@@ -4,6 +4,7 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
   title: 'Buyer Checklist | Due Diligence & Closing Timeline',
@@ -226,7 +227,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="overview" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Silverstone Buying Overview</h2>
+          <SectionHeading>Silverstone Buying Overview</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Transactions typically progress over 30–45 days. Buyers should aim for the following milestones:
           </p>
@@ -277,7 +278,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="financing-toolkit" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Financing Toolkit & Lender Strategy</h2>
+          <SectionHeading>Financing Toolkit & Lender Strategy</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Competitive financing keeps offers resilient even against cash buyers. Coordinate with lenders familiar with
             guard-gated communities and multi-layered HOAs.
@@ -307,7 +308,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="hoa-documents" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Master HOA & Sub-Association Documents</h2>
+          <SectionHeading>Master HOA & Sub-Association Documents</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone Ranch is governed by a master association layered with sub-associations such as The Palms, Tuscany,
             and Pinehurst. Each adds rules and maintenance responsibilities. Request and review the following documents

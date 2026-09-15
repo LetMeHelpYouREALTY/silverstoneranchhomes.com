@@ -4,6 +4,7 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
   title: 'Community Description | Lifestyle Overview',
@@ -83,7 +84,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Community Story & Setting</h2>
+          <SectionHeading>Community Story & Setting</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Silverstone Ranch rose from the desert between 2003 and 2008, transforming 27 holes of rolling fairways into one of
             Centennial Hills’ most beloved guard-gated enclaves. The community stretches along the foothills north of the 215
@@ -152,7 +153,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Architecture & Interior Design</h2>
+          <SectionHeading>Architecture & Interior Design</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Silverstone homes blend Mediterranean and contemporary influences. Expect stucco exteriors, stacked-stone accents,
             wrought-iron balconies, and clay tile roofs that complement the desert palette. Inside, soaring ceilings, transom
@@ -169,7 +170,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Indoor-Outdoor Living</h2>
+          <SectionHeading>Indoor-Outdoor Living</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Living in Silverstone means embracing Southern Nevada’s sunshine. Many homes feature multi-panel sliders that erase
             the line between great rooms and covered patios. Outdoor kitchens, fire pits, misting systems, and pebble-finish

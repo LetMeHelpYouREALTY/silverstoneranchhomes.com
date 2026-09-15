@@ -8,9 +8,15 @@ type GoogleMapEmbedProps = {
 
 export function GoogleMapEmbed({ query, title, className }: GoogleMapEmbedProps) {
   const mapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
+  const placeId = CONTACT_INFO.gbp.placeId
+  const usePlaceId = query === CONTACT_INFO.address.display || query === CONTACT_INFO.businessName
   const src = mapsApiKey
-    ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=${encodeURIComponent(query)}`
-    : `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
+    ? usePlaceId
+      ? `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=place_id:${placeId}`
+      : `https://www.google.com/maps/embed/v1/place?key=${mapsApiKey}&q=${encodeURIComponent(query)}`
+    : usePlaceId
+      ? `https://www.google.com/maps?cid=${CONTACT_INFO.gbp.cid}&output=embed`
+      : `https://www.google.com/maps?q=${encodeURIComponent(query)}&output=embed`
 
   return (
     <div className={className}>

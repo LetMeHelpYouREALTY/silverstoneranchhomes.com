@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
 import { getMediaUrl } from '@/lib/media'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export default function RequestInfoPageClient() {
   return (
@@ -84,7 +85,7 @@ export default function RequestInfoPageClient() {
             />
           </div>
           <div className="p-8 md:p-10">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Why Request a Consultation?</h2>
+            <SectionHeading>Why Request a Consultation?</SectionHeading>
             <p className="text-gray-600 mb-4">
               Silverstone Ranch spans multiple guard-gated villages with distinct HOA structures, lot orientations, and price bands. A scheduled conversation helps you focus on the enclaves that match your lifestyle and budget.
             </p>

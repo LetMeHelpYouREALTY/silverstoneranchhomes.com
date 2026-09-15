@@ -6,6 +6,7 @@ import Link from 'next/link'
 // CSS is imported globally in app/layout.tsx
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { propertyPhotos } from '@/lib/property-photos'
+import { SectionHeading } from '@/components/SectionHeading'
 
 const photoCollections = [
   {
@@ -89,7 +90,7 @@ export default function PhotosPageClient() {
       </div>
 
       <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">Gallery Themes & Inspiration</h2>
+        <SectionHeading>Gallery Themes & Inspiration</SectionHeading>
         <p className="text-gray-700 leading-relaxed mb-6">
           Each photo set is organized around how Silverstone residents live, entertain, and recharge. Use these themes to plan your own shoot, assess staging, or compare craftsmanship across listings.
         </p>
@@ -104,7 +105,7 @@ export default function PhotosPageClient() {
       </section>
 
       <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">Staging & Photography Blueprint</h2>
+        <SectionHeading>Staging & Photography Blueprint</SectionHeading>
         <p className="text-gray-700 leading-relaxed mb-6">
           Silverstone homes perform best online when photography showcases lifestyle benefits and climatic advantages. Pair the tips below with Dr. Duffy’s preferred vendor list to elevate your next photo session.
         </p>

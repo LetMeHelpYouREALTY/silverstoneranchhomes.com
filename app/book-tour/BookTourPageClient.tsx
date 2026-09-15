@@ -1,6 +1,7 @@
 'use client'
 
 import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export default function BookTourPageClient() {
   return (
@@ -13,6 +14,7 @@ export default function BookTourPageClient() {
       </div>
 
       <div className="bg-white rounded-lg shadow-md p-8">
+        <SectionHeading>Reserve Your Tour Time</SectionHeading>
         <CalendlySchedulingBlock
           title="Reserve Your Tour Time"
           description="Pick a time that works for you. Dr. Duffy will confirm your preferred Silverstone Ranch villages, listing priorities, and tour route."

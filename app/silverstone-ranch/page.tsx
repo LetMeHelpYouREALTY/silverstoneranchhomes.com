@@ -439,7 +439,7 @@ export default async function SilverstoneRanchPage() {
 
         <section id="live-listings" className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-4">Live MLS Listings in Silverstone Ranch</h2>
+            <SectionHeading>Live MLS Listings in Silverstone Ranch</SectionHeading>
             <p className="text-slate-700 mb-8">
               {activeListingStat.detail} Browse{' '}
               <Link href="/homes-for-sale" className="font-semibold text-blue-700 hover:underline">
@@ -492,7 +492,7 @@ export default async function SilverstoneRanchPage() {
 
         <section id="environment" className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
           <div className="mx-auto max-w-5xl">
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Environmental Planning & Risk Readiness</h2>
+            <SectionHeading>Environmental Planning & Risk Readiness</SectionHeading>
             <p className="text-slate-700 mb-6">
               Silverstone Ranch homeowners plan for desert climate realities—rising summer heat, monsoon bursts, and seasonal
               wind events. Recent resilience upgrades include high-SEER HVAC systems, smart thermostats, xeriscape yard

@@ -7,6 +7,7 @@ import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulin
 import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
 import { GbpCtaRow } from '@/components/GbpCtaRow'
 import { GoogleMapEmbed } from '@/components/GoogleMapEmbed'
+import { SectionHeading } from '@/components/SectionHeading'
 
 type ContactFaq = {
   question: string
@@ -30,7 +31,7 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
 
       <div className="grid md:grid-cols-2 gap-8 mb-12">
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Get in Touch</h2>
+          <SectionHeading>Get in Touch</SectionHeading>
           <div className="space-y-6">
             <div className="flex items-start gap-4">
               <div className="flex-shrink-0">

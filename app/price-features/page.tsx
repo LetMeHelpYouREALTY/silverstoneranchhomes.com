@@ -7,6 +7,7 @@ import { FaqSection } from '@/components/FaqSection'
 import { PRICE_FEATURES_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { SectionHeading } from '@/components/SectionHeading'
 
 const path = '/price-features'
 const faqs = PRICE_FEATURES_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
@@ -196,7 +197,7 @@ export default function PriceFeaturesPage() {
 
         <section className="grid lg:grid-cols-2 gap-8">
           <div className="bg-white rounded-lg shadow-xl p-8 md:p-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Residence & Lifestyle Features</h2>
+            <SectionHeading>Residence & Lifestyle Features</SectionHeading>
             <ul className="space-y-4 text-gray-700">
               <li className="flex items-start">
                 <span className="text-blue-600 mr-3 text-xl">✓</span>
@@ -289,7 +290,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Floor Plan Profiles & Lifestyle Fit</h2>
+          <SectionHeading>Floor Plan Profiles & Lifestyle Fit</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Every Silverstone enclave introduces unique design cues. Understanding the nuances helps buyers match floor plans to
             lifestyle goals and future resale value.
@@ -353,7 +354,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Energy Efficiency & Sustainability Highlights</h2>
+          <SectionHeading>Energy Efficiency & Sustainability Highlights</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Sustainability upgrades are more than eco-friendly—they reduce operating costs and strengthen resale narratives. Silverstone
             homes already feature efficient bones, making additional improvements straightforward.

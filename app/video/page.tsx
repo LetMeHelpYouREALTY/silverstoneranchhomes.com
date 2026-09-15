@@ -7,10 +7,11 @@ import { FaqSection } from '@/components/FaqSection'
 import { VIDEO_FAQS } from '@/lib/hyperlocal-faqs'
 import { buildFaqSchema, buildVideoObjectSchema, buildWebPageSchema } from '@/lib/seo'
 import { absoluteMediaUrl } from '@/lib/media'
+import { SectionHeading } from '@/components/SectionHeading'
 
 const path = '/video'
 const faqs = VIDEO_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
-const thumbnailUrl = absoluteMediaUrl('hero-guard-gated')
+const thumbnailUrl = absoluteMediaUrl('section-video-tour')
 
 export const metadata: Metadata = {
   title: buildHyperlocalTitle('Silverstone Ranch Video Tours'),
@@ -72,42 +73,11 @@ export default function VideoPage() {
 
         {/* Video Section */}
         <div className="bg-white rounded-lg shadow-xl p-8 md:p-12 mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">Property Virtual Tour</h2>
-          <div className="bg-gray-100 rounded-lg overflow-hidden aspect-video mb-8 flex items-center justify-center">
-            <div className="text-center p-8">
-              <svg
-                className="mx-auto h-16 w-16 text-gray-400 mb-4"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              <p className="text-gray-600 mb-4">
-                Virtual tour video will be embedded here
-              </p>
-              <p className="text-sm text-gray-500">
-                Contact us to schedule a live virtual tour
-              </p>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <p className="text-gray-700 mb-6 text-lg">
-              Preview Silverstone Ranch at your own pace—tour open-concept interiors, outdoor living spaces, and gated
-              amenities through curated video walk-throughs. When you&apos;re ready, schedule a live virtual session with
-              Dr. Jan Duffy for deeper insights.
+          <SectionHeading>Property Virtual Tour</SectionHeading>
+          <div className="mb-8 rounded-2xl border border-blue-100 bg-blue-50 p-6 text-center">
+            <p className="text-gray-700 mb-4 text-lg">
+              Preview Silverstone Ranch interiors, outdoor living, and gated amenities, then schedule a live walk-through
+              with Dr. Jan Duffy.
             </p>
             <Link
               href="/book-tour"

@@ -4,6 +4,7 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export const metadata: Metadata = {
   title: 'Environmental Risk Assessment | 30-Year Outlook',
@@ -228,7 +229,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="risk-matrix" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Risk Snapshot: Heat, Wildfire, Flood, Wind</h2>
+          <SectionHeading>Risk Snapshot: Heat, Wildfire, Flood, Wind</SectionHeading>
           <div className="grid md:grid-cols-2 gap-8">
             {riskCategories.map((risk) => (
               <div key={risk.name} className={`rounded-2xl border shadow-lg p-8 ${risk.color}`}>
@@ -251,7 +252,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="heat-mitigation" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Heat Mitigation Playbook</h2>
+          <SectionHeading>Heat Mitigation Playbook</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Summers will remain the primary stressor for 89131. Combine HOA-approved upgrades with utility incentives to
             manage indoor comfort and operating costs.
@@ -301,7 +302,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="sustainability" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Sustainability Upgrades that Boost Value</h2>
+          <SectionHeading>Sustainability Upgrades that Boost Value</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Buyers increasingly prioritize eco-friendly homes. Invest in upgrades that lower utility bills and align with
             HOA standards.

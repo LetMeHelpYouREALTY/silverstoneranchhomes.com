@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
+import { SectionHeading } from '@/components/SectionHeading'
 
 const valuationSteps = [
   {
@@ -96,7 +97,7 @@ export default function HomeValuationPageClient() {
       </div>
 
       <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 mt-12">
-        <h2 className="text-3xl font-bold text-gray-900 mb-6">Why Sellers Choose Dr. Jan Duffy</h2>
+        <SectionHeading>Why Sellers Choose Dr. Jan Duffy</SectionHeading>
         <div className="grid md:grid-cols-3 gap-6">
           {sellerBenefits.map((benefit) => (
             <div key={benefit.title} className="rounded-lg border border-slate-200 p-6">
@@ -109,7 +110,7 @@ export default function HomeValuationPageClient() {
 
       <section className="mt-12 grid md:grid-cols-2 gap-8">
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Valuation Process</h2>
+          <SectionHeading>Valuation Process</SectionHeading>
           <ol className="space-y-4">
             {valuationSteps.map((step, index) => (
               <li key={step.title} className="flex gap-4">

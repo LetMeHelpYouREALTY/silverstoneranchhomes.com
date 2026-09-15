@@ -351,7 +351,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="events">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seasonal Lifestyle Events</h2>
+          <SectionHeading>Seasonal Lifestyle Events</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone Ranch events blend community bonding with elevated amenities. The HOA partners with local chefs,
             fitness pros, and entertainers to deliver experiences that rival boutique resorts.
@@ -389,7 +389,7 @@ export default function AmenitiesPage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="hoa-services">
         <div className="mx-auto max-w-5xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">HOA Services & Resident Support</h2>
+            <SectionHeading>HOA Services & Resident Support</SectionHeading>
             <p className="text-gray-700 mb-6 text-lg leading-relaxed">
               The master association, managed by CAMCO, oversees 24/7 guard services, landscaping along the parkways,
               reserve planning, and community communications. Sub-associations within Silverstone Ranch—such as The Palms,

@@ -38,6 +38,10 @@ export const MEDIA_IDS = [
   'section-commute',
   'section-events',
   'section-desert-horizon',
+  'section-video-tour',
+  'section-floorplan-interior',
+  'section-smart-home',
+  'section-architecture',
   'og-square-home',
 ] as const
 
@@ -246,6 +250,38 @@ export const MEDIA_ASSETS: Record<MediaId, MediaAsset> = {
     width: 1920,
     height: 1080,
   },
+  'section-video-tour': {
+    id: 'section-video-tour',
+    localPath: '/images/sections/section-video-tour.jpg',
+    alt: 'Living room set for a Silverstone Ranch virtual home tour in Las Vegas',
+    caption: 'Watch community video tours, then book a live walk-through with Dr. Jan Duffy.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-floorplan-interior': {
+    id: 'section-floorplan-interior',
+    localPath: '/images/sections/section-floorplan-interior.jpg',
+    alt: 'Open great room and kitchen floor plan in a Silverstone Ranch Las Vegas home',
+    caption: 'Open indoor-outdoor floor plans buyers compare in ZIP 89131.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-smart-home': {
+    id: 'section-smart-home',
+    localPath: '/images/sections/section-smart-home.jpg',
+    alt: 'Smart-home controls in a Silverstone Ranch desert contemporary residence',
+    caption: 'Energy and smart-home upgrades that show up in Silverstone Ranch valuations.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-architecture': {
+    id: 'section-architecture',
+    localPath: '/images/sections/section-architecture.jpg',
+    alt: 'Mediterranean Silverstone Ranch home elevation with clay tile roof in Las Vegas',
+    caption: 'Spanish and Mediterranean elevations that define Silverstone Ranch streetscapes.',
+    width: 1920,
+    height: 1080,
+  },
   'og-square-home': {
     id: 'og-square-home',
     localPath: '/images/sections/og-square-home.jpg',
@@ -287,7 +323,7 @@ const EXACT_ROUTE_HEROES: Record<string, RouteHero> = {
   '/home-valuation': { mediaId: 'hero-home-valuation', heading: 'Silverstone Ranch home valuation' },
   '/sell-with-agent': { mediaId: 'section-seller-staging', heading: 'Sell a Silverstone Ranch home' },
   '/buy-with-agent': { mediaId: 'section-buyer-tour', heading: 'Buy a Silverstone Ranch home with a buyer agent' },
-  '/photos': { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch lifestyle gallery' },
+  '/photos': { mediaId: 'section-architecture', heading: 'Silverstone Ranch lifestyle gallery' },
   '/agent': { mediaId: 'hero-contact-office', heading: 'Meet Dr. Jan Duffy, Silverstone Ranch REALTOR' },
   '/book-tour': { mediaId: 'section-buyer-tour', heading: 'Book a Silverstone Ranch home tour' },
   '/request-info': { mediaId: 'hero-home-valuation', heading: 'Request Silverstone Ranch market information' },
@@ -304,9 +340,9 @@ const EXACT_ROUTE_HEROES: Record<string, RouteHero> = {
   '/silverstone-ranch/schools': { mediaId: 'hero-schools-campus', heading: 'Schools near Silverstone Ranch' },
   '/environmental-risk': { mediaId: 'section-desert-horizon', heading: 'Silverstone Ranch environmental risk' },
   '/buyers-checklist': { mediaId: 'section-buyer-tour', heading: 'Silverstone Ranch buyer checklist' },
-  '/price-features': { mediaId: 'hero-listings-kitchen', heading: 'Silverstone Ranch price and features' },
-  '/description': { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch community overview' },
-  '/video': { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch video tour' },
+  '/price-features': { mediaId: 'section-floorplan-interior', heading: 'Silverstone Ranch price and features' },
+  '/description': { mediaId: 'section-architecture', heading: 'Silverstone Ranch community overview' },
+  '/video': { mediaId: 'section-video-tour', heading: 'Silverstone Ranch video tour' },
 }
 
 export function getRouteHero(pathname: string): RouteHero | null {
@@ -340,6 +376,7 @@ export function headingMediaFromText(heading: string): MediaId {
     if (/(pickle|court|recreation)/.test(h)) return 'section-recreation'
     return 'hero-amenities-pool'
   }
+  if (/(video|virtual tour|walk-through|walkthrough)/.test(h)) return 'section-video-tour'
   if (/(sell|staging|listing|seller|presentation)/.test(h)) return 'section-seller-staging'
   if (/(buy|tour|buyer|checklist|relocation|journey)/.test(h)) return 'section-buyer-tour'
   if (/(valuat|pric|market|finance|loan|closing|research|forecast)/.test(h)) {
@@ -351,7 +388,13 @@ export function headingMediaFromText(heading: string): MediaId {
   if (/(aerial|area|neighborhood|village|street|palms|pinehurst|tuscany)/.test(h)) {
     return 'section-neighborhood-street'
   }
-  if (/(kitchen|interior|listing|homes for sale|inventory)/.test(h)) return 'hero-listings-kitchen'
+  if (/(video|virtual tour|walk-through|walkthrough)/.test(h)) return 'section-video-tour'
+  if (/(architect|elevation|curb appeal|spanish|mediterranean)/.test(h)) return 'section-architecture'
+  if (/(floor plan|great room|specification|interior design|kitchen refresh)/.test(h)) {
+    return 'section-floorplan-interior'
+  }
+  if (/(smart home|energy|hvac|solar|thermostat|sustainability)/.test(h)) return 'section-smart-home'
+  if (/(kitchen|interior|homes for sale|inventory)/.test(h)) return 'hero-listings-kitchen'
   if (/(evening|twilight|backyard|fire)/.test(h)) return 'section-evening-outdoor'
   return 'hero-guard-gated'
 }
@@ -441,9 +484,9 @@ export function getRouteSectionVisuals(pathname: string): RouteHero[] {
       { mediaId: 'section-desert-horizon', heading: 'Tule Springs outdoor access' },
     ],
     '/photos': [
-      { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch gallery' },
-      { mediaId: 'hero-amenities-pool', heading: 'Amenity photography' },
-      { mediaId: 'section-neighborhood-street', heading: 'Streetscapes' },
+      { mediaId: 'section-architecture', heading: 'Architectural highlights' },
+      { mediaId: 'section-floorplan-interior', heading: 'Interior living spaces' },
+      { mediaId: 'hero-amenities-pool', heading: 'Community lifestyle' },
     ],
     '/environmental-risk': [
       { mediaId: 'section-desert-horizon', heading: 'Desert environment context' },
@@ -456,19 +499,19 @@ export function getRouteSectionVisuals(pathname: string): RouteHero[] {
       { mediaId: 'section-hoa-clubhouse', heading: 'HOA due diligence' },
     ],
     '/price-features': [
-      { mediaId: 'hero-listings-kitchen', heading: 'Price and features' },
-      { mediaId: 'section-research', heading: 'Market pricing context' },
-      { mediaId: 'hero-home-valuation', heading: 'Valuation consult' },
+      { mediaId: 'section-floorplan-interior', heading: 'Residence and lifestyle features' },
+      { mediaId: 'section-architecture', heading: 'Typical Silverstone elevations' },
+      { mediaId: 'section-smart-home', heading: 'Energy and smart-home upgrades' },
     ],
     '/description': [
-      { mediaId: 'hero-guard-gated', heading: 'Community overview' },
-      { mediaId: 'section-neighborhood-street', heading: 'Neighborhood character' },
-      { mediaId: 'hero-amenities-pool', heading: 'Lifestyle amenities' },
+      { mediaId: 'section-architecture', heading: 'Architecture and setting' },
+      { mediaId: 'section-neighborhood-street', heading: 'Neighborhood profiles' },
+      { mediaId: 'hero-amenities-pool', heading: 'Lifestyle pillars' },
     ],
     '/video': [
-      { mediaId: 'hero-guard-gated', heading: 'Video tour' },
+      { mediaId: 'section-video-tour', heading: 'Property virtual tour' },
+      { mediaId: 'section-architecture', heading: 'Home exteriors on camera' },
       { mediaId: 'section-buyer-tour', heading: 'Schedule an in-person tour' },
-      { mediaId: 'hero-listings-kitchen', heading: 'Interior quality' },
     ],
     '/silverstone-ranch': [
       { mediaId: 'hero-guard-gated', heading: 'Silverstone Ranch community guide' },

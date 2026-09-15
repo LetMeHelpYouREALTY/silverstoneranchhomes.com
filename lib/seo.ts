@@ -149,6 +149,7 @@ export function buildOrganizationSchema() {
     sameAs: [
       ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
       CONTACT_INFO.gbp.mapsSearchUrl,
+      CONTACT_INFO.gbp.mapsUri,
     ],
     contactPoint: [
       {
@@ -175,7 +176,8 @@ export function buildLocalBusinessSchema() {
     url: CONTACT_INFO.website.url,
     telephone: CONTACT_INFO.phone.display,
     email: CONTACT_INFO.email,
-    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
+    hasMap: CONTACT_INFO.gbp.mapsUri,
+    identifier: CONTACT_INFO.gbp.placeId,
     address: {
       '@type': 'PostalAddress',
       streetAddress: CONTACT_INFO.address.street,
@@ -188,6 +190,7 @@ export function buildLocalBusinessSchema() {
     sameAs: [
       ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
       CONTACT_INFO.gbp.mapsSearchUrl,
+      CONTACT_INFO.gbp.mapsUri,
     ],
     areaServed: CONTACT_INFO.serviceAreas,
     openingHoursSpecification: buildOpeningHoursSpecification(),
@@ -213,7 +216,8 @@ export function buildRealEstateAgentSchema() {
     email: CONTACT_INFO.email,
     telephone: CONTACT_INFO.phone.display,
     image: absoluteMediaUrl('hero-guard-gated'),
-    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
+    hasMap: CONTACT_INFO.gbp.mapsUri,
+    identifier: CONTACT_INFO.gbp.placeId,
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'Real Estate License',
@@ -233,6 +237,7 @@ export function buildRealEstateAgentSchema() {
     sameAs: [
       ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
       CONTACT_INFO.gbp.mapsSearchUrl,
+      CONTACT_INFO.gbp.mapsUri,
     ],
     address: {
       '@type': 'PostalAddress',
@@ -310,7 +315,8 @@ export function buildPlaceSchema() {
     },
     telephone: CONTACT_INFO.phone.display,
     image: absoluteMediaUrl('hero-guard-gated'),
-    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
+    hasMap: CONTACT_INFO.gbp.mapsUri,
+    identifier: CONTACT_INFO.gbp.placeId,
   }
 }
 
@@ -465,7 +471,8 @@ export function buildMapPlaceSchema({
       postalCode: CONTACT_INFO.address.postalCode,
       addressCountry: CONTACT_INFO.address.country,
     },
-    hasMap: CONTACT_INFO.gbp.mapsSearchUrl,
+    hasMap: CONTACT_INFO.gbp.mapsUri,
+    identifier: CONTACT_INFO.gbp.placeId,
   }
 }
 
