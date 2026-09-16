@@ -1,10 +1,9 @@
 'use client'
 
-import Image from 'next/image'
 import Link from 'next/link'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { CalendlySchedulingBlock } from '@/components/calendly/CalendlySchedulingBlock'
-import { getMediaUrl } from '@/lib/media'
+import { MediaImage } from '@/components/MediaImage'
 import { SectionHeading } from '@/components/SectionHeading'
 
 export default function RequestInfoPageClient() {
@@ -76,8 +75,8 @@ export default function RequestInfoPageClient() {
       <section className="mt-12 bg-white rounded-lg shadow-xl overflow-hidden">
         <div className="grid md:grid-cols-2">
           <div className="relative h-64 md:h-auto min-h-[16rem]">
-            <Image
-              src={getMediaUrl('hero-home-valuation')}
+            <MediaImage
+              mediaId="hero-home-valuation"
               alt="Request Silverstone Ranch market information — home valuation consult in Las Vegas 89131"
               fill
               className="object-cover"

@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "format": "prettier --write \"**/*.{ts,tsx}\"",
     "format:check": "prettier --check \"**/*.{ts,tsx}\"",
-    "images:cloudflare": "node scripts/upload-cloudflare-images.mjs"
+    "images:cloudflare": "node scripts/upload-cloudflare-images.mjs",
+    "images:verify": "node scripts/verify-cloudflare-images.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",

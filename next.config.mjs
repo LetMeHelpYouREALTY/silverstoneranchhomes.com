@@ -105,17 +105,7 @@ const nextConfig = {
   async headers() {
     return [
       {
-        // Cache static assets aggressively
-        source: '/:path*\\.(ico|png|jpg|jpeg|gif|svg|webp|woff|woff2|ttf|eot|css|js)',
-        headers: [
-          {
-            key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
-          },
-        ],
-      },
-      {
-        // Cache _next/static assets
+        // Cache hashed Next.js assets forever
         source: '/_next/static/:path*',
         headers: [
           {
@@ -125,12 +115,12 @@ const nextConfig = {
         ],
       },
       {
-        // Cache images
+        // Git-backed images can be replaced; do not mark 404s immutable.
         source: '/images/:path*',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, max-age=31536000, immutable',
+            value: 'public, max-age=86400, stale-while-revalidate=604800',
           },
         ],
       },

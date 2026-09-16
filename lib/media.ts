@@ -1,17 +1,29 @@
 import { CONTACT_INFO } from './contact-info'
 
 /**
- * Cloudflare Images is the primary CDN. Git-backed files in /public/images are the fallback
- * and the source of truth for uploads (`scripts/upload-cloudflare-images.mjs`).
+ * Cloudflare Hosted Images is the primary CDN. Git files in /public/images/sections
+ * are the backup and the upload source (`scripts/upload-cloudflare-images.mjs`).
  *
- * Delivery (when NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH is set):
- *   https://imagedelivery.net/{account_hash}/{image_id}/{variant}
- * Docs: https://developers.cloudflare.com/images/manage-images/serve-images/
+ * Delivery format (hosted images, not zone transformations):
+ *   https://imagedelivery.net/<ACCOUNT_HASH>/<IMAGE_ID>/<VARIANT_NAME>
+ * Docs:
+ *   https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/
+ *   https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/
+ *
+ * Custom IDs match MEDIA_IDS. Default variant is `public`. Do not use flexible
+ * variants (`w=400`) unless flexible variants are enabled on the account.
+ *
+ * Live pages keep git URLs until NEXT_PUBLIC_CLOUDFLARE_IMAGES_DELIVERY=1 so
+ * OG/schema crawlers never hit imagedelivery 404s (cf-images err=9404) before upload.
  */
+export const CLOUDFLARE_IMAGES_ACCOUNT_ID = '2cc579c1ec9e426ed585e933ebf4753b'
+export const CLOUDFLARE_IMAGES_ACCOUNT_HASH = 'byE6BTe9lNqo21V57n4aPQ'
 export const CLOUDFLARE_IMAGES_HASH =
-  process.env.NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH?.trim() || ''
+  process.env.NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH?.trim() || CLOUDFLARE_IMAGES_ACCOUNT_HASH
 export const CLOUDFLARE_IMAGES_VARIANT =
   process.env.NEXT_PUBLIC_CLOUDFLARE_IMAGES_VARIANT?.trim() || 'public'
+export const CLOUDFLARE_IMAGES_DELIVERY_ENABLED =
+  process.env.NEXT_PUBLIC_CLOUDFLARE_IMAGES_DELIVERY?.trim() === '1'
 
 export const MEDIA_IDS = [
   'hero-guard-gated',
@@ -292,13 +304,25 @@ export const MEDIA_ASSETS: Record<MediaId, MediaAsset> = {
   },
 }
 
-/** Serve from Cloudflare Images when configured; otherwise the git-backed public file. */
+export function isCloudflareDeliveryUrl(url: string): boolean {
+  return url.startsWith('https://imagedelivery.net/')
+}
+
+/** Hosted Images URL using the account hash, custom image ID, and named variant. */
+export function cloudflareImageUrl(id: MediaId): string {
+  return `https://imagedelivery.net/${CLOUDFLARE_IMAGES_HASH}/${id}/${CLOUDFLARE_IMAGES_VARIANT}`
+}
+
+export function getMediaFallbackUrl(id: MediaId): string {
+  return MEDIA_ASSETS[id].localPath
+}
+
+/** Serve from Cloudflare Hosted Images after upload; otherwise the git-backed public file. */
 export function getMediaUrl(id: MediaId): string {
-  const asset = MEDIA_ASSETS[id]
-  if (CLOUDFLARE_IMAGES_HASH) {
-    return `https://imagedelivery.net/${CLOUDFLARE_IMAGES_HASH}/${id}/${CLOUDFLARE_IMAGES_VARIANT}`
+  if (CLOUDFLARE_IMAGES_DELIVERY_ENABLED && CLOUDFLARE_IMAGES_HASH) {
+    return cloudflareImageUrl(id)
   }
-  return asset.localPath
+  return getMediaFallbackUrl(id)
 }
 
 export function absoluteMediaUrl(id: MediaId): string {

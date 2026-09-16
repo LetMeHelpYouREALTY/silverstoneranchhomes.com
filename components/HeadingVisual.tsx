@@ -1,11 +1,6 @@
-import Image from 'next/image'
 import { cn } from '@/lib/utils'
-import {
-  MEDIA_ASSETS,
-  getMediaUrl,
-  mediaAltForHeading,
-  type MediaId,
-} from '@/lib/media'
+import { MediaImage } from '@/components/MediaImage'
+import { MEDIA_ASSETS, mediaAltForHeading, type MediaId } from '@/lib/media'
 
 type HeadingVisualVariant = 'hero' | 'supporting' | 'section'
 
@@ -71,8 +66,8 @@ export function HeadingVisual({
   const asset = MEDIA_ASSETS[mediaId]
   return (
     <figure className={cn('overflow-hidden rounded-2xl border border-slate-200 bg-slate-100 shadow-sm', className)}>
-      <Image
-        src={getMediaUrl(mediaId)}
+      <MediaImage
+        mediaId={mediaId}
         alt={mediaAltForHeading(mediaId, heading)}
         width={asset.width}
         height={asset.height}

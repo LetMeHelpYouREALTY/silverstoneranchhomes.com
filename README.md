@@ -90,6 +90,8 @@ A comprehensive Silverstone Ranch community website highlighting luxury homes, a
 |----------|----------|-------------|
 | `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Optional | Google Maps API key for interactive map |
 | `EMAIL_SERVICE_API_KEY` | Optional | API key for email service (Resend, SendGrid, etc.) |
+| `CLOUDFLARE_IMAGES_API_TOKEN` | Upload only | Images Edit token for `npm run images:cloudflare` |
+| `NEXT_PUBLIC_CLOUDFLARE_IMAGES_DELIVERY` | Optional | Set to `1` after hosted uploads verify 200 |
 
 ## Forms
 
@@ -104,16 +106,22 @@ To enable email functionality, update the API routes in `app/api/` to integrate 
 
 ## Images
 
-Heading-matched community photos live in `public/images/sections/` (git backup) and are served through Cloudflare Images when `NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH` is set (`lib/media.ts`).
+Heading-matched community photos are **Cloudflare Hosted Images** with git as the backup.
 
-1. Generate or replace files in `public/images/sections/`
-2. Commit them (git is the backup)
-3. Upload to Cloudflare: `npm run images:cloudflare` (needs `CLOUDFLARE_ACCOUNT_ID` and `CLOUDFLARE_IMAGES_API_TOKEN`)
-4. Set `NEXT_PUBLIC_CLOUDFLARE_IMAGES_HASH` in Vercel Production
+- Storage: upload JPEGs from `public/images/sections/` with custom IDs that match `lib/media.ts`
+- Delivery: `https://imagedelivery.net/byE6BTe9lNqo21V57n4aPQ/<image_id>/public`
+- Docs: [Serve uploaded images](https://developers.cloudflare.com/images/optimization/hosted-images/serve-uploaded-images/) · [Upload via custom path](https://developers.cloudflare.com/images/storage/upload-images/upload-custom-path/)
 
-Property gallery originals remain in `public/images/property/`. Agent headshots remain in `public/images/agent/`.
+Until hosted files return HTTP 200, the site keeps serving git files so Open Graph and Maps share images do not 404 (`cf-images err=9404`).
+
+1. Replace files in `public/images/sections/` and commit (git backup)
+2. Upload: `npm run images:cloudflare` (needs `CLOUDFLARE_IMAGES_API_TOKEN` with Images Edit)
+3. Confirm: `npm run images:verify`
+4. Set `NEXT_PUBLIC_CLOUDFLARE_IMAGES_DELIVERY=1` in Vercel Production
 
 Do **not** orange-cloud the Vercel apex — keep Cloudflare DNS-only for the site hostname and use `imagedelivery.net` for Images.
+
+Property gallery originals remain in `public/images/property/`. Agent headshots remain in `public/images/agent/`.
 
 ## Deployment
 

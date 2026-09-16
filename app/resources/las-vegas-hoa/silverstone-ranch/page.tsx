@@ -19,7 +19,8 @@ import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/meta
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { SectionHeading } from '@/components/SectionHeading'
 import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
-import { absoluteMediaUrl, getMediaUrl } from '@/lib/media'
+import { absoluteMediaUrl } from '@/lib/media'
+import { MediaImage } from '@/components/MediaImage'
 
 const canonicalPath = '/resources/las-vegas-hoa/silverstone-ranch'
 const canonicalUrl = `${CONTACT_INFO.website.base}${canonicalPath}`
@@ -164,15 +165,12 @@ export default function SilverstoneRanchHoaPage() {
         <section className="mb-12 rounded-3xl border border-slate-200 bg-white shadow-xl">
           <div className="grid gap-10 overflow-hidden rounded-3xl lg:grid-cols-5">
             <div className="relative h-full lg:col-span-2">
-              <picture>
-                <source srcSet={getMediaUrl('section-hoa-clubhouse')} type="image/jpeg" />
-                <img
-                  src={getMediaUrl('section-hoa-clubhouse')}
-                  alt="Silverstone Ranch HOA clubhouse interior in Northwest Las Vegas"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </picture>
+              <MediaImage
+                mediaId="section-hoa-clubhouse"
+                alt="Silverstone Ranch HOA clubhouse interior in Northwest Las Vegas"
+                className="h-full w-full object-cover"
+                sizes="(max-width: 1024px) 100vw, 40vw"
+              />
             </div>
             <div className="lg:col-span-3 p-8 sm:p-10">
               <div className="flex items-center gap-3 text-sm font-semibold uppercase tracking-wide text-blue-700">

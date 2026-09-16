@@ -1,6 +1,5 @@
-import Image from 'next/image'
 import Link from 'next/link'
-import { getMediaUrl } from '@/lib/media'
+import { MediaImage } from '@/components/MediaImage'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
 export default function HomesForSale() {
@@ -61,13 +60,12 @@ export default function HomesForSale() {
           {/* Featured Property Card */}
           <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
             <div className="relative h-64 bg-gray-200">
-              <Image
-                src={getMediaUrl('hero-listings-kitchen')}
+              <MediaImage
+                mediaId="hero-listings-kitchen"
                 alt="Silverstone Ranch homes for sale — luxury kitchen interior in Las Vegas 89131"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                priority={false}
               />
             </div>
             <div className="p-6">

@@ -5,7 +5,7 @@ import ContactFormModal from './ContactFormModal'
 import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
 import { useState } from 'react'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { getMediaUrl } from '@/lib/media'
+import { MediaImage } from '@/components/MediaImage'
 
 export default function Hero() {
   const [showContactModal, setShowContactModal] = useState(false)
@@ -80,15 +80,14 @@ export default function Hero() {
 
           {/* Right Column - Image or Additional Content */}
           <div className="relative h-96 lg:h-[500px] rounded-lg overflow-hidden shadow-2xl bg-gray-200">
-            <picture>
-              <source srcSet={getMediaUrl('hero-guard-gated')} type="image/jpeg" />
-              <img
-                src={getMediaUrl('hero-guard-gated')}
-                alt="Silverstone Ranch luxury residence with desert landscaping and gated entry"
-                className="h-full w-full object-cover"
-                loading="eager"
-              />
-            </picture>
+            <MediaImage
+              mediaId="hero-guard-gated"
+              alt="Silverstone Ranch luxury residence with desert landscaping and gated entry"
+              fill
+              priority
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover"
+            />
           </div>
         </div>
       </div>
