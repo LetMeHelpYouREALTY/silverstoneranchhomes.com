@@ -252,7 +252,7 @@ export default async function HomePage() {
               priority
             />
             <div className="rounded-2xl border border-blue-100 bg-white p-6 shadow-lg">
-            <h2 className="text-2xl font-semibold text-slate-900 mb-4">Why Buyers Trust Dr. Jan Duffy</h2>
+            <SectionHeading>Why Buyers Trust Dr. Jan Duffy</SectionHeading>
             <ul className="space-y-3 text-sm text-slate-700">
               <li>
                 <span className="font-semibold text-blue-600">Top 1% Las Vegas REALTOR®:</span> Dedicated concierge-style
@@ -283,7 +283,7 @@ export default async function HomePage() {
           <div className="mx-auto max-w-6xl">
             <div className="mb-8 flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <div>
-                <h2 className="text-3xl font-bold text-slate-900">Live Silverstone Ranch Listings</h2>
+                <SectionHeading>Live Silverstone Ranch Listings</SectionHeading>
                 <p className="mt-2 text-slate-700">
                   {liveCount} active home{liveCount === 1 ? '' : 's'} in ZIP 89131/89143 from Dr. Jan Duffy&apos;s RealScout MLS feed.
                 </p>
@@ -303,7 +303,7 @@ export default async function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-10">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Silverstone Service Suite</h2>
+            <SectionHeading>Silverstone Service Suite</SectionHeading>
             <HeadingVisual
               mediaId="section-buyer-tour"
               heading="Silverstone Service Suite"
@@ -341,7 +341,7 @@ export default async function HomePage() {
           </div>
 
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Lifestyle Pillars that Define Silverstone Ranch</h2>
+            <SectionHeading>Lifestyle Pillars that Define Silverstone Ranch</SectionHeading>
             <HeadingVisual
               mediaId="hero-amenities-pool"
               heading="Lifestyle Pillars that Define Silverstone Ranch"
@@ -395,7 +395,7 @@ export default async function HomePage() {
           </div>
 
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Neighborhood Spotlights</h2>
+            <SectionHeading>Neighborhood Spotlights</SectionHeading>
             <HeadingVisual
               mediaId="section-neighborhood-street"
               heading="Neighborhood Spotlights"
@@ -518,7 +518,7 @@ export default async function HomePage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl">
-          <h2 className="text-3xl font-bold text-slate-900 mb-6">Visualize Silverstone Ranch</h2>
+          <SectionHeading>Visualize Silverstone Ranch</SectionHeading>
           <p className="text-slate-700 mb-8">
             Tour Mediterranean façades, desert landscaping, and interior vignettes curated for relocation buyers. Each
             image highlights the balance of luxury and livability embedded in every Silverstone Ranch residence.
@@ -530,7 +530,7 @@ export default async function HomePage() {
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
         <div className="mx-auto max-w-6xl grid gap-12 lg:grid-cols-[1.1fr_0.9fr] items-start">
           <div>
-            <h2 className="text-3xl font-bold text-slate-900 mb-6">Meet Your Silverstone Ranch Specialist</h2>
+            <SectionHeading>Meet Your Silverstone Ranch Specialist</SectionHeading>
             <p className="text-slate-700 mb-6">
               Dr. Jan Duffy pairs doctoral-level research skills with concierge real estate service. From uncovering
               private inventory to aligning lending, inspections, and HOA documents, she ensures every Silverstone
@@ -604,7 +604,7 @@ export default async function HomePage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-8">
-          <h2 className="text-3xl font-bold text-slate-900">What Residents Are Saying</h2>
+          <SectionHeading>What Residents Are Saying</SectionHeading>
           <div className="grid md:grid-cols-2 gap-6">
             <blockquote className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
               <p className="text-sm text-slate-700 leading-relaxed italic">
@@ -656,7 +656,7 @@ export default async function HomePage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-6">
-          <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <p className="text-sm text-slate-600 mb-2">
             Typical Google Business Profile questions for {CONTACT_INFO.businessName} at {CONTACT_INFO.address.display}.
           </p>
@@ -702,7 +702,7 @@ export default async function HomePage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-6">
-          <h2 className="text-3xl font-bold text-slate-900">45-Day Relocation Timeline</h2>
+          <SectionHeading>45-Day Relocation Timeline</SectionHeading>
           <ol className="space-y-3 text-sm text-slate-700 leading-relaxed list-decimal list-inside bg-slate-50/80 border border-slate-200 rounded-2xl p-6 shadow-sm">
             <li>Week 1: Strategy session with Dr. Duffy, lender pre-approval, guard gate orientation, and HOA document review.</li>
             <li>Week 2: Private tours, neighborhood comparisons, and collection of disclosure packets for shortlisted homes.</li>
@@ -717,7 +717,7 @@ export default async function HomePage() {
       <ScrollToTop />
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-6xl space-y-6">
-          <h2 className="text-3xl font-bold text-slate-900">Silverstone Snapshot & Next Steps</h2>
+          <SectionHeading>Silverstone Snapshot & Next Steps</SectionHeading>
           <p className="text-slate-700 leading-relaxed">
             Use this site as your command center. Explore deep dives on HOA fees, environmental risk, buyer checklists, and golf
             course disclosures, then connect with Dr. Duffy to align your goals with the June 2026 market. Whether you&apos;re

@@ -1,13 +1,12 @@
 import { Phone, Mail, ExternalLink } from 'lucide-react'
+import { SectionHeading } from '@/components/SectionHeading'
 import { CONTACT_INFO } from '@/lib/contact-info'
 
 export default function AgentProfile() {
   return (
     <section id="agent" className="py-20 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-20">
       <div className="mx-auto max-w-4xl">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-          Dr. Jan Duffy, a Top 1% Las Vegas REALTOR®
-        </h2>
+        <SectionHeading className="text-center">Dr. Jan Duffy, a Top 1% Las Vegas REALTOR®</SectionHeading>
         
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Agent Photo */}

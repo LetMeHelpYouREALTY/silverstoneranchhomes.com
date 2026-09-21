@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { MapPin, Navigation, Home, KeyRound, GraduationCap, Phone, Calendar, MessageCircle } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { HeadingVisual } from '@/components/HeadingVisual'
+import { headingMediaFromText } from '@/lib/media'
 
 const telHref = `tel:${CONTACT_INFO.phone.tel}`
 
@@ -20,6 +22,12 @@ export function ServicesLocationConversion() {
             <h2 id="services-location-heading" className="text-2xl sm:text-3xl font-bold text-slate-900">
               Real estate help rooted in Silverstone Ranch & Northwest Las Vegas
             </h2>
+            <HeadingVisual
+              mediaId={headingMediaFromText('Real estate help rooted in Silverstone Ranch and Northwest Las Vegas')}
+              heading="Real estate help rooted in Silverstone Ranch and Northwest Las Vegas"
+              variant="section"
+              className="mt-4"
+            />
             <p className="mt-3 text-slate-700 max-w-3xl">
               Whether you are buying, selling, or relocating, you get one point of contact who knows Silverstone Ranch,
               Tule Springs, Centennial Hills, and nearby Northwest Las Vegas—including Iron Mountain Ranch, Astoria Trails,

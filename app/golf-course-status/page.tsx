@@ -183,7 +183,7 @@ export default function GolfCourseStatusPage() {
               briefs clients so they can make smart decisions without surprises at closing.
             </p>
             <div className="rounded-2xl border border-amber-200 bg-amber-50 p-6 text-left shadow-sm">
-              <h2 className="text-xl font-semibold text-amber-900">May 2025 Auction at a Glance</h2>
+              <SectionHeading>May 2025 Auction at a Glance</SectionHeading>
               <ul className="mt-4 space-y-3 text-sm text-amber-900">
                 <li>• 270-acre property sold on May 8, 2025 for approximately $2.8 million.</li>
                 <li>• Sale closed despite more than $12 million in recorded liens.</li>
@@ -272,7 +272,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="scenario-narrative">
-            <h2 className="text-3xl font-bold text-slate-900">Scenario Planning: What Each Outcome Includes</h2>
+            <SectionHeading>Scenario Planning: What Each Outcome Includes</SectionHeading>
             <p className="text-sm text-slate-700 leading-relaxed">
               <span className="font-semibold text-slate-900">Restoration Attempt:</span> Requires rebuilding irrigation,
               clubhouse facilities, and staffing operations. Expect multi-year permitting, environmental reviews, and a
@@ -294,7 +294,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="scenarios">
-            <h2 className="text-3xl font-bold text-slate-900">Potential Future Scenarios</h2>
+            <SectionHeading>Potential Future Scenarios</SectionHeading>
             <p className="text-sm text-slate-600">
               No plan has been filed as of June 2026. The scenarios below are distilled from HOA counsel, planning
               experts, and conversations with community stakeholders.
@@ -310,7 +310,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="due-diligence">
-            <h2 className="text-3xl font-bold text-slate-900">Due Diligence Checklist for Buyers</h2>
+            <SectionHeading>Due Diligence Checklist for Buyers</SectionHeading>
             <p className="text-sm text-slate-600">
               Work with your agent, attorney, and lender to address each item during escrow. Dr. Jan Duffy manages these
               checkpoints for clients to avoid last-minute surprises.
@@ -327,7 +327,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="documents">
-            <h2 className="text-3xl font-bold text-slate-900">Documents to Request During Escrow</h2>
+            <SectionHeading>Documents to Request During Escrow</SectionHeading>
             <p className="text-sm text-slate-600">
               Assemble a comprehensive disclosure packet so your lender, appraiser, and future buyers have a clear record of
               the golf course status.
@@ -340,7 +340,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="seller-strategy">
-            <h2 className="text-3xl font-bold text-slate-900">Seller Strategy: Positioning Homes Backing the Course</h2>
+            <SectionHeading>Seller Strategy: Positioning Homes Backing the Course</SectionHeading>
             <p className="text-sm text-slate-700 leading-relaxed">
               If you are selling a fairway property, transparency and proactive upgrades build buyer trust. Provide an
               aerial map noting the parcel boundaries, outline recent landscaping investments, and offer quotes for privacy
@@ -355,7 +355,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="legal-glossary">
-            <h2 className="text-3xl font-bold text-slate-900">Legal & Planning Glossary</h2>
+            <SectionHeading>Legal & Planning Glossary</SectionHeading>
             <p className="text-sm text-slate-600">
               Understanding key terms helps you interpret new filings and HOA communications.
             </p>
@@ -368,7 +368,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="community-coordination">
-            <h2 className="text-3xl font-bold text-slate-900">Coordinating with Neighbors & the HOA</h2>
+            <SectionHeading>Coordinating with Neighbors & the HOA</SectionHeading>
             <p className="text-sm text-slate-700 leading-relaxed">
               Form community watch groups focused on factual updates rather than speculation. Designate a point person for
               each sub-association who attends board meetings, captures notes, and shares recordings. Maintain a shared cloud
@@ -379,7 +379,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="communication">
-            <h2 className="text-3xl font-bold text-slate-900">Communication Plan & Monitoring</h2>
+            <SectionHeading>Communication Plan & Monitoring</SectionHeading>
             <p className="text-sm text-slate-600">
               Stay informed with verified sources. Assign roles within your household so responsibilities are clear.
             </p>
@@ -395,7 +395,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="faq">
-            <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+            <SectionHeading>Frequently Asked Questions</SectionHeading>
             <div className="space-y-4">
               {faqs.map((faq) => (
                 <details key={faq.question} className="rounded-xl border border-slate-200 bg-white p-5 shadow-sm">
@@ -415,7 +415,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="landscape-planning">
-            <h2 className="text-3xl font-bold text-slate-900">Landscape Planning for Fairway Homes</h2>
+            <SectionHeading>Landscape Planning for Fairway Homes</SectionHeading>
             <p className="text-sm text-slate-700">
               Homes that back the dormant course benefit from thoughtful design updates. Consider the following strategies:
             </p>
@@ -434,7 +434,7 @@ export default function GolfCourseStatusPage() {
           <section className="rounded-3xl bg-gradient-to-r from-blue-700 via-blue-600 to-blue-500 p-10 text-white shadow-xl" id="cta">
             <div className="grid gap-6 md:grid-cols-2 md:items-center">
               <div className="space-y-3">
-                <h2 className="text-3xl font-bold">Stay Updated on Golf Course Developments</h2>
+                <SectionHeading>Stay Updated on Golf Course Developments</SectionHeading>
                 <p className="text-sm text-blue-100">
                   Receive curated alerts when public records reveal the new owner’s plans, HOA voting dates are announced,
                   or city hearings are scheduled. No spam—just actionable intelligence for Silverstone Ranch homeowners and
@@ -465,7 +465,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="financing-strategy">
-            <h2 className="text-3xl font-bold text-slate-900">Financing Strategy & Appraisal Readiness</h2>
+            <SectionHeading>Financing Strategy & Appraisal Readiness</SectionHeading>
             <p className="text-sm text-slate-700 leading-relaxed">
               Lenders evaluate golf-adjacent properties differently when fairways are dormant. Strengthen your loan file by
               providing current photos, disclosure summaries, and landscaping budgets. Arrange appraisal gap reserves or
@@ -475,7 +475,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="insurance-planning">
-            <h2 className="text-3xl font-bold text-slate-900">Insurance Planning & Liability Considerations</h2>
+            <SectionHeading>Insurance Planning & Liability Considerations</SectionHeading>
             <p className="text-sm text-slate-700 leading-relaxed">
               Homes bordering open land should review liability coverage for trespass, debris, and irrigation runoff. Request
               umbrella policies and examine wildfire endorsements. Buyers who demonstrate proactive maintenance—defensible
@@ -485,7 +485,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="resource-directory">
-            <h2 className="text-3xl font-bold text-slate-900">Resource Directory</h2>
+            <SectionHeading>Resource Directory</SectionHeading>
             <ul className="space-y-3 text-sm text-slate-700 leading-relaxed">
               <li>City of Las Vegas Planning Department – Track applications referencing parcels 125-08 and 125-09.</li>
               <li>Clark County Recorder – Monitor deed transfers, lien releases, and easement modifications.</li>
@@ -496,7 +496,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="buyer-timeline">
-            <h2 className="text-3xl font-bold text-slate-900">45-Day Buyer Timeline</h2>
+            <SectionHeading>45-Day Buyer Timeline</SectionHeading>
             <ol className="space-y-3 text-sm text-slate-700 leading-relaxed list-decimal list-inside bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
               <li>Days 1–10: Review disclosures, schedule tours, and gather HOA documents.</li>
               <li>Days 11–20: Execute inspections, order appraisal, and evaluate landscaping budgets.</li>
@@ -506,7 +506,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="case-studies">
-            <h2 className="text-3xl font-bold text-slate-900">Case Studies: Navigating the Dormant Course</h2>
+            <SectionHeading>Case Studies: Navigating the Dormant Course</SectionHeading>
             <div className="space-y-4 text-sm text-slate-700 leading-relaxed">
               <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
                 <h3 className="text-lg font-semibold text-slate-900 mb-2">Buyer Wins with Landscaping Allowance</h3>
@@ -522,7 +522,7 @@ export default function GolfCourseStatusPage() {
           </section>
 
           <section className="space-y-6" id="summary">
-            <h2 className="text-3xl font-bold text-slate-900">Summary & Next Steps</h2>
+            <SectionHeading>Summary & Next Steps</SectionHeading>
             <p className="text-sm text-slate-700 leading-relaxed">
               Silverstone’s golf course story remains fluid, but with diligent research and strategic negotiation you can
               navigate the uncertainty. Lean on Dr. Jan Duffy for weekly updates, disclosure templates, and introductions to

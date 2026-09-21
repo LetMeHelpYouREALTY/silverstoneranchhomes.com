@@ -220,7 +220,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="community-benefits">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Community Benefits & Daily Convenience</h2>
+          <SectionHeading>Community Benefits & Daily Convenience</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Silverstone Ranch benefits from Centennial Hills’ rapid expansion. Anchored by town centers such as the
             Centennial Center complex, Skye Canyon Marketplace, and the Village of Centennial Hills, residents have access
@@ -338,7 +338,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="market-link">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Market Highlights & Investment Outlook</h2>
+          <SectionHeading>Market Highlights & Investment Outlook</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             June 2026 market research shows Silverstone Ranch median prices at $685K, price per square foot at $284,
             and a brisk 13-day average for days on market. List-to-sale ratios hover around 101.8%, a testament to the
@@ -356,7 +356,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="environmental">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Environmental Factors & Resilience Planning</h2>
+          <SectionHeading>Environmental Factors & Resilience Planning</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Desert living requires a forward-looking approach. Silverstone Ranch homeowners are adopting high-SEER HVAC
             equipment, smart thermostats, xeriscape conversion rebates, and reflective roofing to counter rising summer
@@ -374,7 +374,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="relocation">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Relocation Checklist & Concierge Support</h2>
+          <SectionHeading>Relocation Checklist & Concierge Support</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Silverstone Ranch attracts professionals moving from California, Arizona, and the Midwest. Stay organized with
             this relocation checklist compiled by Dr. Jan Duffy’s concierge team.
@@ -387,7 +387,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="buyer-roadmap">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Buying Roadmap with Dr. Jan Duffy</h2>
+          <SectionHeading>Buying Roadmap with Dr. Jan Duffy</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Ready to make Silverstone Ranch home? Follow this roadmap to move from research to closing with clarity. Dr.
             Jan Duffy supports each milestone, coordinating lenders, inspectors, HOA disclosure packets, and closing
@@ -439,7 +439,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="transit-detail">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Transit & Commute Logistics</h2>
+          <SectionHeading>Transit & Commute Logistics</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Residents leverage a mix of personal vehicles, express buses, and rideshare hubs to navigate Las Vegas. The
             Centennial Hills Transit Center—less than ten minutes away—offers park-and-ride convenience with routes to the
@@ -454,7 +454,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="future-development">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Future Developments & Infrastructure Pipeline</h2>
+          <SectionHeading>Future Developments & Infrastructure Pipeline</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Centennial Hills continues to attract investment. The City of Las Vegas has allocated funds for a new regional
             library branch, expanded fire station coverage, and upgrades to Floyd Lamb Park including an amphitheater and
@@ -469,7 +469,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="resident-voices">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Resident Perspectives</h2>
+          <SectionHeading>Resident Perspectives</SectionHeading>
           <div className="space-y-4 text-gray-700 leading-relaxed text-lg">
             <blockquote className="border-l-4 border-blue-600 bg-blue-50/80 p-5 rounded-r-2xl">
               “After years in Summerlin, we wanted more peace without losing convenience. Silverstone delivers: grocery runs
@@ -483,7 +483,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="relocation-plan">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Buyer Action Plan</h2>
+          <SectionHeading>Buyer Action Plan</SectionHeading>
           <ol className="space-y-4 text-sm text-gray-700 leading-relaxed list-decimal list-inside">
             <li>Schedule a strategy call with Dr. Duffy to align budget, timing, and preferred sub-associations.</li>
             <li>Secure lender pre-approval and relocation benefits documentation to strengthen negotiation leverage.</li>
@@ -494,7 +494,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="seller-plan">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Seller Preparation Checklist</h2>
+          <SectionHeading>Seller Preparation Checklist</SectionHeading>
           <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
             <li>Refresh desert landscaping, update exterior lighting, and document upgrades with receipts.</li>
             <li>Stage key rooms and outdoor living areas to highlight guard-gated privacy and trail access.</li>
@@ -505,7 +505,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="area-faq">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
             <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
               <summary className="cursor-pointer text-base font-semibold text-gray-900">How noisy is Centennial Hills compared to central Las Vegas?</summary>
@@ -533,7 +533,7 @@ export default function AreaInfoPage() {
         </section>
 
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-slate-200" id="next-steps">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Next Steps & Personalized Guidance</h2>
+          <SectionHeading>Next Steps & Personalized Guidance</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Whether you are relocating, upsizing, or investing, Silverstone Ranch offers the lifestyle, amenities, and
             appreciation potential discerning buyers seek. Dr. Jan Duffy, Berkshire Hathaway HomeServices, leverages

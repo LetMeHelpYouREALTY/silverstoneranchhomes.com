@@ -246,7 +246,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="advanced-research" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Pre-Offer Research Essentials</h2>
+          <SectionHeading>Pre-Offer Research Essentials</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Layer these research steps onto the standard checklist to make informed decisions and avoid surprises after
             closing.
@@ -259,7 +259,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="checklist" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Step-by-Step Checklist</h2>
+          <SectionHeading>Step-by-Step Checklist</SectionHeading>
           <div className="grid md:grid-cols-2 gap-8">
             {checklistSections.map((section) => (
               <div key={section.title} className="bg-white rounded-lg shadow-lg p-8 border border-slate-100">
@@ -291,7 +291,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="inspection" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Inspection & Vendor Playbook</h2>
+          <SectionHeading>Inspection & Vendor Playbook</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone Ranch homes benefit from comprehensive due diligence. Coordinate inspections during the first week
             of escrow to preserve your contingency window.
@@ -326,7 +326,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="financing" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Financing & Appraisal Considerations</h2>
+          <SectionHeading>Financing & Appraisal Considerations</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Align your financing strategy with Silverstone’s price points and appraisal dynamics. Guard-gated premiums and
             golf course disclosures can influence lender underwriting—plan accordingly.
@@ -343,7 +343,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="relocation" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Relocation Logistics & Lifestyle Planning</h2>
+          <SectionHeading>Relocation Logistics & Lifestyle Planning</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Many Silverstone Ranch buyers relocate from out of state. Use these tips to simplify the transition.
           </p>
@@ -359,7 +359,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="closing" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Closing Logistics & Move-In</h2>
+          <SectionHeading>Closing Logistics & Move-In</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             The final stretch involves synchronizing title, HOA, and vendor tasks. Use this checklist to stay ahead of the
             closing curve.
@@ -376,7 +376,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="move-in" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Move-In & First 30 Days</h2>
+          <SectionHeading>Move-In & First 30 Days</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             After recording, handle these essentials to settle in efficiently.
           </p>
@@ -388,7 +388,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="toolkit" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900 text-center">Request the Full Buyer Toolkit</h2>
+          <SectionHeading className="text-center">Request the Full Buyer Toolkit</SectionHeading>
           <div className="grid md:grid-cols-2 gap-8">
             <div className="space-y-3 text-sm text-gray-600">
               {[
@@ -427,7 +427,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="faq" className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-4">
             {faqs.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
@@ -439,7 +439,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="neighborhood-comparison" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Comparing Silverstone to Neighboring Communities</h2>
+          <SectionHeading>Comparing Silverstone to Neighboring Communities</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Understanding how Silverstone stacks up against nearby master plans sharpens your offer strategy. Providence
             provides newer construction but lacks guard gates, while Skye Canyon offers an urban village feel with fewer
@@ -456,7 +456,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="risk-mitigation" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Risk Mitigation & Contingency Planning</h2>
+          <SectionHeading>Risk Mitigation & Contingency Planning</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Even with thorough due diligence, unexpected issues can surface. Build resilience into your escrow timeline by
             securing backup lenders, maintaining a reserve for post-inspection repairs, and confirming insurance coverage
@@ -473,7 +473,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="post-close" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Post-Close Integration & Concierge Support</h2>
+          <SectionHeading>Post-Close Integration & Concierge Support</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             After recording, Dr. Duffy stays engaged. You will receive quarterly market updates, introductions to HOA board
             members, and invites to neighborhood events so you build relationships quickly. Her concierge team coordinates
@@ -488,7 +488,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="resources" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Resource Directory & Support Network</h2>
+          <SectionHeading>Resource Directory & Support Network</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Bookmark these resources as you move through escrow and settling in. Dr. Duffy maintains relationships with each
             provider, expediting appointments and securing Silverstone-specific guidance when needed.
@@ -503,7 +503,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="timeline-breakdown" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Detailed 45-Day Timeline Breakdown</h2>
+          <SectionHeading>Detailed 45-Day Timeline Breakdown</SectionHeading>
           <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Days 1–10 · Discovery</h3>
@@ -521,7 +521,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="case-studies" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Case Studies: Buyer Wins in 2025</h2>
+          <SectionHeading>Case Studies: Buyer Wins in 2025</SectionHeading>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-blue-100 bg-blue-50/80 p-5 shadow-sm">
               <h3 className="text-lg font-semibold text-blue-800 mb-2">Appraisal Gap Success</h3>
@@ -539,7 +539,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="maintenance-plan" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Post-Closing Maintenance Priorities</h2>
+          <SectionHeading>Post-Closing Maintenance Priorities</SectionHeading>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">First Week</h3>
@@ -553,7 +553,7 @@ export default function BuyersChecklistPage() {
         </section>
 
         <section id="community-engagement" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Community Engagement Roadmap</h2>
+          <SectionHeading>Community Engagement Roadmap</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Join HOA meetings, volunteer committees, and social groups to build relationships. Silverstone offers fitness clubs, pickleball leagues, pet meetups, and book clubs. Participation keeps you informed about community decisions and fosters neighbor connections—critical for quick vendor referrals and support during project approvals.
           </p>

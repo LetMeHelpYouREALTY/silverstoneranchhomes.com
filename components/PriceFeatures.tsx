@@ -1,8 +1,10 @@
+import { SectionHeading } from '@/components/SectionHeading'
+
 export default function PriceFeatures() {
   return (
     <section id="price-features" className="py-20 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-20">
       <div className="mx-auto max-w-4xl">
-        <h2 className="text-3xl font-bold text-gray-900 mb-8">Featured Silverstone Ranch Highlights</h2>
+        <SectionHeading>Featured Silverstone Ranch Highlights</SectionHeading>
 
         <div className="bg-blue-50 rounded-lg p-8 mb-8">
           <div className="text-center">

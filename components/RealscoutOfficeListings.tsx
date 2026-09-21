@@ -1,6 +1,7 @@
 'use client'
 
 import { createElement, useEffect, useState } from 'react'
+import { SectionHeading } from '@/components/SectionHeading'
 import { useInView } from 'react-intersection-observer'
 import Script from 'next/script'
 import { REALSCOUT_CONFIG } from '@/lib/realscout/config'
@@ -35,7 +36,7 @@ export function RealscoutOfficeListings() {
       <div className="mx-auto max-w-6xl">
         <div className="mb-10 text-center text-white">
           <p className="text-sm font-semibold uppercase tracking-widest text-blue-300">Featured Silverstone Ranch Inventory</p>
-          <h2 className="mt-3 text-3xl font-bold sm:text-4xl">Explore Current Silverstone Ranch Listings</h2>
+          <SectionHeading>Explore Current Silverstone Ranch Listings</SectionHeading>
           <p className="mt-4 text-slate-200">
             Browse the newest guard-gated homes for sale curated by Dr. Jan Duffy. Customize filters, request tours, and
             save favorites directly in RealScout.

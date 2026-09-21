@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { buildWebPageSchema } from '@/lib/seo'
@@ -78,7 +79,7 @@ export default function LasVegasHoaIndexPage() {
         </div>
 
         <div className="rounded-xl border-2 border-blue-200 bg-blue-50/80 p-6 mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Silverstone Ranch (Northwest Las Vegas)</h2>
+          <SectionHeading>Silverstone Ranch (Northwest Las Vegas)</SectionHeading>
           <p className="text-gray-700 mb-4">
             For guard-gated Silverstone Ranch—ZIP 89131—use the dedicated HOA guide with fees, amenities, sub-association
             notes, and contact paths.

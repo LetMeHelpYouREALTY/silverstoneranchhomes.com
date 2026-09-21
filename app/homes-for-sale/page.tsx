@@ -158,9 +158,7 @@ export default async function HomesForSalePage() {
 
         {/* Featured Property */}
         <div className="mb-16">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            Community highlight
-          </h2>
+          <SectionHeading>Community highlight</SectionHeading>
           <div className="bg-white rounded-lg shadow-xl overflow-hidden hover:shadow-2xl transition-shadow">
             <div className="md:flex">
               <div className="md:w-1/2 relative h-64 md:h-auto bg-gray-200">
@@ -240,9 +238,7 @@ export default async function HomesForSalePage() {
 
         {/* Additional Listings Section */}
         <div className="mb-16">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6">
-            More Properties Available
-          </h2>
+          <SectionHeading>More Properties Available</SectionHeading>
           <div className="bg-white rounded-lg shadow-lg p-8 md:p-12 text-center border-2 border-dashed border-gray-300">
             <div className="max-w-2xl mx-auto">
               <div className="mb-6">
@@ -288,9 +284,7 @@ export default async function HomesForSalePage() {
 
         {/* Community Information */}
         <div className="bg-white rounded-lg shadow-lg p-8 md:p-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-            Why Choose Silverstone Ranch?
-          </h2>
+          <SectionHeading className="text-center">Why Choose Silverstone Ranch?</SectionHeading>
           <div className="grid md:grid-cols-3 gap-8">
             <div className="text-center">
               <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -399,7 +393,7 @@ export default async function HomesForSalePage() {
         </div>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Current Inventory Breakdown</h2>
+          <SectionHeading>Current Inventory Breakdown</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Inventory shifts every week. The November 7, 2025 analysis below highlights active, pending, and private listings
             categorized by lot size, builder series, and upgrade level. Use it as a snapshot—connect with Dr. Duffy for the
@@ -477,7 +471,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Compare Silverstone to Nearby Communities</h2>
+          <SectionHeading>Compare Silverstone to Nearby Communities</SectionHeading>
           <div className="grid md:grid-cols-3 gap-8 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5">
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Silverstone Ranch</h3>
@@ -500,7 +494,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Frequently Asked Buying Questions</h2>
+          <SectionHeading>Frequently Asked Buying Questions</SectionHeading>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
             {HOMES_FOR_SALE_FAQS.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
@@ -512,7 +506,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Buyer Mindset & Offer Strategy</h2>
+          <SectionHeading>Buyer Mindset & Offer Strategy</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Silverstone attracts buyers looking for established landscaping, guard-gated streets, and proximity to Centennial Hills
             amenities. Understanding motivations by segment helps you craft offers or prep your listing with sharper focus.
@@ -534,7 +528,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Seller Advisory Corner</h2>
+          <SectionHeading>Seller Advisory Corner</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Considering selling in the next 12 months? Use these insights to plan renovations, budget for carrying costs, and
             understand what buyers expect in June 2026.
@@ -560,7 +554,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Service Providers You’ll Need</h2>
+          <SectionHeading>Service Providers You’ll Need</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Dr. Duffy maintains a vetted roster of professionals familiar with Silverstone guidelines. Partnering with local experts
             keeps projects compliant and timelines tight.
@@ -582,7 +576,7 @@ export default async function HomesForSalePage() {
         </section>
 
         <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-semibold text-gray-900 mb-6">Silverstone Lifestyle Spotlight</h2>
+          <SectionHeading>Silverstone Lifestyle Spotlight</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Buyers pursue Silverstone for more than homes—they invest in a lifestyle that balances outdoor adventure, community
             events, and curated amenities.

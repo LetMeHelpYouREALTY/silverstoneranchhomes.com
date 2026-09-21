@@ -142,7 +142,7 @@ export default async function NeighborhoodPage({ params }: PageProps) {
         </div>
 
         <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-sm mb-12">
-          <h2 className="text-lg font-semibold text-gray-900 mb-3">Explore next</h2>
+          <SectionHeading>Explore next</SectionHeading>
           <ul className="space-y-2">
             {quickLinks.map((link) => (
               <li key={link.href}>
@@ -180,7 +180,7 @@ export default async function NeighborhoodPage({ params }: PageProps) {
         </div>
 
         <section className="border-t border-gray-200 pt-10">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently asked questions</h2>
+          <SectionHeading>Frequently asked questions</SectionHeading>
           <div className="space-y-6">
             {content.faqs.map((faq) => (
               <div key={faq.question}>

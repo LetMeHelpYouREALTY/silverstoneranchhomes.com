@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
+import { SectionHeading } from '@/components/SectionHeading'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SCHOOLS_NEAR_SILVERSTONE } from '@/lib/schools-near-silverstone'
@@ -78,7 +79,7 @@ export default function SilverstoneRanchSchoolsPage() {
         </p>
 
         <div className="rounded-xl border border-blue-100 bg-white p-6 shadow-sm mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">Commonly referenced schools</h2>
+          <SectionHeading>Commonly referenced schools</SectionHeading>
           <div className="overflow-x-auto">
             <table className="min-w-full text-left text-sm text-gray-700">
               <thead>
@@ -107,7 +108,7 @@ export default function SilverstoneRanchSchoolsPage() {
         </div>
 
         <div className="rounded-xl border border-slate-200 bg-slate-50 p-6 mb-10">
-          <h2 className="text-lg font-semibold text-gray-900 mb-2">Full guide on this site</h2>
+          <SectionHeading>Full guide on this site</SectionHeading>
           <p className="text-gray-700 mb-4">
             For enrollment steps, FAQs, private and charter notes, and expanded detail on each campus, use the main
             schools guide—kept as the canonical long-form resource.
@@ -121,7 +122,7 @@ export default function SilverstoneRanchSchoolsPage() {
         </div>
 
         <div className="border-t border-gray-200 pt-8">
-          <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Contact</h2>
+          <SectionHeading>Contact</SectionHeading>
           <p className="text-gray-900 font-medium">{CONTACT_INFO.businessName}</p>
           <p className="text-gray-700 text-sm">{CONTACT_INFO.address.display}</p>
           <p className="text-sm mt-2">

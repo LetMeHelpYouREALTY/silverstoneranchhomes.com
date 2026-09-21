@@ -421,7 +421,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="resident-stories">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Resident Stories & Lifestyle Testimonials</h2>
+          <SectionHeading>Resident Stories & Lifestyle Testimonials</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Hear how neighbors leverage Silverstone amenities to enhance daily life. These stories often resonate with buyers
             considering their first tour.
@@ -439,7 +439,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="family-calendar">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Community event calendar</h2>
+          <SectionHeading>Community event calendar</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Use this seasonal guide to map HOA programming, volunteer opportunities, and social events that keep Silverstone
             active year-round.
@@ -480,7 +480,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="nearby-attractions">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Nearby Experiences for Silverstone Residents</h2>
+          <SectionHeading>Nearby Experiences for Silverstone Residents</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Weekend adventures are a short drive away. Use this list to plan day trips, enrichment for visiting guests, or
             lifestyle content for relocation buyers evaluating the community.
@@ -499,7 +499,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="buyer-seller-guidance">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Guidance for Buyers & Sellers</h2>
+          <SectionHeading>Guidance for Buyers & Sellers</SectionHeading>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-green-100 bg-green-50/80 p-6">
               <h3 className="text-lg font-semibold text-green-800 mb-2">Buyer Tips</h3>
@@ -527,7 +527,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="next-steps">
         <div className="mx-auto max-w-5xl">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Plan Your Silverstone Ranch Experience</h2>
+          <SectionHeading>Plan Your Silverstone Ranch Experience</SectionHeading>
           <p className="text-gray-700 mb-6 text-lg leading-relaxed">
             Ready to explore amenities in person? Reach out to Dr. Jan Duffy for a curated tour, HOA document review, and a
             tailored lifestyle consultation. Whether you are relocating, upsizing, or investing, you will receive concierge
@@ -558,7 +558,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="faq">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-4">
             {[...expandedFaqs].map((item) => (
               <details key={item.question} className="rounded-lg border border-slate-200 bg-white p-5 shadow-sm">
@@ -572,7 +572,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="wellness-programming">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Wellness Programming & Resident Fitness</h2>
+          <SectionHeading>Wellness Programming & Resident Fitness</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Beyond the trail network, Silverstone Ranch curates a robust wellness calendar. Certified trainers host sunrise
             boot camps and restorative yoga on the central lawn. Seasonal “Wellness Weeks” pair infrared sauna pop-ups with
@@ -589,7 +589,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="amenity-maintenance">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Amenity Maintenance & Capital Planning</h2>
+          <SectionHeading>Amenity Maintenance & Capital Planning</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone’s reserve study outlines a 20-year roadmap for upgrades. Tennis court resurfacing cycles every five
             years, play structures receive safety audits quarterly, and irrigation controllers are upgraded community-wide to
@@ -607,7 +607,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="accessibility">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Accessibility & Inclusive Design</h2>
+          <SectionHeading>Accessibility & Inclusive Design</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Amenities are engineered with accessibility in mind. Wheelchair-friendly ramps connect the clubhouse to the
             central lawn, playgrounds incorporate sensory panels and ADA-compliant swings, and trail networks feature gentle
@@ -624,7 +624,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="concierge">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Homeowner Concierge & Vendor Support</h2>
+          <SectionHeading>Homeowner Concierge & Vendor Support</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone’s concierge desk assists with event planning, vendor referrals, and welcome packets for new residents.
             Need a pet sitter, landscape designer, or private chef for a backyard celebration? The concierge team curates
@@ -640,7 +640,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="sustainability">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Sustainability & Energy Efficiency Initiatives</h2>
+          <SectionHeading>Sustainability & Energy Efficiency Initiatives</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone Ranch partners with Southern Nevada Water Authority and NV Energy to promote eco-friendly living.
             Community-wide irrigation audits, desert landscaping workshops, and rebate sign-up drives reduce water
@@ -657,7 +657,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200" id="remote-work">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Remote Work & Digital Lifestyle Support</h2>
+          <SectionHeading>Remote Work & Digital Lifestyle Support</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             High-speed fiber connectivity, quiet pocket parks, and shaded courtyard seating make remote work seamless. The
             clubhouse offers reservable conference rooms, podcast-ready breakout spaces, and printing services for residents
@@ -674,7 +674,7 @@ export default function AmenitiesPage() {
 
       <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200" id="summary">
         <div className="mx-auto max-w-5xl space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Summary & Next Steps</h2>
+          <SectionHeading>Summary & Next Steps</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Silverstone Ranch blends resort-caliber amenities with the warmth of a close-knit neighborhood. Whether you are
             exploring trail loops at sunrise, hosting celebrations on the clubhouse lawn, or leveraging concierge support for

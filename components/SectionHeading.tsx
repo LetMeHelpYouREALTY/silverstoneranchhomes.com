@@ -1,3 +1,5 @@
+'use client'
+
 import { HeadingVisual } from '@/components/HeadingVisual'
 import { headingMediaFromText, type MediaId } from '@/lib/media'
 import { cn } from '@/lib/utils'

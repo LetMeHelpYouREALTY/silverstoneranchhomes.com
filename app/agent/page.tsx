@@ -479,10 +479,7 @@ export default function AgentPage() {
                 </div>
               </div>
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6 leading-tight">
-                  A research-driven, concierge-focused advisor guiding buyers and sellers through Silverstone Ranch and the
-                  greater Centennial Hills market.
-                </h2>
+                <SectionHeading>A research-driven, concierge-focused advisor guiding buyers and sellers through Silverstone Ranch and the greater Centennial Hills market.</SectionHeading>
                 <p className="text-gray-700 mb-6 text-lg leading-relaxed">
                   Dr. Duffy combines doctoral-level analytics with two decades of Las Vegas real estate expertise. She knows every
                   cul-de-sac, HOA covenant, and market trend influencing guard-gated values. Clients benefit from insider access to
@@ -531,7 +528,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Concierge-Level Representation</h2>
+          <SectionHeading className="text-center">Concierge-Level Representation</SectionHeading>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div className="p-6 bg-gray-50 rounded-lg border border-slate-200 text-center">
               <Award className="h-10 w-10 text-blue-600 mx-auto mb-3" />
@@ -583,7 +580,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Partnership Network & Community Impact</h2>
+          <SectionHeading>Partnership Network & Community Impact</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Relationships sustain Silverstone’s momentum. Dr. Duffy’s partner ecosystem spans corporations, schools, and
             nonprofits—each collaboration reinforcing her commitment to community wellness.
@@ -599,7 +596,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Client Success Stories</h2>
+          <SectionHeading>Client Success Stories</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Recent transactions demonstrate the breadth of Dr. Duffy’s representation—from relocating buyers to investors and
             luxury sellers. Each story highlights a unique strategy designed to achieve measurable results.
@@ -615,7 +612,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Media Features & Thought Leadership</h2>
+          <SectionHeading>Media Features & Thought Leadership</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Journalists and industry organizations seek Dr. Duffy’s insight on market movement, HOA governance, and consumer
             education. Her commentary keeps Silverstone families informed and positions the community on the regional stage.
@@ -636,7 +633,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Community Leadership</h2>
+          <SectionHeading>Community Leadership</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-4">
             Dr. Duffy believes strong communities are built beyond contracts. Her volunteer commitments and sponsorships keep
             Silverstone vibrant while expanding resources for neighbors.
@@ -649,7 +646,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Client & Partner Testimonials</h2>
+          <SectionHeading>Client & Partner Testimonials</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Silverstone homeowners, relocation managers, and vendors echo a consistent message: Dr. Duffy delivers concierge
             service, thoughtful communication, and measurable results.
@@ -669,7 +666,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-4">
             {faqs.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
@@ -681,7 +678,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Contact Information</h2>
+          <SectionHeading>Contact Information</SectionHeading>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-gray-50 rounded-lg border border-slate-200">
               <Phone className="h-8 w-8 text-blue-600 mx-auto mb-4" />
@@ -747,7 +744,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Academic Foundation & Continuing Education</h2>
+          <SectionHeading>Academic Foundation & Continuing Education</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Dr. Duffy’s academic background fuels her research-minded approach. She transforms graduate-level methodology into client
             playbooks that clarify every decision, from pricing to renovation planning.
@@ -764,7 +761,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Client Playbooks Tailored to Your Journey</h2>
+          <SectionHeading>Client Playbooks Tailored to Your Journey</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             No two transactions are identical. Dr. Duffy crafts bespoke playbooks that anticipate pain points, align stakeholders,
             and deliver concierge support from introduction to closing day.
@@ -784,7 +781,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Silverstone Expertise Map</h2>
+          <SectionHeading>Silverstone Expertise Map</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Each Silverstone enclave operates like a micro-market. Dr. Duffy maintains real-time dossiers on pricing, HOA budgets,
             and buyer profiles to keep clients ahead of the curve.
@@ -800,7 +797,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Giving Back to Silverstone & Centennial Hills</h2>
+          <SectionHeading>Giving Back to Silverstone & Centennial Hills</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Community stewardship is woven into Dr. Duffy’s business plan. Every transaction fuels philanthropic initiatives that
             strengthen education, safety, and wellness across Northwest Las Vegas.
@@ -816,7 +813,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Closing Checklist: Your Next Five Moves</h2>
+          <SectionHeading>Closing Checklist: Your Next Five Moves</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Ready to explore listings or prep your Silverstone home for market? Follow this checklist to engage Dr. Duffy’s team and
             move forward with clarity.
@@ -829,7 +826,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Market Analytics Lab</h2>
+          <SectionHeading>Market Analytics Lab</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Data translates into negotiating power. Dr. Duffy’s analytics lab synthesizes MLS statistics, economic indicators, and
             buyer sentiment so every recommendation is backed by evidence.
@@ -845,7 +842,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Communication Standards You Can Count On</h2>
+          <SectionHeading>Communication Standards You Can Count On</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Transparent, proactive communication keeps stress low. Clients receive predictable check-ins and real-time updates
             tailored to their preferred format.
@@ -858,7 +855,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Workflow: From Vision to Keys</h2>
+          <SectionHeading>Buyer Workflow: From Vision to Keys</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             The buyer journey is organized into distinct phases, each supported by concierge services and analytics. Expect clarity at
             every milestone.
@@ -874,7 +871,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Workflow: Strategy to Celebration</h2>
+          <SectionHeading>Seller Workflow: Strategy to Celebration</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Staging, marketing, and negotiation align inside a structured roadmap. Sellers stay informed without being overwhelmed.
           </p>
@@ -889,7 +886,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Advisory Programs & Community Education</h2>
+          <SectionHeading>Advisory Programs & Community Education</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Beyond individual transactions, Dr. Duffy curates education programs that empower Silverstone neighbors to plan ahead.
             These advisory tracks keep residents informed and ready for their next move.
@@ -905,7 +902,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Digital Resources at Your Fingertips</h2>
+          <SectionHeading>Digital Resources at Your Fingertips</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Clients stay connected to market shifts and transaction milestones through proprietary digital platforms. Everything you
             need—from disclosures to vendor coordination—lives in one secure ecosystem.
@@ -921,7 +918,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Proven Performance Metrics</h2>
+          <SectionHeading>Proven Performance Metrics</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Measurable results validate the concierge approach. Dr. Duffy’s Silverstone transactions consistently outperform
             broader market benchmarks.
@@ -938,7 +935,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Professional Certifications & Recognition</h2>
+          <SectionHeading>Professional Certifications & Recognition</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Continuing education keeps strategy sharp. These designations reflect Dr. Duffy’s commitment to advanced negotiation,
             luxury marketing, and buyer advocacy.
@@ -954,7 +951,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Neighborhood Case Studies</h2>
+          <SectionHeading>Neighborhood Case Studies</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Every success story is rooted in preparation, transparency, and market insight. These case studies show how strategy
             adapts to different Silverstone enclaves and client priorities.
@@ -970,7 +967,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Always Learning, Always Leading</h2>
+          <SectionHeading>Always Learning, Always Leading</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             The Las Vegas market evolves quickly. Dr. Duffy invests in ongoing education and community collaboration to keep
             Silverstone clients ahead of policy changes, negotiation trends, and lifestyle expectations.
@@ -983,7 +980,7 @@ export default function AgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Strategic Alliances & Vendor Bench</h2>
+          <SectionHeading>Strategic Alliances & Vendor Bench</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Real estate is a team sport. Dr. Duffy cultivates alliances that streamline complex moves and elevate property
             presentation. These partnerships extend concierge reach far beyond the transaction.

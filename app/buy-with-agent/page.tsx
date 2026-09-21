@@ -491,9 +491,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
-            The Silverstone Ranch Buying Framework
-          </h2>
+          <SectionHeading className="text-center">The Silverstone Ranch Buying Framework</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6 text-center max-w-3xl mx-auto">
             Every client receives a bespoke roadmap anchored in analytics, concierge service, and neighborhood expertise. From the
             first conversation to post-closing concierge, Dr. Duffy keeps the timeline moving with clarity.
@@ -550,7 +548,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Financial Strategy & Offer Toolkit</h2>
+          <SectionHeading>Financial Strategy & Offer Toolkit</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Competitive offers balance speed with security. Work with lenders familiar with Silverstone’s HOA structure, and
             coordinate appraisal gap reserves or buydown credits that strengthen your position without inflating risk.
@@ -564,7 +562,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Negotiation Playbook Tailored to Silverstone Ranch</h2>
+          <SectionHeading>Negotiation Playbook Tailored to Silverstone Ranch</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Dr. Duffy’s negotiation approach balances empathy with data. Sellers receive clear explanations, while buyers secure
             meaningful protections. The playbook evolves with every comp, ensuring your offer resonates in a fast-moving market.
@@ -580,7 +578,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Financing Insights that Give You an Edge</h2>
+          <SectionHeading>Financing Insights that Give You an Edge</SectionHeading>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
             {financingInsights.map((item) => (
               <div key={item.title} className="rounded-2xl border border-blue-100 bg-white p-5 shadow-sm">
@@ -592,7 +590,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Success Stories from 2025 Closings</h2>
+          <SectionHeading>Success Stories from 2025 Closings</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Recent clients showcase the versatility of Silverstone’s housing stock and Dr. Duffy’s strategic toolkit. Each
             scenario demonstrates how tailored financing, negotiation, and concierge support translate into winning outcomes.
@@ -617,7 +615,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Due Diligence Checklist</h2>
+          <SectionHeading>Due Diligence Checklist</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Guard-gated due diligence extends beyond standard inspections. Use this checklist to stay organized and anticipate the
             information sellers expect from serious buyers.
@@ -637,7 +635,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Buyer Questions Answered</h2>
+          <SectionHeading>Buyer Questions Answered</SectionHeading>
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">
@@ -671,7 +669,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Readiness Checklist</h2>
+          <SectionHeading>Buyer Readiness Checklist</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Use this checklist to stay organized before touring. Completing these steps accelerates underwriting and keeps offer
             decisions precise.
@@ -684,7 +682,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Why Silverstone Buyers Choose Dr. Duffy</h2>
+          <SectionHeading>Why Silverstone Buyers Choose Dr. Duffy</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             From analytical dashboards to relocation concierge calls, every touchpoint is designed to reduce uncertainty and
             maximize joy. Clients appreciate the blend of high-touch service and research depth—tour packets arrive with valuation
@@ -699,7 +697,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Next Steps to Start Your Journey</h2>
+          <SectionHeading>Next Steps to Start Your Journey</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Schedule a discovery session to outline budget, timing, and lifestyle goals. Dr. Duffy will assemble your Silverstone
             Roadmap—complete with neighborhood comps, financing introductions, and a curated tour plan. Within 48 hours you will
@@ -748,7 +746,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-4">
             <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
               <summary className="cursor-pointer text-base font-semibold text-gray-900">What sets Dr. Duffy apart from other agents?</summary>
@@ -771,7 +769,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Relocation Timeline & Milestones</h2>
+          <SectionHeading>Relocation Timeline & Milestones</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Know exactly what happens each week. This four-week framework keeps relocations on schedule and ensures every document,
             inspection, and decision is handled proactively.
@@ -787,7 +785,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Risk Mitigation Checklist</h2>
+          <SectionHeading>Risk Mitigation Checklist</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Dr. Duffy anticipates potential roadblocks so buyers stay confident. Review the safeguards implemented during every
             Silverstone transaction.
@@ -803,7 +801,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Digital Toolset for Informed Decisions</h2>
+          <SectionHeading>Digital Toolset for Informed Decisions</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Technology keeps remote buyers aligned with the on-the-ground experience. Access real-time data and streamline
             approvals from anywhere.
@@ -819,7 +817,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Post-Closing Services</h2>
+          <SectionHeading>Post-Closing Services</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Support continues after closing day. The concierge team stays in touch to ensure your home functions flawlessly and you
             feel connected to Silverstone Ranch.
@@ -835,7 +833,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Investment Angles Worth Exploring</h2>
+          <SectionHeading>Investment Angles Worth Exploring</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Silverstone’s guard-gated infrastructure appeals to primary residents and investors alike. Evaluate these pathways with
             Dr. Duffy’s ROI models and vendor network.
@@ -851,7 +849,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Service Metrics that Matter</h2>
+          <SectionHeading>Service Metrics that Matter</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Numbers tell the story of Dr. Duffy’s buyer advocacy. These metrics highlight efficiency, negotiation strength, and
             client satisfaction across recent Silverstone transactions.
@@ -868,7 +866,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Financing FAQs</h2>
+          <SectionHeading>Financing FAQs</SectionHeading>
           <div className="space-y-4">
             {financingFaqs.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
@@ -880,7 +878,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Compare Silverstone with Nearby Communities</h2>
+          <SectionHeading>Compare Silverstone with Nearby Communities</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Understanding nearby options clarifies why Silverstone shines. Dr. Duffy outlines the pros and trade-offs of each area
             so you invest with confidence.
@@ -896,7 +894,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Testimonials</h2>
+          <SectionHeading>Buyer Testimonials</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Hear directly from families, professionals, and investors who relied on Dr. Duffy to navigate Silverstone Ranch.
           </p>
@@ -911,7 +909,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">International Buyer Support</h2>
+          <SectionHeading>International Buyer Support</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Silverstone attracts global buyers seeking a foothold in Las Vegas. Dr. Duffy’s team bridges time zones, financial
             regulations, and cultural nuances with ease.
@@ -927,7 +925,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Mortgage Scenario Planning</h2>
+          <SectionHeading>Mortgage Scenario Planning</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Align financing with lifestyle goals. These scenarios illustrate how different loan products influence monthly payments,
             negotiation leverage, and renovation planning.
@@ -943,7 +941,7 @@ export default function BuyWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Due Diligence Support Services</h2>
+          <SectionHeading>Due Diligence Support Services</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Detailed due diligence wins trust from sellers and keeps you protected. Dr. Duffy manages each component with vetted
             professionals and clear documentation.

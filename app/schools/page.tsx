@@ -156,7 +156,7 @@ export default function SchoolsPage() {
         </div>
 
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-6">
             {faqs.map((faq, index) => (
               <div key={index} className="border-b border-gray-200 pb-6 last:border-0">

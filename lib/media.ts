@@ -54,6 +54,14 @@ export const MEDIA_IDS = [
   'section-floorplan-interior',
   'section-smart-home',
   'section-architecture',
+  'section-faq',
+  'section-maintenance',
+  'section-insurance',
+  'section-gallery',
+  'section-resources',
+  'section-vendors',
+  'section-heat',
+  'section-comparison',
   'og-square-home',
 ] as const
 
@@ -294,6 +302,70 @@ export const MEDIA_ASSETS: Record<MediaId, MediaAsset> = {
     width: 1920,
     height: 1080,
   },
+  'section-faq': {
+    id: 'section-faq',
+    localPath: '/images/sections/section-faq.jpg',
+    alt: 'Consultation table with market questions prepared for Silverstone Ranch buyer FAQs in Las Vegas',
+    caption: 'Answers for Silverstone Ranch buyers and sellers, prepared by Dr. Jan Duffy.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-maintenance': {
+    id: 'section-maintenance',
+    localPath: '/images/sections/section-maintenance.jpg',
+    alt: 'Seasonal pool and HVAC maintenance at a clay-tile Silverstone Ranch home in Las Vegas',
+    caption: 'Seasonal maintenance that 89131 owners plan around desert heat and monsoon weather.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-insurance': {
+    id: 'section-insurance',
+    localPath: '/images/sections/section-insurance.jpg',
+    alt: 'Homeownership documents and keys on a Silverstone Ranch patio in Northwest Las Vegas',
+    caption: 'Insurance, disclosures, and ownership paperwork for Silverstone Ranch purchases.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-gallery': {
+    id: 'section-gallery',
+    localPath: '/images/sections/section-gallery.jpg',
+    alt: 'Framed architectural photos displayed in a Silverstone Ranch Las Vegas home',
+    caption: 'Lifestyle photography that buyers use to compare Silverstone Ranch homes.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-resources': {
+    id: 'section-resources',
+    localPath: '/images/sections/section-resources.jpg',
+    alt: 'Community resource binders and neighborhood map on a Silverstone Ranch desk',
+    caption: 'HOA, vendor, and market resources for Silverstone Ranch due diligence.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-vendors': {
+    id: 'section-vendors',
+    localPath: '/images/sections/section-vendors.jpg',
+    alt: 'Trade tools staged on a Silverstone Ranch driveway after HOA-approved work in Las Vegas',
+    caption: 'Vendor coordination for inspections, landscaping, and systems in ZIP 89131.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-heat': {
+    id: 'section-heat',
+    localPath: '/images/sections/section-heat.jpg',
+    alt: 'Shaded ramada and wide eaves for heat mitigation on a Silverstone Ranch desert home',
+    caption: 'Heat, monsoon, and wildfire-readiness details buyers review in Centennial Hills.',
+    width: 1920,
+    height: 1080,
+  },
+  'section-comparison': {
+    id: 'section-comparison',
+    localPath: '/images/sections/section-comparison.jpg',
+    alt: 'Aerial of neighboring Northwest Las Vegas tile-roof neighborhoods near Silverstone Ranch',
+    caption: 'Compare Silverstone Ranch street grids with nearby Northwest Las Vegas communities.',
+    width: 1920,
+    height: 1080,
+  },
   'og-square-home': {
     id: 'og-square-home',
     localPath: '/images/sections/og-square-home.jpg',
@@ -386,11 +458,19 @@ export function mediaAltForHeading(id: MediaId, heading: string): string {
 /** Map an H1/H2/H3 to the closest heading-appropriate photo. */
 export function headingMediaFromText(heading: string): MediaId {
   const h = heading.toLowerCase()
+  if (/(faq|frequently asked|questions)/.test(h)) return 'section-faq'
   if (/(golf|fairway)/.test(h)) return 'hero-golf-fairway'
   if (/(school|education|campus|ccsd|enrollment)/.test(h)) return 'hero-schools-campus'
   if (/(map|location|direction|office pin|where we)/.test(h)) return 'hero-map-location'
   if (/(commute|beltway|transit|transport|getting around)/.test(h)) return 'section-commute'
-  if (/(hospital|healthcare|insurance)/.test(h)) return 'section-hospital'
+  if (/(insurance|disclosure|policy)/.test(h)) return 'section-insurance'
+  if (/(hospital|healthcare)/.test(h)) return 'section-hospital'
+  if (/(compar|nearby communit|vs\.|versus|peer)/.test(h)) return 'section-comparison'
+  if (/(vendor|contractor|trades|support network|service provider)/.test(h)) return 'section-vendors'
+  if (/(maintenance|seasonal|upkeep|hvac service)/.test(h)) return 'section-maintenance'
+  if (/(heat|monsoon|wildfire|wind|flood|climate)/.test(h)) return 'section-heat'
+  if (/(gallery|photo|photograph|curated photo)/.test(h)) return 'section-gallery'
+  if (/(resource|table of contents|directory|next step|deep dive)/.test(h)) return 'section-resources'
   if (/(shop|dining|grocery|centennial center|convenien)/.test(h)) return 'section-shopping'
   if (/(event|calendar|programming|social calendar)/.test(h)) return 'section-events'
   if (/(environment|desert|risk|resilience|floyd lamb|tule)/.test(h)) return 'section-desert-horizon'
@@ -400,6 +480,7 @@ export function headingMediaFromText(heading: string): MediaId {
     if (/(pickle|court|recreation)/.test(h)) return 'section-recreation'
     return 'hero-amenities-pool'
   }
+  if (/(market insight|trendline|outlook|forecast)/.test(h)) return 'section-research'
   if (/(video|virtual tour|walk-through|walkthrough)/.test(h)) return 'section-video-tour'
   if (/(sell|staging|listing|seller|presentation)/.test(h)) return 'section-seller-staging'
   if (/(buy|tour|buyer|checklist|relocation|journey)/.test(h)) return 'section-buyer-tour'
@@ -412,7 +493,6 @@ export function headingMediaFromText(heading: string): MediaId {
   if (/(aerial|area|neighborhood|village|street|palms|pinehurst|tuscany)/.test(h)) {
     return 'section-neighborhood-street'
   }
-  if (/(video|virtual tour|walk-through|walkthrough)/.test(h)) return 'section-video-tour'
   if (/(architect|elevation|curb appeal|spanish|mediterranean)/.test(h)) return 'section-architecture'
   if (/(floor plan|great room|specification|interior design|kitchen refresh)/.test(h)) {
     return 'section-floorplan-interior'
@@ -430,7 +510,7 @@ export function getRouteSectionVisuals(pathname: string): RouteHero[] {
     '/homes-for-sale': [
       { mediaId: 'hero-listings-kitchen', heading: 'Live Silverstone Ranch listings' },
       { mediaId: 'section-buyer-tour', heading: 'Buyer journey and private tours' },
-      { mediaId: 'section-neighborhood-street', heading: 'Compare Silverstone neighborhoods' },
+      { mediaId: 'section-comparison', heading: 'Compare Silverstone neighborhoods' },
     ],
     '/amenities': [
       { mediaId: 'hero-amenities-pool', heading: 'Core community amenities' },
@@ -508,14 +588,14 @@ export function getRouteSectionVisuals(pathname: string): RouteHero[] {
       { mediaId: 'section-desert-horizon', heading: 'Tule Springs outdoor access' },
     ],
     '/photos': [
+      { mediaId: 'section-gallery', heading: 'Lifestyle photography' },
       { mediaId: 'section-architecture', heading: 'Architectural highlights' },
       { mediaId: 'section-floorplan-interior', heading: 'Interior living spaces' },
-      { mediaId: 'hero-amenities-pool', heading: 'Community lifestyle' },
     ],
     '/environmental-risk': [
+      { mediaId: 'section-heat', heading: 'Heat and monsoon readiness' },
       { mediaId: 'section-desert-horizon', heading: 'Desert environment context' },
-      { mediaId: 'hero-golf-fairway', heading: 'Former fairway corridors' },
-      { mediaId: 'section-outdoor-trails', heading: 'Open space and trails' },
+      { mediaId: 'section-maintenance', heading: 'Seasonal maintenance' },
     ],
     '/buyers-checklist': [
       { mediaId: 'section-buyer-tour', heading: 'Buyer checklist' },

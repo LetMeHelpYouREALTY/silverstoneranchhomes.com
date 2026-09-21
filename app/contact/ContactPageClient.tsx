@@ -167,7 +167,7 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
       </div>
 
       <div className="bg-white rounded-lg shadow-xl p-8 mb-12">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-4">Office map &amp; directions</h2>
+        <SectionHeading>Office map & directions</SectionHeading>
         <p className="text-sm text-gray-600 mb-4">
           {CONTACT_INFO.businessName} · {CONTACT_INFO.address.display} · {CONTACT_INFO.businessHours.display} daily
         </p>
@@ -220,7 +220,7 @@ export default function ContactPageClient({ faqs }: ContactPageClientProps) {
       </div>
 
       <div className="bg-white rounded-lg shadow-xl p-8 mt-12">
-        <h2 className="text-2xl font-semibold text-gray-900 mb-6">Frequently Asked Questions</h2>
+        <SectionHeading>Frequently Asked Questions</SectionHeading>
         <div className="space-y-4">
           {faqs.map((faq) => (
             <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">

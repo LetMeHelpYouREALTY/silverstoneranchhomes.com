@@ -177,9 +177,7 @@ export default function SilverstoneRanchHoaPage() {
                 <Shield className="h-4 w-4" aria-hidden="true" />
                 Northwest Las Vegas Gated Community
               </div>
-              <h2 className="mt-3 text-3xl font-bold text-slate-900">
-                Why Silverstone Ranch HOA Appeals to Golf Course Lifestyle Buyers
-              </h2>
+              <SectionHeading>Why Silverstone Ranch HOA Appeals to Golf Course Lifestyle Buyers</SectionHeading>
               <p className="mt-4 text-lg text-slate-700">
                 Silverstone Ranch is a guard-gated enclave surrounding the former Silverstone Golf Club, prized for its
                 mature landscaping, mountain views, and proximity to the 215 Beltway. Homeowners benefit from tranquil
@@ -337,7 +335,7 @@ export default function SilverstoneRanchHoaPage() {
             </div>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
-            <h2 className="text-3xl font-bold text-slate-900">Architectural Review & Guidelines</h2>
+            <SectionHeading>Architectural Review & Guidelines</SectionHeading>
             <p className="mt-3 text-slate-700">
               Exterior projects require Architectural Review Committee (ARC) approval. Typical submissions include:
             </p>
@@ -373,7 +371,7 @@ export default function SilverstoneRanchHoaPage() {
         <section id="documents" className="mb-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">HOA Documents & Disclosures</h2>
+              <SectionHeading>HOA Documents & Disclosures</SectionHeading>
               <p className="mt-3 max-w-3xl text-slate-700">
                 Nevada law requires sellers to deliver updated resale documents (CC&Rs, bylaws, reserve study, meeting
                 minutes) at least 10 days before closing. As your listing agent, Dr. Duffy orders the full package from
@@ -459,7 +457,7 @@ export default function SilverstoneRanchHoaPage() {
         <section id="market-insights" className="mb-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
           <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900">Buyer & Seller Insights</h2>
+              <SectionHeading>Buyer & Seller Insights</SectionHeading>
               <p className="mt-3 max-w-3xl text-slate-700">
                 Silverstone Ranch inventory remains tight, with June 2026 closings averaging 13 days on market and
                 list-to-sale ratios of 101.8%. Renovated kitchens, energy-efficient upgrades, and outdoor living zones
@@ -580,7 +578,7 @@ export default function SilverstoneRanchHoaPage() {
         </section>
 
         <section id="faq" className="mb-12 rounded-3xl border border-slate-200 bg-white p-8 shadow-lg">
-          <h2 className="text-3xl font-bold text-slate-900">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="mt-6 space-y-6 text-slate-700">
             <article>
               <h3 className="text-xl font-semibold text-slate-900">

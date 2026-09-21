@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SectionHeading } from '@/components/SectionHeading'
 import { MediaImage } from '@/components/MediaImage'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 
@@ -29,9 +30,7 @@ export default function HomesForSale() {
   return (
     <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 scroll-mt-20">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">
-          Silverstone Ranch Luxury Highlights
-        </h2>
+        <SectionHeading className="text-center">Silverstone Ranch Luxury Highlights</SectionHeading>
 
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4 mb-12">
           {snapshot.map((item) => (

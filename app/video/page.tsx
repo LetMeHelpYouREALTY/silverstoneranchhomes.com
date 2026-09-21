@@ -90,9 +90,7 @@ export default function VideoPage() {
 
         {/* Benefits Section */}
         <div className="bg-white rounded-lg shadow-xl p-8 md:p-12 mb-12">
-          <h2 className="text-2xl font-semibold text-gray-900 mb-6 text-center">
-            Why Take a Virtual Tour?
-          </h2>
+          <SectionHeading className="text-center">Why Take a Virtual Tour?</SectionHeading>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-gray-50 rounded-lg">
               <div className="text-4xl mb-4">🏠</div>

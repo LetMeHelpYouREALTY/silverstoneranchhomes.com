@@ -102,7 +102,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-8">
-          <h2 className="text-3xl font-bold text-gray-900">Neighborhood Profiles</h2>
+          <SectionHeading>Neighborhood Profiles</SectionHeading>
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-3">The Palms (Guard-Gated Core)</h3>
             <p className="text-gray-700 leading-relaxed">
@@ -187,7 +187,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Lifestyle Pillars</h2>
+          <SectionHeading>Lifestyle Pillars</SectionHeading>
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-3">Guard-Gated Security</h3>
             <p className="text-gray-700 leading-relaxed">
@@ -224,7 +224,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Market Momentum & Data</h2>
+          <SectionHeading>Market Momentum & Data</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             June 2026 market performance underscores Silverstone’s desirability. Median sale price sits at $685,000—up 5.2%
             year-over-year—while price per square foot averages $284. Renovated single-story homes command an 8% premium over
@@ -240,7 +240,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-8">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Success Checklist</h2>
+          <SectionHeading>Buyer Success Checklist</SectionHeading>
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-3">Review Golf Course Disclosures</h3>
             <p className="text-gray-700 leading-relaxed">
@@ -276,7 +276,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-8">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Strategy Playbook</h2>
+          <SectionHeading>Seller Strategy Playbook</SectionHeading>
           <div>
             <h3 className="text-2xl font-semibold text-gray-900 mb-3">60 Days Before Listing</h3>
             <p className="text-gray-700 leading-relaxed">
@@ -305,7 +305,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-4">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
             <summary className="cursor-pointer text-base font-semibold text-gray-900">What architectural styles dominate Silverstone Ranch?</summary>
             <p className="mt-3 text-sm text-gray-700 leading-relaxed">
@@ -341,7 +341,7 @@ export default function DescriptionPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Connect with Dr. Jan Duffy</h2>
+          <SectionHeading>Connect with Dr. Jan Duffy</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed mb-8">
             Ready to explore homes, compare sub-associations, or evaluate your next move? Dr. Jan Duffy delivers concierge-level
             guidance rooted in analytics, local relationships, and community advocacy. She lives and works in Centennial Hills,

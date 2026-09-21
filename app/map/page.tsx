@@ -99,9 +99,7 @@ export default function MapPage() {
 
         {/* Location Details */}
         <div className="bg-white rounded-lg shadow-xl p-8 md:p-12 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">
-            Discover Silverstone Ranch Living in Centennial Hills, Nevada
-          </h2>
+          <SectionHeading>Discover Silverstone Ranch Living in Centennial Hills, Nevada</SectionHeading>
           
           <div className="prose prose-lg max-w-none">
             <p className="text-gray-700 leading-relaxed mb-6 text-lg">
@@ -130,7 +128,7 @@ export default function MapPage() {
 
         {/* Nearby Points of Interest */}
         <div className="bg-white rounded-lg shadow-xl p-8 md:p-12 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8">Nearby Points of Interest</h2>
+          <SectionHeading>Nearby Points of Interest</SectionHeading>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="p-6 bg-gray-50 rounded-lg">
               <div className="text-3xl mb-3">🛍️</div>

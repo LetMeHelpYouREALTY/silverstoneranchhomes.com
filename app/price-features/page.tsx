@@ -251,7 +251,7 @@ export default function PriceFeaturesPage() {
           </div>
 
           <div className="bg-white rounded-lg shadow-xl p-8 md:p-10">
-            <h2 className="text-3xl font-bold text-gray-900 mb-8">Typical Silverstone Specifications</h2>
+            <SectionHeading>Typical Silverstone Specifications</SectionHeading>
             <dl className="space-y-6">
               <div className="flex justify-between items-center py-4 border-b border-gray-200">
                 <dt className="font-semibold text-gray-700 text-lg">Bedrooms</dt>
@@ -306,7 +306,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Design Packages & Upgrade Paths</h2>
+          <SectionHeading>Design Packages & Upgrade Paths</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Builders such as Pulte and William Lyon delivered Silverstone with flexible architectural palettes. Most homes feature a
             blend of Mediterranean and contemporary elements. During resale, sellers frequently invest in modernization projects
@@ -327,7 +327,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Operating Costs & Ownership Planning</h2>
+          <SectionHeading>Operating Costs & Ownership Planning</SectionHeading>
           <div className="grid md:grid-cols-2 gap-8 text-gray-700 leading-relaxed">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-3">Monthly Considerations</h3>
@@ -370,7 +370,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Upgrade ROI Guide</h2>
+          <SectionHeading>Upgrade ROI Guide</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Choosing the right upgrades protects your investment and appeals to buyers attuned to quality. Use this guide to prioritize
             projects before listing or immediately after closing.
@@ -387,7 +387,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seasonal Maintenance Blueprint</h2>
+          <SectionHeading>Seasonal Maintenance Blueprint</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Staying ahead of seasonal upkeep preserves curb appeal and prevents costly repairs. Silverstone’s HOA appreciates proactive homeowners, and buyers notice well-maintained properties immediately.
           </p>
@@ -406,7 +406,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Financing Scenarios for Enhancement Projects</h2>
+          <SectionHeading>Financing Scenarios for Enhancement Projects</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Pair your Silverstone purchase with strategic financing to complete dream upgrades or leverage equity for future investments.
           </p>
@@ -421,7 +421,7 @@ export default function PriceFeaturesPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 mb-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Additional Highlights</h2>
+          <SectionHeading className="text-center">Additional Highlights</SectionHeading>
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-6 bg-gray-50 rounded-lg">
               <div className="text-4xl mb-4">🏡</div>

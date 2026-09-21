@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import { SectionHeading } from '@/components/SectionHeading'
 
 export default function PropertyMap() {
   const mapsApiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY
@@ -10,7 +11,7 @@ export default function PropertyMap() {
   return (
     <section id="map" className="scroll-mt-20 bg-white py-20 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-7xl">
-        <h2 className="mb-8 text-3xl font-bold text-gray-900">Property Location</h2>
+        <SectionHeading>Property Location</SectionHeading>
 
         <div className="relative mb-8 overflow-hidden rounded-2xl border border-gray-200 bg-gray-100 shadow-lg">
           <picture>

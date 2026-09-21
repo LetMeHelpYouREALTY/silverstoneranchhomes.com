@@ -118,7 +118,7 @@ export default function PhotosPageClient() {
       </section>
 
       <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">Curated Photo Gallery</h2>
+        <SectionHeading>Curated Photo Gallery</SectionHeading>
         {showGallery ? (
           <div className="space-y-6">
             <ImageGallery
@@ -148,7 +148,7 @@ export default function PhotosPageClient() {
       </section>
 
       <section className="mb-16 bg-white rounded-lg shadow-xl p-8 md:p-12">
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">How Buyers & Owners Use This Gallery</h2>
+        <SectionHeading>How Buyers & Owners Use This Gallery</SectionHeading>
         <div className="grid md:grid-cols-3 gap-6 text-gray-700 leading-relaxed">
           {buyerUseCases.map((useCase) => (
             <div key={useCase.title} className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5">
@@ -167,7 +167,7 @@ export default function PhotosPageClient() {
       </section>
 
       <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-        <h2 className="text-3xl font-semibold text-gray-900 mb-6">Plan Your Silverstone Experience</h2>
+        <SectionHeading>Plan Your Silverstone Experience</SectionHeading>
         <p className="text-gray-700 leading-relaxed mb-6">
           Pair these visuals with private tours to understand how homes live throughout the day. Dr. Duffy coordinates sunrise and sunset showings, HOA briefings, and vendor introductions to help you visualize life inside Silverstone Ranch.
         </p>

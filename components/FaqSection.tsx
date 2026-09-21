@@ -1,3 +1,5 @@
+import { SectionHeading } from '@/components/SectionHeading'
+
 type FaqItem = {
   question: string
   answer: string
@@ -23,9 +25,7 @@ export function FaqSection({
 
   return (
     <section className={`mt-12 ${className}`.trim()} aria-labelledby="page-faq-heading">
-      <h2 id="page-faq-heading" className="text-2xl font-bold text-gray-900 mb-6">
-        {heading}
-      </h2>
+      <SectionHeading id="page-faq-heading">{heading}</SectionHeading>
       <div className="space-y-4">
         {faqs.map((faq) => (
           <details

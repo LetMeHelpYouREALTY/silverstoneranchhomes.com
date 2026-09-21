@@ -244,7 +244,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="signals" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Signals Behind the Numbers</h2>
+          <SectionHeading>Signals Behind the Numbers</SectionHeading>
           <div className="grid lg:grid-cols-3 gap-8">
             {buyerSellerSignals.map((signal) => (
               <div key={signal.title} className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm">
@@ -272,7 +272,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="market-story" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">What the Market Story Means for You</h2>
+          <SectionHeading>What the Market Story Means for You</SectionHeading>
           <p className="text-sm text-gray-600">
             High-level metrics tell only part of the story. Layer these qualitative insights into your financial modeling
             and negotiation approach.
@@ -302,7 +302,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="offer-tactics" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Offer Tactics That Win in Silverstone Ranch</h2>
+          <SectionHeading>Offer Tactics That Win in Silverstone Ranch</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Offers anchored in data and empathy consistently rise to the top. Apply these tactics to stand out in multiple
             offer environments.
@@ -317,7 +317,7 @@ export default function MarketInsightsPage() {
         <section id="recent-sales" className="space-y-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <h2 className="text-3xl font-bold text-gray-900">Recent Closings</h2>
+              <SectionHeading>Recent Closings</SectionHeading>
               <p className="text-sm text-gray-500">Recorded through November 3, 2025 · Source: MLS + Dr. Duffy private sales</p>
             </div>
             <Link
@@ -345,7 +345,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="comparisons" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900 text-center">Northwest Las Vegas Comparison Snapshot</h2>
+          <SectionHeading className="text-center">Northwest Las Vegas Comparison Snapshot</SectionHeading>
           <p className="text-sm text-gray-600 text-center max-w-3xl mx-auto">
             Silverstone Ranch commands a premium over nearby master plans thanks to guard-gated access and mature
             landscaping. Compare median price, days on market, and price per square foot to understand the delta.
@@ -375,7 +375,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="buyer-demographics" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Demographics & Motivation</h2>
+          <SectionHeading>Buyer Demographics & Motivation</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Nearly 61% of 2025 purchasers held professional or executive roles, often citing proximity to Centennial Hills
             Hospital, MountainView Hospital, and the medical office corridor along Durango. Military families tied to Nellis
@@ -391,7 +391,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="seller-mistakes" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Common Seller Mistakes to Avoid</h2>
+          <SectionHeading>Common Seller Mistakes to Avoid</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Avoid stumbling blocks that erode perceived value or slow absorption.
           </p>
@@ -403,7 +403,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="tech-impact" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Technology & Smart Home Impact</h2>
+          <SectionHeading>Technology & Smart Home Impact</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Tech-forward upgrades and marketing tools influence both demand and appraisal value. Incorporate these elements
             to strengthen negotiation leverage.
@@ -416,7 +416,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="forecast" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Forecast: Winter 2025/26 Outlook</h2>
+          <SectionHeading>Forecast: Winter 2025/26 Outlook</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Expect moderate appreciation through Q1 2026 as relocation pipelines remain strong and Silverstone Ranch’s
             inventory stays limited. Watch these indicators:
@@ -434,7 +434,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="methodology" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Methodology & Data Sources</h2>
+          <SectionHeading>Methodology & Data Sources</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             This report synthesizes data from the Greater Las Vegas Association of REALTORS® (GLVAR), private transaction
             records curated by Dr. Jan Duffy, and national mortgage analytics. Median values are rolling three-month
@@ -448,7 +448,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="macro-drivers" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Macro Drivers Fueling Silverstone Demand</h2>
+          <SectionHeading>Macro Drivers Fueling Silverstone Demand</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Centennial Hills benefits from economic diversification beyond the traditional Strip corridor. The expansion of
             the VA Medical Center, Allegiant Air corporate campus, and logistics growth along the 215 Beltway inject
@@ -465,7 +465,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="pricing-scenarios" className="space-y-6">
-          <h2 className="text-3x font-bold text-gray-900">Pricing Scenarios for 2026 Planning</h2>
+          <SectionHeading>Pricing Scenarios for 2026 Planning</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Use these forward-looking scenarios to model purchase timing or listing strategy going into 2026. Each assumes
             steady employment growth and a modest decline in mortgage rates during the second half of the year.
@@ -490,7 +490,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="buyer-calendar" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Calendar: 45-Day Readiness Checklist</h2>
+          <SectionHeading>Buyer Calendar: 45-Day Readiness Checklist</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Align your purchase timeline with this weekly roadmap to stay competitive without sacrificing due diligence.
           </p>
@@ -505,7 +505,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="seller-success" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Success Stories</h2>
+          <SectionHeading>Seller Success Stories</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Case studies highlight the power of data-driven strategy and curated presentation.
           </p>
@@ -526,7 +526,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="risk-mitigation" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Risk Mitigation & Contingency Planning</h2>
+          <SectionHeading>Risk Mitigation & Contingency Planning</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Prepare for surprises to keep transactions on track.
           </p>
@@ -567,7 +567,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12" id="faq">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Frequently Asked Questions</h2>
+          <SectionHeading className="text-center">Frequently Asked Questions</SectionHeading>
           <div className="space-y-6">
             {faqs.map((faq) => (
               <div key={faq.question}>
@@ -579,7 +579,7 @@ export default function MarketInsightsPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12" id="summary">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">Summary & Next Steps</h2>
+          <SectionHeading>Summary & Next Steps</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Silverstone Ranch continues to outperform neighboring communities thanks to low inventory, strong relocation
             demand, and guard-gated amenities. Align your strategy with data, leverage Dr. Jan Duffy’s concierge network,

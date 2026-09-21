@@ -1,3 +1,5 @@
+import { SectionHeading } from '@/components/SectionHeading'
+
 export default function Amenities() {
   const amenities = [
     {
@@ -35,7 +37,7 @@ export default function Amenities() {
   return (
     <section id="amenities" className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 scroll-mt-20">
       <div className="mx-auto max-w-7xl">
-        <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Community Amenities</h2>
+        <SectionHeading className="text-center">Community Amenities</SectionHeading>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {amenities.map((amenity, index) => (

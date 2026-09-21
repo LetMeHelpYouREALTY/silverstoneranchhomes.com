@@ -127,7 +127,7 @@ export default function HomeValuationPageClient() {
         </div>
 
         <div className="bg-white rounded-lg shadow-xl p-8">
-          <h2 className="text-2xl font-bold text-gray-900 mb-6">Market Factors We Track</h2>
+          <SectionHeading>Market Factors We Track</SectionHeading>
           <div className="space-y-4">
             {marketFactors.map((factor) => (
               <div key={factor.label} className="rounded-lg border border-blue-100 bg-blue-50 p-4">

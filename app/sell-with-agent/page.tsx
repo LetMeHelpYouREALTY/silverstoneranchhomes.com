@@ -529,9 +529,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
-            Silverstone Ranch Listing Blueprint
-          </h2>
+          <SectionHeading className="text-center">Silverstone Ranch Listing Blueprint</SectionHeading>
           <div className="grid md:grid-cols-2 gap-8">
             {marketingPlan.map((item) => (
               <div key={item.title} className="bg-green-50 rounded-lg p-6 border border-green-100">
@@ -560,7 +558,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Negotiation & Compliance Advantage</h2>
+          <SectionHeading>Negotiation & Compliance Advantage</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Silverstone transactions require nuanced negotiation. Buyers expect clarity on dormant golf corridors, HOA covenants,
             and climate considerations. Dr. Duffy anticipates questions, prepares documentation, and guides you toward offers that
@@ -577,7 +575,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Concierge Services</h2>
+          <SectionHeading>Seller Concierge Services</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Comprehensive support means you never wonder what comes next. The concierge team handles logistics while you focus on
             packing and future plans.
@@ -593,7 +591,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Compliance Checklist</h2>
+          <SectionHeading>Compliance Checklist</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Staying proactive with documentation keeps escrow smooth. Dr. Duffy audits every requirement before launch so buyers and
             lenders receive complete, accurate files.
@@ -613,7 +611,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Closing Resources & Ongoing Support</h2>
+          <SectionHeading>Closing Resources & Ongoing Support</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             The relationship doesn’t end at the closing table. Continued guidance helps you protect proceeds and plan next steps.
           </p>
@@ -628,7 +626,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Success Stories from Silverstone Sellers</h2>
+          <SectionHeading>Success Stories from Silverstone Sellers</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Real results illustrate why Silverstone owners trust Dr. Duffy. Each story demonstrates strategic preparation,
             precision marketing, and negotiation outcomes that protect equity.
@@ -644,7 +642,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Legal & Compliance Playbook</h2>
+          <SectionHeading>Legal & Compliance Playbook</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Comprehensive disclosure keeps contracts enforceable and protects sellers after closing. Dr. Duffy collaborates with
             escrow, HOA boards, and legal counsel to ensure every document is delivered accurately and on time.
@@ -694,7 +692,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Silverstone Seller Proof Points</h2>
+          <SectionHeading>Silverstone Seller Proof Points</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Measurable results separate concierge representation from basic listing services. Review the metrics achieved for recent
             Silverstone sellers.
@@ -711,7 +709,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Marketing Channels that Deliver</h2>
+          <SectionHeading>Marketing Channels that Deliver</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Every listing receives a multi-channel campaign tailored to target buyers. The goal: maximize exposure during the first
             72 hours while nurturing relocation interest worldwide.
@@ -727,7 +725,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Pricing Scenarios & Strategy Options</h2>
+          <SectionHeading>Pricing Scenarios & Strategy Options</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Not every home launches the same way. Dr. Duffy models multiple pricing paths so you can choose the strategy that aligns
             with upgrades, timing, and risk tolerance.
@@ -743,7 +741,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Timeline Blueprint</h2>
+          <SectionHeading>Seller Timeline Blueprint</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Keep every milestone organized with this high-level timeline. The concierge team manages each task while keeping you
             informed.
@@ -763,7 +761,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Partnership Metrics & Network Strength</h2>
+          <SectionHeading>Partnership Metrics & Network Strength</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Silverstone sellers benefit from an established ecosystem of professionals. Here’s how those partnerships measure up.
           </p>
@@ -779,7 +777,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">What Sellers Are Saying</h2>
+          <SectionHeading>What Sellers Are Saying</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Testimonials highlight the concierge difference—transparent communication, proactive solutions, and top-dollar results.
           </p>
@@ -794,7 +792,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Expanded Seller FAQs</h2>
+          <SectionHeading>Expanded Seller FAQs</SectionHeading>
           <div className="space-y-4">
             {expandedFaqs.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
@@ -806,7 +804,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">The Silverstone Seller Advantage</h2>
+          <SectionHeading>The Silverstone Seller Advantage</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Selling in Silverstone requires finesse—guard gates, HOA nuance, and golf course disclosures can overwhelm even seasoned
             owners. Dr. Duffy blends research, storytelling, and negotiation to safeguard your timeline and equity. Expect frequent
@@ -825,7 +823,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">60-Day Seller Timeline</h2>
+          <SectionHeading>60-Day Seller Timeline</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Aligning milestones keeps your sale predictable. Use this roadmap to coordinate prep, launch, and closing with
             confidence.
@@ -838,7 +836,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">How Silverstone Compares</h2>
+          <SectionHeading>How Silverstone Compares</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Sellers often consider moves within the northwest corridor. Use this comparison to articulate value to prospective
             buyers considering alternative communities.
@@ -854,7 +852,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Readiness Checklist</h2>
+          <SectionHeading>Seller Readiness Checklist</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Complete these steps before launch to streamline negotiations and strengthen buyer confidence.
           </p>
@@ -866,7 +864,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Exit Strategy Options</h2>
+          <SectionHeading>Exit Strategy Options</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             One size never fits all. Explore a few approaches to align your sale with future housing or investment goals.
           </p>
@@ -881,7 +879,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6">Seller FAQs for Silverstone Ranch</h2>
+          <SectionHeading>Seller FAQs for Silverstone Ranch</SectionHeading>
           <div className="space-y-6">
             {sellerFaqHighlights.map((faq) => (
               <div key={faq.question}>
@@ -893,7 +891,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Case Study: Turning a Dormant Fairway into a Bidding War</h2>
+          <SectionHeading>Case Study: Turning a Dormant Fairway into a Bidding War</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             A Princeville residence overlooking the dormant fairway initially struggled to attract serious buyers. Dr. Duffy
             executed a four-week transformation: drought-tolerant landscaping created layered privacy, twilight photography
@@ -910,7 +908,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Case Study: Estate Sale Coordination with Multiple Heirs</h2>
+          <SectionHeading>Case Study: Estate Sale Coordination with Multiple Heirs</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             When an out-of-state family needed to liquidate a Silverlake home, Dr. Duffy quarterbacked every detail. Estate sale
             partners cataloged belongings, a digital document vault captured signatures across three time zones, and weekly video
@@ -927,7 +925,7 @@ export default function SellWithAgentPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12 space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Resource Library</h2>
+          <SectionHeading>Seller Resource Library</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
             Access curated resources the moment you onboard. These guides and templates keep everyone aligned and accelerate
             decision-making throughout escrow.

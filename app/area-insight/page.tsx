@@ -230,7 +230,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="pricing-tiers">
-          <h2 className="text-3xl font-bold text-gray-900">Pricing Tiers & Absorption Pace</h2>
+          <SectionHeading>Pricing Tiers & Absorption Pace</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Not all sub-associations move at the same velocity. Parsing Silverstone Ranch by price band reveals where buyers
             apply the most pressure and where strategic incentives can unlock premium offers.
@@ -252,7 +252,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="buyer-demand">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Demand Breakdown</h2>
+          <SectionHeading>Buyer Demand Breakdown</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Understanding buyer motivation informs staging, marketing copy, and negotiation tactics. The mix of relocation
             executives, medical professionals, and investors underscores Silverstone Ranch’s resilience.
@@ -273,7 +273,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="recent-sales">
-          <h2 className="text-3xl font-bold text-gray-900">Recent Sales Highlighting Strong Values</h2>
+          <SectionHeading>Recent Sales Highlighting Strong Values</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             These closings underscore Silverstone Ranch’s premium positioning. Each transaction leveraged Dr. Duffy’s
             marketing playbook—professional staging, golf-course disclosure packets, and pre-qualified buyer previews.
@@ -294,7 +294,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="seller-playbook">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Playbook: 30-Day Countdown</h2>
+          <SectionHeading>Seller Playbook: 30-Day Countdown</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Sellers who follow this countdown capture stronger offers and streamline escrow. Dr. Duffy’s concierge team
             coordinates each milestone, from vendor scheduling to closing logistics.
@@ -311,7 +311,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="investment-outlook">
-          <h2 className="text-3xl font-bold text-gray-900">Investment Outlook & Rental Metrics</h2>
+          <SectionHeading>Investment Outlook & Rental Metrics</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Investors continue to target Silverstone Ranch for executive rentals and mid-term housing. Limited supply, HOA
             standards, and corporate relocation contracts yield stable occupancy and attractive cap rates.
@@ -333,7 +333,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="forecast">
-          <h2 className="text-3xl font-bold text-gray-900">Forecast: Winter 2025/26 Outlook</h2>
+          <SectionHeading>Forecast: Winter 2025/26 Outlook</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Expect moderate appreciation through Q1 2026. Watch these indicators to stay ahead of market shifts:
           </p>
@@ -346,7 +346,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="faq">
-          <h2 className="text-3xl font-bold text-gray-900">Frequently Asked Questions</h2>
+          <SectionHeading>Frequently Asked Questions</SectionHeading>
           <div className="space-y-4">
             {faqItems.map((faq) => (
               <details key={faq.question} className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
@@ -390,7 +390,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="comparative">
-          <h2 className="text-3xl font-bold text-gray-900">Comparative Snapshot: Silverstone vs. Northwest Peers</h2>
+          <SectionHeading>Comparative Snapshot: Silverstone vs. Northwest Peers</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Benchmark Silverstone Ranch against nearby master plans to understand the premium buyers pay for guard-gated
             living and mature amenities. Use these metrics to position pricing or evaluate trade-offs when shopping multiple
@@ -433,7 +433,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="calendar">
-          <h2 className="text-3xl font-bold text-gray-900">Seller & Buyer Calendar: Month-by-Month Strategy</h2>
+          <SectionHeading>Seller & Buyer Calendar: Month-by-Month Strategy</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Align your move with Silverstone Ranch seasonality. The calendar below outlines optimal tactics for each quarter.
           </p>
@@ -470,7 +470,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="case-studies">
-          <h2 className="text-3xl font-bold text-gray-900">Case Studies: 2025 Success Stories</h2>
+          <SectionHeading>Case Studies: 2025 Success Stories</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Real transactions illustrate how preparation and strategy translate into results. Each example below demonstrates
             a common scenario Dr. Duffy navigates for clients.
@@ -495,7 +495,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="risk">
-          <h2 className="text-3xl font-bold text-gray-900">Risk Considerations & Mitigation</h2>
+          <SectionHeading>Risk Considerations & Mitigation</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Every investment carries risk. Silverstone Ranch buyers should account for environmental resilience, HOA policy
             shifts, and the ongoing golf-course uncertainty. Mitigate exposure with the following actions:
@@ -513,7 +513,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="economic-drivers">
-          <h2 className="text-3xl font-bold text-gray-900">Economic Drivers Supporting Demand</h2>
+          <SectionHeading>Economic Drivers Supporting Demand</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Silverstone Ranch benefits from macro trends reshaping Northwest Las Vegas. The expansion of the Centennial Hills
             Hospital medical district, Allegiant Air’s corporate campus, and logistics growth along the 215 Beltway funnel
@@ -548,7 +548,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="buyer-action-plan">
-          <h2 className="text-3xl font-bold text-gray-900">30-Day Buyer Action Plan</h2>
+          <SectionHeading>30-Day Buyer Action Plan</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Buyers entering the market now should follow a disciplined plan to secure top-tier listings. Here’s the proven
             sequence Dr. Duffy employs with clients:
@@ -567,7 +567,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="seller-faq">
-          <h2 className="text-3xl font-bold text-gray-900">Seller FAQ & Negotiation Scripts</h2>
+          <SectionHeading>Seller FAQ & Negotiation Scripts</SectionHeading>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
             <details className="rounded-lg border border-slate-200 bg-slate-50/80 p-4">
               <summary className="cursor-pointer text-base font-semibold text-gray-900">Should I price above market to leave room for negotiation?</summary>
@@ -594,7 +594,7 @@ export default function AreaInsightPage() {
         </section>
 
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12 space-y-6" id="summary">
-          <h2 className="text-3xl font-bold text-gray-900">Summary & Next Actions</h2>
+          <SectionHeading>Summary & Next Actions</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
             Silverstone Ranch remains the benchmark for guard-gated living in Centennial Hills. With disciplined pricing,
             precise staging, and data-backed negotiation strategies, both buyers and sellers continue to capture outsized

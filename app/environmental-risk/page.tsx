@@ -269,7 +269,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="flood-prep" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Flood & Monsoon Preparedness</h2>
+          <SectionHeading>Flood & Monsoon Preparedness</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             While FEMA designates most of Silverstone Ranch as Zone X, monsoon bursts can overwhelm washes and roof
             drainage. Proactive maintenance keeps interiors protected.
@@ -286,7 +286,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="wind-readiness" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Wind & Wildfire Readiness</h2>
+          <SectionHeading>Wind & Wildfire Readiness</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             High winds and ember exposure are manageable when homeowners follow a simple checklist before storm season.
           </p>
@@ -319,7 +319,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="calendar" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seasonal Maintenance Calendar</h2>
+          <SectionHeading>Seasonal Maintenance Calendar</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Align household chores with Silverstone’s climate patterns. Use this calendar as a foundation and customize it
             with your vendor team.
@@ -335,7 +335,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="checklist" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">30-Year Planning Checklist</h2>
+          <SectionHeading>30-Year Planning Checklist</SectionHeading>
           <div className="grid md:grid-cols-2 gap-8">
             {planningChecklist.map((item) => (
               <div key={item.title} className="bg-emerald-50 rounded-lg p-6 border border-emerald-100">
@@ -347,7 +347,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="insurance" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Insurance & Financial Planning Insights</h2>
+          <SectionHeading>Insurance & Financial Planning Insights</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Premiums across the Southwest have risen alongside climate projections. Adopt these strategies to maintain
             robust coverage while keeping costs manageable.
@@ -360,7 +360,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="vendor-support" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Trusted Vendor Support Network</h2>
+          <SectionHeading>Trusted Vendor Support Network</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Dr. Duffy curates specialists who understand Silverstone Ranch’s architectural controls and climate demands.
             Request introductions tailored to your project scope.
@@ -373,7 +373,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="emergency" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Emergency Readiness & Documentation</h2>
+          <SectionHeading>Emergency Readiness & Documentation</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Having a plan ensures calm when advisories are issued. Follow this sequence to keep your household prepared.
           </p>
@@ -385,7 +385,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="community-programs" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Community Programs & Rebates</h2>
+          <SectionHeading>Community Programs & Rebates</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Leverage regional programs to reduce project costs. The Southern Nevada Water Authority’s Water Smart Landscapes
             Rebate provides $3 per square foot for removing water-thirsty grass. NV Energy’s PowerShift program offers
@@ -395,7 +395,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="resident-stories" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Resident Voices: Resilience in Action</h2>
+          <SectionHeading>Resident Voices: Resilience in Action</SectionHeading>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
             <p>
               <span className="font-semibold text-emerald-900">The Palms on Patriot Park:</span> A homeowner invested in a
@@ -416,7 +416,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="climate-outlook" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Climate Outlook: 2030, 2040, 2055 Benchmarks</h2>
+          <SectionHeading>Climate Outlook: 2030, 2040, 2055 Benchmarks</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Regional climate models project average summer highs rising 1.5°F by 2030, 3.2°F by 2040, and over 5°F by 2055.
             Heat advisories will occur more frequently, making high-efficiency cooling and radiant barriers essential.
@@ -432,7 +432,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="buyer-seller-strategy" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer & Seller Strategy Alignment</h2>
+          <SectionHeading>Buyer & Seller Strategy Alignment</SectionHeading>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-emerald-200 bg-white p-5 shadow-sm">
               <h3 className="text-lg font-semibold text-emerald-800 mb-2">Buyers</h3>
@@ -450,7 +450,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="case-studies" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Environmental Case Studies from 2025 Closings</h2>
+          <SectionHeading>Environmental Case Studies from 2025 Closings</SectionHeading>
           <div className="space-y-4 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-slate-200 bg-slate-50/80 p-5 shadow-sm">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Heat-Ready Renovation</h3>
@@ -471,7 +471,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="summary" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Summary & Next Actions</h2>
+          <SectionHeading>Summary & Next Actions</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Environmental readiness underpins long-term value in Silverstone Ranch. Heat, wind, flood, and wildfire risks can
             be mitigated with intentional planning, vetted vendors, and HOA collaboration. By documenting every upgrade and
@@ -484,7 +484,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="insurance-projections" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Insurance Cost Projections</h2>
+          <SectionHeading>Insurance Cost Projections</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
             Insurance carriers adjust rates annually based on regional climate data. Expect heat- and wind-related premiums to
             rise 3–6% per year unless mitigation projects are documented. Flood riders remain optional for most Silverstone
@@ -495,7 +495,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="buyer-plan" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Buyer Action Plan</h2>
+          <SectionHeading>Buyer Action Plan</SectionHeading>
           <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
             <li>Request environmental disclosures during offer drafting so you can factor heat and landscaping upgrades into pricing.</li>
             <li>Budget 1–2% of purchase price for immediate resilience projects: HVAC tune-ups, irrigation audits, and defensible space.</li>
@@ -505,7 +505,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="seller-plan" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Seller Disclosure Checklist</h2>
+          <SectionHeading>Seller Disclosure Checklist</SectionHeading>
           <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
             <li>Provide HVAC service logs, irrigation upgrade receipts, and roof inspection reports within the buyer packet.</li>
             <li>Outline any rebates received or pending—buyers appreciate transferable incentives.</li>
@@ -515,7 +515,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section id="resources" className="space-y-6">
-          <h2 className="text-3xl font-bold text-gray-900">Resource Directory</h2>
+          <SectionHeading>Resource Directory</SectionHeading>
           <ul className="space-y-3 text-sm text-gray-700 leading-relaxed">
             <li>Southern Nevada Water Authority Water Smart Landscapes – Rebates and approved plant lists.</li>
             <li>NV Energy PowerShift – Incentives for smart thermostats, pool pumps, and insulation.</li>
@@ -553,7 +553,7 @@ export default function EnvironmentalRiskPage() {
         </section>
 
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12" id="faq">
-          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Frequently Asked Questions</h2>
+          <SectionHeading className="text-center">Frequently Asked Questions</SectionHeading>
           <div className="space-y-6">
             <div>
               <h3 className="text-xl font-semibold text-gray-900 mb-2">What home upgrades best counter Silverstone heat risk?</h3>

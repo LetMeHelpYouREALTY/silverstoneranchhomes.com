@@ -59,6 +59,14 @@ const MEDIA_IDS = [
   'section-floorplan-interior',
   'section-smart-home',
   'section-architecture',
+  'section-faq',
+  'section-maintenance',
+  'section-insurance',
+  'section-gallery',
+  'section-resources',
+  'section-vendors',
+  'section-heat',
+  'section-comparison',
   'og-square-home',
 ]
 

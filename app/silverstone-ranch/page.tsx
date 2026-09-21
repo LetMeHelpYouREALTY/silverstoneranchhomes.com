@@ -256,7 +256,7 @@ export default async function SilverstoneRanchPage() {
               with clarity and confidence.
             </p>
             <nav className="rounded-2xl border border-blue-100 bg-white shadow-sm p-6">
-              <h2 className="text-2xl font-semibold text-slate-900 mb-4">Table of Contents</h2>
+              <SectionHeading>Table of Contents</SectionHeading>
               <ol className="space-y-3 text-sm text-blue-700">
                 <li>
                   <a href="#quick-facts" className="hover:underline">
@@ -570,7 +570,7 @@ export default async function SilverstoneRanchPage() {
         <section id="resources" className="py-16 px-4 sm:px-6 lg:px-8 bg-white border-t border-slate-200">
           <div className="mx-auto max-w-5xl grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-start">
             <div>
-              <h2 className="text-3xl font-bold text-slate-900 mb-6">Deep Dive Resources & Next Steps</h2>
+              <SectionHeading>Deep Dive Resources & Next Steps</SectionHeading>
               <p className="text-slate-700 mb-6">
                 Continue exploring Silverstone Ranch with handpicked guides curated for June 2026. Each resource provides
                 keyword-rich, reader-friendly insights tailored for relocation clients, investors, and current residents
