@@ -214,7 +214,7 @@ export default function MarketInsightsPage() {
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
             Silverstone Ranch remains a magnet for relocation clients, medical professionals, and long-time Las Vegas
-            residents upgrading into guard-gated living. Inventory contracted another twelve percent this quarter while
+            residents upgrading into guard-gated living. Inventory contracted another twelve percent as of June 2026 while
             pricing held firm above 2024 levels. Use this report to interpret the numbers, uncover leverage points, and
             coordinate next steps with Dr. Jan Duffy.
           </p>
@@ -227,6 +227,9 @@ export default function MarketInsightsPage() {
 
         <section id="key-metrics" className="space-y-8">
           <SectionHeading>Key Performance Metrics</SectionHeading>
+          <p className="text-xs font-semibold uppercase tracking-wide text-blue-700">
+            Data as of {MARKET_SNAPSHOT.reportMonth}
+          </p>
           <p className="text-sm text-gray-600">
             The headline numbers show a resilient guard-gated community with rapid absorption and disciplined pricing.
             Drill into the details beneath each tile for context.
