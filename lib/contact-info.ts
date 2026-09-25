@@ -80,14 +80,13 @@ export const CONTACT_INFO = {
   /** Languages offered (GBP). */
   languagesOffered: ['English', 'Spanish', 'Russian'],
   /**
-   * Default weekly hours (GBP). Thursday shown as 6:00 AM–9:00 PM like other weekdays
-   * (confirm in GBP if your listing differs).
+   * Default weekly hours (GBP). 8:00 AM–8:00 PM every day (Monday–Sunday).
    */
   businessHours: {
-    opens: '06:00',
-    closes: '21:00',
+    opens: '08:00',
+    closes: '20:00',
     /** Human-readable label for visible UI (matches opens/closes). */
-    display: '6:00 AM – 9:00 PM',
+    display: '8:00 AM – 8:00 PM',
     /** Schema.org dayOfWeek values used in JSON-LD. */
     dayOfWeek: [
       'Monday',
