@@ -29,15 +29,15 @@ After deploy completes, check:
 
 ## Optional: GitHub Actions fallback
 
-If Git integration stays broken, add these repository secrets and use `.github/workflows/vercel-production.yml`:
+The workflow in `.github/workflows/vercel-production.yml` already pins the live org/project IDs and uses Vercel CLI `47.2.2+` (`amondnet/vercel-action@v25` ships CLI 25 and is rejected by the current API).
+
+Required repository secret:
 
 | Secret | Value |
 |--------|--------|
 | `VERCEL_TOKEN` | From [Vercel Account → Tokens](https://vercel.com/account/tokens) |
-| `VERCEL_ORG_ID` | `team_EIbjFXaDDtGMTweb5Hvo3CG3` |
-| `VERCEL_PROJECT_ID` | `prj_OuvKZgtynEsc3OfkRx2SLEKIo1lj` |
 
-Pushes to `main` will then deploy via Actions.
+Pushes to `main` then deploy via Actions. Org/project IDs are hardcoded because stale `VERCEL_ORG_ID` / `VERCEL_PROJECT_ID` secrets after the GitHub org transfer previously failed with “Project not found”.
 
 ## Manual CLI deploy
 
