@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { SectionHeading } from '@/components/SectionHeading'
@@ -44,7 +45,7 @@ const benefitHighlights = [
   {
     title: 'Negotiate with Market Precision',
     description:
-      'Use current June 2026 pricing models, HOA assessments, and golf course disclosures to secure fair value without overpaying for view corridors.',
+      `Use the ${MARKET_SNAPSHOT.reportMonth} pricing window (${MARKET_SNAPSHOT.medianPrice} median sold, ${MARKET_SNAPSHOT.medianAsk} median ask), HOA assessments, and golf course disclosures before you write.`,
   },
   {
     title: 'Navigate HOA & Golf Course Disclosures',

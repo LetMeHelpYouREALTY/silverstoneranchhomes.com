@@ -13,7 +13,7 @@ export default function HomesForSale() {
     {
       label: 'Price / Sq Ft',
       value: MARKET_SNAPSHOT.pricePerSqFt,
-      caption: MARKET_SNAPSHOT.pricePerSqFtYoY + ' YoY',
+      caption: MARKET_SNAPSHOT.pricePerSqFtContext,
     },
     {
       label: 'Avg. DOM',

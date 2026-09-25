@@ -1,35 +1,52 @@
 /**
- * Silverstone Ranch (89131) market snapshot — single source for visible copy and schema dates.
- * Sourced from Parallel deep research (Q1–June 2026) + RealScout MLS feed.
- * Refresh monthly; last updated June 2026.
+ * Silverstone Ranch market snapshot — single source for visible copy and schema dates.
+ *
+ * Community row from the Nevada Real Estate Group guard-gated report (Las Vegas MLS via
+ * Repliers), published September 19, 2026. Window: closings September 19, 2025 through
+ * September 18, 2026. Active listings and median ask are as of September 18, 2026.
+ * https://www.nevadarealestategroup.com/blog/las-vegas-guard-gated-market-report-q3-2026/
+ *
+ * Southern Nevada single-family median is a separate series: Las Vegas REALTORS®, August 2026.
+ * Do not mix that metro median into the Silverstone row.
  */
 export const MARKET_SNAPSHOT = {
-  reportMonth: 'June 2026',
-  reportMonthShort: 'Jun 2026',
-  lastUpdated: '2026-06-15',
-  datePublished: '2026-06-01',
-  dateModified: '2026-06-15',
+  reportMonth: 'September 2026',
+  reportMonthShort: 'Sep 2026',
+  lastUpdated: '2026-09-19',
+  datePublished: '2026-09-19',
+  dateModified: '2026-09-25',
+  windowLabel: '12 months ending Sep 18, 2026',
+  sourceName: 'Nevada Real Estate Group, Las Vegas Guard-Gated Market Report Q3 2026',
+  sourceUrl: 'https://www.nevadarealestategroup.com/blog/las-vegas-guard-gated-market-report-q3-2026/',
   zipCode: '89131',
   community: 'Silverstone Ranch',
   area: 'Centennial Hills',
-  /** Q1 2026 Silverstone Ranch micro-market (Parallel research, March 2026 baseline). */
-  medianPrice: '$500,000',
-  medianPriceShort: '$500K',
-  medianPriceYoY: '+11.1%',
-  pricePerSqFt: '$224',
-  pricePerSqFtYoY: '-8.4%',
-  daysOnMarket: '140 Days',
-  daysOnMarketChange: '+93 Days YoY',
-  activeListings: '15 Sold (Q1)',
-  activeListingsChange: 'Balanced market',
-  listToSaleRatio: '99%',
-  priceRange: '$500K – $1.35M+',
+  medianPrice: '$539,000',
+  medianPriceShort: '$539K',
+  medianPriceContext: '12-month median sold',
+  averageSold: '$545,144',
+  pricePerSqFt: '$233',
+  pricePerSqFtContext: '12-month sold price per sq. ft.',
+  daysOnMarket: '40 days',
+  daysOnMarketChange: 'Median DOM in the 12-month window',
+  activeListings: '26',
+  activeListingsChange: 'Active on Sep 18, 2026',
+  monthsOfSupply: '5.4 months',
+  medianAsk: '$625,000',
+  topSale: '$875,000',
+  closings12Month: '58',
+  q3ClosingsToDate: '6',
+  priceRange: '$539K median sold · $875K top sale',
   hoaRange: '$200 – $286/mo',
-  cashAndJumboShare: '33%',
-  golfCourseFairwayDiscount: '6–10%',
+  /** Four-city market in the same NREG window (Las Vegas, Henderson, North Las Vegas, Boulder City). */
+  metroMedianPrice: '$445,000',
+  metroMedianDom: '30 days',
+  /** Las Vegas REALTORS® existing single-family median, August 2026. */
+  southernNevadaSfrMedian: '$475,000',
+  southernNevadaSfrMedianNote: 'August 2026, down 1% from August 2025',
 } as const
 
-/** Master + sub-association HOA breakdown (Parallel research, June 2026). */
+/** Master + sub-association HOA breakdown (research dated June 2026; confirm in the resale package). */
 export const HOA_FEES = {
   masterMonthly: 158,
   nonGatedTotal: 200,

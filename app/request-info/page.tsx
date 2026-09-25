@@ -34,7 +34,7 @@ export default function RequestInfoPage() {
     path,
     name: 'Request Silverstone Ranch Information',
     description:
-      'Use the concierge request form to receive Silverstone Ranch market intel, relocation resources, and listing previews from Dr. Jan Duffy.',
+      'Book a Calendly consultation to receive Silverstone Ranch market intel, relocation resources, and listing previews from Dr. Jan Duffy.',
     breadcrumb: [
       { name: 'Home', path: '/' },
       { name: 'Request Info', path },
@@ -45,11 +45,11 @@ export default function RequestInfoPage() {
     path,
     name: 'How to Request Silverstone Ranch Information',
     description:
-      'Submit the concierge request form, schedule a follow-up call, and receive curated Silverstone Ranch reports tailored to your goals.',
+      'Pick a time on the embedded Calendly calendar and receive curated Silverstone Ranch reports tailored to your goals.',
     steps: [
       {
-        title: 'Share Your Details',
-        detail: 'Complete the request form with your contact information, preferred timeline, and questions.',
+        title: 'Pick a Time',
+        detail: 'Use the inline Calendly calendar to share your contact details, preferred timeline, and questions.',
       },
       {
         title: 'Schedule a Strategy Session',
@@ -72,7 +72,7 @@ export default function RequestInfoPage() {
     actions: [
       buildAction({
         type: 'ContactAction',
-        name: 'Submit Concierge Request',
+        name: 'Schedule a Consultation',
         target: `${CONTACT_INFO.website.base}${path}`,
       }),
     ],

@@ -48,9 +48,9 @@ export default function HomeValuationPage() {
       'Understand the steps Dr. Jan Duffy takes to deliver a customized Silverstone Ranch home valuation and selling strategy.',
     steps: [
       {
-        title: 'Submit Your Property Details',
+        title: 'Book the Valuation Call',
         detail:
-          'Provide address, property highlights, and timeline so the concierge team can start compiling market data.',
+          'Use the inline Calendly calendar to share the address, property highlights, and timeline so the concierge team can start compiling market data.',
       },
       {
         title: 'Consultation & Data Review',

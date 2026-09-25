@@ -2,7 +2,6 @@
 
 import { X, Calendar, Video } from 'lucide-react'
 import { CalendlyInlineWidget } from '@/components/calendly/CalendlyInlineWidget'
-import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
 
 interface VirtualOpenHouseModalProps {
   isOpen: boolean
@@ -44,13 +43,6 @@ export default function VirtualOpenHouseModal({ isOpen, onClose }: VirtualOpenHo
             </div>
           </div>
         </div>
-
-        <CalendlyPopupLink
-          variant="button"
-          className="mb-4 inline-flex w-full items-center justify-center rounded-md bg-blue-600 px-4 py-3 text-sm font-semibold text-white hover:bg-blue-700"
-        >
-          Schedule time with me
-        </CalendlyPopupLink>
 
         <CalendlyInlineWidget height={620} />
       </div>

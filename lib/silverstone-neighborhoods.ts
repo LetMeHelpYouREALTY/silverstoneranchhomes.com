@@ -559,7 +559,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
       {
         question: 'What is the typical price range in Clairbrook?',
         answer:
-          'As of June 2026, Clairbrook homes generally align with the Silverstone Ranch median near $500K, with premium lots and renovations reaching higher bands. Request a current CMA.',
+          'Clairbrook does not have its own published median in the September 2026 community report. The Silverstone Ranch 12-month median sold was $539,000 through September 18, 2026. Request a current CMA for this village.',
       },
       {
         question: 'Can I tour Clairbrook on the same day as other enclaves?',

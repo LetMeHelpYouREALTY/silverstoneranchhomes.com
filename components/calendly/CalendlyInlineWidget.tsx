@@ -40,12 +40,26 @@ export function CalendlyInlineWidget({
   }, [])
 
   return (
-    <div
-      ref={containerRef}
-      className={`calendly-inline-widget w-full overflow-hidden rounded-lg border border-slate-200 bg-white ${className}`}
-      style={{ minWidth: 320, height }}
-      data-url={CALENDLY_URL}
-      aria-label="Schedule a private 15-minute conversation with Dr. Jan Duffy"
-    />
+    <div className={className}>
+      <div
+        ref={containerRef}
+        className="calendly-inline-widget w-full overflow-hidden rounded-lg border border-slate-200 bg-white"
+        style={{ minWidth: 320, height }}
+        data-url={CALENDLY_URL}
+        aria-label="Schedule a private 15-minute conversation with Dr. Jan Duffy"
+      />
+      <p className="mt-3 text-sm text-gray-600">
+        If the calendar does not appear,{' '}
+        <a
+          href={CALENDLY_URL}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="font-semibold text-blue-600 hover:text-blue-700 hover:underline"
+        >
+          open the scheduling page
+        </a>
+        .
+      </p>
+    </div>
   )
 }
