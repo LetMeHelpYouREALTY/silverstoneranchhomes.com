@@ -1,7 +1,6 @@
 'use client'
 
 import { CalendlySchedulingBlock } from './CalendlySchedulingBlock'
-import { CalendlyPopupLink } from './CalendlyPopupLink'
 
 export function CalendlySchedulingSection() {
   return (
@@ -16,15 +15,11 @@ export function CalendlySchedulingSection() {
         </div>
 
         <div className="rounded-xl border border-slate-200 bg-white p-6 shadow-sm md:p-8">
-          <CalendlySchedulingBlock showPopupLinks />
+          <CalendlySchedulingBlock
+            title="Schedule a Private 15-Minute Conversation"
+            description="The calendar below is the booking path for tours, valuations, listings, and market questions."
+          />
         </div>
-
-        <p className="mt-6 text-center text-sm text-gray-600">
-          Prefer a quick popup?{' '}
-          <CalendlyPopupLink className="font-semibold text-blue-600 hover:text-blue-700 hover:underline">
-            Schedule time with me
-          </CalendlyPopupLink>
-        </p>
       </div>
     </section>
   )

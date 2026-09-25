@@ -15,6 +15,7 @@ import {
   Users,
 } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { SectionHeading } from '@/components/SectionHeading'
@@ -459,9 +460,9 @@ export default function SilverstoneRanchHoaPage() {
             <div>
               <SectionHeading>Buyer & Seller Insights</SectionHeading>
               <p className="mt-3 max-w-3xl text-slate-700">
-                Silverstone Ranch inventory remains tight, with June 2026 closings averaging 13 days on market and
-                list-to-sale ratios of 101.8%. Renovated kitchens, energy-efficient upgrades, and outdoor living zones
-                continue to command premiums.
+                The {MARKET_SNAPSHOT.windowLabel} window shows a {MARKET_SNAPSHOT.medianPrice} median sold price,{' '}
+                {MARKET_SNAPSHOT.daysOnMarket} median days on market, and {MARKET_SNAPSHOT.monthsOfSupply} of supply.
+                Renovated kitchens, energy-efficient upgrades, and outdoor living still need to be priced against those closings.
               </p>
             </div>
             <Link
@@ -475,9 +476,12 @@ export default function SilverstoneRanchHoaPage() {
 
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             <div className="rounded-2xl border border-slate-100 bg-slate-50/80 p-6">
-              <h3 className="text-lg font-semibold text-slate-900">Median Price (Jun 2026)</h3>
-              <p className="mt-2 text-3xl font-bold text-blue-700">$685,000</p>
-              <p className="mt-3 text-sm text-slate-700">Up 5.2% year-over-year with strongest demand for renovated 4-bedroom plans.</p>
+              <h3 className="text-lg font-semibold text-slate-900">Median Price ({MARKET_SNAPSHOT.reportMonthShort})</h3>
+              <p className="mt-2 text-3xl font-bold text-blue-700">{MARKET_SNAPSHOT.medianPrice}</p>
+              <p className="mt-3 text-sm text-slate-700">
+                {MARKET_SNAPSHOT.medianPriceContext} across {MARKET_SNAPSHOT.closings12Month} closings. Median ask on Sep 18,
+                2026 was {MARKET_SNAPSHOT.medianAsk}.
+              </p>
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900">Buyer Hot Buttons</h3>
@@ -485,7 +489,7 @@ export default function SilverstoneRanchHoaPage() {
                 <li>Prepaid solar &amp; energy efficiency upgrades</li>
                 <li>Backyards with covered patios + built-in BBQ</li>
                 <li>Office/flex rooms for remote work</li>
-                <li>Proximity to charter schools and parks</li>
+                <li>Park, trail, and commute access from 89131</li>
               </ul>
             </div>
             <div className="rounded-2xl border border-slate-100 bg-white p-6 shadow-sm">

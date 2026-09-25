@@ -36,12 +36,12 @@ const marketSnapshot = [
   {
     label: 'Median Sale Price',
     value: MARKET_SNAPSHOT.medianPrice,
-    caption: MARKET_SNAPSHOT.medianPriceYoY + ' year-over-year',
+    caption: MARKET_SNAPSHOT.medianPriceContext,
   },
   {
     label: 'Price Per Sq. Ft.',
     value: MARKET_SNAPSHOT.pricePerSqFt,
-    caption: 'Single-story homes command premium in 89131',
+    caption: MARKET_SNAPSHOT.pricePerSqFtContext,
   },
   {
     label: 'Avg. Days on Market',
@@ -139,7 +139,7 @@ export default async function HomesForSalePage() {
         {/* Market Snapshot & Search Filters */}
         <div className="mb-16 grid gap-8 lg:grid-cols-3">
           <div className="lg:col-span-2 bg-white rounded-lg shadow-lg p-8 border border-blue-100">
-            <SectionHeading>June 2026 Market Snapshot</SectionHeading>
+            <SectionHeading>{`${MARKET_SNAPSHOT.reportMonth} Market Snapshot`}</SectionHeading>
             <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {marketSnapshot.map((item) => (
                 <div key={item.label} className="rounded-lg border border-blue-100 bg-blue-50 p-4 text-center">
@@ -531,7 +531,7 @@ export default async function HomesForSalePage() {
           <SectionHeading>Seller Advisory Corner</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Considering selling in the next 12 months? Use these insights to plan renovations, budget for carrying costs, and
-            understand what buyers expect in June 2026.
+            understand what closed in the {MARKET_SNAPSHOT.windowLabel} window.
           </p>
           <div className="grid md:grid-cols-2 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-amber-200 bg-amber-50/80 p-5 shadow-sm">

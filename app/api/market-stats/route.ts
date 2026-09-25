@@ -4,18 +4,25 @@ import { MARKET_SNAPSHOT } from '@/lib/market-data'
 const MARKET_STATS = {
   updatedAt: MARKET_SNAPSHOT.lastUpdated,
   reportMonth: MARKET_SNAPSHOT.reportMonth,
-  medianPrice: 500000,
-  pricePerSqFt: 224,
-  averageDaysOnMarket: 140,
-  activeListings: 15,
-  listToSaleRatio: 0.99,
-  buyerDemandIndex: 33,
+  windowLabel: MARKET_SNAPSHOT.windowLabel,
+  sourceName: MARKET_SNAPSHOT.sourceName,
+  sourceUrl: MARKET_SNAPSHOT.sourceUrl,
+  medianPrice: 539000,
+  averageSold: 545144,
+  pricePerSqFt: 233,
+  medianDaysOnMarket: 40,
+  activeListings: 26,
+  medianAsk: 625000,
+  monthsOfSupply: 5.4,
+  topSale: 875000,
+  closings12Month: 58,
+  q3ClosingsToDate: 6,
   zipCode: MARKET_SNAPSHOT.zipCode,
   notes: {
     summary:
-      'Silverstone Ranch (89131) Q1 2026: $500K median (+11.1% YoY), 140 days on market, rebalancing toward buyer leverage.',
+      'Silverstone Ranch row, 12 months ending Sep 18, 2026: $539,000 median sold, 40-day median DOM, 26 active listings, 5.4 months of supply.',
     outlook:
-      'Well-priced guard-gated and renovated homes still attract offers; overpriced listings face longer DOM. Verify 2026 HOA dues increases during due diligence.',
+      'Median ask on Sep 18, 2026 was $625,000. Q3 closings through that date (6) are still posting. Confirm enclave comps before you price.',
   },
 }
 

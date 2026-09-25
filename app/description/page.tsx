@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
@@ -226,11 +227,11 @@ export default function DescriptionPage() {
         <section className="bg-white rounded-lg shadow-xl p-8 md:p-12">
           <SectionHeading>Market Momentum & Data</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
-            June 2026 market performance underscores Silverstone’s desirability. Median sale price sits at $685,000—up 5.2%
-            year-over-year—while price per square foot averages $284. Renovated single-story homes command an 8% premium over
-            two-story counterparts due to limited supply. Inventory remains tight with 18 active listings, and well-presented
-            homes secure offers in under two weeks. Buyers appreciate the guard-gated lifestyle, established landscaping, and
-            proximity to top-ranked schools like O’Roarke Elementary, Cadwallader Middle, and Arbor View High.
+            The {MARKET_SNAPSHOT.reportMonth} report puts the Silverstone Ranch median sale at {MARKET_SNAPSHOT.medianPrice}{' '}
+            across {MARKET_SNAPSHOT.closings12Month} closings in the {MARKET_SNAPSHOT.windowLabel} window, at{' '}
+            {MARKET_SNAPSHOT.pricePerSqFt} per square foot and a {MARKET_SNAPSHOT.daysOnMarket} median days on market.{' '}
+            {MARKET_SNAPSHOT.activeListings} homes were active on September 18, 2026. Buyers compare guard-gated and non-gated
+            enclaves, landscaping, and the assigned schools for the specific address—confirm zoning at ccsd.net/zoning.
           </p>
           <p className="text-gray-700 leading-relaxed">
             Dr. Jan Duffy tracks micro-neighborhood performance weekly, sharing absorption rates, buyer demographics, and investor

@@ -2,7 +2,6 @@
 
 import { X } from 'lucide-react'
 import { CalendlyInlineWidget } from '@/components/calendly/CalendlyInlineWidget'
-import { CalendlyPopupLink } from '@/components/calendly/CalendlyPopupLink'
 
 interface ContactFormModalProps {
   isOpen: boolean
@@ -27,13 +26,6 @@ export default function ContactFormModal({ isOpen, onClose }: ContactFormModalPr
         <p className="text-gray-600 mb-4">
           Book a private 15-minute conversation about Silverstone Ranch strategy, tours, or market positioning.
         </p>
-
-        <CalendlyPopupLink
-          variant="button"
-          className="mb-4 inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700"
-        >
-          Schedule time with me
-        </CalendlyPopupLink>
 
         <CalendlyInlineWidget height={620} />
       </div>

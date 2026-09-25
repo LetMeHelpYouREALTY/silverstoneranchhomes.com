@@ -12,14 +12,14 @@ const path = '/market-insights'
 const canonicalUrl = `${CONTACT_INFO.website.base}${path}`
 
 export const metadata: Metadata = {
-  title: 'Silverstone Ranch Market Report | June 2026 · 89131',
+  title: `Silverstone Ranch Market Report | ${MARKET_SNAPSHOT.reportMonth} · 89131`,
   description:
-    `Silverstone Ranch (89131) housing report for ${MARKET_SNAPSHOT.reportMonth}: ${MARKET_SNAPSHOT.medianPrice} median, ${MARKET_SNAPSHOT.daysOnMarket} DOM, and buyer/seller guidance from ${CONTACT_INFO.agentName}.`,
+    `Silverstone Ranch (89131) housing report for ${MARKET_SNAPSHOT.reportMonth}: ${MARKET_SNAPSHOT.medianPrice} median sold, ${MARKET_SNAPSHOT.daysOnMarket} median DOM, ${MARKET_SNAPSHOT.windowLabel}, from ${CONTACT_INFO.agentName}.`,
   keywords: [
     'Silverstone Ranch market report',
     'Silverstone Ranch real estate trends 2026',
     'Centennial Hills housing data 89131',
-    'Las Vegas real estate statistics June 2026',
+    'Las Vegas real estate statistics September 2026',
     'Silverstone Ranch days on market',
   ],
   alternates: {
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
   },
   openGraph: withShareImage(
     {
-    title: buildPageTitle('Market Insights | June 2026 Housing Trends'),
+    title: buildPageTitle(`Market Insights | ${MARKET_SNAPSHOT.reportMonth} Housing Trends`),
     description:
-      'June 2026 Silverstone Ranch real estate report: pricing shifts, buyer demand, inventory trends, and guidance from Dr. Jan Duffy REALTOR®.',
+      `${MARKET_SNAPSHOT.reportMonth} Silverstone Ranch real estate report: ${MARKET_SNAPSHOT.medianPrice} median sold, ${MARKET_SNAPSHOT.daysOnMarket} median DOM, and guidance from Dr. Jan Duffy REALTOR®.`,
     url: canonicalUrl,
     type: 'article',
   },
@@ -41,84 +41,73 @@ const primaryMetrics = [
   {
     label: 'Median Sale Price',
     value: MARKET_SNAPSHOT.medianPrice,
-    change: MARKET_SNAPSHOT.medianPriceYoY + ' YoY',
-    description:
-      'Driven by renovated guard-gated homes and relocation buyers prioritizing security and proximity to the 215 beltway in 89131.',
+    change: MARKET_SNAPSHOT.medianPriceContext,
+    description: `${MARKET_SNAPSHOT.closings12Month} MLS closings. Average sold price was ${MARKET_SNAPSHOT.averageSold}. Top sale in the window was ${MARKET_SNAPSHOT.topSale}.`,
   },
   {
     label: 'Price Per Sq. Ft.',
     value: MARKET_SNAPSHOT.pricePerSqFt,
-    change: MARKET_SNAPSHOT.pricePerSqFtYoY + ' YoY',
+    change: MARKET_SNAPSHOT.pricePerSqFtContext,
     description:
-      'Tight inventory for single-story floor plans continues to push price per square foot higher across all Silverstone enclaves.',
+      'This is the 12-month sold price per square foot for the Silverstone Ranch row. Enclave and lot type still move the number.',
   },
   {
-    label: 'Average Days on Market',
+    label: 'Median Days on Market',
     value: MARKET_SNAPSHOT.daysOnMarket,
     change: MARKET_SNAPSHOT.daysOnMarketChange,
-    description:
-      'Well-prepped listings secure offers within two weeks; homes requiring updates average 22 days in Centennial Hills.',
+    description: `The four-city market median in the same window was ${MARKET_SNAPSHOT.metroMedianDom}. A 40-day median is slower than a first-week offer market.`,
   },
   {
     label: 'Active Listings',
     value: MARKET_SNAPSHOT.activeListings,
     change: MARKET_SNAPSHOT.activeListingsChange,
-    description:
-      'Summer inventory ticked up slightly while guard-gated homes remain in high demand from relocation buyers.',
+    description: `Median ask ${MARKET_SNAPSHOT.medianAsk}. That is ${MARKET_SNAPSHOT.monthsOfSupply} of supply against the 12-month closing pace.`,
   },
 ]
 
 const buyerSellerSignals = [
   {
     title: 'Seller Advantage',
-    insight:
-      'Negotiable items include closing timeline and appliance packages, but price reductions are rare when homes are staged and priced to June 2026 comps.',
+    insight: `The median ask on September 18, 2026 was ${MARKET_SNAPSHOT.medianAsk}, above the ${MARKET_SNAPSHOT.medianPrice} sold median. Listings priced to closed comps are the ones that match this tape.`,
   },
   {
     title: 'Buyer Leverage',
-    insight:
-      'Use golf course status disclosures, HOA landscaping requirements, and appraisal data to request credits for landscape enhancements or closing costs.',
+    insight: `${MARKET_SNAPSHOT.monthsOfSupply} of supply gives buyers time to read HOA documents, golf course disclosures, and the appraisal before they waive terms.`,
   },
   {
-    title: 'Financing Trends',
+    title: 'Financing Context',
     insight:
-      'Jumbo loans and cash offers account for 48% of closed sales. Rate buydowns are increasingly used to compete with cash contingencies.',
+      'The same September 19, 2026 report cites Freddie Mac’s 6.95% average 30-year rate for the week ending September 17, 2026. Silverstone’s cash and jumbo share is not published in that table.',
   },
 ]
 
-const recentSales = [
+const windowHighlights = [
   {
-    address: 'Silverlake Gated Residence',
-    listPrice: '$699,500',
-    salePrice: '$710,000',
-    daysOnMarket: 7,
-    highlight: 'Outdoor living upgrade plus three-car garage',
+    label: 'Closings',
+    value: MARKET_SNAPSHOT.closings12Month,
+    detail: MARKET_SNAPSHOT.windowLabel,
   },
   {
-    address: 'The Palms Guard-Gated Estate',
-    listPrice: '$785,000',
-    salePrice: '$799,000',
-    daysOnMarket: 9,
-    highlight: 'Remodeled kitchen and pool cabana',
+    label: 'Q3 closings to date',
+    value: MARKET_SNAPSHOT.q3ClosingsToDate,
+    detail: 'July 1 through September 18, 2026',
   },
   {
-    address: 'Pinehurst Townhome',
-    listPrice: '$415,000',
-    salePrice: '$420,000',
-    daysOnMarket: 11,
-    highlight: 'Golf corridor views with HOA-maintained landscape',
+    label: 'Top sale',
+    value: MARKET_SNAPSHOT.topSale,
+    detail: 'Highest closing in the 12-month window',
   },
 ]
 
 const zipComparisons = [
-  { area: 'Silverstone Ranch (89131)', medianPrice: '$685K', dom: '13', pricePerSqFt: '$284' },
-  { area: 'Providence (89166)', medianPrice: '$555K', dom: '18', pricePerSqFt: '$252' },
-  { area: 'Skye Canyon (89166)', medianPrice: '$612K', dom: '21', pricePerSqFt: '$265' },
-  { area: 'Summerlin North (89134)', medianPrice: '$745K', dom: '16', pricePerSqFt: '$301' },
+  { area: 'Silverstone Ranch', medianPrice: '$539,000', dom: '40', pricePerSqFt: '$233' },
+  { area: 'Rhodes Ranch', medianPrice: '$535,000', dom: '28', pricePerSqFt: '$245' },
+  { area: 'Los Prados', medianPrice: '$435,000', dom: '29', pricePerSqFt: '$231' },
+  { area: 'Four-city market', medianPrice: '$445,000', dom: '30', pricePerSqFt: 'Not reported' },
 ]
 
 const buyerPlaybook = [
-  'Secure full underwriting or reputable cash reserves before touring—competitive offers surface within days.',
+  'Secure full underwriting before touring. The 12-month median was 40 days on market, so a prepared offer still matters, and a first-week deadline is not the community norm.',
   'Budget for appraisal gap coverage, rate buydowns, or credit flex to rival cash-backed buyers relocating from higher-priced metros.',
   'Target renovated homes or plan for $30K–$60K refresh budgets to modernize kitchens and outdoor living spaces.',
   'Layer HOA documents, golf course disclosures, and environmental readiness into your decision matrix.',
@@ -133,19 +122,17 @@ const sellerPlaybook = [
 
 const seasonalTrends = [
   {
-    season: 'Winter 2025',
-    detail:
-      'Lower inventory and motivated tax-year buyers keep prices stable. Highlight energy efficiency upgrades and offer closing credits for rate buydowns.',
+    season: 'Summer 2026',
+    detail: `${MARKET_SNAPSHOT.q3ClosingsToDate} Silverstone Ranch closings were recorded from July 1 through September 18, 2026. That quarter is still posting, so treat the count as partial.`,
   },
   {
-    season: 'Spring 2026 Forecast',
-    detail:
-      'Expect a surge of listings in March-April. Early prep positions sellers to capture pent-up demand, especially for renovated one-story homes.',
+    season: 'Fall 2026',
+    detail: `${MARKET_SNAPSHOT.activeListings} active listings and ${MARKET_SNAPSHOT.monthsOfSupply} of supply, with a ${MARKET_SNAPSHOT.medianAsk} median ask versus a ${MARKET_SNAPSHOT.medianPrice} sold median.`,
   },
   {
-    season: 'Summer 2026 Outlook',
+    season: 'Prior winter pattern',
     detail:
-      'Heat-driven seasonality slows casual tours, but serious buyers leverage relocation stipends. Schedule twilight open houses and maintain lush desert landscaping.',
+      'Across the 37 staffed-gate communities in the same report, January and February 2026 were the busiest months. Silverstone’s month-by-month counts are not broken out.',
   },
 ]
 
@@ -184,9 +171,8 @@ export default function MarketInsightsPage() {
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'Article',
-    headline: 'Silverstone Ranch Real Estate Market Insights - June 2026',
-    description:
-      'Explore the latest Silverstone Ranch real estate performance metrics, including pricing trends, days on market, buyer demand, and future outlook as of June 2026.',
+    headline: `Silverstone Ranch Real Estate Market Insights - ${MARKET_SNAPSHOT.reportMonth}`,
+    description: `Silverstone Ranch performance for the ${MARKET_SNAPSHOT.windowLabel} window: ${MARKET_SNAPSHOT.medianPrice} median sold, ${MARKET_SNAPSHOT.daysOnMarket} median DOM, and ${MARKET_SNAPSHOT.monthsOfSupply} of supply.`,
     author: { '@type': 'Person', name: CONTACT_INFO.agentName },
     publisher: { '@type': 'Organization', name: CONTACT_INFO.businessName, url: CONTACT_INFO.website.base },
     mainEntityOfPage: pageSchema.url,
@@ -207,21 +193,21 @@ export default function MarketInsightsPage() {
       <div className="mx-auto max-w-6xl space-y-16">
         <section className="text-center md:text-left space-y-6">
           <div className="inline-flex items-center rounded-full border border-blue-200 bg-white/80 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-blue-700">
-            Market Insights · June 2026
+            Market Insights · {MARKET_SNAPSHOT.reportMonth}
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-900">
             Silverstone Ranch Real Estate Market Trends
           </h1>
           <p className="text-lg text-gray-600 leading-relaxed">
-            Silverstone Ranch remains a magnet for relocation clients, medical professionals, and long-time Las Vegas
-            residents upgrading into guard-gated living. Inventory contracted another twelve percent this quarter while
-            pricing held firm above 2024 levels. Use this report to interpret the numbers, uncover leverage points, and
-            coordinate next steps with Dr. Jan Duffy.
+            This page reports the Silverstone Ranch row from the {MARKET_SNAPSHOT.sourceName}, published September 19, 2026.
+            The window is {MARKET_SNAPSHOT.windowLabel}: {MARKET_SNAPSHOT.closings12Month} closings, a {MARKET_SNAPSHOT.medianPrice}{' '}
+            median sold price, and {MARKET_SNAPSHOT.monthsOfSupply} of supply. Use it to see where list prices sit against
+            what actually closed, then book a comp review with Dr. Jan Duffy.
           </p>
           <p className="text-lg text-gray-600 leading-relaxed">
-            The data below reflects closed transactions through November 3, 2025, supplemented by private sales and
-            off-market intelligence. Trends are compared against adjacent Centennial Hills neighborhoods to highlight the
-            premium that Silverstone Ranch continues to command.
+            Active counts and the median ask are as of September 18, 2026. Q3 closings through that date are partial.
+            Southern Nevada’s existing single-family median of {MARKET_SNAPSHOT.southernNevadaSfrMedian} is a separate Las
+            Vegas REALTORS® series for August 2026 and is not the Silverstone figure.
           </p>
         </section>
 
@@ -236,7 +222,7 @@ export default function MarketInsightsPage() {
               <div key={metric.label} className="bg-white rounded-2xl border border-blue-100 p-6 shadow-sm">
                 <p className="text-xs uppercase tracking-wide text-gray-500 font-semibold mb-2">{metric.label}</p>
                 <p className="text-3xl font-bold text-blue-700 mb-1">{metric.value}</p>
-                <p className="text-sm font-semibold text-green-600 mb-3">{metric.change}</p>
+                <p className="text-sm font-semibold text-slate-600 mb-3">{metric.change}</p>
                 <p className="text-sm text-gray-700 leading-relaxed">{metric.description}</p>
               </div>
             ))}
@@ -317,8 +303,10 @@ export default function MarketInsightsPage() {
         <section id="recent-sales" className="space-y-8">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-6">
             <div>
-              <SectionHeading>Recent Closings</SectionHeading>
-              <p className="text-sm text-gray-500">Recorded through November 3, 2025 · Source: MLS + Dr. Duffy private sales</p>
+              <SectionHeading>12-Month Closing Tape</SectionHeading>
+              <p className="text-sm text-gray-500">
+                {MARKET_SNAPSHOT.sourceName} · {MARKET_SNAPSHOT.windowLabel}
+              </p>
             </div>
             <Link
               href="/request-info"
@@ -328,27 +316,26 @@ export default function MarketInsightsPage() {
             </Link>
           </div>
           <div className="grid md:grid-cols-3 gap-6">
-            {recentSales.map((sale) => (
-              <div key={sale.address} className="bg-blue-50 rounded-2xl border border-blue-100 p-6 shadow-sm">
-                <h3 className="text-lg font-semibold text-blue-900 mb-2">{sale.address}</h3>
-                <p className="text-sm text-gray-600 mb-1"><span className="font-semibold text-gray-900">List:</span> {sale.listPrice}</p>
-                <p className="text-sm text-gray-600 mb-1"><span className="font-semibold text-gray-900">Sold:</span> {sale.salePrice}</p>
-                <p className="text-sm text-gray-600 mb-3"><span className="font-semibold text-gray-900">DOM:</span> {sale.daysOnMarket}</p>
-                <p className="text-sm text-gray-700">{sale.highlight}</p>
+            {windowHighlights.map((item) => (
+              <div key={item.label} className="bg-blue-50 rounded-2xl border border-blue-100 p-6 shadow-sm">
+                <h3 className="text-lg font-semibold text-blue-900 mb-2">{item.label}</h3>
+                <p className="text-3xl font-bold text-blue-700 mb-2">{item.value}</p>
+                <p className="text-sm text-gray-700">{item.detail}</p>
               </div>
             ))}
           </div>
           <p className="text-sm text-gray-700">
-            Ask Dr. Duffy for the accompanying seller narratives and inspection outcomes. Understanding why buyers made
-            specific concessions helps you benchmark your own negotiation plan.
+            Street-level comps are not reprinted here. Book a consultation for the three or four closings that match the
+            floor plan, lot, and enclave you are pricing.
           </p>
         </section>
 
         <section id="comparisons" className="space-y-6">
           <SectionHeading className="text-center">Northwest Las Vegas Comparison Snapshot</SectionHeading>
           <p className="text-sm text-gray-600 text-center max-w-3xl mx-auto">
-            Silverstone Ranch commands a premium over nearby master plans thanks to guard-gated access and mature
-            landscaping. Compare median price, days on market, and price per square foot to understand the delta.
+            Same source and same {MARKET_SNAPSHOT.windowLabel} window. Rhodes Ranch and Los Prados are other staffed-gate
+            rows. The four-city row is Las Vegas, Henderson, North Las Vegas, and Boulder City. Price per square foot was
+            not published for the four-city total.
           </p>
           <div className="overflow-x-auto">
             <table className="min-w-full divide-y divide-gray-200">
@@ -377,11 +364,10 @@ export default function MarketInsightsPage() {
         <section id="buyer-demographics" className="space-y-6">
           <SectionHeading>Buyer Demographics & Motivation</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Nearly 61% of 2025 purchasers held professional or executive roles, often citing proximity to Centennial Hills
-            Hospital, MountainView Hospital, and the medical office corridor along Durango. Military families tied to Nellis
-            AFB appreciate the security of guard gates and choose Silverstone for its school zoning. A steady subset of
-            investors targets Pinehurst townhomes for furnished rentals aimed at traveling nurses; average monthly rents
-            reached $2,550 with 95% occupancy between January and October.
+            Buyers in this price band are comparing commute time to Centennial Hills Hospital, the 215 Beltway, and the
+            medical offices along Durango, plus HOA dues and whether the enclave has a staffed gate. The published report
+            does not break Silverstone closings out by occupation or household type. Rental rates are not in that table—
+            request a rent comp before you underwrite Pinehurst or any other village.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed">
             Lifestyle also fuels demand. Residents value the six-acre park, tennis and pickleball courts, and easy access to
@@ -416,30 +402,28 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="forecast" className="space-y-6">
-          <SectionHeading>Forecast: Winter 2025/26 Outlook</SectionHeading>
+          <SectionHeading>Fall 2026 Conditions</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Expect moderate appreciation through Q1 2026 as relocation pipelines remain strong and Silverstone Ranch’s
-            inventory stays limited. Watch these indicators:
+            The figures on this page are the September 19, 2026 reading. They are not a price forecast. Watch these items
+            before you treat the 12-month median as next month’s list price:
           </p>
           <ul className="space-y-3 text-sm text-gray-700">
-            <li>Monitor corporate relocation announcements at the Las Vegas Global Economic Alliance—these moves often precede cash buyers.</li>
-            <li>Track mortgage rate stabilization. A sustained drop below 6.5% could add five to eight listings worth of demand per month.</li>
-            <li>Watch city planning agendas for any golf course filings; development news could shift buyer sentiment quickly.</li>
-            <li>Evaluate seasonal listing windows—February through May historically yields the strongest seller results.</li>
+            <li>{MARKET_SNAPSHOT.activeListings} active listings and a {MARKET_SNAPSHOT.medianAsk} median ask, against a {MARKET_SNAPSHOT.medianPrice} sold median.</li>
+            <li>{MARKET_SNAPSHOT.q3ClosingsToDate} closings from July 1 through September 18, 2026. Later postings can raise that count.</li>
+            <li>Las Vegas REALTORS® reported a {MARKET_SNAPSHOT.southernNevadaSfrMedian} existing single-family median for August 2026 ({MARKET_SNAPSHOT.southernNevadaSfrMedianNote}).</li>
+            <li>City planning agendas for golf course filings. A land-use change can move fairway-adjacent negotiations without moving the community median.</li>
           </ul>
-          <p className="text-sm text-gray-700 leading-relaxed">
-            Rental fundamentals remain healthy. Inventory of long-term rentals is tight, keeping average single-family rents
-            around $3,100. Investors seeking cap rates above 6% target townhomes with value-add renovations.
-          </p>
         </section>
 
         <section id="methodology" className="space-y-6">
           <SectionHeading>Methodology & Data Sources</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
-            This report synthesizes data from the Greater Las Vegas Association of REALTORS® (GLVAR), private transaction
-            records curated by Dr. Jan Duffy, and national mortgage analytics. Median values are rolling three-month
-            averages; list-to-sale ratios capture closed transactions only. Pricing deltas are compared to the same period
-            in 2024 unless otherwise noted.
+            Silverstone Ranch, Rhodes Ranch, Los Prados, and the four-city comparison come from the{' '}
+            <a href={MARKET_SNAPSHOT.sourceUrl} className="font-semibold text-blue-700 hover:text-blue-900" rel="noopener noreferrer" target="_blank">
+              {MARKET_SNAPSHOT.sourceName}
+            </a>
+            , Las Vegas MLS data pulled through Repliers on September 19, 2026. The Southern Nevada single-family median is
+            Las Vegas REALTORS® for August 2026, reported September 9, 2026. This page does not mix those two series into one median.
           </p>
           <p className="text-sm text-gray-700 leading-relaxed">
             Need a deeper dive? Schedule a one-on-one strategy session to receive spreadsheets segmented by bedroom count,
@@ -465,26 +449,25 @@ export default function MarketInsightsPage() {
         </section>
 
         <section id="pricing-scenarios" className="space-y-6">
-          <SectionHeading>Pricing Scenarios for 2026 Planning</SectionHeading>
+          <SectionHeading>Prices in the September 19, 2026 Report</SectionHeading>
           <p className="text-sm text-gray-700 leading-relaxed">
-            Use these forward-looking scenarios to model purchase timing or listing strategy going into 2026. Each assumes
-            steady employment growth and a modest decline in mortgage rates during the second half of the year.
+            These are the published prices from the September 19, 2026 report. They are a record of the last 12 months, not three forecast cases.
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-700 leading-relaxed">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900">Conservative Case</h3>
-              <p>Median price holds at $680K, DOM rises to 17 days, and list-to-sale ratios normalize near 99%.</p>
-              <p className="mt-2">Best approach: emphasize value-add projects and consider modest price adjustments if listings surpass 21 days.</p>
+              <h3 className="text-lg font-semibold text-gray-900">Sold median</h3>
+              <p>{MARKET_SNAPSHOT.medianPrice} across {MARKET_SNAPSHOT.closings12Month} closings. Average sold price was {MARKET_SNAPSHOT.averageSold}.</p>
+              <p className="mt-2">Price a listing or an offer against similar closings, not against the community-wide median alone.</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900">Base Case</h3>
-              <p>Median price edges to $698K, DOM remains 14 days, and absorption stays strong for renovated homes.</p>
-              <p className="mt-2">Best approach: launch listings in March-April with turnkey presentation to capture relocation wave.</p>
+              <h3 className="text-lg font-semibold text-gray-900">Asking median</h3>
+              <p>{MARKET_SNAPSHOT.medianAsk} median ask on {MARKET_SNAPSHOT.activeListings} active listings as of September 18, 2026.</p>
+              <p className="mt-2">The ask sits above the sold median. That gap is where negotiation starts.</p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900">Upside Case</h3>
-              <p>Rates dip below 6.25%, unlocking sidelined buyers. Median price pushes past $710K, DOM drops to 10 days.</p>
-              <p className="mt-2">Best approach: prepare pre-market interest lists, leverage private previews, and expect multiple offers.</p>
+              <h3 className="text-lg font-semibold text-gray-900">Top of the tape</h3>
+              <p>The highest Silverstone Ranch closing in the window was {MARKET_SNAPSHOT.topSale}.</p>
+              <p className="mt-2">A single high sale does not reset the median. Confirm the comp set for the enclave before you anchor there.</p>
             </div>
           </div>
         </section>
@@ -581,9 +564,10 @@ export default function MarketInsightsPage() {
         <section className="bg-white rounded-3xl border border-slate-200 shadow-xl p-8 md:p-12" id="summary">
           <SectionHeading>Summary & Next Steps</SectionHeading>
           <p className="text-lg text-gray-700 leading-relaxed">
-            Silverstone Ranch continues to outperform neighboring communities thanks to low inventory, strong relocation
-            demand, and guard-gated amenities. Align your strategy with data, leverage Dr. Jan Duffy’s concierge network,
-            and move decisively—whether buying, selling, or investing, timing and preparation remain your strongest assets.
+            Silverstone Ranch’s September 19, 2026 reading is a {MARKET_SNAPSHOT.medianPrice} 12-month sold median,{' '}
+            {MARKET_SNAPSHOT.daysOnMarket} median DOM, and {MARKET_SNAPSHOT.monthsOfSupply} of supply. The median ask is
+            higher than the sold median. Align the offer or the list price with closed comps, then book the next step with
+            Dr. Jan Duffy.
           </p>
         </section>
       </div>

@@ -388,24 +388,23 @@ export default async function SilverstoneRanchPage() {
           <div className="mx-auto max-w-5xl">
             <SectionHeading>Market Insights & Pricing Dynamics</SectionHeading>
             <p className="text-slate-700 mb-6">
-              As of {MARKET_SNAPSHOT.reportMonth}, Silverstone Ranch&apos;s median sale price sits at{' '}
-              {MARKET_SNAPSHOT.medianPrice} ({MARKET_SNAPSHOT.medianPriceYoY} YoY) with{' '}
-              {MARKET_SNAPSHOT.daysOnMarket} average days on market—a rebalancing market where well-priced homes still
-              attract offers. {activeListingStat.detail}
+              For the {MARKET_SNAPSHOT.windowLabel} window, Silverstone Ranch&apos;s median sale price was{' '}
+              {MARKET_SNAPSHOT.medianPrice} with a {MARKET_SNAPSHOT.daysOnMarket} median days on market. Supply was{' '}
+              {MARKET_SNAPSHOT.monthsOfSupply}. {activeListingStat.detail}
             </p>
             <SectionHeading as="h3">{`Key Metrics (${MARKET_SNAPSHOT.reportMonth})`}</SectionHeading>
             <ul className="grid sm:grid-cols-2 gap-4 text-sm text-slate-700 mb-6">
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Median Sale Price</span>
-                {MARKET_SNAPSHOT.medianPrice} · {MARKET_SNAPSHOT.medianPriceYoY} year-over-year.
+                {MARKET_SNAPSHOT.medianPrice} · {MARKET_SNAPSHOT.medianPriceContext}.
               </li>
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Average Days on Market</span>
                 {MARKET_SNAPSHOT.daysOnMarket} · {MARKET_SNAPSHOT.daysOnMarketChange}.
               </li>
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
-                <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">List-to-Sale Ratio</span>
-                {MARKET_SNAPSHOT.listToSaleRatio} · Buyer leverage growing in Centennial Hills.
+                <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Months of Supply</span>
+                {MARKET_SNAPSHOT.monthsOfSupply} · Median ask {MARKET_SNAPSHOT.medianAsk} on Sep 18, 2026.
               </li>
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Active MLS Listings</span>

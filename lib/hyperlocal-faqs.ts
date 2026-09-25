@@ -9,7 +9,7 @@ export const HOMEPAGE_FAQS = [
   },
   {
     question: 'How competitive is Silverstone Ranch compared to other guard-gated communities?',
-    answer: `${MARKET_SNAPSHOT.reportMonth} absorption rates show Silverstone homes closing in ${MARKET_SNAPSHOT.daysOnMarket} versus 18–21 days in comparable north valley enclaves. Limited inventory and relocation demand keep negotiations brisk.`,
+    answer: `In the ${MARKET_SNAPSHOT.windowLabel} window, Silverstone Ranch’s median days on market was ${MARKET_SNAPSHOT.daysOnMarket}, compared with ${MARKET_SNAPSHOT.metroMedianDom} for the four-city Las Vegas market in the same report. Supply was ${MARKET_SNAPSHOT.monthsOfSupply}.`,
   },
   {
     question: 'What should I budget for post-closing enhancements in Silverstone Ranch?',
@@ -33,12 +33,11 @@ export const HOMES_FOR_SALE_FAQS = [
   },
   {
     question: 'What is the median home price in Silverstone Ranch (89131)?',
-    answer: `As of ${MARKET_SNAPSHOT.reportMonth}, the median sale price is ${MARKET_SNAPSHOT.medianPrice} (${MARKET_SNAPSHOT.medianPriceYoY} year-over-year) with ${MARKET_SNAPSHOT.activeListings} active listings.`,
+    answer: `For the ${MARKET_SNAPSHOT.windowLabel} window, the median sale price was ${MARKET_SNAPSHOT.medianPrice}. ${MARKET_SNAPSHOT.activeListings} homes were active on September 18, 2026, with a median ask of ${MARKET_SNAPSHOT.medianAsk}.`,
   },
   {
     question: 'How fast do homes move under $700K in Silverstone Ranch?',
-    answer:
-      'Homes priced between $630K and $700K often attract multiple offers within the first week in Centennial Hills. Dr. Duffy recommends touring immediately when Silverstone Ranch listing alerts hit your inbox.',
+    answer: `The community median days on market was ${MARKET_SNAPSHOT.daysOnMarket} across ${MARKET_SNAPSHOT.closings12Month} closings in the ${MARKET_SNAPSHOT.windowLabel} window. Tour quickly when a listing matches your criteria, and price the offer against recent comps rather than a first-week rule.`,
   },
   {
     question: 'Can I negotiate if the home backs dormant golf course land?',
@@ -259,7 +258,7 @@ export const AMENITIES_FAQS = [
 export const MARKET_INSIGHTS_FAQS = [
   {
     question: "Is Silverstone Ranch a buyer's or seller's market in 2026?",
-    answer: `${MARKET_SNAPSHOT.reportMonth} data shows a balanced-to-seller-leaning market: ${MARKET_SNAPSHOT.daysOnMarket} average DOM, ${MARKET_SNAPSHOT.listToSaleRatio} list-to-sale ratio, and tight guard-gated inventory under 25 active homes.`,
+    answer: `${MARKET_SNAPSHOT.monthsOfSupply} of supply and a ${MARKET_SNAPSHOT.daysOnMarket} median DOM in the ${MARKET_SNAPSHOT.windowLabel} window describe a balanced market. ${MARKET_SNAPSHOT.activeListings} homes were active on September 18, 2026. The median ask was ${MARKET_SNAPSHOT.medianAsk}, above the ${MARKET_SNAPSHOT.medianPrice} sold median.`,
   },
   {
     question: 'Which Silverstone Ranch enclave appreciates fastest?',

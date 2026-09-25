@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { SectionHeading } from '@/components/SectionHeading'
@@ -39,7 +40,7 @@ const sellerAdvantages = [
   {
     title: 'Strategic Pricing & Positioning',
     description:
-      'Leverage the latest June 2026 comps, buyer demand in Centennial Hills, and golf course disclosures to price for multiple offers without leaving money on the table.',
+      `Price from the ${MARKET_SNAPSHOT.windowLabel} comps (median sold ${MARKET_SNAPSHOT.medianPrice}), Centennial Hills demand, and golf course disclosures so the list price matches what actually closed.`,
   },
   {
     title: 'High-Impact Marketing',

@@ -72,7 +72,7 @@ export default function PrivacyPage() {
                 We may collect personal information that you voluntarily provide to us when you:
               </p>
               <ul className="list-disc pl-6 space-y-2 text-gray-700 mb-4">
-                <li>Fill out forms on our website (home valuation, request info, book tour, contact forms)</li>
+                <li>Book a time on the Calendly calendar embedded on this site (home valuation, request info, tours, and contact)</li>
                 <li>Subscribe to our newsletter or marketing communications</li>
                 <li>Contact us via email or phone</li>
                 <li>Interact with our website features</li>

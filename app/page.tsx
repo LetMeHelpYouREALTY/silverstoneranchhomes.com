@@ -87,7 +87,7 @@ export default async function HomePage() {
     {
       label: `Median Price (${MARKET_SNAPSHOT.reportMonthShort})`,
       value: MARKET_SNAPSHOT.medianPriceShort,
-      detail: `${MARKET_SNAPSHOT.medianPriceYoY} year-over-year across the Silverstone Ranch micro-market (89131).`,
+      detail: `${MARKET_SNAPSHOT.medianPriceContext} for Silverstone Ranch (${MARKET_SNAPSHOT.windowLabel}).`,
     },
     {
       label: 'Average Days on Market',
@@ -197,7 +197,7 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl grid gap-10 lg:grid-cols-[1.2fr_1fr] items-center">
           <div>
             <p className="text-sm font-semibold uppercase tracking-widest text-blue-700 mb-3">
-              Silverstone Ranch, Centennial Hills · June 2026
+              Silverstone Ranch, Centennial Hills · {MARKET_SNAPSHOT.reportMonth}
             </p>
             <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-6 leading-tight">
               Live Exceptionally in Silverstone Ranch, the Guard-Gated Enclave of Northwest Las Vegas
@@ -263,8 +263,8 @@ export default async function HomePage() {
                 covenants, golf course history, and off-market inventory.
               </li>
               <li>
-                <span className="font-semibold text-blue-600">Data-Driven Strategy:</span> June 2026 pricing models and
-                negotiation tactics that keep deals on track from appraisal to closing.
+                <span className="font-semibold text-blue-600">Data-Driven Strategy:</span> {MARKET_SNAPSHOT.reportMonth}{' '}
+                pricing from the {MARKET_SNAPSHOT.windowLabel} window, then negotiation from appraisal to closing.
               </li>
               <li>
                 <span className="font-semibold text-blue-600">Relocation Ready:</span> Seamless coordination with preferred
@@ -675,26 +675,35 @@ export default async function HomePage() {
         <div className="mx-auto max-w-6xl space-y-8">
           <SectionHeading>Market Data Deep Dive</SectionHeading>
           <p className="text-slate-700 leading-relaxed">
-            June 2026 trends reveal Silverstone’s resilience: median sale price $685K (+5.2% YoY), average price per
-            square foot $284, and list-to-sale ratio 101.8%. Cash and jumbo-financed buyers account for nearly half of
-            transactions, underscoring the importance of appraisal-ready pricing and curated staging. Inventory remains below
-            20 active homes, with the strongest absorption in renovated one-story floor plans backing interior streets.
+            The {MARKET_SNAPSHOT.reportMonth} report covers {MARKET_SNAPSHOT.closings12Month} Silverstone Ranch closings in
+            the {MARKET_SNAPSHOT.windowLabel} window: median sale price {MARKET_SNAPSHOT.medianPrice}, average sale{' '}
+            {MARKET_SNAPSHOT.averageSold}, and {MARKET_SNAPSHOT.pricePerSqFt} per square foot. Median days on market were{' '}
+            {MARKET_SNAPSHOT.daysOnMarket}. On September 18, 2026, {MARKET_SNAPSHOT.activeListings} homes were active at a{' '}
+            {MARKET_SNAPSHOT.medianAsk} median ask, equal to {MARKET_SNAPSHOT.monthsOfSupply} of supply. The sold median sits
+            below that ask, so pricing against closed comps matters more than matching the current list price.
           </p>
           <div className="grid md:grid-cols-3 gap-6 text-sm text-slate-700 leading-relaxed">
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Relocation Pipeline</h3>
-              <p>46 pre-approved buyers tracked by Dr. Duffy—medical professionals, tech executives, and defense contractors—are
-                actively seeking guard-gated homes in Centennial Hills.</p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Metro Context</h3>
+              <p>
+                Southern Nevada’s existing single-family median was {MARKET_SNAPSHOT.southernNevadaSfrMedian} in August 2026
+                ({MARKET_SNAPSHOT.southernNevadaSfrMedianNote}). Silverstone’s 12-month sold median was{' '}
+                {MARKET_SNAPSHOT.medianPrice}.
+              </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
-              <h3 className="text-lg font-semibold text-slate-900 mb-2">Investor Snapshot</h3>
-              <p>Townhomes leased furnished average $2,550/month with 95% occupancy. Single-family rentals capture $3,100–$3,400
-                depending on outdoor upgrades.</p>
+              <h3 className="text-lg font-semibold text-slate-900 mb-2">Closing Range</h3>
+              <p>
+                The same 12-month window recorded a {MARKET_SNAPSHOT.topSale} top sale and {MARKET_SNAPSHOT.q3ClosingsToDate}{' '}
+                closings from July 1 through September 18, 2026. Ask for enclave comps before you underwrite a rental.
+              </p>
             </div>
             <div className="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
               <h3 className="text-lg font-semibold text-slate-900 mb-2">Seasonal Outlook</h3>
-              <p>Expect a listing surge March–May 2026. Preparing enhancements now positions sellers to capitalize on peak demand
-                and relocation allowances.</p>
+              <p>
+                Fall 2026 supply is {MARKET_SNAPSHOT.monthsOfSupply}. Across staffed-gate communities, January and February 2026
+                were the busiest months of the prior year. Silverstone’s own month-by-month counts are not in that report.
+              </p>
             </div>
           </div>
         </div>
@@ -720,7 +729,7 @@ export default async function HomePage() {
           <SectionHeading>Silverstone Snapshot & Next Steps</SectionHeading>
           <p className="text-slate-700 leading-relaxed">
             Use this site as your command center. Explore deep dives on HOA fees, environmental risk, buyer checklists, and golf
-            course disclosures, then connect with Dr. Duffy to align your goals with the June 2026 market. Whether you&apos;re
+            course disclosures, then connect with Dr. Duffy to align your goals with the {MARKET_SNAPSHOT.reportMonth} market. Whether you&apos;re
             comparing sub-associations, pricing an upcoming sale, or designing a relocation roadmap, the Silverstone team is ready
             to support every milestone.
           </p>

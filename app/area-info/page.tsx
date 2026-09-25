@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
+import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { SectionHeading } from '@/components/SectionHeading'
@@ -340,10 +341,11 @@ export default function AreaInfoPage() {
         <section className="bg-white rounded-3xl shadow-xl p-8 md:p-12 mb-12 border border-slate-200" id="market-link">
           <SectionHeading>Market Highlights & Investment Outlook</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
-            June 2026 market research shows Silverstone Ranch median prices at $685K, price per square foot at $284,
-            and a brisk 13-day average for days on market. List-to-sale ratios hover around 101.8%, a testament to the
-            neighborhood’s desirability and limited inventory. Relocation demand from healthcare, hospitality, and
-            technology sectors continues to support stable appreciation.
+            The {MARKET_SNAPSHOT.reportMonth} report covers {MARKET_SNAPSHOT.closings12Month} Silverstone Ranch closings in
+            the {MARKET_SNAPSHOT.windowLabel} window: median sold {MARKET_SNAPSHOT.medianPrice}, {MARKET_SNAPSHOT.pricePerSqFt}{' '}
+            per square foot, and a {MARKET_SNAPSHOT.daysOnMarket} median days on market. {MARKET_SNAPSHOT.activeListings} homes
+            were active on September 18, 2026, at a {MARKET_SNAPSHOT.medianAsk} median ask ({MARKET_SNAPSHOT.monthsOfSupply} of
+            supply).
           </p>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Sellers benefit from polished property presentation and well-documented maintenance. Buyers should secure

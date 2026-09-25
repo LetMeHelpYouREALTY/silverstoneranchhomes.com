@@ -14,7 +14,7 @@ export function CalendlySchedulingBlock({
   title = 'Schedule a Private 15-Minute Conversation',
   description = 'Book time with Dr. Jan Duffy to discuss Silverstone Ranch buying, selling, tours, valuations, or market questions.',
   className = '',
-  showPopupLinks = true,
+  showPopupLinks = false,
 }: CalendlySchedulingBlockProps) {
   return (
     <div className={`space-y-6 ${className}`}>
