@@ -36,7 +36,7 @@ export default function AreaInfo() {
           </p>
 
           <div className="bg-blue-50 rounded-lg p-6 my-8">
-            <h3 className="text-xl font-semibold text-gray-900 mb-4">Prime Location Benefits</h3>
+            <SectionHeading as="h3">Prime Location Benefits</SectionHeading>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">📍</span>
@@ -62,7 +62,7 @@ export default function AreaInfo() {
           </div>
 
           <div className="mb-8 rounded-lg border border-blue-100 bg-white/60 p-5 shadow-sm">
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">School Snapshot (Jun 2026)</h3>
+            <SectionHeading as="h3">School Snapshot (Jun 2026)</SectionHeading>
             <div className="grid gap-4 sm:grid-cols-3 text-xs text-gray-700">
               <div className="rounded-lg border border-blue-100 bg-blue-50 p-3">
                 <p className="font-semibold text-blue-700 uppercase tracking-wide mb-1">O&apos;Roarke ES</p>

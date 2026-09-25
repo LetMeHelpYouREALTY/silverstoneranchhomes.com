@@ -19,7 +19,7 @@ export default function PriceFeatures() {
 
         <div className="grid md:grid-cols-2 gap-8">
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Residence & Lifestyle Features</h3>
+            <SectionHeading as="h3">Residence & Lifestyle Features</SectionHeading>
             <ul className="space-y-3 text-gray-700">
               <li className="flex items-start">
                 <span className="text-blue-600 mr-2">✓</span>
@@ -61,7 +61,7 @@ export default function PriceFeatures() {
           </div>
 
           <div>
-            <h3 className="text-2xl font-semibold text-gray-900 mb-6">Typical Silverstone Specifications</h3>
+            <SectionHeading as="h3">Typical Silverstone Specifications</SectionHeading>
             <dl className="space-y-4">
               <div className="flex justify-between py-2 border-b border-gray-200">
                 <dt className="font-medium text-gray-700">Bedrooms</dt>

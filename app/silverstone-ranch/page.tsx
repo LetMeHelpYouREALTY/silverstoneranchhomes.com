@@ -38,7 +38,7 @@ const deepDiveLinks = [
   {
     title: 'Schools & Education',
     description:
-      'CCSD orientation for Silverstone Ranch families—quick reference plus a link to the full area schools guide.',
+      'CCSD orientation for Silverstone Ranch buyers—quick reference plus a link to the full area schools guide.',
     href: '/silverstone-ranch/schools',
   },
   {
@@ -104,7 +104,7 @@ const neighborhoodLinks = [
   },
   {
     name: 'Parkfield',
-    description: 'Non-gated family-oriented streets near the central community park.',
+    description: 'Non-gated streets near the central community park and trail network.',
     href: '/neighborhoods/parkfield',
   },
   {
@@ -320,7 +320,7 @@ export default async function SilverstoneRanchPage() {
                 </div>
               ))}
             </div>
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">Getting Around</h3>
+            <SectionHeading as="h3">Getting Around</SectionHeading>
             <p className="text-slate-700 mb-4">
               The community anchors a walkable radius to grocery stores, coffee shops, Centennial Hills Hospital, and the
               690-acre Floyd Lamb Park. The 215 Beltway connects residents to the Las Vegas Strip in roughly 30 minutes and
@@ -345,14 +345,14 @@ export default async function SilverstoneRanchPage() {
                 ranges from outdoor movie nights to HOA-sponsored fitness classes. The desert climate is harnessed through
                 mature landscaping and water-smart upgrades that keep common areas vibrant year-round.
               </p>
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">HOA Services & Support</h3>
+              <SectionHeading as="h3">HOA Services & Support</SectionHeading>
               <p className="text-slate-700 mb-4">
                 CAMCO Management oversees the master association alongside several sub-associations. Services include access
                 control, landscape maintenance of arterial streets, event coordination, and capital reserve planning. The
                 HOA recently modernized digital portals for dues payment, architectural submissions, and guard gate visitor
                 management—streamlining the homeowner experience.
               </p>
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">Health & Wellness Nearby</h3>
+              <SectionHeading as="h3">Health & Wellness Nearby</SectionHeading>
               <p className="text-slate-700">
                 Centennial Hills Hospital, VA clinics, and specialty medical practices operate within a five-mile radius.
                 Residents also take advantage of the Centennial Hills YMCA, Vistas Park trail system, and private fitness
@@ -393,7 +393,7 @@ export default async function SilverstoneRanchPage() {
               {MARKET_SNAPSHOT.daysOnMarket} average days on market—a rebalancing market where well-priced homes still
               attract offers. {activeListingStat.detail}
             </p>
-            <h3 className="text-xl font-semibold text-slate-900 mb-3">Key Metrics ({MARKET_SNAPSHOT.reportMonth})</h3>
+            <SectionHeading as="h3">{`Key Metrics (${MARKET_SNAPSHOT.reportMonth})`}</SectionHeading>
             <ul className="grid sm:grid-cols-2 gap-4 text-sm text-slate-700 mb-6">
               <li className="rounded-xl bg-slate-50/80 border border-slate-200 p-4">
                 <span className="block text-xs uppercase tracking-wide text-blue-600 font-semibold mb-1">Median Sale Price</span>
@@ -474,11 +474,11 @@ export default async function SilverstoneRanchPage() {
               20 minutes away in Summerlin.
             </p>
             <div className="rounded-2xl border border-blue-100 bg-white shadow-sm p-6">
-              <h3 className="text-xl font-semibold text-slate-900 mb-3">Planning Your Education Strategy</h3>
+              <SectionHeading as="h3">Planning Your Education Strategy</SectionHeading>
               <ul className="space-y-3 text-sm text-slate-700">
                 <li>Zoning can change yearly—verify attendance boundaries with CCSD’s zoning office at (702) 799-6430.</li>
                 <li>Enrollment packets for charter and magnet programs often open in January; plan ahead to secure spots.</li>
-                <li>Dr. Jan Duffy curates school tour itineraries and introduces relocation clients to parent networks.</li>
+                <li>Dr. Jan Duffy curates school tour itineraries and introduces relocation clients to resident networks.</li>
               </ul>
               <Link
                 href="/schools"

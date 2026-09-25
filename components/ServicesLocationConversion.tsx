@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { MapPin, Navigation, Home, KeyRound, GraduationCap, Phone, Calendar, MessageCircle } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { HeadingVisual } from '@/components/HeadingVisual'
+import { SectionHeading } from '@/components/SectionHeading'
 import { headingMediaFromText } from '@/lib/media'
 
 const telHref = `tel:${CONTACT_INFO.phone.tel}`
@@ -60,7 +61,7 @@ export function ServicesLocationConversion() {
                 <MapPin className="h-5 w-5" aria-hidden />
               </div>
               <div>
-                <h3 className="text-lg font-semibold text-slate-900">Where we work</h3>
+                <SectionHeading as="h3">Where we work</SectionHeading>
                 <p className="mt-2 text-sm text-slate-700 leading-relaxed">
                   <strong className="text-slate-900">Silverstone Ranch</strong> — guard-gated community in{' '}
                   <strong>Centennial Hills</strong> near <strong>Tule Springs</strong> and{' '}
@@ -116,7 +117,7 @@ export function ServicesLocationConversion() {
                 <Home className="h-5 w-5" aria-hidden />
               </div>
               <div className="min-w-0 flex-1">
-                <h3 className="text-lg font-semibold text-slate-900">What we help you do</h3>
+                <SectionHeading as="h3">What we help you do</SectionHeading>
                 <ul className="mt-4 space-y-4">
                   <li className="flex gap-3">
                     <KeyRound className="h-5 w-5 shrink-0 text-blue-600 mt-0.5" aria-hidden />

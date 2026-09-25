@@ -86,7 +86,7 @@ export default function HomeValuationPageClient() {
         />
 
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <h3 className="font-semibold text-gray-900 mb-4">What&apos;s Included:</h3>
+          <SectionHeading as="h3">What&apos;s Included:</SectionHeading>
           <ul className="space-y-3 text-gray-600">
             <li>Pricing analysis with three recommended strategy tiers</li>
             <li>Buyer demand snapshots for each Silverstone sub-association</li>

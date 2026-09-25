@@ -38,7 +38,7 @@ export default function RequestInfoPageClient() {
         />
 
         <div className="mt-8 pt-8 border-t border-gray-200">
-          <h3 className="font-semibold text-gray-900 mb-4">What Information You&apos;ll Receive:</h3>
+          <SectionHeading as="h3">What Information You&apos;ll Receive:</SectionHeading>
           <div className="grid md:grid-cols-2 gap-4">
             <ul className="space-y-2 text-sm text-gray-600">
               <li className="flex items-start">

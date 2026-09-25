@@ -21,6 +21,7 @@ jobs:
         uses: amondnet/vercel-action@v25
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }}
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          # Live project after GitHub org transfer (public IDs; token stays secret).
+          vercel-org-id: team_EIbjFXaDDtGMTweb5Hvo3CG3
+          vercel-project-id: prj_OuvKZgtynEsc3OfkRx2SLEKIo1lj
           vercel-args: '--prod'

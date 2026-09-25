@@ -23,7 +23,7 @@ const coreAmenities = [
       'Lighted tennis and pickleball courts, basketball hoops, and open play areas keep residents active from sunrise to dusk.',
   },
   {
-    icon: '👨‍👩‍👧‍👦',
+    icon: '🎠',
     title: 'Playgrounds & Splash Pads',
     description:
       'Age-specific playgrounds, splash pads, and tot lots with shade structures and seating sit along the central greenbelts.',
@@ -111,7 +111,7 @@ const nearbyAttractions = [
     name: 'Aliante Nature Discovery Park',
     distance: '12 minutes',
     description:
-      'Interactive discovery zones, splash features, and a scenic lake perfect for family outings.',
+      'Interactive discovery zones, splash features, and a scenic lake for weekend recreation.',
   },
   {
     name: 'Tule Springs Fossil Beds',
@@ -146,7 +146,7 @@ const familyCalendar = [
   },
   {
     month: 'April – June',
-    events: ['Spring splash pad kickoff', 'Family relay races on the central lawn', 'Garden planting day with local nurseries'],
+    events: ['Spring splash pad kickoff', 'Community relay races on the central lawn', 'Garden planting day with local nurseries'],
   },
   {
     month: 'July – September',
@@ -313,12 +313,12 @@ export default function AmenitiesPage() {
               private reservations with refundable deposits, making it easy to host milestone events without leaving the
               neighborhood.
             </p>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Amenities You Can Reserve</h3>
+            <SectionHeading as="h3">Amenities You Can Reserve</SectionHeading>
             <ul className="space-y-3 text-sm text-gray-700">
               <li>Clubhouse great room with catering kitchen and AV hookups for presentations.</li>
               <li>Pool cabanas and shade structures—ideal for summer birthdays or weekend socials.</li>
               <li>Tennis and pickleball courts with night lighting for league play.</li>
-              <li>Park pavilions with built-in grills for family reunions and outdoor celebrations.</li>
+              <li>Park pavilions with built-in grills for cookouts and outdoor celebrations.</li>
             </ul>
             <p className="text-gray-700 mt-4 text-sm">
               Reservation requests can be submitted via the CAMCO homeowner portal. Dr. Jan Duffy provides clients with the
@@ -376,7 +376,7 @@ export default function AmenitiesPage() {
             granting uninterrupted desert vistas. Fitness stations, pet-friendly waste stations, and shaded rest nodes are
             strategically installed to support everyday routines.
           </p>
-          <h3 className="text-xl font-semibold text-gray-900 mb-3">Key Trail Highlights</h3>
+          <SectionHeading as="h3">Key Trail Highlights</SectionHeading>
           <ul className="space-y-3 text-sm text-gray-700">
             <li><span className="font-semibold text-blue-600">Fairway Loop:</span> 2.3-mile circuit encircling the dormant golf corridors—ideal for sunrise walks.</li>
             <li><span className="font-semibold text-blue-600">Park Connector:</span> Shortcuts linking Pinehurst, Tuscany, and The Palms to the central park and playgrounds.</li>
@@ -395,7 +395,7 @@ export default function AmenitiesPage() {
               reserve planning, and community communications. Sub-associations within Silverstone Ranch—such as The Palms,
               Tuscany, and Pinehurst—layer on additional services like front-yard maintenance or exterior paint schedules.
             </p>
-            <h3 className="text-xl font-semibold text-gray-900 mb-3">Digital Homeowner Tools</h3>
+            <SectionHeading as="h3">Digital Homeowner Tools</SectionHeading>
             <ul className="space-y-3 text-sm text-gray-700">
               <li>Online payment portal with automatic draft and credit card options.</li>
               <li>Architectural review submissions handled through a digital ticketing system.</li>

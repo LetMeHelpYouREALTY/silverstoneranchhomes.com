@@ -254,7 +254,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
       {
         heading: 'Who should consider Eastpoint?',
         body:
-          'Buyers prioritizing value, straightforward guest access, and family-oriented streets often shortlist Eastpoint. Compare with Amberly and Greenfield for similar non-gated footprints.',
+          'Buyers prioritizing value, straightforward guest access, and proximity to the community park often shortlist Eastpoint. Compare with Amberly and Greenfield for similar non-gated footprints.',
       },
     ],
     bullets: [
@@ -431,12 +431,12 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
       'Parkfield at Silverstone Ranch: non-gated Las Vegas 89131 homes near community parks and trails. Buyer and seller guidance from Dr. Jan Duffy REALTOR®.',
     h1: 'Parkfield | Silverstone Ranch Village Homes',
     intro:
-      'Parkfield sits within the Silverstone Ranch master plan with convenient access to the central park, playground, and trail network—making it a strong choice for families who want community amenities without guard-gate logistics.',
+      'Parkfield sits within the Silverstone Ranch master plan with convenient access to the central park, playground, and trail network—making it a strong choice for buyers who want community amenities without guard-gate logistics.',
     sections: [
       {
         heading: 'Homes & lifestyle',
         body:
-          'Parkfield offers single-family homes with desert-modern elevations and proximity to the six-acre community park. Floor plans range from efficient two-story layouts to larger family homes with three-car garages.',
+          'Parkfield offers single-family homes with desert-modern elevations and proximity to the six-acre community park. Floor plans range from efficient two-story layouts to larger residences with three-car garages.',
       },
       {
         heading: 'HOA & amenities',

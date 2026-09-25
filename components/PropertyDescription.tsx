@@ -15,7 +15,7 @@ export default function PropertyDescription() {
             Within Silverstone Ranch you&apos;ll discover a variety of floor plans, from single-story retreats to expansive two-story residences with generous outdoor living spaces. Homes emphasize open-concept layouts, chef-ready kitchens, and indoor-outdoor connections that take full advantage of Nevada&apos;s climate. Premium finishes—like rich cabinetry, designer lighting, and spa-inspired suites—create a sophisticated showcase for luxury living.
           </p>
 
-          <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">About the Community</h3>
+          <SectionHeading as="h3">About the Community</SectionHeading>
           <p className="text-gray-700 leading-relaxed mb-6">
             Silverstone Ranch was built between 2003-2008 and features one and two-story homes ranging 
             in size from 1,559 sq. ft. to 3,448 sq. ft. Silverstone Ranch is a community consisting of 
@@ -23,7 +23,7 @@ export default function PropertyDescription() {
             surrounded by the majestic Spring Mountains to the west and the Sheep Mountains to the North.
           </p>
 
-          <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Neighborhoods</h3>
+          <SectionHeading as="h3">Neighborhoods</SectionHeading>
           
           <div className="space-y-4 mb-6">
             <div>
@@ -64,9 +64,9 @@ export default function PropertyDescription() {
             </div>
           </div>
 
-          <h3 className="text-2xl font-semibold text-gray-900 mt-8 mb-4">Amenities</h3>
+          <SectionHeading as="h3">Amenities</SectionHeading>
           <p className="text-gray-700 leading-relaxed">
-            Silverstone homeowners have access to a 6-acre family park with playgrounds, basketball and 
+            Silverstone homeowners have access to a 6-acre community park with playgrounds, basketball and 
             tennis courts, picnic and barbecue areas, walking and biking trails, and lush greenbelts.
           </p>
         </div>

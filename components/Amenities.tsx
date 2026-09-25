@@ -3,13 +3,13 @@ import { SectionHeading } from '@/components/SectionHeading'
 export default function Amenities() {
   const amenities = [
     {
-      title: '6-Acre Family Park',
+      title: '6-Acre Community Park',
       description: 'Spacious park with multiple recreational areas',
       icon: '🌳',
     },
     {
       title: 'Playgrounds',
-      description: 'Safe, modern playground equipment for children',
+      description: 'Modern playground equipment with shade structures',
       icon: '🎠',
     },
     {
@@ -19,7 +19,7 @@ export default function Amenities() {
     },
     {
       title: 'Picnic & Barbecue Areas',
-      description: 'Perfect for family gatherings and outdoor dining',
+      description: 'Picnic ramadas and barbecue grills for outdoor dining',
       icon: '🍖',
     },
     {
@@ -56,7 +56,7 @@ export default function Amenities() {
 
         <div className="mt-12 text-center">
           <p className="text-lg text-gray-700">
-            Silverstone homeowners have access to a comprehensive 6-acre family park with 
+            Silverstone homeowners have access to a comprehensive 6-acre community park with 
             playgrounds, basketball and tennis courts, picnic and barbecue areas, walking 
             and biking trails, and lush greenbelts.
           </p>

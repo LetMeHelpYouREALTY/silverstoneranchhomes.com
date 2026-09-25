@@ -33,7 +33,7 @@ export default function MarketInsights() {
 
         {/* Market Advantage */}
         <div className="bg-white rounded-lg p-8 mb-8 shadow-md">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Market Advantage: Inventory at Multi-Year Lows</h3>
+          <SectionHeading as="h3">Market Advantage: Inventory at Multi-Year Lows</SectionHeading>
           <p className="text-gray-700 mb-4">
             Homeowners and investors in Silverstone Ranch are uniquely positioned in today&apos;s market:
           </p>
@@ -59,7 +59,7 @@ export default function MarketInsights() {
 
         {/* Time to Sell */}
         <div className="bg-white rounded-lg p-8 mb-8 shadow-md">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Time to Sell: Accelerating Market Trends</h3>
+          <SectionHeading as="h3">Time to Sell: Accelerating Market Trends</SectionHeading>
           <p className="text-gray-700 mb-4">
             Over the past 90 days, Silverstone Ranch sales have gained momentum:
           </p>
@@ -86,7 +86,7 @@ export default function MarketInsights() {
 
         {/* Recent Sales */}
         <div className="bg-white rounded-lg p-8 mb-8 shadow-md">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Recent Sales Highlighting Strong Values</h3>
+          <SectionHeading as="h3">Recent Sales Highlighting Strong Values</SectionHeading>
           <p className="text-gray-700 mb-6">
             Recent comparable sales in the neighborhood showcase Silverstone Ranch&apos;s strong market performance:
           </p>
@@ -109,7 +109,7 @@ export default function MarketInsights() {
 
         {/* Price Momentum */}
         <div className="bg-white rounded-lg p-8 mb-8 shadow-md">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Price Momentum: Steady Appreciation</h3>
+          <SectionHeading as="h3">Price Momentum: Steady Appreciation</SectionHeading>
           <p className="text-gray-700 mb-6">
             Silverstone Ranch continues to demonstrate impressive growth:
           </p>
@@ -138,7 +138,7 @@ export default function MarketInsights() {
 
         {/* Optimal Selling Periods */}
         <div className="bg-white rounded-lg p-8 mb-8 shadow-md">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Strategic Timing for Maximum Return</h3>
+          <SectionHeading as="h3">Strategic Timing for Maximum Return</SectionHeading>
           <p className="text-gray-700 mb-6">Data highlights the following prime windows for selling:</p>
           
           <div className="grid md:grid-cols-2 gap-6 mb-6">
@@ -170,7 +170,7 @@ export default function MarketInsights() {
 
         {/* Competitive Edge */}
         <div className="bg-white rounded-lg p-8 shadow-md">
-          <h3 className="text-2xl font-semibold text-gray-900 mb-6">Competitive Edge in Silverstone Ranch</h3>
+          <SectionHeading as="h3">Competitive Edge in Silverstone Ranch</SectionHeading>
           <p className="text-gray-700 mb-4">
             Silverstone Ranch residences continue to command premium offers thanks to:
           </p>
