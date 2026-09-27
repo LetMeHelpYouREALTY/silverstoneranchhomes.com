@@ -620,6 +620,48 @@ export type RealEstateListingEntry = {
 /**
  * ItemList of RealEstateListing entries for homes-for-sale and IDX pages.
  */
+export type NearbyPlaceSchemaEntry = {
+  name: string
+  schemaType: string
+  address: string
+}
+
+/** ItemList of nearby Place subtypes for amenity / GEO pages. */
+export function buildNearbyPlacesItemList({
+  path,
+  name,
+  places,
+}: {
+  path: string
+  name: string
+  places: NearbyPlaceSchemaEntry[]
+}) {
+  if (!places.length) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    url: buildCanonical(path),
+    numberOfItems: places.length,
+    itemListElement: places.map((place, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': place.schemaType,
+        name: place.name,
+        address: {
+          '@type': 'PostalAddress',
+          streetAddress: place.address,
+          addressLocality: CONTACT_INFO.address.city,
+          addressRegion: CONTACT_INFO.address.state,
+          postalCode: CONTACT_INFO.address.postalCode,
+          addressCountry: CONTACT_INFO.address.country,
+        },
+      },
+    })),
+  }
+}
+
 export function buildRealEstateListingItemList({
   path,
   name,

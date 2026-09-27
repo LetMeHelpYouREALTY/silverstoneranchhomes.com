@@ -7,6 +7,7 @@ import { FaqSection } from '@/components/FaqSection'
 import { MAP_FAQS } from '@/lib/hyperlocal-faqs'
 import { buildFaqSchema, buildMapPlaceSchema, buildWebPageSchema } from '@/lib/seo'
 import { GoogleMapEmbed } from '@/components/GoogleMapEmbed'
+import { AmenityMapSection } from '@/components/amenity-map/AmenityMapSection'
 import { GbpCtaRow } from '@/components/GbpCtaRow'
 import { SectionHeading } from '@/components/SectionHeading'
 import { ASSIGNED_SCHOOLS } from '@/lib/market-data'
@@ -192,6 +193,8 @@ export default function MapPage() {
           <FaqSection faqs={faqs} heading="Silverstone Ranch Location FAQs" />
         </div>
       </div>
+
+      <AmenityMapSection heading="Explore Nearby Amenities on the Map" className="bg-slate-50" />
     </div>
   )
 }
