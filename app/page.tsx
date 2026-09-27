@@ -14,13 +14,14 @@ import {
   buildAggregateRatingSchema,
   buildAction,
   buildFaqSchema,
+  buildRealEstateAgentSchemaPatch,
   buildRealEstateListingItemList,
   buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
 } from '@/lib/seo'
 import { CONTACT_INFO } from '@/lib/contact-info'
-import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
+import { buildPageTitle, seoAbsoluteTitle, withShareImage } from '@/lib/metadata'
 import { absoluteMediaUrl } from '@/lib/media'
 import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
@@ -32,9 +33,9 @@ import {
 } from '@/lib/realscout/fetch-listings'
 
 export const metadata: Metadata = {
-  title: buildHyperlocalTitle('Silverstone Ranch REALTOR® | Homes for Sale'),
+  title: seoAbsoluteTitle('Silverstone Ranch Homes | Dr. Jan Duffy'),
   description:
-    `Buy or sell in Silverstone Ranch (89131), Centennial Hills. Guard-gated enclaves, HOA guidance, ${MARKET_SNAPSHOT.reportMonth} market data, and concierge real estate services from ${CONTACT_INFO.agentName}.`,
+    'Buy or sell in Silverstone Ranch (89131), Centennial Hills. Guard-gated enclaves, HOA guidance, and concierge real estate from Dr. Jan Duffy.',
   alternates: {
     canonical: '/',
   },
@@ -167,26 +168,20 @@ export default async function HomePage() {
     }),
   )
 
-  const agentSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'RealEstateAgent',
-    name: CONTACT_INFO.agentName,
-    url: CONTACT_INFO.website.url,
+  const agentSchemaPatch = buildRealEstateAgentSchemaPatch({
     award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
     review: reviewList,
     aggregateRating: buildAggregateRatingSchema({
       ratingValue: 4.9,
       reviewCount: 37,
     }),
-    areaServed: CONTACT_INFO.serviceAreas,
-    sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
-  }
+  })
 
   const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })), [
     '.speakable-answer',
   ])
 
-  const schemaData = [pageSchema, agentSchema, faqSchema, listingItemList, ...services].filter(
+  const schemaData = [pageSchema, agentSchemaPatch, faqSchema, listingItemList, ...services].filter(
     (s): s is NonNullable<typeof s> => s != null,
   ) as Record<string, unknown>[]
 

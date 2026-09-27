@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildAction, buildFaqSchema, buildLocalBusinessSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildAction, buildFaqSchema, buildServiceSchema, buildWebPageSchema } from '@/lib/seo'
 import { CONTACT_FAQS } from '@/lib/hyperlocal-faqs'
 import ContactPageClient from './ContactPageClient'
 
@@ -38,8 +38,6 @@ export default function ContactPage() {
     ],
   })
 
-  const localBusinessSchema = buildLocalBusinessSchema()
-
   const conciergeServiceSchema = buildServiceSchema({
     name: 'Silverstone Ranch Concierge Desk',
     description:
@@ -70,7 +68,7 @@ export default function ContactPage() {
     ['.speakable-answer'],
   )
 
-  const schemaData = [pageSchema, localBusinessSchema, conciergeServiceSchema, faqSchema].filter(Boolean)
+  const schemaData = [pageSchema, conciergeServiceSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">

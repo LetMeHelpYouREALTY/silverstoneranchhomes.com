@@ -5,7 +5,13 @@ import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildHyperlocalTitle, buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildRealEstateAgentSchema, buildServiceSchema, buildWebPageSchema, buildAction } from '@/lib/seo'
+import {
+  buildAction,
+  buildFaqSchema,
+  buildRealEstateAgentSchemaPatch,
+  buildServiceSchema,
+  buildWebPageSchema,
+} from '@/lib/seo'
 import { AGENT_FAQS } from '@/lib/hyperlocal-faqs'
 import { SectionHeading } from '@/components/SectionHeading'
 
@@ -432,11 +438,10 @@ export default function AgentPage() {
 
   const faqSchema = buildFaqSchema(path, faqs, ['.speakable-answer'])
 
-  const agentSchema = {
-    ...buildRealEstateAgentSchema(),
+  const agentSchema = buildRealEstateAgentSchemaPatch({
     knowsAbout: ['Silverstone Ranch', 'Centennial Hills', 'Guard-gated communities', 'HOA real estate'],
     award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
-  }
+  })
 
   const serviceSchema = buildServiceSchema({
     name: 'Silverstone Ranch Real Estate Services',
