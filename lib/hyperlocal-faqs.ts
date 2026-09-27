@@ -311,3 +311,45 @@ export const SCHOOLS_FAQS = [
     answer: `${ASSIGNED_SCHOOLS.charterOption} is a popular lottery option. Dr. Jan Duffy helps relocation families compare charter, private, and CCSD zoned schools for their Silverstone Ranch address.`,
   },
 ] as const
+
+/** Buyer-focused nearby-amenity FAQs (AEO: answer in the first sentence). */
+export const NEARBY_AMENITIES_FAQS = [
+  {
+    question: 'What grocery stores are near Silverstone Ranch?',
+    answer:
+      "Smith's Marketplace on N Durango Drive, Whole Foods on Rainbow Boulevard, and Costco at Pavilion Center are the closest full-service grocers—typically within a 10–15 minute drive of Silverstone Ranch (approximate).",
+  },
+  {
+    question: 'How far is Silverstone Ranch from the Las Vegas Strip?',
+    answer:
+      'Most residents reach the Strip resort corridor in about 28–35 minutes by car in typical traffic, using the 215 Beltway and I-15 (approximate).',
+  },
+  {
+    question: 'Are there hospitals near Silverstone Ranch?',
+    answer:
+      'Centennial Hills Hospital on N Durango Drive is the nearest full-service hospital, usually within about a 10-minute drive of the community (approximate).',
+  },
+  {
+    question: 'What parks can Silverstone Ranch residents use nearby?',
+    answer:
+      'Residents enjoy the on-site Silverstone community park plus Floyd Lamb Park at Tule Springs, a regional park with lagoons and trails north of the neighborhood.',
+  },
+  {
+    question: 'Which schools are zoned for Silverstone Ranch addresses?',
+    answer: `Most Silverstone Ranch homes zone to ${ASSIGNED_SCHOOLS.elementary}, ${ASSIGNED_SCHOOLS.middle}, and ${ASSIGNED_SCHOOLS.high}; confirm your exact assignment at ccsd.net/zoning before you offer.`,
+  },
+  {
+    question: 'Is there golf near Silverstone Ranch?',
+    answer:
+      'Las Vegas Paiute Golf Resort and other public courses serve Northwest Las Vegas; Silverstone’s former on-site golf course remains dormant—review HOA disclosures for fairway-adjacent homes.',
+  },
+  {
+    question: 'How long does it take to reach Downtown Summerlin from Silverstone Ranch?',
+    answer:
+      'Downtown Summerlin shopping and dining is typically about an 18-minute drive off-peak via the 215 Beltway (approximate).',
+  },
+  {
+    question: 'Who can help me compare Silverstone Ranch amenities before I buy?',
+    answer: `${CONTACT_INFO.agentName} (${CONTACT_INFO.phone.display}) provides private tours, commute timing notes, and hyperlocal amenity guides for buyers relocating to ZIP ${CONTACT_INFO.address.postalCode}.`,
+  },
+] as const

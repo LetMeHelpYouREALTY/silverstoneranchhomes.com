@@ -158,8 +158,11 @@ export function ServicesLocationConversion() {
                         <Link href="/schools" className="text-sm font-semibold text-blue-600 hover:text-blue-800">
                           Schools guide →
                         </Link>
+                        <Link href="/nearby-amenities" className="text-sm font-semibold text-blue-600 hover:text-blue-800">
+                          Nearby amenities map →
+                        </Link>
                         <Link href="/amenities" className="text-sm font-semibold text-blue-600 hover:text-blue-800">
-                          Amenities →
+                          Community amenities →
                         </Link>
                       </div>
                     </div>
