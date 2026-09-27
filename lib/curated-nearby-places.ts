@@ -3,7 +3,10 @@ import type { AmenityCategoryId } from '@/lib/nearby-amenities-config'
 export type CuratedNearbyPlace = {
   name: string
   category: AmenityCategoryId
-  address: string
+  /** Verified street address for display and JSON-LD; omit when not verified. */
+  address?: string
+  /** Official business or agency page used to verify name and address. */
+  sourceUrl: string
   schemaType:
     | 'Restaurant'
     | 'Park'
@@ -19,115 +22,113 @@ export type CuratedNearbyPlace = {
 }
 
 /**
- * Verified nearby destinations cited on this site or from stable public listings.
- * Used for crawlable HTML, schema ItemList, and map fallback when the API key is absent.
+ * Hyperlocal destinations verified against primary sources (official sites, CCSD, city/county parks).
+ * Used for crawlable HTML, schema ItemList, and map fallback when Places is unavailable.
  */
 export const CURATED_NEARBY_PLACES: CuratedNearbyPlace[] = [
   {
     name: 'Silverstone Ranch Community Park',
     category: 'parks',
-    address: 'Silverstone Ranch, Las Vegas, NV 89131',
     schemaType: 'Park',
-    note: 'On-site six-acre park with trails, courts, and playgrounds for residents.',
+    sourceUrl: 'https://www.silverstoneranchhomes.com/amenities',
+    note: 'On-site park with trails, courts, and playgrounds for residents (HOA-maintained).',
   },
   {
     name: 'Floyd Lamb Park at Tule Springs',
     category: 'parks',
     address: '9200 Tule Springs Rd, Las Vegas, NV 89131',
     schemaType: 'Park',
+    sourceUrl: 'https://www.lasvegasnevada.gov/Residents/Parks-Facilities/Floyd-Lamb-Park',
     note: 'Regional park with fishing lagoons and picnic areas north of the community.',
+  },
+  {
+    name: 'Craig Ranch Regional Park',
+    category: 'parks',
+    address: '628 W Craig Rd, North Las Vegas, NV 89032',
+    schemaType: 'Park',
+    sourceUrl: 'https://www.cityofnorthlasvegas.com/things-to-do/parks-and-recreation/parks/craig-ranch-regional-park',
+    note: '170-acre regional park with sports courts, skate park, and open space.',
   },
   {
     name: "Smith's Marketplace",
     category: 'grocery',
-    address: '7151 N Durango Dr, Las Vegas, NV 89149',
+    address: '7130 N Durango Dr, Las Vegas, NV 89149',
     schemaType: 'Store',
+    sourceUrl:
+      'https://www.smithsfoodanddrug.com/stores/grocery/nv/las-vegas/montecito-marketplace/706/00332',
   },
   {
-    name: 'Whole Foods Market',
+    name: 'Whole Foods Market (Summerlin)',
     category: 'grocery',
-    address: '100 S Rainbow Blvd, Las Vegas, NV 89145',
+    address: '2475 S Town Center Dr, Las Vegas, NV 89135',
     schemaType: 'Store',
+    sourceUrl: 'https://www.wholefoodsmarket.com/stores/summerlin',
   },
   {
-    name: 'Costco Wholesale',
+    name: 'Costco Wholesale (Summerlin)',
     category: 'grocery',
     address: '801 S Pavilion Center Dr, Las Vegas, NV 89144',
     schemaType: 'Store',
+    sourceUrl: 'https://www.costco.com/warehouse-locations/las-vegas-summerlin-nv-685.html',
   },
   {
-    name: 'The Stove NV',
+    name: 'Timbers Bar & Grill',
     category: 'restaurants',
-    address: '1980 Festival Plaza Dr, Las Vegas, NV 89135',
+    address: '7045 N Durango Dr, Las Vegas, NV 89149',
     schemaType: 'Restaurant',
+    sourceUrl: 'https://timbersgaming.com/n-durango-dorrell/',
   },
   {
-    name: 'Firefly Tapas Kitchen & Bar',
-    category: 'restaurants',
-    address: '9560 W Sahara Ave, Las Vegas, NV 89117',
-    schemaType: 'Restaurant',
-  },
-  {
-    name: 'Tenaya Creek Brewery',
-    category: 'restaurants',
-    address: '8310 W Cheyenne Ave, Las Vegas, NV 89129',
-    schemaType: 'Restaurant',
-  },
-  {
-    name: 'Centennial Hills Hospital',
+    name: 'Centennial Hills Hospital Medical Center',
     category: 'healthcare',
     address: '6900 N Durango Dr, Las Vegas, NV 89149',
     schemaType: 'Hospital',
+    sourceUrl: 'https://www.centennialhillshospital.com/about/contact-us',
   },
   {
-    name: "O'Roarke Elementary School",
+    name: "Thomas J. O'Roarke Elementary School",
     category: 'schools',
-    address: '9474 Brent Ln, Las Vegas, NV 89131',
+    address: "8455 O'Hare Rd, Las Vegas, NV 89143",
     schemaType: 'School',
-    note: 'Typical CCSD assignment for Silverstone Ranch—verify zoning before you offer.',
+    sourceUrl: 'https://www.oroarke-ccsd.net/',
+    note: 'Typical CCSD assignment for many Silverstone Ranch addresses—verify zoning at ccsd.net/zoning before you offer.',
   },
   {
-    name: 'Cadwallader Middle School',
+    name: 'Ralph Cadwallader Middle School',
     category: 'schools',
-    address: '7775 W Azure Dr, Las Vegas, NV 89128',
+    address: '7775 Elkhorn Rd, Las Vegas, NV 89131',
     schemaType: 'School',
+    sourceUrl: 'https://www.cadwalladerms.org/',
   },
   {
     name: 'Arbor View High School',
     category: 'schools',
-    address: '8101 W Patrick Ln, Las Vegas, NV 89149',
+    address: '7500 Whispering Sands Dr, Las Vegas, NV 89131',
     schemaType: 'School',
+    sourceUrl: 'https://www.arborviewhs.org/apps/contact/',
   },
   {
     name: 'Centennial Hills YMCA',
     category: 'fitness',
     address: '6601 N Buffalo Dr, Las Vegas, NV 89131',
     schemaType: 'SportsActivityLocation',
+    sourceUrl: 'https://lasvegasymca.org/locations/centennial-hills-ymca/',
   },
   {
-    name: 'Las Vegas Paiute Golf Resort',
+    name: 'TPC Las Vegas',
     category: 'golf',
-    address: '10325 Nu-Wav Kaiv Blvd, Las Vegas, NV 89124',
+    address: '9851 Canyon Run Dr, Las Vegas, NV 89144',
     schemaType: 'GolfCourse',
-    note: 'Public course in Northwest Las Vegas; Silverstone’s on-site course remains dormant.',
+    sourceUrl: 'https://tpc.com/lasvegas/contact-directions/',
+    note: 'Public PGA TOUR course in Summerlin; Silverstone’s on-site course remains dormant.',
   },
   {
-    name: 'PublicUs Centennial',
-    category: 'cafes',
-    address: '7180 N Durango Dr, Las Vegas, NV 89149',
-    schemaType: 'CafeOrCoffeeShop',
-  },
-  {
-    name: 'Centennial Center',
-    category: 'shopping',
-    address: '7051 N Durango Dr, Las Vegas, NV 89149',
-    schemaType: 'Store',
-  },
-  {
-    name: 'CVS Pharmacy',
+    name: "Smith's Pharmacy",
     category: 'pharmacies',
-    address: '7180 N Durango Dr, Las Vegas, NV 89149',
+    address: '7130 N Durango Dr, Las Vegas, NV 89149',
     schemaType: 'Pharmacy',
+    sourceUrl:
+      'https://www.smithsfoodanddrug.com/stores/grocery/nv/las-vegas/montecito-marketplace/706/00332',
   },
 ]
 

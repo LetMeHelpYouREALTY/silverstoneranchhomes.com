@@ -621,7 +621,21 @@ export type RealEstateListingEntry = {
 export type NearbyPlaceSchemaEntry = {
   name: string
   schemaType: string
-  address: string
+  /** Full verified mailing line; omit from JSON-LD when unset. */
+  address?: string
+}
+
+function postalAddressFromVerifiedLine(addressLine: string) {
+  const match = addressLine.match(/^(.+?),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$/i)
+  if (!match) return null
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: match[1].trim(),
+    addressLocality: match[2].trim(),
+    addressRegion: match[3].toUpperCase(),
+    postalCode: match[4],
+    addressCountry: CONTACT_INFO.address.country,
+  }
 }
 
 /** ItemList of nearby Place subtypes for amenity / GEO pages. */
@@ -647,14 +661,9 @@ export function buildNearbyPlacesItemList({
       item: {
         '@type': place.schemaType,
         name: place.name,
-        address: {
-          '@type': 'PostalAddress',
-          streetAddress: place.address,
-          addressLocality: CONTACT_INFO.address.city,
-          addressRegion: CONTACT_INFO.address.state,
-          postalCode: CONTACT_INFO.address.postalCode,
-          addressCountry: CONTACT_INFO.address.country,
-        },
+        ...(place.address
+          ? { address: postalAddressFromVerifiedLine(place.address) ?? undefined }
+          : {}),
       },
     })),
   }

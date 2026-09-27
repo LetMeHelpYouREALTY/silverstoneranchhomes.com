@@ -33,10 +33,8 @@ export type AmenityCategoryId =
 export type AmenityCategory = {
   id: AmenityCategoryId
   label: string
-  /** Google Places (New) primary types for `searchNearby`. */
+  /** Google Places (New) primary types for `searchNearby` (one call per category). */
   placeTypes: string[]
-  /** Legacy PlacesService `type` when using nearbySearch fallback. */
-  legacyType?: string
 }
 
 /**
@@ -44,17 +42,17 @@ export type AmenityCategory = {
  * then dining, medical, schools, and specialty retail.
  */
 export const AMENITY_CATEGORIES: AmenityCategory[] = [
-  { id: 'parks', label: 'Parks', placeTypes: ['park'], legacyType: 'park' },
-  { id: 'grocery', label: 'Grocery', placeTypes: ['grocery_store', 'supermarket'], legacyType: 'grocery_or_supermarket' },
-  { id: 'restaurants', label: 'Restaurants', placeTypes: ['restaurant'], legacyType: 'restaurant' },
-  { id: 'healthcare', label: 'Healthcare', placeTypes: ['hospital', 'doctor'], legacyType: 'hospital' },
-  { id: 'schools', label: 'Schools', placeTypes: ['school'], legacyType: 'school' },
-  { id: 'fitness', label: 'Fitness', placeTypes: ['gym'], legacyType: 'gym' },
-  { id: 'golf', label: 'Golf', placeTypes: ['golf_course'], legacyType: 'golf_course' },
-  { id: 'cafes', label: 'Cafes', placeTypes: ['cafe'], legacyType: 'cafe' },
-  { id: 'shopping', label: 'Shopping', placeTypes: ['shopping_mall'], legacyType: 'shopping_mall' },
-  { id: 'pharmacies', label: 'Pharmacies', placeTypes: ['pharmacy'], legacyType: 'pharmacy' },
-  { id: 'parking', label: 'Parking', placeTypes: ['parking'], legacyType: 'parking' },
+  { id: 'parks', label: 'Parks', placeTypes: ['park'] },
+  { id: 'grocery', label: 'Grocery', placeTypes: ['grocery_store', 'supermarket'] },
+  { id: 'restaurants', label: 'Restaurants', placeTypes: ['restaurant'] },
+  { id: 'healthcare', label: 'Healthcare', placeTypes: ['hospital', 'doctor'] },
+  { id: 'schools', label: 'Schools', placeTypes: ['school'] },
+  { id: 'fitness', label: 'Fitness', placeTypes: ['gym'] },
+  { id: 'golf', label: 'Golf', placeTypes: ['golf_course'] },
+  { id: 'cafes', label: 'Cafes', placeTypes: ['cafe'] },
+  { id: 'shopping', label: 'Shopping', placeTypes: ['shopping_mall'] },
+  { id: 'pharmacies', label: 'Pharmacies', placeTypes: ['pharmacy'] },
+  { id: 'parking', label: 'Parking', placeTypes: ['parking'] },
 ]
 
 export function getCategoryById(id: AmenityCategoryId): AmenityCategory {

@@ -28,9 +28,7 @@ export function AmenityMapFallback({ title, className }: AmenityMapFallbackProps
         />
       </div>
       <p className="mt-2 text-xs text-slate-500">
-        Map centered on {COMMUNITY_LOCATION.name} ({lat.toFixed(4)}, {lng.toFixed(4)}). Add{' '}
-        <code className="text-slate-700">NEXT_PUBLIC_GOOGLE_MAPS_API_KEY</code> in Vercel for the full interactive amenity
-        map.
+        Map centered on {COMMUNITY_LOCATION.name} ({lat.toFixed(4)}, {lng.toFixed(4)}).
       </p>
     </div>
   )

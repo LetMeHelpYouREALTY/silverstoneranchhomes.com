@@ -49,7 +49,7 @@ const categorySections = [
   {
     id: 'dining',
     title: 'Dining & Cafes',
-    body: `Centennial Hills and west Summerlin corridors feed Silverstone Ranch with chef-driven spots and casual chains. The Stove NV at Downtown Summerlin, Firefly Tapas on Sahara, and Tenaya Creek Brewery in the northwest valley are frequent weekend destinations—typically 15–25 minutes from the gates (approximate). For morning coffee and remote-work stops, PublicUs Centennial on N Durango sits close to grocery runs.`,
+    body: `Centennial Hills and west Summerlin corridors feed Silverstone Ranch with chef-driven spots and casual chains. Timbers Bar & Grill on N Durango and dining in Downtown Summerlin are common weekend destinations—typically 15–25 minutes from the gates (approximate). Grocery runs often pair with quick bites along the N Durango retail corridor.`,
     categories: ['restaurants', 'cafes'] as const,
   },
   {
@@ -62,7 +62,7 @@ const categorySections = [
     id: 'golf',
     title: 'Golf & Outdoor Sports',
     body:
-      'Silverstone’s on-site golf course remains dormant; buyers on fairway lots should review HOA and city disclosures. Public golf returns at Las Vegas Paiute Golf Resort and other northwest courses, while the Centennial Hills YMCA adds indoor aquatics and group fitness.',
+      'Silverstone’s on-site golf course remains dormant; buyers on fairway lots should review HOA and city disclosures. Public golf is available at TPC Las Vegas in Summerlin and other west-valley courses, while the Centennial Hills YMCA adds indoor aquatics and group fitness.',
     categories: ['golf', 'fitness'] as const,
   },
   {
@@ -75,7 +75,7 @@ const categorySections = [
   {
     id: 'shopping',
     title: 'Grocery & Shopping',
-    body: `Smith's Marketplace, Whole Foods, and Costco anchor routine errands for Silverstone households. Centennial Center on N Durango bundles retail, services, and dining in one stop—often the first destination for new residents setting up utilities and home goods.`,
+    body: `Smith's Marketplace, Whole Foods (Downtown Summerlin), and Costco (Summerlin) anchor routine errands for Silverstone households. The N Durango corridor bundles grocery, pharmacy, and services—often the first stop for new residents setting up utilities and home goods.`,
     categories: ['grocery', 'shopping'] as const,
   },
   {
@@ -116,7 +116,7 @@ export default function NearbyAmenitiesPage() {
     places: CURATED_NEARBY_PLACES.map((place) => ({
       name: place.name,
       schemaType: place.schemaType,
-      address: place.address,
+      ...(place.address ? { address: place.address } : {}),
     })),
   })
 
@@ -147,9 +147,9 @@ export default function NearbyAmenitiesPage() {
             {COMMUNITY_LOCATION.center.lat.toFixed(4)}, {COMMUNITY_LOCATION.center.lng.toFixed(4)}).
           </p>
           <p className="text-lg text-slate-700 leading-relaxed">
-            Use the interactive map for live Google Places results when your API key is configured, or rely on the
-            curated list below—every business named here is documented on this site or in stable public listings. For a
-            private driving tour, contact {CONTACT_INFO.agentName} at {CONTACT_INFO.phone.display}.
+            Use the interactive map for live nearby results, or browse the featured list below—each business links to a
+            primary source used to verify its name and address. For a private driving tour, contact {CONTACT_INFO.agentName}{' '}
+            at {CONTACT_INFO.phone.display}.
           </p>
           <GbpCtaRow className="mt-6" />
         </div>

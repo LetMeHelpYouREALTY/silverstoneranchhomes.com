@@ -1,5 +1,6 @@
 import {
   AMENITY_CATEGORIES,
+  COMMUNITY_LOCATION,
   buildDirectionsUrl,
   type AmenityCategoryId,
 } from '@/lib/nearby-amenities-config'
@@ -55,8 +56,8 @@ export function CuratedPlacesList({
       <ul id={listId} className="space-y-3" aria-live="polite">
         {places.length === 0 ? (
           <li className="text-sm text-slate-600">
-            Explore this category on the interactive map when your Google Maps key is configured, or contact Dr. Jan
-            Duffy for a curated amenity driving tour.
+            Featured places near {COMMUNITY_LOCATION.name} for this category appear on the map when available. Contact Dr.
+            Jan Duffy for a driving tour of nearby amenities.
           </li>
         ) : (
           places.map((place) => (
@@ -65,10 +66,10 @@ export function CuratedPlacesList({
               className="rounded-xl border border-slate-200 bg-white px-4 py-3 shadow-sm"
             >
               <p className="font-semibold text-slate-900">{place.name}</p>
-              <p className="text-sm text-slate-600">{place.address}</p>
+              {place.address ? <p className="text-sm text-slate-600">{place.address}</p> : null}
               {place.note ? <p className="mt-1 text-sm text-slate-700">{place.note}</p> : null}
               <a
-                href={buildDirectionsUrl(`${place.name}, ${place.address}`)}
+                href={buildDirectionsUrl(place.address ? `${place.name}, ${place.address}` : place.name)}
                 className="mt-2 inline-flex text-sm font-semibold text-blue-600 hover:text-blue-800"
                 target="_blank"
                 rel="noopener noreferrer"
