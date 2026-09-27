@@ -163,54 +163,42 @@ export function buildOrganizationSchema() {
   }
 }
 
+/** Canonical JSON-LD @id for the site's single RealEstateAgent entity (Dr. Jan Duffy). */
+export const REAL_ESTATE_AGENT_SCHEMA_ID = `${CONTACT_INFO.website.url}#real-estate-agent`
+
+export function buildRealEstateAgentRef() {
+  return { '@id': REAL_ESTATE_AGENT_SCHEMA_ID }
+}
+
+export type RealEstateAgentSchemaPatch = {
+  review?: ReturnType<typeof buildReviewSchema>[]
+  aggregateRating?: ReturnType<typeof buildAggregateRatingSchema>
+  award?: string
+  knowsAbout?: string[]
+}
+
 /**
- * LocalBusiness schema optimized for Google Business Profiles.
- * Business `name` matches GBP exactly (no duplicate agent prefix).
+ * Partial JSON-LD node that extends the canonical agent by @id (reviews, awards, etc.).
  */
-export function buildLocalBusinessSchema() {
+export function buildRealEstateAgentSchemaPatch(patch: RealEstateAgentSchemaPatch = {}) {
   return {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
-    name: CONTACT_INFO.businessName,
-    image: absoluteMediaUrl('hero-guard-gated'),
-    url: CONTACT_INFO.website.url,
-    telephone: CONTACT_INFO.phone.display,
-    email: CONTACT_INFO.email,
-    hasMap: CONTACT_INFO.gbp.mapsUri,
-    identifier: CONTACT_INFO.gbp.placeId,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: CONTACT_INFO.address.street,
-      addressLocality: CONTACT_INFO.address.city,
-      addressRegion: CONTACT_INFO.address.state,
-      postalCode: CONTACT_INFO.address.postalCode,
-      addressCountry: CONTACT_INFO.address.country,
-    },
-    geo: buildGeoCoordinates(),
-    sameAs: [
-      ...CONTACT_INFO.socialProfiles.map((profile) => profile.url),
-      CONTACT_INFO.gbp.mapsSearchUrl,
-      CONTACT_INFO.gbp.mapsUri,
-    ],
-    areaServed: CONTACT_INFO.serviceAreas,
-    openingHoursSpecification: buildOpeningHoursSpecification(),
-    openingHours: `Mo-Su ${CONTACT_INFO.businessHours.opens}-${CONTACT_INFO.businessHours.closes}`,
-    ...(CONTACT_INFO.gbpAttributes.womenOwned ? { additionalType: 'https://schema.org/WomenOwnedBusiness' } : {}),
-    knowsAbout: [
-      'Silverstone Ranch real estate',
-      'Guard-gated communities',
-      'Centennial Hills homes',
-      'Northwest Las Vegas relocation',
-      'HOA resale packages',
-    ],
+    '@id': REAL_ESTATE_AGENT_SCHEMA_ID,
+    ...patch,
   }
 }
 
+/**
+ * Full RealEstateAgent schema (GBP-aligned NAP, hours, credentials). Emitted once in root layout.
+ */
 export function buildRealEstateAgentSchema() {
   return {
     '@context': 'https://schema.org',
     '@type': 'RealEstateAgent',
+    '@id': REAL_ESTATE_AGENT_SCHEMA_ID,
     name: CONTACT_INFO.agentName,
+    alternateName: CONTACT_INFO.businessName,
     jobTitle: 'REALTOR®',
     url: CONTACT_INFO.website.url,
     email: CONTACT_INFO.email,
@@ -218,6 +206,7 @@ export function buildRealEstateAgentSchema() {
     image: absoluteMediaUrl('hero-guard-gated'),
     hasMap: CONTACT_INFO.gbp.mapsUri,
     identifier: CONTACT_INFO.gbp.placeId,
+    geo: buildGeoCoordinates(),
     hasCredential: {
       '@type': 'EducationalOccupationalCredential',
       credentialCategory: 'Real Estate License',
@@ -228,10 +217,14 @@ export function buildRealEstateAgentSchema() {
       'Silverstone Ranch seller representation',
       'Guard-gated HOA navigation',
       'Centennial Hills market analytics',
+      'Silverstone Ranch real estate',
+      'Guard-gated communities',
+      'Northwest Las Vegas relocation',
+      'HOA resale packages',
     ],
     worksFor: {
       '@type': 'Organization',
-      name: CONTACT_INFO.businessName,
+      name: CONTACT_INFO.brokerage,
       url: CONTACT_INFO.website.url,
     },
     sameAs: [
@@ -248,7 +241,15 @@ export function buildRealEstateAgentSchema() {
       addressCountry: CONTACT_INFO.address.country,
     },
     areaServed: CONTACT_INFO.serviceAreas,
+    openingHoursSpecification: buildOpeningHoursSpecification(),
+    openingHours: `Mo-Su ${CONTACT_INFO.businessHours.opens}-${CONTACT_INFO.businessHours.closes}`,
+    ...(CONTACT_INFO.gbpAttributes.womenOwned ? { additionalType: 'https://schema.org/WomenOwnedBusiness' } : {}),
   }
+}
+
+/** @deprecated Prefer buildRealEstateAgentRef(); full entity is in root layout. */
+export function buildLocalBusinessSchema() {
+  return buildRealEstateAgentRef()
 }
 
 export function buildWebSiteSchema() {
@@ -492,10 +493,7 @@ export function buildAction(action: ActionEntry) {
     target,
     ...(description ? { description } : {}),
     ...(availabilityStarts ? { availabilityStarts } : {}),
-    participant: {
-      '@type': 'Person',
-      name: CONTACT_INFO.agentName,
-    },
+    participant: buildRealEstateAgentRef(),
   }
 }
 
@@ -527,7 +525,7 @@ export function buildServiceSchema(service: ServiceEntry) {
     description,
     areaServed,
     ...(serviceType ? { serviceType } : {}),
-    provider: provider ?? buildRealEstateAgentSchema(),
+    provider: provider ?? buildRealEstateAgentRef(),
     hasOfferCatalog: {
       '@type': 'OfferCatalog',
       name: `${name} Offer Catalog`,

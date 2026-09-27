@@ -15,7 +15,6 @@ import { buildPageTitle } from '@/lib/metadata'
 import { absoluteMediaUrl } from '@/lib/media'
 import { GA_MEASUREMENT_ID } from '@/lib/analytics'
 import {
-  buildLocalBusinessSchema,
   buildOrganizationSchema,
   buildPlaceSchema,
   buildRealEstateAgentSchema,
@@ -126,7 +125,6 @@ export default function RootLayout({
             buildOrganizationSchema(),
             buildWebSiteSchema(),
             buildRealEstateAgentSchema(),
-            buildLocalBusinessSchema(),
             buildPlaceSchema(),
           ]}
         />
