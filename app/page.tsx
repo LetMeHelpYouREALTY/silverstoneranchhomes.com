@@ -24,6 +24,7 @@ import { CONTACT_INFO } from '@/lib/contact-info'
 import { buildPageTitle, seoAbsoluteTitle, withShareImage } from '@/lib/metadata'
 import { absoluteMediaUrl } from '@/lib/media'
 import { HOMEPAGE_FAQS } from '@/lib/hyperlocal-faqs'
+import { AmenityMapSection } from '@/components/amenity-map/AmenityMapSection'
 import { MARKET_SNAPSHOT } from '@/lib/market-data'
 import {
   fetchHyperlocalListingCount,
@@ -272,6 +273,8 @@ export default async function HomePage() {
       </section>
 
       <ServicesLocationConversion />
+
+      <AmenityMapSection heading="What's Nearby Silverstone Ranch" />
 
       {liveListings.length > 0 ? (
         <section className="py-16 px-4 sm:px-6 lg:px-8 bg-slate-50 border-t border-slate-200">

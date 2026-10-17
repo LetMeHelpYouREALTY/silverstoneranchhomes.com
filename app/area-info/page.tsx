@@ -6,6 +6,7 @@ import { buildPageTitle, withShareImage } from '@/lib/metadata'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { SectionHeading } from '@/components/SectionHeading'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { AmenityMapSection } from '@/components/amenity-map/AmenityMapSection'
 
 export const metadata: Metadata = {
   title: 'Area Information | Neighborhood Highlights',
@@ -562,6 +563,8 @@ export default function AreaInfoPage() {
           </div>
         </section>
       </div>
+
+      <AmenityMapSection heading="What's Near Silverstone Ranch" className="bg-white" />
     </div>
   )
 }

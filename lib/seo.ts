@@ -618,6 +618,57 @@ export type RealEstateListingEntry = {
 /**
  * ItemList of RealEstateListing entries for homes-for-sale and IDX pages.
  */
+export type NearbyPlaceSchemaEntry = {
+  name: string
+  schemaType: string
+  /** Full verified mailing line; omit from JSON-LD when unset. */
+  address?: string
+}
+
+function postalAddressFromVerifiedLine(addressLine: string) {
+  const match = addressLine.match(/^(.+?),\s*([^,]+),\s*([A-Z]{2})\s+(\d{5}(?:-\d{4})?)$/i)
+  if (!match) return null
+  return {
+    '@type': 'PostalAddress',
+    streetAddress: match[1].trim(),
+    addressLocality: match[2].trim(),
+    addressRegion: match[3].toUpperCase(),
+    postalCode: match[4],
+    addressCountry: CONTACT_INFO.address.country,
+  }
+}
+
+/** ItemList of nearby Place subtypes for amenity / GEO pages. */
+export function buildNearbyPlacesItemList({
+  path,
+  name,
+  places,
+}: {
+  path: string
+  name: string
+  places: NearbyPlaceSchemaEntry[]
+}) {
+  if (!places.length) return null
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name,
+    url: buildCanonical(path),
+    numberOfItems: places.length,
+    itemListElement: places.map((place, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': place.schemaType,
+        name: place.name,
+        ...(place.address
+          ? { address: postalAddressFromVerifiedLine(place.address) ?? undefined }
+          : {}),
+      },
+    })),
+  }
+}
+
 export function buildRealEstateListingItemList({
   path,
   name,

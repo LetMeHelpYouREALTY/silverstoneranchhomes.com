@@ -54,6 +54,7 @@ const navItems: NavItem[] = [
       { label: 'Price & Features', href: '/price-features', icon: DollarSign },
       { label: 'Detailed Description', href: '/description', icon: FileText },
       { label: 'Amenities', href: '/amenities', icon: Sparkles },
+      { label: 'Nearby Amenities', href: '/nearby-amenities', icon: MapPin },
       { label: 'Interactive Map', href: '/map', icon: MapPin },
       { label: 'Area Insight', href: '/area-insight', icon: FileText },
       { label: 'Environmental Risk', href: '/environmental-risk', icon: AlertTriangle },

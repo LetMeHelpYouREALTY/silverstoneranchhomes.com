@@ -199,6 +199,12 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/nearby-amenities" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
+                  <MapPin className="h-4 w-4 group-hover:text-blue-400 transition-colors" />
+                  <span>Nearby Amenities</span>
+                </Link>
+              </li>
+              <li>
                 <Link href="/amenities" className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors group">
                   <Sparkles className="h-4 w-4 group-hover:text-blue-400 transition-colors" />
                   <span>Amenities</span>

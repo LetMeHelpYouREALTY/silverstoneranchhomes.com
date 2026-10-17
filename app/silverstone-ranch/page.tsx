@@ -6,6 +6,7 @@ import { SeoJsonLd } from '@/components/SeoJsonLd'
 import { Breadcrumbs } from '@/components/Breadcrumbs'
 import { SilverstoneListingCards } from '@/components/SilverstoneListingCards'
 import { SectionHeading } from '@/components/SectionHeading'
+import { AmenityMapSection } from '@/components/amenity-map/AmenityMapSection'
 import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
 import { HOA_FEES, MARKET_SNAPSHOT } from '@/lib/market-data'
 import {
@@ -28,6 +29,12 @@ const deepDiveLinks = [
     description:
       'Pool complexes, tennis and pickleball courts, clubhouse programming, and nearby Centennial Hills attractions.',
     href: '/amenities',
+  },
+  {
+    title: 'Nearby Amenities Map',
+    description:
+      'Interactive map of grocery, dining, parks, healthcare, and schools around Silverstone Ranch with verified destinations.',
+    href: '/nearby-amenities',
   },
   {
     title: 'Golf Course History & Status',
@@ -623,6 +630,8 @@ export default async function SilverstoneRanchPage() {
             </aside>
           </div>
         </section>
+
+        <AmenityMapSection heading="Life Near Silverstone Ranch" className="border-t border-slate-200" />
       </main>
     </div>
   )

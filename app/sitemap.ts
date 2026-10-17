@@ -31,6 +31,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     staticRoute('/description', 0.8),
     staticRoute('/price-features', 0.8),
     staticRoute('/amenities', 0.8),
+    staticRoute('/nearby-amenities', 0.85, 'weekly'),
     staticRoute('/map', 0.7),
     staticRoute('/video', 0.7),
     staticRoute('/area-info', 0.7),

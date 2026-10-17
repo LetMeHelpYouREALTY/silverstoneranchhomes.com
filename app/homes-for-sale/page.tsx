@@ -12,6 +12,7 @@ import { MARKET_SNAPSHOT, ASSIGNED_SCHOOLS } from '@/lib/market-data'
 import { HomesForSaleScheduling } from '@/components/HomesForSaleScheduling'
 import { MediaImage } from '@/components/MediaImage'
 import { SectionHeading } from '@/components/SectionHeading'
+import { AmenityMapSection } from '@/components/amenity-map/AmenityMapSection'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Homes for Sale | 89131 Listings',
@@ -593,6 +594,8 @@ export default async function HomesForSalePage() {
           </div>
         </section>
       </div>
+
+      <AmenityMapSection heading="Shops, Schools & Services Near Listings" className="bg-slate-50" />
     </div>
   )
 }
