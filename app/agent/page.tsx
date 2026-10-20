@@ -1,10 +1,17 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import type { Metadata } from 'next'
-import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper } from 'lucide-react'
+import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper, Star } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import {
+  buildFaqSchema,
+  buildWebPageSchema,
+  buildGoogleBusinessProfileSchema,
+  buildServiceSchema,
+} from '@/lib/seo'
+import { CLIENT_REVIEWS, TESTIMONIALS, SERVICE_OFFERINGS } from '@/lib/reviews-data'
+import Breadcrumb from '@/components/Breadcrumb'
 
 export const metadata: Metadata = {
   title: 'Meet Dr. Jan Duffy | Silverstone Ranch REALTOR®',
@@ -445,18 +452,49 @@ export default function AgentPage() {
     faqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+  // Google Business Profile schema with reviews (GBP optimization 2026)
+  const gbpSchema = buildGoogleBusinessProfileSchema({
+    reviews: CLIENT_REVIEWS.map((r) => ({
+      author: r.author,
+      datePublished: r.datePublished,
+      reviewRating: r.reviewRating,
+      reviewBody: r.reviewBody,
+    })),
+    hasQA: true,
+  })
+
+  // Service offerings for GBP and local search
+  const serviceSchemas = SERVICE_OFFERINGS.map((service) => buildServiceSchema(service))
+
+  const schemaData = [pageSchema, faqSchema, gbpSchema, ...serviceSchemas].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
       <SeoJsonLd id="agent" data={schemaData as Record<string, unknown>[]} />
       <div className="mx-auto max-w-6xl space-y-16">
+        {/* Breadcrumb Navigation */}
+        <Breadcrumb
+          items={[{ name: 'Meet the Agent', path: '/agent' }]}
+          className="mb-8"
+        />
+
         <section>
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Meet Dr. Jan Duffy</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
               Top 1% Las Vegas REALTOR® specializing in Silverstone Ranch luxury homes.
             </p>
+            {/* Star Rating Display */}
+            <div className="flex items-center justify-center gap-2 mt-4">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
+                ))}
+              </div>
+              <span className="text-sm font-medium text-gray-700">
+                5.0 ({CLIENT_REVIEWS.length} Reviews)
+              </span>
+            </div>
           </div>
           <div className="bg-white rounded-lg shadow-xl p-8 md:p-12">
             <div className="grid md:grid-cols-[0.9fr_1.1fr] gap-12 items-start">
@@ -1002,6 +1040,49 @@ export default function AgentPage() {
           <p className="text-gray-700 leading-relaxed">
             The result is a trusted ecosystem where every specialist understands Silverstone expectations before stepping onto the property.
           </p>
+        </section>
+
+        {/* Client Reviews Section - GBP Optimization */}
+        <section className="bg-gradient-to-br from-yellow-50 to-white rounded-lg shadow-xl p-8 md:p-12 space-y-8">
+          <div className="text-center">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} className="h-7 w-7 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-2">Client Reviews</h2>
+            <p className="text-gray-700">
+              {CLIENT_REVIEWS.length} Five-Star Reviews from Silverstone Ranch Clients
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {CLIENT_REVIEWS.map((review, index) => (
+              <div
+                key={index}
+                className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="flex items-center gap-1 mb-3">
+                  {[...Array(review.reviewRating)].map((_, i) => (
+                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                  ))}
+                </div>
+                <p className="text-gray-700 leading-relaxed mb-4 text-sm">
+                  &ldquo;{review.reviewBody}&rdquo;
+                </p>
+                <div className="border-t border-slate-200 pt-3">
+                  <p className="font-semibold text-gray-900 text-sm">{review.author}</p>
+                  <p className="text-xs text-gray-600">{review.location}</p>
+                  <p className="text-xs text-gray-500 mt-1">
+                    {new Date(review.datePublished).toLocaleDateString('en-US', {
+                      month: 'long',
+                      year: 'numeric',
+                    })}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
         </section>
       </div>
     </div>

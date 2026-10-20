@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import ImageGallery from 'react-image-gallery'
 import 'react-image-gallery/styles/css/image-gallery.css'
 
@@ -57,24 +58,26 @@ export default function PhotoGallery() {
           </div>
         )}
 
-        {/* Photo Grid Preview */}
+        {/* Photo Grid Preview - Optimized with next/image for Core Web Vitals */}
         {!showGallery && (
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 mt-12">
             {propertyPhotos.slice(0, 8).map((photo, index) => (
               <figure
                 key={index}
-                className="group cursor-pointer"
+                className="group cursor-pointer relative"
                 onClick={() => setShowGallery(true)}
               >
-                <picture>
-                  <source srcSet={photo.original} type="image/jpeg" />
-                  <img
+                <div className="relative w-full h-52 md:h-48 lg:h-56 rounded-lg overflow-hidden shadow-sm group-hover:shadow-lg transition-shadow">
+                  <Image
                     src={photo.original}
                     alt={photo.alt}
-                    className="w-full h-52 md:h-48 lg:h-56 object-cover rounded-lg shadow-sm group-hover:shadow-lg transition-shadow"
-                    loading="lazy"
+                    fill
+                    sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                    className="object-cover"
+                    loading={index < 4 ? 'eager' : 'lazy'}
+                    priority={index < 4}
                   />
-                </picture>
+                </div>
                 {photo.description && (
                   <figcaption className="mt-3 text-sm text-gray-600 group-hover:text-gray-800">
                     {photo.description}

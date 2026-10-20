@@ -470,4 +470,176 @@ export function buildAggregateRatingSchema({
   }
 }
 
+/**
+ * Builds Google Business Profile-optimized RealEstateAgent schema
+ * with reviews, services, and Q&A for maximum local SEO impact.
+ */
+export function buildGoogleBusinessProfileSchema({
+  reviews = [],
+  hasQA = true,
+}: {
+  reviews?: Array<{
+    author: string
+    datePublished: string
+    reviewRating: number
+    reviewBody: string
+  }>
+  hasQA?: boolean
+} = {}) {
+  const baseSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'RealEstateAgent',
+    name: CONTACT_INFO.agentName,
+    alternateName: `${CONTACT_INFO.agentName} - ${CONTACT_INFO.businessName}`,
+    description:
+      'Top 1% Las Vegas REALTOR® specializing in Silverstone Ranch and Northwest Las Vegas luxury homes, guard-gated communities, and concierge-level real estate services.',
+    url: CONTACT_INFO.website.url,
+    email: CONTACT_INFO.email,
+    telephone: CONTACT_INFO.phone.display,
+    image: buildCanonical('/images/property/exterior-front-elevation.jpg'),
+    priceRange: '$$$',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: CONTACT_INFO.address.street,
+      addressLocality: CONTACT_INFO.address.city,
+      addressRegion: CONTACT_INFO.address.state,
+      postalCode: CONTACT_INFO.address.postalCode,
+      addressCountry: CONTACT_INFO.address.country,
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 36.2981,
+      longitude: -115.3001,
+    },
+    areaServed: CONTACT_INFO.serviceAreas.map((area) => ({
+      '@type': 'City',
+      name: area,
+    })),
+    sameAs: CONTACT_INFO.socialProfiles.map((profile) => profile.url),
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+        opens: '08:00',
+        closes: '18:00',
+      },
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Saturday', 'Sunday'],
+        opens: '09:00',
+        closes: '17:00',
+      },
+    ],
+    knowsAbout: [
+      'Real Estate',
+      'Luxury Homes',
+      'Guard-Gated Communities',
+      'Silverstone Ranch',
+      'Centennial Hills',
+      'Northwest Las Vegas',
+      'Home Buying',
+      'Home Selling',
+      'Relocation Services',
+      'Investment Properties',
+    ],
+    memberOf: [
+      {
+        '@type': 'Organization',
+        name: 'Berkshire Hathaway HomeServices',
+      },
+      {
+        '@type': 'Organization',
+        name: "Women's Council of REALTORS®",
+      },
+      {
+        '@type': 'Organization',
+        name: 'Institute for Luxury Home Marketing',
+      },
+    ],
+    hasCredential: [
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'Professional Certification',
+        name: 'Certified Luxury Home Marketing Specialist (CLHMS)',
+      },
+      {
+        '@type': 'EducationalOccupationalCredential',
+        credentialCategory: 'License',
+        name: 'Nevada Real Estate License',
+        identifier: CONTACT_INFO.license,
+      },
+    ],
+    award: ['Top 1% Las Vegas REALTOR®', 'Certified Luxury Home Marketing Specialist'],
+  }
+
+  // Add aggregate rating if reviews exist
+  if (reviews.length > 0) {
+    const avgRating = reviews.reduce((sum, r) => sum + r.reviewRating, 0) / reviews.length
+    baseSchema['aggregateRating'] = {
+      '@type': 'AggregateRating',
+      ratingValue: avgRating.toFixed(1),
+      reviewCount: reviews.length,
+      bestRating: 5,
+    }
+    baseSchema['review'] = reviews.map((review) => ({
+      '@type': 'Review',
+      author: {
+        '@type': 'Person',
+        name: review.author,
+      },
+      datePublished: review.datePublished,
+      reviewRating: {
+        '@type': 'Rating',
+        ratingValue: review.reviewRating,
+        bestRating: 5,
+      },
+      reviewBody: review.reviewBody,
+    }))
+  }
+
+  return baseSchema
+}
+
+/**
+ * Builds Service schema for real estate offerings.
+ * Critical for Google Business Profile service listings and local search.
+ */
+export function buildServiceSchema(service: {
+  name: string
+  description: string
+  areaServed?: string[]
+  offers?: {
+    price?: string
+    priceCurrency?: string
+  }
+}) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.name,
+    description: service.description,
+    provider: {
+      '@type': 'RealEstateAgent',
+      name: CONTACT_INFO.agentName,
+      url: CONTACT_INFO.website.url,
+    },
+    areaServed: service.areaServed
+      ? service.areaServed.map((area) => ({
+          '@type': 'City',
+          name: area,
+        }))
+      : CONTACT_INFO.serviceAreas.map((area) => ({
+          '@type': 'City',
+          name: area,
+        })),
+    ...(service.offers && {
+      offers: {
+        '@type': 'Offer',
+        ...(service.offers.price && { price: service.offers.price }),
+        priceCurrency: service.offers.priceCurrency || 'USD',
+      },
+    }),
+  }
+}
+
 
