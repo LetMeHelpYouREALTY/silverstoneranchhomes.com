@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildArticleSchema, buildEnhancedFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Area Information | Neighborhood Highlights',
@@ -151,12 +151,21 @@ export default function AreaInfoPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(
+  const articleSchema = buildArticleSchema({
+    path,
+    headline: 'Silverstone Ranch Area Information | Neighborhood Highlights',
+    description: 'Navigate Silverstone Ranch commute times, nearby amenities, schools, and recreation with insights curated by Dr. Jan Duffy REALTOR®.',
+    datePublished: '2025-11-01',
+    dateModified: '2025-11-15',
+  })
+
+  const faqSchema = buildEnhancedFaqSchema(
     path,
     communityFaqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    'Silverstone Ranch Area & Neighborhood',
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+  const schemaData = [pageSchema, articleSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">

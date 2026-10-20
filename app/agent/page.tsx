@@ -4,7 +4,7 @@ import type { Metadata } from 'next'
 import { Phone, Mail, ExternalLink, Award, Briefcase, Users, Calendar, Newspaper } from 'lucide-react'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildEnhancedFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Meet Dr. Jan Duffy | Silverstone Ranch REALTOR®',
@@ -440,9 +440,10 @@ export default function AgentPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(
+  const faqSchema = buildEnhancedFaqSchema(
     path,
     faqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    'Dr. Jan Duffy Real Estate Services',
   )
 
   const schemaData = [pageSchema, faqSchema].filter(Boolean)

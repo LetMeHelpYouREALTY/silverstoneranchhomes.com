@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildEnhancedFaqSchema, buildHowToSchema, buildWebPageSchema } from '@/lib/seo'
 
 const path = '/buy-with-agent'
 const canonicalUrl = `${CONTACT_INFO.website.base}${path}`
@@ -452,9 +452,10 @@ export default function BuyWithAgentPage() {
     steps: processSteps.map((step) => ({ title: step.title, detail: step.detail })),
   })
 
-  const faqSchema = buildFaqSchema(
+  const faqSchema = buildEnhancedFaqSchema(
     path,
     financingFaqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    'Buying Homes in Silverstone Ranch',
   )
 
   const schemaData = [pageSchema, articleSchema, howToSchema, faqSchema].filter(Boolean)

@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildArticleSchema, buildEnhancedFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Environmental Risk Assessment | 30-Year Outlook',
@@ -195,12 +195,21 @@ export default function EnvironmentalRiskPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(
+  const articleSchema = buildArticleSchema({
+    path,
+    headline: 'Silverstone Ranch Environmental Risk Assessment | 30-Year Outlook',
+    description: 'Review heat, wildfire, flood, and wind risks for Silverstone Ranch with mitigation strategies and planning tips.',
+    datePublished: '2025-11-01',
+    dateModified: '2025-11-15',
+  })
+
+  const faqSchema = buildEnhancedFaqSchema(
     path,
     environmentalFaqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    'Environmental Risk & Climate Planning',
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+  const schemaData = [pageSchema, articleSchema, faqSchema].filter(Boolean)
 
   return (
     <main className="bg-gradient-to-br from-emerald-50 to-white min-h-screen py-20 px-4 sm:px-6 lg:px-8">

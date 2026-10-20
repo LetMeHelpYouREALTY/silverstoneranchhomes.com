@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildArticleSchema, buildEnhancedFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 const quickFacts = [
   { label: 'Location', value: 'Centennial Hills, Northwest Las Vegas (ZIP 89131)' },
@@ -105,12 +105,21 @@ export default function SilverstoneRanchPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(
+  const articleSchema = buildArticleSchema({
+    path,
+    headline: 'Silverstone Ranch Community Guide | Northwest Las Vegas',
+    description: 'Complete guide to Silverstone Ranch guard-gated community in Centennial Hills, Las Vegas.',
+    datePublished: '2025-11-01',
+    dateModified: '2025-11-15',
+  })
+
+  const faqSchema = buildEnhancedFaqSchema(
     path,
     overviewFaqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    'Silverstone Ranch Community',
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+  const schemaData = [pageSchema, articleSchema, faqSchema].filter(Boolean)
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">

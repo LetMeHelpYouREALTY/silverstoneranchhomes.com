@@ -2,7 +2,7 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 import { CONTACT_INFO } from '@/lib/contact-info'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
-import { buildFaqSchema, buildWebPageSchema } from '@/lib/seo'
+import { buildArticleSchema, buildEnhancedFaqSchema, buildWebPageSchema } from '@/lib/seo'
 
 export const metadata: Metadata = {
   title: 'Silverstone Ranch Area Insight | Market & Lifestyle Intel',
@@ -169,12 +169,21 @@ export default function AreaInsightPage() {
     ],
   })
 
-  const faqSchema = buildFaqSchema(
+  const articleSchema = buildArticleSchema({
+    path,
+    headline: 'Silverstone Ranch Area Insight | Market & Lifestyle Intel',
+    description: 'Gain deeper insight into Silverstone Ranch market positioning, buyer demographics, and lifestyle differentiators.',
+    datePublished: '2025-11-01',
+    dateModified: '2025-11-15',
+  })
+
+  const faqSchema = buildEnhancedFaqSchema(
     path,
     areaFaqs.map((faq) => ({ question: faq.question, answer: faq.answer })),
+    'Silverstone Ranch Market Insights',
   )
 
-  const schemaData = [pageSchema, faqSchema].filter(Boolean)
+  const schemaData = [pageSchema, articleSchema, faqSchema].filter(Boolean)
 
   return (
     <main className="min-h-screen bg-gradient-to-br from-blue-50 to-white py-20 px-4 sm:px-6 lg:px-8">
