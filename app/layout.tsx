@@ -201,6 +201,7 @@ export default function RootLayout({
         <CalendlySchedulingSection />
         <CalendlyBadge />
         <Footer />
+        <Script src='/ads-conversions.js' strategy='afterInteractive' />
       </body>
     </html>
   )
