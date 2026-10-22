@@ -131,11 +131,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com https://www.realscout.com https://www.googletagmanager.com https://www.google-analytics.com https://assets.calendly.com https://calendly.com https://maps.googleapis.com https://maps.gstatic.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://em.realscout.com https://www.realscout.com https://www.googletagmanager.com https://www.google-analytics.com https://assets.calendly.com https://calendly.com https://maps.googleapis.com https://maps.gstatic.com https://connect.facebook.net https://www.googleadservices.com https://googleads.g.doubleclick.net",
               "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://assets.calendly.com https://em.realscout.com",
               "img-src 'self' data: blob: https:",
               "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://em.realscout.com https://www.realscout.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://assets.calendly.com https://calendly.com https://maps.googleapis.com https://imagedelivery.net https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com",
+              "connect-src 'self' https://em.realscout.com https://www.realscout.com https://www.googletagmanager.com https://www.google-analytics.com https://analytics.google.com https://region1.google-analytics.com https://assets.calendly.com https://calendly.com https://maps.googleapis.com https://imagedelivery.net https://www.google.com https://googleads.g.doubleclick.net https://www.googleadservices.com https://www.facebook.com https://connect.facebook.net https://ad.doubleclick.net https://td.doubleclick.net",
               "frame-src https://calendly.com https://www.google.com https://maps.google.com https://www.google.com/maps https://em.realscout.com https://www.realscout.com",
               "media-src 'self' https:",
               "object-src 'none'",
