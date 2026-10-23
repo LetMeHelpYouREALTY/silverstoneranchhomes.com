@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect } from 'react'
-import { CALENDLY_BADGE, CALENDLY_URL } from '@/lib/calendly'
+import { CALENDLY_BADGE, calendlyUrlFor } from '@/lib/calendly'
 import { waitForCalendly } from '@/lib/calendly-utils'
 
 let badgeInitialized = false
@@ -14,7 +14,7 @@ export function CalendlyBadge() {
       .then((Calendly) => {
         if (badgeInitialized) return
         Calendly.initBadgeWidget({
-          url: CALENDLY_URL,
+          url: calendlyUrlFor(window.location.pathname, 'badge'),
           text: CALENDLY_BADGE.text,
           color: CALENDLY_BADGE.color,
           textColor: CALENDLY_BADGE.textColor,

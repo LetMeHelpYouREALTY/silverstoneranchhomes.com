@@ -1,7 +1,8 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import type { MouseEvent, ReactNode } from 'react'
-import { CALENDLY_URL } from '@/lib/calendly'
+import { calendlyUrlFor } from '@/lib/calendly'
 import { waitForCalendly } from '@/lib/calendly-utils'
 
 type CalendlyPopupLinkProps = {
@@ -15,14 +16,15 @@ export function CalendlyPopupLink({
   className = '',
   variant = 'link',
 }: CalendlyPopupLinkProps) {
+  const url = calendlyUrlFor(usePathname() || '/', variant === 'button' ? 'popup-button' : 'popup-link')
   const openPopup = async (event: MouseEvent<HTMLAnchorElement | HTMLButtonElement>) => {
     event.preventDefault()
     try {
       const Calendly = await waitForCalendly()
-      Calendly.initPopupWidget({ url: CALENDLY_URL })
+      Calendly.initPopupWidget({ url })
     } catch (error) {
       console.error('Failed to open Calendly popup:', error)
-      window.open(CALENDLY_URL, '_blank', 'noopener,noreferrer')
+      window.open(url, '_blank', 'noopener,noreferrer')
     }
   }
 
@@ -35,7 +37,7 @@ export function CalendlyPopupLink({
   }
 
   return (
-    <a href={CALENDLY_URL} onClick={openPopup} className={className}>
+    <a href={url} onClick={openPopup} className={className}>
       {children}
     </a>
   )

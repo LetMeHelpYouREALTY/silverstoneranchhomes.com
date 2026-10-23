@@ -11,7 +11,7 @@ type CalendlySchedulingBlockProps = {
 }
 
 export function CalendlySchedulingBlock({
-  title = 'Schedule a Private 15-Minute Conversation',
+  title = 'Schedule Time with Dr. Jan Duffy',
   description = 'Book time with Dr. Jan Duffy to discuss Silverstone Ranch buying, selling, tours, valuations, or market questions.',
   className = '',
   showPopupLinks = false,

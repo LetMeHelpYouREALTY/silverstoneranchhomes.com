@@ -1,7 +1,8 @@
 'use client'
 
+import { usePathname } from 'next/navigation'
 import { useEffect, useRef } from 'react'
-import { CALENDLY_INLINE_HEIGHT, CALENDLY_URL } from '@/lib/calendly'
+import { CALENDLY_INLINE_HEIGHT, calendlyUrlFor } from '@/lib/calendly'
 import { waitForCalendly } from '@/lib/calendly-utils'
 
 type CalendlyInlineWidgetProps = {
@@ -14,6 +15,7 @@ export function CalendlyInlineWidget({
   height = CALENDLY_INLINE_HEIGHT,
 }: CalendlyInlineWidgetProps) {
   const containerRef = useRef<HTMLDivElement>(null)
+  const url = calendlyUrlFor(usePathname() || '/', 'inline')
 
   useEffect(() => {
     const parentElement = containerRef.current
@@ -26,7 +28,7 @@ export function CalendlyInlineWidget({
         if (cancelled) return
         parentElement.innerHTML = ''
         Calendly.initInlineWidget({
-          url: CALENDLY_URL,
+          url,
           parentElement,
         })
       })
@@ -37,7 +39,7 @@ export function CalendlyInlineWidget({
     return () => {
       cancelled = true
     }
-  }, [])
+  }, [url])
 
   return (
     <div className={className}>
@@ -45,13 +47,13 @@ export function CalendlyInlineWidget({
         ref={containerRef}
         className="calendly-inline-widget w-full overflow-hidden rounded-lg border border-slate-200 bg-white"
         style={{ minWidth: 320, height }}
-        data-url={CALENDLY_URL}
-        aria-label="Schedule a private 15-minute conversation with Dr. Jan Duffy"
+        data-url={url}
+        aria-label="Schedule time with Dr. Jan Duffy"
       />
       <p className="mt-3 text-sm text-gray-600">
         If the calendar does not appear,{' '}
         <a
-          href={CALENDLY_URL}
+          href={url}
           target="_blank"
           rel="noopener noreferrer"
           className="font-semibold text-blue-600 hover:text-blue-700 hover:underline"
