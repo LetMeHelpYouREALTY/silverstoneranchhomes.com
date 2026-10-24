@@ -123,7 +123,7 @@ export default async function HomesForSalePage() {
             <div>
               <SectionHeading id="live-listings-heading">Live Silverstone Ranch Listings</SectionHeading>
               <p className="text-sm text-gray-600 mt-1">
-                Updated hourly from Berkshire Hathaway / RealScout MLS feed · ZIP 89131 &amp; 89143
+                Updated hourly from the RealScout MLS feed · ZIP 89131 &amp; 89143
               </p>
             </div>
             <Link

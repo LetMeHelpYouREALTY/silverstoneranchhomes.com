@@ -35,8 +35,8 @@ export const metadata: Metadata = {
 }
 
 const credentials = [
-  'Top 1% Las Vegas REALTOR® · Berkshire Hathaway HomeServices',
-  'Doctorate in Education – research-driven approach to market insights',
+  'Top 1% Las Vegas REALTOR® · In real estate since 1983',
+  'Ph.D. in Research – research-driven approach to market insights',
   'Certified Luxury Home Marketing Specialist (CLHMS)',
   'Member, Institute for Luxury Home Marketing & Women’s Council of REALTORS®',
 ]
@@ -76,14 +76,9 @@ const faqs = AGENT_FAQS.map((f) => ({ question: f.question, answer: f.answer }))
 
 const careerTimeline = [
   {
-    year: '2008',
+    year: '1983',
     milestone:
-      'Transitioned from higher education leadership into residential real estate, bringing data analysis and curriculum design skills into market research and client education.',
-  },
-  {
-    year: '2012',
-    milestone:
-      'Joined Berkshire Hathaway HomeServices and launched a concierge vendor network tailored to guard-gated and golf community homeowners.',
+      'Began her career in real estate, bringing data analysis and research skills into market research and client education.',
   },
   {
     year: '2017',
@@ -111,10 +106,6 @@ const mediaFeatures = [
     outlet: 'FOX5 Las Vegas',
     highlight: 'Regular market analyst discussing relocation trends, HOA resources, and seasonal pricing shifts in Centennial Hills.',
   },
-  {
-    outlet: 'Berkshire Hathaway Luxury Collection Magazine',
-    highlight: 'Featured for developing data-backed marketing narratives that resonate with West Coast move-up buyers.',
-  },
 ]
 
 const partnershipHighlights = [
@@ -137,7 +128,7 @@ const partnershipHighlights = [
 
 const educationBackground = [
   {
-    degree: 'Doctor of Education (Ed.D.)',
+    degree: 'Ph.D. in Research',
     institution: 'Pepperdine University',
     focus:
       'Organizational leadership and curriculum design—frameworks now used to translate market data into actionable buyer and seller roadmaps.',
@@ -251,7 +242,7 @@ const analyticsLab = [
 ]
 
 const communicationStandards = [
-  '24/7 accessibility via phone, text, or concierge portal with two-hour maximum response time during active escrow.',
+  'Accessibility via phone, text, or concierge portal with two-hour maximum response time during active escrow.',
   'Weekly executive summaries summarizing milestones, financial updates, and upcoming decisions for all parties.',
   'Document vault with version control, ensuring HOA docs, inspection reports, and lender communications stay organized.',
   'Dedicated relocation portal for out-of-state clients featuring video updates, digital signatures, and expense tracking.',
@@ -394,7 +385,7 @@ const neighborhoodStories = [
 ]
 
 const continuingEducation = [
-  'Quarterly Masterminds with Berkshire Hathaway HomeServices luxury leadership covering global buyer trends.',
+  'Quarterly luxury-market masterminds covering global buyer trends.',
   'Clark County planning workshops focused on land-use updates affecting Silverstone and neighboring master plans.',
   'National Association of REALTORS® courses on fair housing compliance, ensuring equitable representation for every client.',
   'Certifications in negotiation psychology and conflict resolution that support calm, solution-oriented closings.',
@@ -486,7 +477,7 @@ export default function AgentPage() {
               <div>
                 <SectionHeading>A research-driven, concierge-focused advisor guiding buyers and sellers through Silverstone Ranch and the greater Centennial Hills market.</SectionHeading>
                 <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                  Dr. Duffy combines doctoral-level analytics with two decades of Las Vegas real estate expertise. She knows every
+                  Dr. Duffy combines doctoral-level analytics with a career in real estate since 1983. She knows every
                   cul-de-sac, HOA covenant, and market trend influencing guard-gated values. Clients benefit from insider access to
                   off-market listings, tailored financing strategy, and meticulous transaction management.
                 </p>
@@ -551,7 +542,7 @@ export default function AgentPage() {
             </div>
             <div className="p-6 bg-gray-50 rounded-lg border border-slate-200 text-center">
               <Users className="h-10 w-10 text-blue-600 mx-auto mb-3" />
-              <h3 className="font-semibold text-gray-900 mb-2">24/7 Communication</h3>
+              <h3 className="font-semibold text-gray-900 mb-2">Responsive Communication</h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Rapid responses, weekly milestone updates, and detailed walkthrough guides keep everyone aligned.
               </p>
@@ -714,9 +705,6 @@ export default function AgentPage() {
                 {CONTACT_INFO.website.display}
               </a>
             </div>
-          </div>
-          <div className="text-center mt-6">
-            <p className="text-sm text-gray-600">License: {CONTACT_INFO.license}</p>
           </div>
         </section>
 

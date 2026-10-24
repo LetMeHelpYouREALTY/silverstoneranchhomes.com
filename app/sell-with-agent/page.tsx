@@ -104,7 +104,7 @@ const marketingChannels = [
   {
     channel: 'Luxury Syndication',
     detail:
-      'ListHub Global, Mansion Global, Wall Street Journal, and Berkshire Hathaway Luxury Collection showcase Silverstone homes to national and international buyers.',
+      'ListHub Global, Mansion Global, and the Wall Street Journal showcase Silverstone homes to national and international buyers.',
   },
   {
     channel: 'Paid Media & Retargeting',

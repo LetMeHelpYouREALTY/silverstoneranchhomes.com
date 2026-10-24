@@ -79,7 +79,7 @@ export const AGENT_FAQS = [
   },
   {
     question: 'What credentials does Dr. Jan Duffy hold?',
-    answer: `${CONTACT_INFO.agentName} is a Nevada REALTOR® (License ${CONTACT_INFO.license}) with ${CONTACT_INFO.brokerage}, recognized in the Berkshire Hathaway Circle of Excellence for top Las Vegas production.`,
+    answer: `${CONTACT_INFO.agentName} is a Top 1% Las Vegas REALTOR®, in real estate since 1983, recognized in the Circle of Excellence for top Las Vegas production. She holds a Ph.D. in Research.`,
   },
   {
     question: 'Can Dr. Jan Duffy help with HOA documents in Silverstone Ranch?',

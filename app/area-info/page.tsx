@@ -538,7 +538,7 @@ export default function AreaInfoPage() {
           <SectionHeading>Next Steps & Personalized Guidance</SectionHeading>
           <p className="text-gray-700 leading-relaxed text-lg mb-6">
             Whether you are relocating, upsizing, or investing, Silverstone Ranch offers the lifestyle, amenities, and
-            appreciation potential discerning buyers seek. Dr. Jan Duffy, Berkshire Hathaway HomeServices, leverages
+            appreciation potential discerning buyers seek. Dr. Jan Duffy, in real estate since 1983, leverages
             detailed market intelligence, a curated vendor network, and concierge-level service to make every transaction
             seamless.
           </p>

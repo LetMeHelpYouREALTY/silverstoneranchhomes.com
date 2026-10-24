@@ -71,7 +71,7 @@ export default function AgentProfile() {
 
             <p className="text-gray-700 mb-6">
               Experience stress-free luxury home buying with an agent who handles every detail - from 
-              financing to final keys. Available 24/7 to answer your questions and guide you through 
+              financing to final keys, answering your questions and guiding you through 
               each step.
             </p>
 
@@ -104,9 +104,6 @@ export default function AgentProfile() {
                 >
                   {CONTACT_INFO.website.display}
                 </a>
-              </div>
-              <div className="text-sm text-gray-600 mt-2">
-                License: {CONTACT_INFO.license}
               </div>
             </div>
 

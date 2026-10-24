@@ -11,7 +11,6 @@ import { HeadingVisual } from '@/components/HeadingVisual'
 import { GbpCtaRow } from '@/components/GbpCtaRow'
 import { SectionHeading } from '@/components/SectionHeading'
 import {
-  buildAggregateRatingSchema,
   buildAction,
   buildFaqSchema,
   buildRealEstateAgentSchemaPatch,
@@ -171,10 +170,6 @@ export default async function HomePage() {
   const agentSchemaPatch = buildRealEstateAgentSchemaPatch({
     award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
     review: reviewList,
-    aggregateRating: buildAggregateRatingSchema({
-      ratingValue: 4.9,
-      reviewCount: 37,
-    }),
   })
 
   const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })), [

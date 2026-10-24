@@ -174,9 +174,6 @@ export default async function NeighborhoodPage({ params }: PageProps) {
               Google Reviews
             </a>
           </div>
-          <p className="text-xs text-gray-500">
-            {CONTACT_INFO.brokerage} · License {CONTACT_INFO.license}
-          </p>
         </div>
 
         <section className="border-t border-gray-200 pt-10">

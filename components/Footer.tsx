@@ -305,7 +305,10 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-center md:text-left">
             <div className="max-w-3xl">
               <p className="text-sm md:text-base font-semibold text-gray-200 tracking-wide">
-                Silverstone Ranch Specialists | Dr. Jan Duffy REALTOR® | Berkshire Hathaway HomeServices | License: S.0197614.LLC
+                Silverstone Ranch Specialists | Dr. Jan Duffy REALTOR®
+              </p>
+              <p className="text-xs text-gray-400 mt-1">
+                Berkshire Hathaway HomeServices Nevada Properties since September 2008 · License S.0197614.LLC
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 © {currentYear} {CONTACT_INFO.businessName}. All rights reserved.
