@@ -1,6 +1,7 @@
 import { Suspense } from 'react'
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import { SpeedInsights } from '@vercel/speed-insights/next'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import { SeoJsonLd } from '@/components/SeoJsonLd'
@@ -202,6 +203,7 @@ export default function RootLayout({
         <CalendlyBadge />
         <Footer />
         <Script src='/ads-conversions.js' strategy='afterInteractive' />
+        <SpeedInsights />
       </body>
     </html>
   )
