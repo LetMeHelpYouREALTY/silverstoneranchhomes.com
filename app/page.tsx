@@ -15,7 +15,6 @@ import {
   buildFaqSchema,
   buildRealEstateAgentSchemaPatch,
   buildRealEstateListingItemList,
-  buildReviewSchema,
   buildServiceSchema,
   buildWebPageSchema,
 } from '@/lib/seo'
@@ -57,24 +56,6 @@ export const metadata: Metadata = {
     'Live in Silverstone Ranch, Northwest Las Vegas',
   ),
 }
-
-const homepageTestimonials = [
-  {
-    author: 'Elena & Marcus H.',
-    quote:
-      'We wanted space for entertaining without leaving Centennial Hills. Silverstone’s guard gate, trails, and HOA concierge made our transition seamless. Dr. Duffy handled everything—from lender introductions to the final walkthrough.',
-  },
-  {
-    author: 'The Price Family',
-    quote:
-      'We were nervous about selling while building in Skye Canyon. Jan staged our home, negotiated $35K over list, and coordinated movers, landscapers, and HOA docs in under 21 days.',
-  },
-  {
-    author: 'Casey & Priya R.',
-    quote:
-      'Moving from Orange County was daunting. The relocation kit, private tour, and vendor referrals made it effortless. We were in our new Silverstone home within six weeks.',
-  },
-]
 
 export default async function HomePage() {
   const [liveListings, liveCount] = await Promise.all([
@@ -159,17 +140,8 @@ export default async function HomePage() {
     }),
   ]
 
-  const reviewList = homepageTestimonials.map((review) =>
-    buildReviewSchema({
-      author: review.author,
-      reviewBody: review.quote,
-      rating: 5,
-    }),
-  )
-
   const agentSchemaPatch = buildRealEstateAgentSchemaPatch({
     award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
-    review: reviewList,
   })
 
   const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })), [
