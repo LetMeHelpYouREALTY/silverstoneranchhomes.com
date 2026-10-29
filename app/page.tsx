@@ -141,7 +141,7 @@ export default async function HomePage() {
   ]
 
   const agentSchemaPatch = buildRealEstateAgentSchemaPatch({
-    award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
+    award: 'Berkshire Hathaway Circle – Las Vegas REALTORS® for closed volume (2024)',
   })
 
   const faqSchema = buildFaqSchema('/', HOMEPAGE_FAQS.map((f) => ({ question: f.question, answer: f.answer })), [
@@ -217,7 +217,7 @@ export default async function HomePage() {
             <SectionHeading>Why Buyers Trust Dr. Jan Duffy</SectionHeading>
             <ul className="space-y-3 text-sm text-slate-700">
               <li>
-                <span className="font-semibold text-blue-600">Top 1% Las Vegas REALTOR®:</span> Dedicated concierge-style
+                <span className="font-semibold text-blue-600">Las Vegas REALTOR®:</span> Dedicated concierge-style
                 representation for luxury and guard-gated clients.
               </li>
               <li>

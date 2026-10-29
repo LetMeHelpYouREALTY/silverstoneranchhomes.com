@@ -6,7 +6,7 @@ export default function AgentProfile() {
   return (
     <section id="agent" className="py-20 px-4 sm:px-6 lg:px-8 bg-white scroll-mt-20">
       <div className="mx-auto max-w-4xl">
-        <SectionHeading className="text-center">Dr. Jan Duffy, a Top 1% Las Vegas REALTOR®</SectionHeading>
+        <SectionHeading className="text-center">Dr. Jan Duffy, a Las Vegas REALTOR®</SectionHeading>
         
         <div className="grid md:grid-cols-2 gap-12 items-start">
           {/* Agent Photo */}
