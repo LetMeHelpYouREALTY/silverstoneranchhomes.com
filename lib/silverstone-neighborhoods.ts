@@ -451,7 +451,7 @@ const neighborhoodPages: Record<NeighborhoodSlug, NeighborhoodPageContent> = {
     ],
     bullets: [
       'Non-gated Parkfield village near Silverstone community park',
-      'Family-oriented streets in Centennial Hills 89131',
+      'Streets in Centennial Hills 89131',
       'Side-by-side tours with other Silverstone enclaves',
     ],
     faqs: [
