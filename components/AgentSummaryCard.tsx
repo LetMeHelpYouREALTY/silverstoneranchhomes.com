@@ -20,7 +20,7 @@ export default function AgentSummaryCard() {
         <div className="space-y-1">
           <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide">Featured REALTOR®</p>
           <h3 className="text-xl font-bold text-slate-900 leading-tight">Dr. Jan Duffy</h3>
-          <p className="text-sm text-slate-600">Top 1% Las Vegas REALTOR® · In real estate since 1983</p>
+          <p className="text-sm text-slate-600">Las Vegas REALTOR® · Licensed since 2008 · 35 years in Las Vegas</p>
         </div>
       </div>
 

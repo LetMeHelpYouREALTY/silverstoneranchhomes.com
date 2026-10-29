@@ -373,7 +373,7 @@ export default async function HomesForSalePage() {
             Ready to Find Your Dream Home?
           </h2>
           <p className="text-lg mb-8 text-blue-100 max-w-2xl mx-auto">
-            Dr. Jan Duffy, Top 1% REALTOR®, specializes in Silverstone Ranch properties. 
+            Dr. Jan Duffy, REALTOR®, specializes in Silverstone Ranch properties. 
             Get expert guidance and access to exclusive listings.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

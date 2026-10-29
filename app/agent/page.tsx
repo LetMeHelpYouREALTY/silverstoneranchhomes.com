@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 }
 
 const credentials = [
-  'Top 1% Las Vegas REALTOR® · In real estate since 1983',
+  'Las Vegas REALTOR® · Licensed since 2008 · 35 years in Las Vegas',
   'Ph.D. in Research – research-driven approach to market insights',
   'Certified Luxury Home Marketing Specialist (CLHMS)',
   'Member, Institute for Luxury Home Marketing & Women’s Council of REALTORS®',
@@ -431,7 +431,7 @@ export default function AgentPage() {
 
   const agentSchema = buildRealEstateAgentSchemaPatch({
     knowsAbout: ['Silverstone Ranch', 'Centennial Hills', 'Guard-gated communities', 'HOA real estate'],
-    award: 'Berkshire Hathaway Circle – Top 1% Las Vegas REALTORS® for closed volume (2024)',
+    award: 'Berkshire Hathaway Circle – Las Vegas REALTORS® for closed volume (2024)',
   })
 
   const serviceSchema = buildServiceSchema({
@@ -458,7 +458,7 @@ export default function AgentPage() {
           <div className="text-center mb-12">
             <h1 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">Dr. Jan Duffy | Silverstone Ranch REALTOR® (89131)</h1>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Top 1% Las Vegas REALTOR® specializing in Silverstone Ranch luxury homes.
+              Las Vegas REALTOR® specializing in Silverstone Ranch luxury homes.
             </p>
           </div>
           <div className="bg-white rounded-lg shadow-xl p-8 md:p-12">
@@ -477,7 +477,7 @@ export default function AgentPage() {
               <div>
                 <SectionHeading>A research-driven, concierge-focused advisor guiding buyers and sellers through Silverstone Ranch and the greater Centennial Hills market.</SectionHeading>
                 <p className="text-gray-700 mb-6 text-lg leading-relaxed">
-                  Dr. Duffy combines doctoral-level analytics with a career in real estate since 1983. She knows every
+                  Dr. Duffy combines doctoral-level analytics with a career licensed since 2008 · 35 years in Las Vegas. She knows every
                   cul-de-sac, HOA covenant, and market trend influencing guard-gated values. Clients benefit from insider access to
                   off-market listings, tailored financing strategy, and meticulous transaction management.
                 </p>
