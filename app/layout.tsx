@@ -21,6 +21,8 @@ import {
   buildWebSiteSchema,
 } from '@/lib/seo'
 import './globals.css'
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
+import { SpeedInsights as VercelSpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   metadataBase: new URL(CONTACT_INFO.website.base),
@@ -202,6 +204,8 @@ export default function RootLayout({
         <CalendlyBadge />
         <Footer />
         <Script src='/ads-conversions.js' strategy='afterInteractive' />
+        <VercelAnalytics />
+        <VercelSpeedInsights />
       </body>
     </html>
   )
