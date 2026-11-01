@@ -88,9 +88,9 @@ const hoaFaqs = [
 
 export default function SilverstoneRanchHoaPage() {
   const breadcrumbs = [
+    // /resources and /resources/las-vegas-hoa 308-redirect back to this page,
+    // so they are not linked as breadcrumb parents.
     { href: '/', label: 'Home' },
-    { href: '/resources', label: 'Resources' },
-    { href: '/resources/las-vegas-hoa', label: 'Las Vegas HOA Guides' },
   ]
 
   const pageSchema = buildWebPageSchema({

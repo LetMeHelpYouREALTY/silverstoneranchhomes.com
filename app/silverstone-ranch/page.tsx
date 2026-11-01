@@ -39,7 +39,7 @@ const deepDiveLinks = [
     title: 'Schools & Education',
     description:
       'CCSD orientation for Silverstone Ranch buyers—quick reference plus a link to the full area schools guide.',
-    href: '/silverstone-ranch/schools',
+    href: '/schools',
   },
   {
     title: 'Market Insights & Pricing',
